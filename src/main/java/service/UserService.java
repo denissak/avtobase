@@ -16,10 +16,10 @@ public class UserService {
     private final CreateUserMapper createUserMapper = CreateUserMapper.getInstance();
 
     public Integer create (UserCreateDto userCreateDto){
-        ValidationResult validationResult = createUserValidator.isValid(userCreateDto);
+/*        ValidationResult validationResult = createUserValidator.isValid(userCreateDto);
         if (!validationResult.isValid()) {
             throw new ValidationException(validationResult.getErrors());
-        }
+        }*/
         User userBean = createUserMapper.mapFrom(userCreateDto);
         userDao.save(userBean);
         return userBean.getId();

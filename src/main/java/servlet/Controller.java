@@ -28,17 +28,17 @@ public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         process(req,resp);
-        String[] times = new String[] { "summer", "autumn", "winter", "spring" };
+/*        String[] times = new String[] { "summer", "autumn", "winter", "spring" };
         req.setAttribute("items", times);
         req.setAttribute("message", "qwerty");
-        req.setAttribute("routes", addressService.findAll());
-        req.getRequestDispatcher("/WEB-INF/jsp/registration.jsp").forward(req, resp);
+        req.setAttribute("routes", addressService.findAll());*/
+        req.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        UserCreateDto createUserDto =UserCreateDto.builder()
+/*        UserCreateDto createUserDto =UserCreateDto.builder()
         .login(req.getParameter("login"))
         .password(req.getParameter("password"))
         //.role(req.getParameter("role"))
@@ -48,14 +48,14 @@ public class Controller extends HttpServlet {
                 .build();
 
         userService.create(createUserDto);
-        resp.sendRedirect("/login");
+        resp.sendRedirect("/login");*/
 
 
 
 
 
 
-        //process(req,resp);
+        process(req,resp);
     }
 
     private void process (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

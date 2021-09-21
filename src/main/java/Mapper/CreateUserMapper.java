@@ -1,5 +1,6 @@
 package Mapper;
 
+import bean.Role;
 import bean.User;
 import dto.UserCreateDto;
 
@@ -13,7 +14,7 @@ public class CreateUserMapper implements Mapper<UserCreateDto, User> {
         return User.builder()
                 .login(object.getName())
                 .password(object.getPassword())
-                //.role(Role.valueOf())
+               //.role(object.getRoleId())
                 .name(object.getName())
                 .surname(object.getSurname())
                 .phone_number(object.getPhoneNumber())
