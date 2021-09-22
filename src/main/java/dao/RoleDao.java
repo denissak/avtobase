@@ -1,4 +1,4 @@
-package dao;
+/*package dao;
 
 import bean.Role;
 
@@ -37,4 +37,4 @@ public class RoleDao implements Dao<Integer, Role>{
     public static RoleDao getInstance() {
         return INSTANCE;
     }
-}
+}*/

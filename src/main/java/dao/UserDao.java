@@ -12,6 +12,7 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 public class UserDao implements Dao<Integer, User>{
 
     private static final UserDao INSTANCE = new UserDao();
+    private static final int USER_ROLE_ID = 4;
 
     private static final String SAVE_USER = "INSERT INTO users (login, password, role_id, name, surname, phone_number)" +
             " VALUES " + "(?,?,?,?,?,?)";
@@ -43,15 +44,16 @@ public class UserDao implements Dao<Integer, User>{
                  PreparedStatement preparedStatement = connection.prepareStatement(SAVE_USER, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setObject(1, entity.getLogin());
                 preparedStatement.setObject(2, entity.getPassword());
-                preparedStatement.setObject(3, entity.getRole().getName());
+                preparedStatement.setObject(3, USER_ROLE_ID);
                 preparedStatement.setObject(4, entity.getName());
                 preparedStatement.setObject(5, entity.getSurname());
                 preparedStatement.setObject(6, entity.getPhone_number());
+                preparedStatement.executeUpdate();
 
-                preparedStatement.executeQuery();
+/*                preparedStatement.executeQuery();
                 ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
                 generatedKeys.next();
-                entity.setId(generatedKeys.getObject("id", Integer.class));
+                entity.setId(generatedKeys.getObject("id", Integer.class));*/
 
             }
         } catch (SQLException e) {

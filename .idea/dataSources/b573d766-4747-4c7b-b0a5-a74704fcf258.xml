@@ -1131,7 +1131,9 @@
     <table id="288" parent="2" name="requests"/>
     <table id="289" parent="2" name="roles"/>
     <table id="290" parent="2" name="routes"/>
-    <table id="291" parent="2" name="users"/>
+    <table id="291" parent="2" name="users">
+      <Collation>utf8_general_ci</Collation>
+    </table>
     <column id="292" parent="283" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>

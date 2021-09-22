@@ -1,6 +1,6 @@
 package validator;
 
-import bean.Role;
+
 import dto.UserCreateDto;
 
 public class CreateUserValidator implements Validator<UserCreateDto> {

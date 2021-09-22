@@ -18,10 +18,10 @@
         <label for="exampleInputPassword" class="form-label">Password</label>
         <input type="password" name="password" class="form-control" id="exampleInputPassword">
     </div>
-    <div class="mb-3 roleId">
+<%--    <div class="mb-3 roleId">
         <label for="exampleInputRoleId" class="form-label">Role</label>
         <input type="roleId" name="roleId" class="form-control" id="exampleInputRoleId">
-    </div>
+    </div>--%>
     <div class="mb-3">
         <label for="exampleInputName" class="form-label">Name</label>
         <input type="name" name="name" class="form-control" id="exampleInputName">

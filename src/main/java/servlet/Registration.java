@@ -23,7 +23,7 @@ public class Registration implements Command {
         UserCreateDto createUserDto = UserCreateDto.builder()
                 .login(req.getParameter("login"))
                 .password(req.getParameter("password"))
-                .roleId(req.getParameter("roleId"))
+                //.roleId(req.getParameter("roleId"))
                 .name(req.getParameter("name"))
                 .surname(req.getParameter("surname"))
                 .phoneNumber(req.getParameter("phoneNumber"))
