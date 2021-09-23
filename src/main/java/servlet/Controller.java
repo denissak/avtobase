@@ -17,9 +17,6 @@ import java.io.IOException;
 public class Controller extends HttpServlet {
 
     private final CommandProvider provider = new CommandProvider();
-    private final RouteService routeService = RouteService.getInstance();
-    private final AddressService addressService = AddressService.getInstance();
-    private final UserService userService = UserService.getInstance();
 
     public Controller() {
         super();
@@ -38,23 +35,7 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-/*        UserCreateDto createUserDto =UserCreateDto.builder()
-        .login(req.getParameter("login"))
-        .password(req.getParameter("password"))
-        //.role(req.getParameter("role"))
-        .name(req.getParameter("name"))
-        .surname(req.getParameter("surname"))
-        .phoneNumber(req.getParameter("phoneNumber"))
-                .build();
-
-        userService.create(createUserDto);
-        resp.sendRedirect("/login");*/
-
-
-
-
-
-
+        req.setCharacterEncoding("UTF-8");
         process(req,resp);
     }
 

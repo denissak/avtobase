@@ -11,7 +11,7 @@
 <form action="Controller?command=registration" method="POST">
     <div class="mb-3">
         <label for="exampleInputLogin" class="form-label">Login</label>
-        <input type="login" name="login" class="form-control" id="exampleInputLogin" aria-describedby="emailHelp">
+        <input type="text" name="login" class="form-control" id="exampleInputLogin" aria-describedby="emailHelp">
         <%--        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>--%>
     </div>
     <div class="mb-3">
@@ -20,15 +20,15 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputName" class="form-label">Name</label>
-        <input type="name" name="name" class="form-control" id="exampleInputName">
+        <input type="text" name="name" class="form-control" id="exampleInputName">
     </div>
     <div class="mb-3">
         <label for="exampleInputSurname" class="form-label">Surname</label>
-        <input type="surname" name="surname" class="form-control" id="exampleInputSurname">
+        <input type="text" name="surname" class="form-control" id="exampleInputSurname">
     </div>
     <div class="mb-3">
         <label for="exampleInputPhoneNumber" class="form-label">PhoneNumber</label>
-        <input type="phoneNumber" name="phoneNumber" class="form-control" id="exampleInputPhoneNumber">
+        <input type="text" name="phoneNumber" class="form-control" id="exampleInputPhoneNumber">
     </div>
     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
 </form>

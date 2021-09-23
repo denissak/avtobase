@@ -12,7 +12,7 @@ public class CreateUserMapper implements Mapper<UserCreateDto, User> {
     @Override
     public User mapFrom(UserCreateDto object) {
         return User.builder()
-                .login(object.getName())
+                .login(object.getLogin())
                 .password(object.getPassword())
                 .name(object.getName())
                 .surname(object.getSurname())
