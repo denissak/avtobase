@@ -14,7 +14,6 @@ public class CreateUserMapper implements Mapper<UserCreateDto, User> {
         return User.builder()
                 .login(object.getName())
                 .password(object.getPassword())
-               //.role(object.getRoleId())
                 .name(object.getName())
                 .surname(object.getSurname())
                 .phone_number(object.getPhoneNumber())

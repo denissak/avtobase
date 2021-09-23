@@ -9,7 +9,7 @@
     </root>
     <schema id="2" parent="1" name="avtobase">
       <Current>1</Current>
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+      <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="3" parent="1" name="information_schema">
       <Collation>utf8_general_ci</Collation>
@@ -1131,9 +1131,7 @@
     <table id="288" parent="2" name="requests"/>
     <table id="289" parent="2" name="roles"/>
     <table id="290" parent="2" name="routes"/>
-    <table id="291" parent="2" name="users">
-      <Collation>utf8_general_ci</Collation>
-    </table>
+    <table id="291" parent="2" name="users"/>
     <column id="292" parent="283" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
