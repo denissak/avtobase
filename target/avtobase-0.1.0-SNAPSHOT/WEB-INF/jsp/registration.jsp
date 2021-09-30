@@ -12,7 +12,6 @@
     <div class="mb-3">
         <label for="exampleInputLogin" class="form-label">Login</label>
         <input type="text" name="login" class="form-control" id="exampleInputLogin" aria-describedby="emailHelp">
-        <%--        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>--%>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword" class="form-label">Password</label>

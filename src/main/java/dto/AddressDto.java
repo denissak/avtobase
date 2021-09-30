@@ -11,7 +11,6 @@ public class AddressDto {
     private final String street;
     private final Integer buildingNumber;
 
-
     public AddressDto(Integer id, String country, String city, String street, Integer buildingNumber) {
         this.id = id;
         this.country = country;

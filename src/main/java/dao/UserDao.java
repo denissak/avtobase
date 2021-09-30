@@ -17,6 +17,7 @@ public class UserDao implements Dao<Integer, User>{
     private static final String SAVE_USER = "INSERT INTO users (login, password, role_id, name, surname, phone_number)" +
             " VALUES " + "(?,?,?,?,?,?)";
 
+
     @Override
     public List<User> findAll() {
         return null;
@@ -59,10 +60,8 @@ public class UserDao implements Dao<Integer, User>{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return entity;
     }
-
     public static UserDao getInstance() {
         return INSTANCE;
     }

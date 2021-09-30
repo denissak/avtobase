@@ -1,11 +1,5 @@
 package servlet;
 
-import dao.AddressDao;
-import dto.UserCreateDto;
-import service.AddressService;
-import service.RouteService;
-import service.UserService;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
