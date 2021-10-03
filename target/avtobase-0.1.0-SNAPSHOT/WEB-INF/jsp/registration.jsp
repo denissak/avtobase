@@ -11,23 +11,23 @@
 <form action="Controller?command=registration" method="POST">
     <div class="mb-3">
         <label for="exampleInputLogin" class="form-label">Login</label>
-        <input type="text" name="login" class="form-control" id="exampleInputLogin" aria-describedby="emailHelp">
+        <input type="text" name="login" class="form-control" id="exampleInputLogin" required aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword" class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword">
+        <input type="password" name="password" class="form-control" id="exampleInputPassword" required>
     </div>
     <div class="mb-3">
         <label for="exampleInputName" class="form-label">Name</label>
-        <input type="text" name="name" class="form-control" id="exampleInputName">
+        <input type="text" name="name" class="form-control" id="exampleInputName" required>
     </div>
     <div class="mb-3">
         <label for="exampleInputSurname" class="form-label">Surname</label>
-        <input type="text" name="surname" class="form-control" id="exampleInputSurname">
+        <input type="text" name="surname" class="form-control" id="exampleInputSurname" required>
     </div>
     <div class="mb-3">
         <label for="exampleInputPhoneNumber" class="form-label">PhoneNumber</label>
-        <input type="text" name="phoneNumber" class="form-control" id="exampleInputPhoneNumber">
+        <input type="text" name="phoneNumber" class="form-control" id="exampleInputPhoneNumber" required>
     </div>
     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
 </form>

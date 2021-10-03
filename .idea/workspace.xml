@@ -6,7 +6,105 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e7e1528-5f2f-4ea3-801d-6a5fff8d7d0f" name="Default Changelist" comment="" />
+    <list default="true" id="7e7e1528-5f2f-4ea3-801d-6a5fff8d7d0f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b573d766-4747-4c7b-b0a5-a74704fcf258.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b573d766-4747-4c7b-b0a5-a74704fcf258.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/avtobase.iml" beforeDir="false" afterPath="$PROJECT_DIR$/avtobase.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mapper/CreateUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mapper/CreateUserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bean/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bean/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Registration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/Mapper/CreateUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/Mapper/CreateUserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/Mapper/Mapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/Mapper/Mapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/Address.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/Address.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/Car.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/Car.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/Driver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/Request.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/Route.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/Route.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/User$UserBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/bean/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dao/AddressDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dao/AddressDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dao/Dao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dao/Dao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dao/RouteDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dao/RouteDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dto/AddressDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dto/AddressDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dto/RouteDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dto/RouteDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dto/UserCreateDto$UserCreateDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dto/UserCreateDto$UserCreateDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dto/UserCreateDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dto/UserCreateDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/exception/DAOException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/exception/DAOException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/exception/ServiceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/exception/ServiceException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/exception/ValidationException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/exception/ValidationException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/service/AddressService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/service/AddressService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/service/RouteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/service/RouteService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/CommandName.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/CommandName.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/CommandParameter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/CommandParameter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/CommandProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/CommandProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/GoToMainPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/GoToMainPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Registration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Registration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/util/ConnectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/util/ConnectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/util/PropertiesUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/util/PropertiesUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/validator/CreateUserValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/validator/CreateUserValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/validator/Error.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/validator/Error.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/validator/ValidationResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/validator/ValidationResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/validator/Validator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/validator/Validator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/jsp/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/jsp/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Mapper/CreateUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Mapper/CreateUserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Mapper/Mapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Mapper/Mapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/Address.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Address.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/Car.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Car.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Driver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Request.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/Route.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Route.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/User$UserBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/AddressDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/AddressDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/Dao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/Dao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/RouteDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/RouteDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/AddressDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/AddressDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/RouteDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/RouteDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/UserCreateDto$UserCreateDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/UserCreateDto$UserCreateDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/UserCreateDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/UserCreateDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exception/DAOException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exception/DAOException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exception/ServiceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exception/ServiceException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exception/ValidationException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exception/ValidationException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/AddressService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/AddressService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/RouteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/RouteService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/CommandName.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/CommandName.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/CommandParameter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/CommandParameter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/CommandProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/CommandProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/GoToMainPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/GoToMainPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/Registration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/Registration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/ConnectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/ConnectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/PropertiesUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/PropertiesUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/validator/CreateUserValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validator/CreateUserValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/validator/Error.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validator/Error.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/validator/ValidationResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validator/ValidationResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/validator/Validator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validator/Validator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/registration.jsp" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +145,13 @@
         <item name="avtobase: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="roles: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="avtobase@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="avtobase: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="users: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -54,9 +159,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -75,6 +184,7 @@
   <component name="ProjectId" id="1yJsoRZsz0CgH77yxL3K9Efq60c" />
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -84,15 +194,18 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Java\avtobase last\avtobase\web\WEB-INF\jsp" />
+      <recent name="F:\avtobase\web\WEB-INF\lib" />
+      <recent name="F:\avtobase\web\WEB-INF" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dto" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\avtobase\src\main\resources" />
       <recent name="F:\avtobase\src\main\java" />
       <recent name="F:\avtobase\web" />
-      <recent name="F:\avtobase\web\WEB-INF" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Java\avtobase last\avtobase\web\WEB-INF\jsp" />
-      <recent name="F:\avtobase\web\WEB-INF\lib" />
       <recent name="F:\avtobase\web\WEB-INF" />
     </key>
   </component>
@@ -278,17 +391,12 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@767676ab" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@b181f1f8" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@767676ab" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@35273352" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@767676ab" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@45a6f821" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@b181f1f8" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@1d7f469d" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -315,11 +423,26 @@
       <workItem from="1632201777167" duration="2330000" />
       <workItem from="1632205423741" duration="6842000" />
       <workItem from="1632226642366" duration="30439000" />
+      <workItem from="1633112384089" duration="719000" />
+      <workItem from="1633247649935" duration="17603000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -335,16 +458,56 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/servlet/Controller.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/src/main/java/dao/UserDao.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/servlet/Controller.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="13" />
+          <url>file://$PROJECT_DIR$/src/main/java/service/UserService.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dao/UserDao.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dao/UserDao.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dao/UserDao.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/servlet/Login.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Mapper/UserMapper.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/servlet/Login.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/servlet/Login.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="user" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

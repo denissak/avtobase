@@ -25,8 +25,8 @@
                 </li>
             </ul>
             <div action="" class="d-flex">
-                <button class="btn btn-outline-success"data-bs-toggle="modal" data-bs-target="#exampleModal">Зарегистрироваться</button>
-                <button class="btn btn-success ms-3" >Войти</button>
+                <button class="btn btn-outline-success"data-bs-toggle="modal" data-bs-target="#registrationModal">Зарегистрироваться</button>
+                <button class="btn btn-success ms-3"data-bs-toggle="modal" data-bs-target="#loginModal" >Войти</button>
             </div>
         </div>
     </div>
@@ -34,11 +34,27 @@
 
 <%--MODAL--%>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Form</h5>
+                <h5 class="modal-title" id="loginModalLabel">Вход</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+            </div>
+            <div class="modal-body"><%@ include file="login.jsp"%> </div>
+            <%--            <div class="modal-footer">--%>
+            <%--                <button class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button class="btn btn-secondary">Сохранить изменения</button>--%>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registrationModalLabel">Регистрация</h5>
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             <div class="modal-body"><%@ include file="registration.jsp"%> </div>

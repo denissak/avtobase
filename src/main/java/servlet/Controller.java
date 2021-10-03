@@ -19,10 +19,6 @@ public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         process(req,resp);
-/*        String[] times = new String[] { "summer", "autumn", "winter", "spring" };
-        req.setAttribute("items", times);
-        req.setAttribute("message", "qwerty");
-        req.setAttribute("routes", addressService.findAll());*/
         req.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
     }
 
