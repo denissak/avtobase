@@ -10,6 +10,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 import static servlet.CommandParameter.ATTRIBUTE_URL;
+/*import static servlet.CommandParameter.LOGIN;
+import static servlet.CommandParameter.PASSWORD;
+import static servlet.CommandParameter.*/
 
 public class Registration implements Command {
 

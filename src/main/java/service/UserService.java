@@ -20,7 +20,7 @@ public class UserService {
     private final CreateUserMapper createUserMapper = CreateUserMapper.getInstance();
     private final UserMapper userMapper = UserMapper.getInstance();
 
-    public Optional<UserDto> login (String login, String password){
+    public Optional<UserDto> findLogin (String login, String password){
         return userDao.findByLoginAndPassword(login,password)
                 .map(userMapper::mapFrom);
     }

@@ -27,6 +27,11 @@
             <div action="" class="d-flex">
                 <button class="btn btn-outline-success"data-bs-toggle="modal" data-bs-target="#registrationModal">Зарегистрироваться</button>
                 <button class="btn btn-success ms-3"data-bs-toggle="modal" data-bs-target="#loginModal" >Войти</button>
+                <c:if test="${not empty sessionScope.user}">
+                    <form action="Controller?command=logout" method="POST">
+                        <button class="btn btn-success">Выйти</button>
+                    </form>
+                </c:if>
             </div>
         </div>
     </div>

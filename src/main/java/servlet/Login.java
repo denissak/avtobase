@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static servlet.CommandParameter.ATTRIBUTE_URL;
+import static servlet.CommandParameter.LOGIN;
+import static servlet.CommandParameter.PASSWORD;
 
 public class Login implements Command {
 
     private static final String GO_TO_LOGIN_PAGE = "/WEB-INF/jsp/login.jsp";
-    private static final String GO_TO_LOG_IN_PAGE = "Controller?command=login";
+   /* private static final String GO_TO_LOG_IN_PAGE = "Controller?command=login";*/
     private final UserService userService = UserService.getInstance();
 
     @Override
@@ -23,7 +24,7 @@ public class Login implements Command {
 /*        req.getParameter("login");
         req.getParameter("password");*/
 
-        userService.login(req.getParameter("login"),req.getParameter("password"))
+        userService.findLogin(req.getParameter(LOGIN),req.getParameter(PASSWORD))
                 .ifPresentOrElse(
                         user -> onLoginSuccess(user, req, resp),
                         () -> onLoginFail (req, resp)
