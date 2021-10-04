@@ -9,13 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Driver {
+
+public class Comment {
 
     private Integer id;
-    private Integer priceKm;
-    private Integer priceHour;
-    private String doctorStamp;
-    private Car car;
-    //private boolean isBusy;
-    private Comment comment;
+    private String commentDate;
+    private Integer mark;
+    private String message;
+
 }
