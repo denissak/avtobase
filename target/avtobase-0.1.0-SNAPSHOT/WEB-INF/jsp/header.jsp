@@ -25,11 +25,13 @@
                 </li>
             </ul>
             <div action="" class="d-flex">
-                <button class="btn btn-outline-success"data-bs-toggle="modal" data-bs-target="#registrationModal">Зарегистрироваться</button>
-                <button class="btn btn-success ms-3"data-bs-toggle="modal" data-bs-target="#loginModal" >Войти</button>
+                <c:if test="${empty sessionScope.user}">
+                    <button class="btn btn-outline-success"data-bs-toggle="modal" data-bs-target="#registrationModal">Зарегистрироваться</button>
+                    <button class="btn btn-success ms-3"data-bs-toggle="modal" data-bs-target="#loginModal" >Войти</button>
+                </c:if>
                 <c:if test="${not empty sessionScope.user}">
                     <form action="Controller?command=logout" method="POST">
-                        <button class="btn btn-success">Выйти</button>
+                        <button class="btn btn-outline-danger">Выйти</button>
                     </form>
                 </c:if>
             </div>
@@ -47,9 +49,6 @@
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             <div class="modal-body"><%@ include file="login.jsp"%> </div>
-            <%--            <div class="modal-footer">--%>
-            <%--                <button class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                            <button class="btn btn-secondary">Сохранить изменения</button>--%>
         </div>
     </div>
 </div>
@@ -63,10 +62,6 @@
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             <div class="modal-body"><%@ include file="registration.jsp"%> </div>
-<%--            <div class="modal-footer">--%>
-<%--                <button class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button class="btn btn-secondary">Сохранить изменения</button>--%>
-
 
             </div>
         </div>
@@ -77,10 +72,5 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
 </body>
-<%--
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Автобаза</h5>
-    <a class="btn btn-primary" href="Controller?command=registration" role="button">Зарегистрироваться</a>
-    <div id="extwaiokist" style="display:none" v="pdbbg" q="cd573aec" c="76.88" i="106" u="29.70" s="08132022" d="1" w="false" m="BMe="><div id="extwaiimpotscp" style="display:none" v="pdbbg" q="cd573aec" c="76.88" i="106" u="29.70" s="08132022" d="1" w="false" m="BMe=" vn="1gtra"></div></div></div>
---%>
+
 

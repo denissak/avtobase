@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static servlet.CommandParameter.ATTRIBUTE_URL;
-/*import static servlet.CommandParameter.LOGIN;
-import static servlet.CommandParameter.PASSWORD;
-import static servlet.CommandParameter.*/
+import static servlet.CommandParameter.*;
 
 public class Registration implements Command {
 
@@ -23,11 +20,11 @@ public class Registration implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserCreateDto createUserDto = UserCreateDto.builder()
-                .login(req.getParameter("login"))
-                .password(req.getParameter("password"))
-                .name(req.getParameter("name"))
-                .surname(req.getParameter("surname"))
-                .phoneNumber(req.getParameter("phoneNumber"))
+                .login(req.getParameter(LOGIN))
+                .password(req.getParameter(PASSWORD))
+                .name(req.getParameter(NAME))
+                .surname(req.getParameter(SURNAME))
+                .phoneNumber(req.getParameter(PHONE_NUMBER))
                 .build();
 
         userService.create(createUserDto);

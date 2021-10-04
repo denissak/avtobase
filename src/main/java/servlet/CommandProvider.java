@@ -10,6 +10,7 @@ public class CommandProvider {
     public CommandProvider() {
         commands.put(CommandName.GOTOMAINPAGE, new GoToMainPage());
         commands.put(CommandName.LOGIN, new Login());
+        commands.put(CommandName.LOGOUT, new Logout());
         commands.put(CommandName.REGISTRATION, new Registration());
     }
 
