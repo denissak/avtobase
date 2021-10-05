@@ -27,7 +27,6 @@ public final class ConnectionManager {
     private static void loadDriver(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-//            Class.forName("org.mysql.Driver");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -48,13 +47,7 @@ public final class ConnectionManager {
                             : method.invoke(connection, args));
             pool.add(proxyConnection);
             sourceConnections.add(connection);
-//            closePool();
         }
-        /*try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }*/
     }
 
     public static Connection get() {
