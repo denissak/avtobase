@@ -38,7 +38,7 @@ public class Login implements Command {
     private void onLoginSuccess (UserDto user, HttpServletRequest req, HttpServletResponse resp){
         req.getSession().setAttribute("user", user);
         try {
-            resp.sendRedirect("/userRequest");
+            resp.sendRedirect("Controller?command=gotoalluserrequestpage");
         } catch (IOException e) {
             e.printStackTrace();
         }
