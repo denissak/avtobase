@@ -12,6 +12,7 @@ public class CommandProvider {
         commands.put(CommandName.LOGIN, new Login());
         commands.put(CommandName.LOGOUT, new Logout());
         commands.put(CommandName.REGISTRATION, new Registration());
+        commands.put(CommandName.GOTOALLUSERREQUESTPAGE, new GoToAllUserRequestPage());
     }
 
     public Command takeCommand (String name){

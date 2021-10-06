@@ -19,6 +19,7 @@ public class UserDao implements Dao<Integer, User>{
             " VALUES " + "(?,?,?,?,?,?)";
     private static final String GET_BY_LOGIN_AND_PASSWORD = "SELECT * FROM users as u join roles as r on r.id = u.role_id WHERE login = ? AND password = ?";
 
+    private UserDao(){}
 
     public Optional<User> findByLoginAndPassword(String login, String password) {
         try (Connection connection = ConnectionManager.get();
@@ -74,13 +75,12 @@ public class UserDao implements Dao<Integer, User>{
 
     }
 
-
-
     @Override
     public User save(User entity)  {
         try {
             try (Connection connection = ConnectionManager.get();
                  PreparedStatement preparedStatement = connection.prepareStatement(SAVE_USER, RETURN_GENERATED_KEYS)) {
+                //preparedStatement.setObject(1, entity.getId());
                 preparedStatement.setObject(1, entity.getLogin());
                 preparedStatement.setObject(2, entity.getPassword());
                 preparedStatement.setObject(3, USER_ROLE_ID);

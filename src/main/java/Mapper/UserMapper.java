@@ -16,6 +16,7 @@ public class UserMapper implements Mapper<User, UserDto> {
     @Override
     public UserDto mapFrom(User object) {
         return UserDto.builder()
+                .id(object.getId())
                 .login(object.getLogin())
                 .role(object.getRole().getName())
                 .name(object.getName())

@@ -4,5 +4,6 @@ public enum CommandName {
     LOGIN,
     LOGOUT,
     GOTOMAINPAGE,
-    REGISTRATION
+    REGISTRATION,
+    GOTOALLUSERREQUESTPAGE
 }

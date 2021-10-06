@@ -9,6 +9,7 @@ import javax.management.relation.Role;
 @Builder
 public class UserDto {
 
+    Integer id;
     String login;
     //String password;
     String role;

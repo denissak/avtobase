@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,10 +14,8 @@ import lombok.NoArgsConstructor;
 public class Driver {
 
     private Integer id;
-    private Integer priceKm;
-    private Integer priceHour;
-    private String doctorStamp;
+    private LocalDateTime doctorStamp;
     private Car car;
-    //private boolean isBusy;
+    private boolean isBusy; //TODO
     private Comment comment;
 }

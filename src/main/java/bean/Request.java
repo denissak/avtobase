@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,10 +15,11 @@ public class Request {
 
     private Integer id;
     private User user;
-    private String dateCreate;
-    private Route route;
-    private String dateDeparture;
-    private String statusRequest;
-    private String typeTransport;
+    private LocalDateTime dateCreate;
+    private String startAddress;
+    private String endAddress;
+    private LocalDateTime dateDeparture;
+    private StatusRequest statusRequest;
+    private TypeTransport typeTransport;
     private String detailsRequest;
 }

@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,13 +17,13 @@ public class Car {
     private Integer id;
     private String mark;
     private String model;
-    private String releaseDate;
+    private LocalDate releaseDate;
     private String type;
     private Integer liftingCapacity;
     private Integer cargoCapacity;
     private Integer passengerCapacity;
-    private String inspectionPermission;
-    private String statusCar;
+    private LocalDate inspectionPermission;
+    private String statusCar; //TODO
     private String carDescription;
     private String imagePath;
 }

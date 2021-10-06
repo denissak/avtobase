@@ -28,7 +28,7 @@ public class Registration implements Command {
                 .build();
 
         userService.create(createUserDto);
-        resp.sendRedirect("/login");
+        resp.sendRedirect("/index");
         HttpSession session = req.getSession(true);
         session.setAttribute(ATTRIBUTE_URL, GO_TO_REGISTRATION_PAGE);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_REG_PAGE);
