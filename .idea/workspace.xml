@@ -6,12 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e7e1528-5f2f-4ea3-801d-6a5fff8d7d0f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/GoToAllUserRequestPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/GoToAllUserRequestPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/servlet/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/Login.class" afterDir="false" />
+    <list default="true" id="7e7e1528-5f2f-4ea3-801d-6a5fff8d7d0f" name="Default Changelist" comment="fix all Requests by one user">
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/userRequest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/userRequest.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -350,7 +346,7 @@
       <workItem from="1633325585888" duration="9847000" />
       <workItem from="1633361155847" duration="3105000" />
       <workItem from="1633453331204" duration="8944000" />
-      <workItem from="1633496874323" duration="16639000" />
+      <workItem from="1633496874323" duration="16917000" />
     </task>
     <task id="LOCAL-00001" summary="fix logout">
       <created>1633327419645</created>
@@ -366,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633522169416</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix all Requests by one user">
+      <created>1633523179094</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1633523179094</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,7 +391,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix logout" />
     <MESSAGE value="add all Requests by one user" />
-    <option name="LAST_COMMIT_MESSAGE" value="add all Requests by one user" />
+    <MESSAGE value="fix all Requests by one user" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix all Requests by one user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

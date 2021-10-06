@@ -9,24 +9,25 @@
 
 <body>
 
-<%--<table class="table">
+<table class="table">
     <thead>
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">Страна</th>
-        <th scope="col">Город</th>
-        <th scope="col">Улица</th>
-        <th scope="col">Номер здания</th>
+        <th scope="col">Дата заявки</th>
+        <th scope="col">Начальный маршрут</th>
+        <th scope="col">Конечный маршрут</th>
+        <th scope="col">Статус заказа</th>
+        <th scope="col">Тип транспорта</th>
+        <th scope="col">Детали заказа</th>
     </tr>
     </thead>
-</table>--%>
+</table>
 <c:forEach var="request" items="${requestsById}">
 
     <table class="table">
         <tbody>
         <tr>
-            <th scope="row">$${request.getDateCreate()}</th>
-            <%--<td>${request.getDateCreate()}</td>--%>
+            <%--<th scope="row">$${request.getDateCreate()}</th>--%>
+            <td>${request.getDateCreate()}</td>
             <td>${request.getStartAddress()}</td>
             <td>${request.getEndAddress()}</td>
             <td>${request.getStatusRequest()}</td>
