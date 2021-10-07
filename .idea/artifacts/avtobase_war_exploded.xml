@@ -12,6 +12,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="avtobase" />
+          <element id="module-output" name="by.epam.jwd.sak.avtobase" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.26" />
@@ -24,6 +25,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="avtobase/web/Web" />
+      <element id="javaee-facet-resources" facet="by.epam.jwd.sak.avtobase/web/Web" />
     </root>
   </artifact>
 </component>

@@ -7,7 +7,78 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e7e1528-5f2f-4ea3-801d-6a5fff8d7d0f" name="Default Changelist" comment="fix all Requests by one user">
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/userRequest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/userRequest.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/by.epam.jwd.sak.avtobase.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/dao/DaoFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/dao/RequestDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/service/FactoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/service/RequestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/avtobase_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/avtobase_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b573d766-4747-4c7b-b0a5-a74704fcf258.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b573d766-4747-4c7b-b0a5-a74704fcf258.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mapper/CreateUserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mapper/Mapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mapper/RequestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/service/impl/RequestServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mapper/UserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/bean/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/bean/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/bean/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/bean/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/bean/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/StatusRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/bean/StatusRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/TypeTransport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/bean/TypeTransport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/bean/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Dao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/RequestDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/dao/impl/RequestDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/RoleDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/dao/impl/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/RequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/dto/RequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/UserCreateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/dto/UserCreateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exception/DAOException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/exception/DAOException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exception/ServiceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/exception/ServiceException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exception/ValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/exception/ValidationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/filter/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/filter/AuthorizationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RequestService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/servlet/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/CommandName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/servlet/CommandName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/CommandParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/servlet/CommandParameter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/CommandProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/servlet/CommandProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/servlet/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/GoToAllUserRequestPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/servlet/GoToAllUserRequestPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/GoToMainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/servlet/GoToMainPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/servlet/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/servlet/Logout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/servlet/Registration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/util/ConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/PropertiesUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/util/PropertiesUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validator/CreateUserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/validator/CreateUserValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validator/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/validator/Error.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validator/ValidationResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/validator/ValidationResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validator/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/java/validator/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.jwd.sak.avtobase/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/Mapper/CreateUserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/Mapper/Mapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/Mapper/UserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dao/Dao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Registration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/classes/servlet/Registration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/jsp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Mapper/CreateUserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Mapper/Mapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Mapper/UserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/Dao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/servlet/Registration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/Registration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/index.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,10 +133,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -99,8 +170,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="StatusRequest" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\avtobase\src\main" />
+      <recent name="E:\avtobase\src\by\epam\jwd\sak\avtobase" />
+      <recent name="E:\avtobase\src" />
+      <recent name="E:\avtobase\web" />
+      <recent name="E:\avtobase\web\WEB-INF\jsp" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\avtobase\src\main\resources" />
@@ -111,12 +186,8 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="dto" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\avtobase\web" />
-      <recent name="E:\avtobase\web\WEB-INF\jsp" />
-      <recent name="D:\Java\avtobase last\avtobase\web\WEB-INF\jsp" />
-      <recent name="F:\avtobase\web\WEB-INF\lib" />
-      <recent name="F:\avtobase\web\WEB-INF" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="StatusRequest" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -133,8 +204,8 @@
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.52">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="avtobase" />
+      <option name="MAIN_CLASS_NAME" value="by.epam.jwd.sak.avtobase.Main" />
+      <module name="by.epam.jwd.sak.avtobase" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -347,6 +418,7 @@
       <workItem from="1633361155847" duration="3105000" />
       <workItem from="1633453331204" duration="8944000" />
       <workItem from="1633496874323" duration="16917000" />
+      <workItem from="1633601831473" duration="5493000" />
     </task>
     <task id="LOCAL-00001" summary="fix logout">
       <created>1633327419645</created>
@@ -395,60 +467,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="fix all Requests by one user" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/servlet/Registration.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/servlet/Registration.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Mapper/CreateUserMapper.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/UserDao.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/RequestDao.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/RequestDao.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Mapper/RequestMapper.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/service/RequestService.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/servlet/GoToAllUserRequestPage.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/servlet/GoToAllUserRequestPage.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
         <watch expression="user" />

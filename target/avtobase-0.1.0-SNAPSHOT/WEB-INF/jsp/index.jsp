@@ -183,6 +183,7 @@
           <th scope="col">Город</th>
           <th scope="col">Улица</th>
           <th scope="col">Номер здания</th>
+          <th scope="col">Номер здания</th>
       </tr>
       </thead>
   </table>
