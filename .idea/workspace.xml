@@ -7,10 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e7e1528-5f2f-4ea3-801d-6a5fff8d7d0f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/service/PasswordEncoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/service/PasswordEncoderProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/service/impl/PasswordEncoderImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/jsp/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/jsp/registration.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -351,7 +353,7 @@
       <workItem from="1633361155847" duration="3105000" />
       <workItem from="1633453331204" duration="8944000" />
       <workItem from="1633496874323" duration="16917000" />
-      <workItem from="1633601831473" duration="18974000" />
+      <workItem from="1633601831473" duration="21342000" />
     </task>
     <task id="LOCAL-00001" summary="fix logout">
       <created>1633327419645</created>
@@ -395,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633681542189</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add client validation on registration form">
+      <created>1633693338089</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1633693338089</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +429,8 @@
     <MESSAGE value="fix all Requests by one user" />
     <MESSAGE value="add Factory, fix structure" />
     <MESSAGE value="add create request" />
-    <option name="LAST_COMMIT_MESSAGE" value="add create request" />
+    <MESSAGE value="add client validation on registration form" />
+    <option name="LAST_COMMIT_MESSAGE" value="add client validation on registration form" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="avtobase" />
+        <module name="by.epam.jwd.sak.avtobase" />
       </profile>
     </annotationProcessing>
   </component>
