@@ -30,8 +30,9 @@
                     <button class="btn btn-success ms-3"data-bs-toggle="modal" data-bs-target="#loginModal" >Войти</button>
                 </c:if>
                 <c:if test="${not empty sessionScope.user}">
+                    <button class="btn btn-outline-success"data-bs-toggle="modal" data-bs-target="#createRequestModal">Создать заявку</button>
                     <form action="Controller?command=logout" method="POST">
-                        <button class="btn btn-outline-danger">Выйти</button>
+                        <button class="btn btn-outline-danger ms-3">Выйти</button>
                     </form>
                 </c:if>
             </div>
@@ -49,6 +50,19 @@
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             <div class="modal-body"><%@ include file="login.jsp"%> </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="createRequestModal" tabindex="-1" aria-labelledby="createRequestModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createRequestModalLabel">Вход</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+            </div>
+            <div class="modal-body"><%@ include file="createUserRequest.jsp"%> </div>
         </div>
     </div>
 </div>

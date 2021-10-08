@@ -10,11 +10,37 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.sql.Statement.RETURN_GENERATED_KEYS;
+
 public class RequestDaoImpl implements RequestDao {
 
-    private static final String GET_ALL_REQUEST_BY_USERID =
-            "SELECT * FROM requests WHERE user_id = ?";
+    private static final String GET_ALL_REQUEST_BY_USERID = "SELECT * FROM requests WHERE user_id = ?";
+    private static final String SAVE_REQUEST = "SELECT * FROM requests";
 
+    @Override
+    public Request save(Request entity) {
+        try (Connection connection = ConnectionManager.get();
+            PreparedStatement preparedStatement = connection.prepareStatement(SAVE_REQUEST, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setObject(1, entity.getUser());
+            preparedStatement.setObject(2, entity.getDateCreate());
+            preparedStatement.setObject(3, entity.getStartAddress());
+            preparedStatement.setObject(4, entity.getEndAddress());
+            preparedStatement.setObject(5, entity.getDateDeparture());
+            preparedStatement.setObject(6, entity.getStatusRequest());
+            preparedStatement.setObject(7, entity.getTypeTransport());
+            preparedStatement.setObject(8, entity.getDetailsRequest());
+            preparedStatement.executeUpdate();
+
+            preparedStatement.executeQuery();
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+            generatedKeys.next();
+            entity.setId(generatedKeys.getObject("id", Integer.class));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return entity;
+    }
 
     @Override
     public List<Request> findAllByUserId(Integer userId) {

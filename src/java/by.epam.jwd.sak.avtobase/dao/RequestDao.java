@@ -7,4 +7,6 @@ public interface RequestDao {
 
     List<Request> findAllByUserId(Integer userId);
 
+    Request save(Request entity);
+
 }

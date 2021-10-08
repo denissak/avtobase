@@ -13,7 +13,7 @@ import static by.epam.jwd.sak.avtobase.servlet.CommandParameter.*;
 @WebFilter("/*")
 public class AuthorizationFilter implements Filter {
 
-    private static final Set<String> PUBLIC_PATH = Set.of("/", "/Controller", "/index", PATH_TO_REGISTRATION, PATH_TO_LOGIN, "/userRequest");
+    private static final Set<String> PUBLIC_PATH = Set.of("/", "/Controller", "/index", PATH_TO_REGISTRATION, PATH_TO_LOGIN, "/userRequest", "/createUserRequest");
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
