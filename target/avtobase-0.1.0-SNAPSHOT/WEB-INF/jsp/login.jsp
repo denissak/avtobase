@@ -10,17 +10,26 @@
 <form action="Controller?command=login" method="POST">
     <div class="mb-3">
         <label for="exampleInputLogin" class="form-label">Login</label>
-        <input type="text" name="login" class="form-control" id="exampleInputLogin" value="${param.login}" required aria-describedby="emailHelp">
+        <input type="text"
+               name="login"
+               class="form-control"
+               id="exampleInputLogin"
+               value="${param.login}"
+               aria-describedby="emailHelp"
+               required>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword" class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword" required>
+        <input type="password"
+               name="password"
+               class="form-control"
+               id="exampleInputPassword"
+               required>
     </div>
     <button type="submit" class="btn btn-primary">Войти</button>
     <c:if test="${param.error != null}">
-
         <div>
-            <span>Email and Password is not correct</span>
+            <span>Login or Password is not correct</span>
         </div>
     </c:if>
 
