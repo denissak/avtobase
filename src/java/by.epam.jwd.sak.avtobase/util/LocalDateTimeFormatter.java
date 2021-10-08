@@ -10,14 +10,14 @@ import java.util.Optional;
 @UtilityClass
 public class LocalDateTimeFormatter {
 
-    private static final String PATTERN = "yyyy-MM-dd";
+    private static final String PATTERN = "yyyy-MM-dd'T'HH:mm";
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(PATTERN);
 
     public LocalDateTime format(String date) {
         return LocalDateTime.parse(date, FORMATTER);
     }
 
-    public boolean isValid(String date) {
+/*    public boolean isValid(String date) {
         try {
             return Optional.ofNullable(date)
                     .map(LocalDateTimeFormatter::format)
@@ -25,5 +25,5 @@ public class LocalDateTimeFormatter {
         } catch (DateTimeParseException exception) {
             return false;
         }
-    }
+    }*/
 }

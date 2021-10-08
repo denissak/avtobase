@@ -30,7 +30,7 @@
                     <button class="btn btn-success ms-3"data-bs-toggle="modal" data-bs-target="#loginModal" >Войти</button>
                 </c:if>
                 <c:if test="${not empty sessionScope.user}">
-                    <button class="btn btn-outline-success"data-bs-toggle="modal" data-bs-target="#createRequestModal">Создать заявку</button>
+                    <button class="btn btn-outline-success "data-bs-toggle="modal" data-bs-target="#createRequestModal">Создать заявку</button>
                     <form action="Controller?command=logout" method="POST">
                         <button class="btn btn-outline-danger ms-3">Выйти</button>
                     </form>
@@ -62,7 +62,11 @@
                 <h5 class="modal-title" id="createRequestModalLabel">Вход</h5>
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
-            <div class="modal-body"><%@ include file="createUserRequest.jsp"%> </div>
+            <%--<div class="modal-body"> <a href="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"></a></div>--%>
+            <div class="modal-body">
+                <jsp:include page="createUserRequest.jsp">
+                    <jsp:param name="typeTransports" value="typeTransports" />
+                </jsp:include><%--<%@ include file="createUserRequest.jsp"%>--%> <%--<jsp:include page="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"--%> </div>
         </div>
     </div>
 </div>

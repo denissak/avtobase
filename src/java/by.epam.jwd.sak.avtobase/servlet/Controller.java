@@ -1,5 +1,7 @@
 package by.epam.jwd.sak.avtobase.servlet;
 
+import by.epam.jwd.sak.avtobase.bean.TypeTransport;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +20,7 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("typeTransports", TypeTransport.values());
         process(req,resp);
         req.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
     }

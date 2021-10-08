@@ -2,7 +2,7 @@
 <dataSource name="avtobase@localhost">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.16">
     <root id="1">
-      <ServerVersion>8.0.19</ServerVersion>
+      <ServerVersion>8.0.18</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
       <DefaultCasing>lower/lower</DefaultCasing>
@@ -1132,7 +1132,7 @@
     <table id="289" parent="2" name="users"/>
     <column id="290" parent="283" name="id">
       <Position>1</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1151,7 +1151,7 @@
     </column>
     <column id="293" parent="283" name="release_date">
       <Position>4</Position>
-      <DataType>timestamp(6)|0s</DataType>
+      <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1163,17 +1163,17 @@
     </column>
     <column id="295" parent="283" name="lifting_capacity">
       <Position>6</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="296" parent="283" name="cargo_capacity">
       <Position>7</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="297" parent="283" name="passenger_capacity">
       <Position>8</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="298" parent="283" name="inspection_permission">
@@ -1204,18 +1204,18 @@
     </key>
     <column id="303" parent="284" name="id">
       <Position>1</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="304" parent="284" name="comment_date">
       <Position>2</Position>
-      <DataType>timestamp|0s</DataType>
+      <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="305" parent="284" name="mark">
       <Position>3</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1231,18 +1231,18 @@
     </key>
     <column id="308" parent="285" name="id">
       <Position>1</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="309" parent="285" name="doctor_stamp">
       <Position>2</Position>
-      <DataType>timestamp|0s</DataType>
+      <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="310" parent="285" name="car_id">
       <Position>3</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="311" parent="285" name="is_busy">
@@ -1253,7 +1253,7 @@
     </column>
     <column id="312" parent="285" name="comment_id">
       <Position>5</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="313" parent="285" name="car_id">
@@ -1291,13 +1291,13 @@
     </foreign-key>
     <column id="320" parent="286" name="request_id">
       <Position>1</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="321" parent="286" name="driver_id">
       <Position>2</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1321,20 +1321,20 @@
     </foreign-key>
     <column id="326" parent="287" name="id">
       <Position>1</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="327" parent="287" name="user_id">
       <Position>2</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="328" parent="287" name="date_create">
       <Position>3</Position>
-      <DataType>timestamp(6)|0s</DataType>
+      <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1352,7 +1352,7 @@
     </column>
     <column id="331" parent="287" name="date_departure">
       <Position>6</Position>
-      <DataType>timestamp(6)|0s</DataType>
+      <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1388,7 +1388,7 @@
     </foreign-key>
     <column id="338" parent="288" name="id">
       <Position>1</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1405,7 +1405,7 @@
     </key>
     <column id="341" parent="289" name="id">
       <Position>1</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1424,7 +1424,8 @@
     </column>
     <column id="344" parent="289" name="role_id">
       <Position>4</Position>
-      <DataType>int|0s</DataType>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="345" parent="289" name="name">

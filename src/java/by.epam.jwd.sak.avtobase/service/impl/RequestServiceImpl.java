@@ -1,14 +1,12 @@
 package by.epam.jwd.sak.avtobase.service.impl;
 
 import by.epam.jwd.sak.avtobase.bean.Request;
-import by.epam.jwd.sak.avtobase.bean.StatusRequest;
-import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
-import by.epam.jwd.sak.avtobase.dto.RequestCreateDto;
 import by.epam.jwd.sak.avtobase.dto.RequestDto;
+import by.epam.jwd.sak.avtobase.service.Mapper;
 import by.epam.jwd.sak.avtobase.service.RequestService;
-import by.epam.jwd.sak.avtobase.util.LocalDateTimeFormatter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,8 +16,8 @@ public class RequestServiceImpl implements RequestService{
 
 
     @Override
-    public Integer create(RequestCreateDto requestCreateDto) {
-        Request requestBean = convertToRequest(requestCreateDto);
+    public Integer create(RequestDto requestDto) {
+        Request requestBean = convertToRequest(requestDto);
         daoFactory.getRequestDao().save(requestBean);
         return requestBean.getId();
     }
@@ -30,30 +28,30 @@ public class RequestServiceImpl implements RequestService{
                 .map(this::convertToRequestDto).collect(Collectors.toList());
     }
 
-    private RequestDto convertToRequestDto(Request object) {
+    private RequestDto convertToRequestDto(Request request) {
         return RequestDto.builder()
-                .id(object.getId())
-                .dateCreate(object.getDateCreate())
-                .startAddress(object.getStartAddress())
-                .endAddress(object.getEndAddress())
-                .dateDeparture(object.getDateDeparture())
-                .statusRequest(object.getStatusRequest())
-                .typeTransport(object.getTypeTransport())
-                .detailsRequest(object.getDetailsRequest())
+                .id(request.getId())
+                .dateCreate(request.getDateCreate())
+                .startAddress(request.getStartAddress())
+                .endAddress(request.getEndAddress())
+                .dateDeparture(request.getDateDeparture())
+                .statusRequest(request.getStatusRequest())
+                .typeTransport(request.getTypeTransport())
+                .detailsRequest(request.getDetailsRequest())
                 .build();
     }
 
-    private Request convertToRequest(RequestCreateDto object) {
+    private Request convertToRequest(RequestDto requestDto) {
         return Request.builder()
-                .id(Integer.valueOf(object.getId()))
-                //.user(object.getUser())
-                .dateCreate(LocalDateTimeFormatter.format(object.getDateCreate()))
-                .startAddress(object.getStartAddress())
-                .endAddress(object.getEndAddress())
-                .dateDeparture(LocalDateTimeFormatter.format(object.getDateDeparture()))
-                .statusRequest(StatusRequest.valueOf(object.getStatusRequest()))
-                .typeTransport(TypeTransport.valueOf(object.getTypeTransport()))
-                .detailsRequest(object.getDetailsRequest())
+                .user(Mapper.convertToUser(requestDto.getUserDto()))
+                //.dateCreate(LocalDateTimeFormatter.format(object.getDateCreate()))
+                .dateCreate(LocalDateTime.now())
+                .startAddress(requestDto.getStartAddress())
+                .endAddress(requestDto.getEndAddress())
+                .dateDeparture(requestDto.getDateDeparture())
+                .statusRequest(requestDto.getStatusRequest())
+                .typeTransport(requestDto.getTypeTransport())
+                .detailsRequest(requestDto.getDetailsRequest())
                 .build();
     }
 

@@ -1,9 +1,9 @@
 package by.epam.jwd.sak.avtobase.validator;
 
 
-import by.epam.jwd.sak.avtobase.dto.UserCreateDto;
+import by.epam.jwd.sak.avtobase.dto.UserDto;
 
-public class CreateUserValidator implements Validator<UserCreateDto> {
+public class CreateUserValidator implements Validator<UserDto> {
 
     private static final CreateUserValidator INSTANCE = new CreateUserValidator();
 
@@ -12,7 +12,7 @@ public class CreateUserValidator implements Validator<UserCreateDto> {
     }
 
     @Override
-    public ValidationResult isValid(UserCreateDto object) {
+    public ValidationResult isValid(UserDto object) {
         ValidationResult validationResult =new ValidationResult();
 
         return validationResult;

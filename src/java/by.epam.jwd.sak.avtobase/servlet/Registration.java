@@ -1,6 +1,6 @@
 package by.epam.jwd.sak.avtobase.servlet;
 
-import by.epam.jwd.sak.avtobase.dto.UserCreateDto;
+import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 
 import javax.servlet.RequestDispatcher;
@@ -20,15 +20,16 @@ public class Registration implements Command {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserCreateDto createUserDto = UserCreateDto.builder()
-                .login(req.getParameter(LOGIN))
-                .password(req.getParameter(PASSWORD))
-                .name(req.getParameter(NAME))
-                .surname(req.getParameter(SURNAME))
-                .phoneNumber(req.getParameter(PHONE_NUMBER))
-                .build();
-
-        factoryService.getUserService().create(createUserDto);
+        if (req.getMethod().equals("POST")) {
+            UserDto userDto = UserDto.builder()
+                    .login(req.getParameter(LOGIN))
+                    .password(req.getParameter(PASSWORD))
+                    .name(req.getParameter(NAME))
+                    .surname(req.getParameter(SURNAME))
+                    .phoneNumber(req.getParameter(PHONE_NUMBER))
+                    .build();
+            factoryService.getUserService().create(userDto);
+        }
         resp.sendRedirect("/index");
         HttpSession session = req.getSession(true);
         session.setAttribute(ATTRIBUTE_URL, GO_TO_REGISTRATION_PAGE);

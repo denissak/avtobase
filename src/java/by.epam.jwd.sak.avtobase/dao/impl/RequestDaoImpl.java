@@ -7,8 +7,11 @@ import by.epam.jwd.sak.avtobase.dao.RequestDao;
 import by.epam.jwd.sak.avtobase.util.ConnectionManager;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
 
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
@@ -21,12 +24,13 @@ public class RequestDaoImpl implements RequestDao {
     public Request save(Request entity) {
         try (Connection connection = ConnectionManager.get();
             PreparedStatement preparedStatement = connection.prepareStatement(SAVE_REQUEST, RETURN_GENERATED_KEYS)) {
-            preparedStatement.setObject(1, entity.getUser());
-            preparedStatement.setObject(2, entity.getDateCreate());
+
+            preparedStatement.setObject(1, entity.getUser().getId());
+            preparedStatement.setObject(2 , entity.getDateDeparture().toLocalDate());
             preparedStatement.setObject(3, entity.getStartAddress());
             preparedStatement.setObject(4, entity.getEndAddress());
             preparedStatement.setObject(5, entity.getDateDeparture());
-            preparedStatement.setObject(6, entity.getStatusRequest());
+            preparedStatement.setObject(6, StatusRequest.PROCESSING);
             preparedStatement.setObject(7, entity.getTypeTransport());
             preparedStatement.setObject(8, entity.getDetailsRequest());
             preparedStatement.executeUpdate();

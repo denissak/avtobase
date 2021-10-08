@@ -9,7 +9,7 @@ public class UserDto {
 
     Integer id;
     String login;
-    //String password;
+    String password;
     String role;
     String name;
     String surname;

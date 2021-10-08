@@ -2,7 +2,6 @@ package by.epam.jwd.sak.avtobase.service.impl;
 
 import by.epam.jwd.sak.avtobase.bean.User;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
-import by.epam.jwd.sak.avtobase.dto.UserCreateDto;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.service.UserService;
 import by.epam.jwd.sak.avtobase.validator.CreateUserValidator;
@@ -23,12 +22,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer create (UserCreateDto userCreateDto){
+    public Integer create (UserDto userDto){
 /*        ValidationResult validationResult = createUserValidator.isValid(userCreateDto);
         if (!validationResult.isValid()) {
             throw new ValidationException(validationResult.getErrors());
         }*/
-        User userBean = convertToUser(userCreateDto);
+        User userBean = convertToUser(userDto);
         daoFactory.getUserDao().save(userBean);
         return userBean.getId();
     }
@@ -44,7 +43,7 @@ public class UserServiceImpl implements UserService {
                 .build();
     }
 
-    private User convertToUser(UserCreateDto object) {
+    private User convertToUser(UserDto object) {
         return User.builder()
                 .id(object.getId())
                 .login(object.getLogin())
