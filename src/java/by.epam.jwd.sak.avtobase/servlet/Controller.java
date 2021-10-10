@@ -22,7 +22,10 @@ public class Controller extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("typeTransports", TypeTransport.values());
         process(req,resp);
-        req.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
+        //if (req.getSession().getAttribute("user") != "null"){
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+
+        //}
     }
 
     @Override
@@ -37,8 +40,12 @@ public class Controller extends HttpServlet {
         Command command;
         try {
             name = req.getParameter("command");
-            command = provider.takeCommand(name);
-            command.execute (req, resp);
+            if (name != null) {
+                command = provider.takeCommand(name);
+                command.execute (req, resp);
+            }
+/*            command = provider.takeCommand(name);
+            command.execute (req, resp);*/
         }catch (RuntimeException e){
             //req.getRequestDispatcher("error404.html").forward(req,resp);
         }

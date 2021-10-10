@@ -46,7 +46,6 @@ public class UserDaoImpl implements UserDao {
         try {
             try (Connection connection = ConnectionManager.get();
                  PreparedStatement preparedStatement = connection.prepareStatement(SAVE_USER, RETURN_GENERATED_KEYS)) {
-                //preparedStatement.setObject(1, entity.getId());
                 preparedStatement.setObject(1, entity.getLogin());
                 preparedStatement.setObject(2, entity.getPassword());
                 preparedStatement.setObject(3, USER_ROLE_ID);
@@ -54,12 +53,6 @@ public class UserDaoImpl implements UserDao {
                 preparedStatement.setObject(5, entity.getSurname());
                 preparedStatement.setObject(6, entity.getPhoneNumber());
                 preparedStatement.executeUpdate();
-
-                preparedStatement.executeQuery();
-                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-                generatedKeys.next();
-                entity.setId(generatedKeys.getObject("id", Integer.class));
-
             }
         } catch (SQLException e) {
             e.printStackTrace();

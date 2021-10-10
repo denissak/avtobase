@@ -1151,7 +1151,7 @@
     </column>
     <column id="293" parent="283" name="release_date">
       <Position>4</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1210,7 +1210,7 @@
     </column>
     <column id="304" parent="284" name="comment_date">
       <Position>2</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="305" parent="284" name="mark">
@@ -1237,7 +1237,7 @@
     </column>
     <column id="309" parent="285" name="doctor_stamp">
       <Position>2</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="310" parent="285" name="car_id">
@@ -1334,7 +1334,7 @@
     </column>
     <column id="328" parent="287" name="date_create">
       <Position>3</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1352,7 +1352,7 @@
     </column>
     <column id="331" parent="287" name="date_departure">
       <Position>6</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>

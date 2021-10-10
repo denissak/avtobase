@@ -23,8 +23,8 @@ public class Login implements Command {
                         user -> onLoginSuccess(user, req, resp),
                         () -> onLoginFail (req, resp)
                 );
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_LOGIN_PAGE);
-        requestDispatcher.forward(req,resp);
+/*        RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_LOGIN_PAGE);
+        requestDispatcher.forward(req,resp);*/
     }
 
     private void onLoginFail (HttpServletRequest req, HttpServletResponse resp){
@@ -38,8 +38,9 @@ public class Login implements Command {
     private void onLoginSuccess (UserDto user, HttpServletRequest req, HttpServletResponse resp){
         req.getSession().setAttribute("user", user);
         try {
-            resp.sendRedirect("/userRequest");
-        } catch (IOException e) {
+            //resp.sendRedirect("gotoalluserrequestpage");
+            req.getRequestDispatcher("Controller?command=gotoalluserrequestpage").forward(req,resp);
+        } catch (IOException | ServletException e) {
             e.printStackTrace();
         }
     }

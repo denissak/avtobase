@@ -33,11 +33,9 @@ public class GoToCreateRequest implements Command {
             UserDto user = (UserDto) req.getSession().getAttribute("user");
             RequestDto requestDto = RequestDto.builder()
                     .userDto(user)
-                    //.dateCreate(req.getParameter("dateCreate"))
                     .startAddress(req.getParameter("startAddress"))
                     .endAddress(req.getParameter("endAddress"))
                     .dateDeparture(LocalDateTimeFormatter.format(req.getParameter("dateDeparture")))
-                    //.statusRequest(StatusRequest.valueOf(req.getParameter("statusRequest")))
                     .typeTransport(TypeTransport.valueOf(req.getParameter("typeTransport")))
                     .detailsRequest(req.getParameter("detailsRequest"))
                     .build();

@@ -44,7 +44,6 @@ public class RequestServiceImpl implements RequestService{
     private Request convertToRequest(RequestDto requestDto) {
         return Request.builder()
                 .user(Mapper.convertToUser(requestDto.getUserDto()))
-                //.dateCreate(LocalDateTimeFormatter.format(object.getDateCreate()))
                 .dateCreate(LocalDateTime.now())
                 .startAddress(requestDto.getStartAddress())
                 .endAddress(requestDto.getEndAddress())

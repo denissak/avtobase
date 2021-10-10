@@ -7,7 +7,7 @@
     <title>$Title$</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <%--<%@ include file="header.jsp"%>--%>
-      <jsp:include page="header.jsp">
+      <jsp:include page="WEB-INF/jsp/header.jsp">
           <jsp:param name="typeTransports" value="typeTransports" />
       </jsp:include>
   </head>
@@ -176,7 +176,7 @@
 
   </main>--%>
 
-
+index
   <p>${message}</p>
   <table class="table">
       <thead>
@@ -208,6 +208,6 @@
 
   </body>
 <footer>
-  <%@ include file="footer.jsp"%>
+  <%@ include file="WEB-INF/jsp/footer.jsp"%>
 </footer>
 </html>
