@@ -17,8 +17,8 @@ public class GoToMainPage implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        HttpSession session = req.getSession(true);
-        session.setAttribute(ATTRIBUTE_URL, GO_TO_MAIN_PAGE);
+        //HttpSession session = req.getSession(true);
+        //session.setAttribute(ATTRIBUTE_URL, GO_TO_MAIN_PAGE);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_MPAGE);
         requestDispatcher.forward(req, resp);
     }

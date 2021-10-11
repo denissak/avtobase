@@ -23,11 +23,11 @@ public class GoToAllUserPage implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        HttpSession session = req.getSession(true);
+        //HttpSession session = req.getSession(true);
 /*        UserDto user = (UserDto) req.getSession().getAttribute("user");
         Integer userId = user.getId();*/
         req.setAttribute("allUser", factoryService.getUserService().findAllUser());
-        session.setAttribute(ATTRIBUTE_URL, GO_TO_AUSER_PAGE);
+        //session.setAttribute(ATTRIBUTE_URL, GO_TO_AUSER_PAGE);
         //resp.sendRedirect("/userRequest");
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_ALL_USER_PAGE);
         requestDispatcher.forward(req,resp);

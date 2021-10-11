@@ -1,5 +1,6 @@
 package by.epam.jwd.sak.avtobase.servlet;
 
+import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 
@@ -37,10 +38,10 @@ public class Login implements Command {
 
     private void onLoginSuccess (UserDto user, HttpServletRequest req, HttpServletResponse resp){
         req.getSession().setAttribute("user", user);
+        req.getSession().setAttribute("typeTransports", TypeTransport.values());
         try {
-            //resp.sendRedirect("gotoalluserrequestpage");
-            req.getRequestDispatcher("Controller?command=gotoalluserrequestpage").forward(req,resp);
-        } catch (IOException | ServletException e) {
+            resp.sendRedirect("Controller?command=gotoalluserrequestpage");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

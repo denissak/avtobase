@@ -20,7 +20,7 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("typeTransports", TypeTransport.values());
+        /*req.setAttribute("typeTransports", TypeTransport.values());*/
         process(req,resp);
         //if (req.getSession().getAttribute("user") != "null"){
             //req.getRequestDispatcher("index.jsp").forward(req, resp);
@@ -31,7 +31,7 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        req.setAttribute("typeTransports", TypeTransport.values());
+       /* req.setAttribute("typeTransports", TypeTransport.values());*/
         //req.setCharacterEncoding("UTF-8");
         process(req,resp);
     }

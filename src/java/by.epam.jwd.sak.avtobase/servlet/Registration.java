@@ -31,10 +31,10 @@ public class Registration implements Command {
             factoryService.getUserService().create(userDto);
         }
         resp.sendRedirect("/");
-        HttpSession session = req.getSession(true);
-        session.setAttribute(ATTRIBUTE_URL, GO_TO_REGISTRATION_PAGE);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_REG_PAGE);
-        requestDispatcher.forward(req,resp);
+        //HttpSession session = req.getSession(true);
+        //session.setAttribute(ATTRIBUTE_URL, GO_TO_REGISTRATION_PAGE);
+//        RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_REG_PAGE);
+//        requestDispatcher.forward(req,resp);
 
     }
 }
