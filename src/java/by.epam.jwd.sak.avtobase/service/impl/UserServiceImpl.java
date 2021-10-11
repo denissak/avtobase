@@ -16,6 +16,13 @@ public class UserServiceImpl implements UserService {
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
+    public Integer update(UserDto entity) {
+        User userBean = convertToUser(entity);
+        daoFactory.getUserDao().update(userBean);
+        return userBean.getId();
+    }
+
+    @Override
     public List<UserDto> findAllUser() {
         return daoFactory.getUserDao().findAll().stream().map(this::convertToUserDto).collect(Collectors.toList());
     }

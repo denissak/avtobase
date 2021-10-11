@@ -17,5 +17,5 @@ public interface UserDao {
 
     User save(User entity);
 
-   // void update(User entity);
+    User update (User entity);
 }

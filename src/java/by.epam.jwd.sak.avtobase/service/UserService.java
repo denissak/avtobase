@@ -13,4 +13,6 @@ public interface UserService {
 
     List<UserDto> findAllUser ();
 
+    Integer update (UserDto entity);
+
 }

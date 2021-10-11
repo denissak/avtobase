@@ -24,6 +24,25 @@ public class UserDaoImpl implements UserDao {
     private static final String GET_BY_LOGIN_AND_PASSWORD = "SELECT * FROM users as u join roles as r on r.id = u.role_id WHERE login = ? AND password = ?";
 
     @Override
+    public User update (User entity) {
+        try {
+            try (Connection connection = ConnectionManager.get();
+                 PreparedStatement preparedStatement = connection.prepareStatement(SAVE_USER, RETURN_GENERATED_KEYS)) {
+                preparedStatement.setObject(1, entity.getLogin());
+                preparedStatement.setObject(2, entity.getPassword());
+                preparedStatement.setObject(3, entity.getRole());
+                //preparedStatement.setObject(4, entity.getName());
+                //preparedStatement.setObject(5, entity.getSurname());
+                //preparedStatement.setObject(6, entity.getPhoneNumber());
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return entity;
+    }
+
+    @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
         try (Connection connection = ConnectionManager.get();

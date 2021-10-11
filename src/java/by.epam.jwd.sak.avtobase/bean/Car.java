@@ -21,7 +21,7 @@ public class Car implements Serializable {
     private Integer cargoCapacity;
     private Integer passengerCapacity;
     private LocalDate inspectionPermission;
-    private String statusCar; //TODO
+    private StatusCar statusCar; //TODO
     private String carDescription;
     private String imagePath;
 
@@ -30,7 +30,7 @@ public class Car implements Serializable {
     }
 
     public Car(Integer id, String mark, String model, LocalDate releaseDate, String type, Integer liftingCapacity,
-               Integer cargoCapacity, Integer passengerCapacity, LocalDate inspectionPermission, String statusCar,
+               Integer cargoCapacity, Integer passengerCapacity, LocalDate inspectionPermission, StatusCar statusCar,
                String carDescription, String imagePath) {
         this.id = id;
         this.mark = mark;
@@ -118,11 +118,11 @@ public class Car implements Serializable {
         this.inspectionPermission = inspectionPermission;
     }
 
-    public String getStatusCar() {
+    public StatusCar getStatusCar() {
         return statusCar;
     }
 
-    public void setStatusCar(String statusCar) {
+    public void setStatusCar(StatusCar statusCar) {
         this.statusCar = statusCar;
     }
 
