@@ -6,14 +6,19 @@ import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.service.UserService;
 import by.epam.jwd.sak.avtobase.validator.CreateUserValidator;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class UserServiceImpl implements UserService {
 
     private final CreateUserValidator createUserValidator = CreateUserValidator.getInstance();
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
-
+    @Override
+    public List<UserDto> findAllUser() {
+        return daoFactory.getUserDao().findAll().stream().map(this::convertToUserDto).collect(Collectors.toList());
+    }
 
     @Override
     public Optional<UserDto> findByLoginAndPassword (String login, String password){
