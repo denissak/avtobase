@@ -5,6 +5,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Role implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private Integer id;
     private String name;
 
@@ -42,14 +45,18 @@ public class Role implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Role id = ");
+        sb.append(id);
+        sb.append(", role name = ");
+        sb.append(name);
+        return sb.toString();
     }
 }
