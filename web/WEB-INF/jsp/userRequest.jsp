@@ -15,28 +15,25 @@
         <th scope="col">Дата заявки</th>
         <th scope="col">Начальный маршрут</th>
         <th scope="col">Конечный маршрут</th>
+        <th scope="col">Дата отправки</th>
         <th scope="col">Статус заказа</th>
         <th scope="col">Тип транспорта</th>
         <th scope="col">Детали заказа</th>
     </tr>
-    </thead>
-</table>
-<c:forEach var="request" items="${requestsById}">
-
-    <table class="table">
-        <tbody>
+    <c:forEach var="request" items="${requestsById}">
         <tr>
-            <%--<th scope="row">$${request.getDateCreate()}</th>--%>
+                <%--<th scope="row">$${request.getDateCreate()}</th>--%>
             <td>${request.getDateCreate()}</td>
             <td>${request.getStartAddress()}</td>
             <td>${request.getEndAddress()}</td>
+            <td>${request.getDateDeparture()}</td>
             <td>${request.getStatusRequest()}</td>
             <td>${request.getTypeTransport()}</td>
             <td>${request.getDetailsRequest()}</td>
         </tr>
-        </tbody>
-    </table>
-</c:forEach>
+    </c:forEach>
+    </thead>
+</table>
 
 </body>
 <footer>

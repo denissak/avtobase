@@ -30,7 +30,7 @@ public class Registration implements Command {
                     .build();
             factoryService.getUserService().create(userDto);
         }
-        resp.sendRedirect("/index");
+        resp.sendRedirect("/");
         HttpSession session = req.getSession(true);
         session.setAttribute(ATTRIBUTE_URL, GO_TO_REGISTRATION_PAGE);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_REG_PAGE);

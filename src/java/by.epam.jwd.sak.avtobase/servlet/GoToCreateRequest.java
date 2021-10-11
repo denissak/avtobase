@@ -42,10 +42,12 @@ public class GoToCreateRequest implements Command {
             factoryService.getRequestService().create(requestDto);
         }
         req.setAttribute("typeTransports",TypeTransport.values());
-        resp.sendRedirect("/index");
         HttpSession session = req.getSession(true);
-        session.setAttribute(ATTRIBUTE_URL, GO_TO_CREATE_REQUEST_PAGE);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_CREATE_REQ_PAGE);
+        session.setAttribute(ATTRIBUTE_URL, "Controller?command=gotoalluserrequestpage");
+/*        UserDto user = (UserDto) req.getSession().getAttribute("user");
+        Integer userId = user.getId();
+        req.setAttribute("requestById", factoryService.getRequestService().findAllRequestByUser(userId));*/
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("Controller?command=gotoalluserrequestpage");
         requestDispatcher.forward(req,resp);
     }
 }
