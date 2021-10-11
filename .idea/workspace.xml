@@ -7,13 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e7e1528-5f2f-4ea3-801d-6a5fff8d7d0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/GoToAllUserPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/allUser.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/dao/impl/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/dao/impl/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/Logout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/filter/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/filter/AuthorizationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/CommandName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/CommandName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/CommandProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/CommandProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/GoToAllUserPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/GoToAllUserPage.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +56,13 @@
         <item name="avtobase: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="requests: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="avtobase@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="avtobase: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="users: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -62,9 +70,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Jsp File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -92,7 +100,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.32413793" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -355,7 +363,7 @@
       <workItem from="1633859520318" duration="1999000" />
       <workItem from="1633877369083" duration="7708000" />
       <workItem from="1633887253254" duration="5203000" />
-      <workItem from="1633928499669" duration="8628000" />
+      <workItem from="1633928499669" duration="13140000" />
     </task>
     <task id="LOCAL-00001" summary="fix logout">
       <created>1633327419645</created>
@@ -427,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633935090188</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add allusershow dao">
+      <created>1633939574844</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1633939574844</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -455,7 +470,8 @@
     <MESSAGE value="add client validation on registration form" />
     <MESSAGE value="fix request form" />
     <MESSAGE value="fix bean, jsp" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bean, jsp" />
+    <MESSAGE value="add allusershow dao" />
+    <option name="LAST_COMMIT_MESSAGE" value="add allusershow dao" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -499,6 +515,26 @@
           <url>file://$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/Controller.java</url>
           <line>31</line>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/GoToAllUserPage.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/service/impl/UserServiceImpl.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/service/impl/UserServiceImpl.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/dao/impl/UserDaoImpl.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

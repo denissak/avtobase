@@ -17,7 +17,7 @@ public class UserDaoImpl implements UserDao {
 
     private static final int USER_ROLE_ID = 4;
 
-    private static final String GET_ALL_USER = "SELECT * FROM users";
+    private static final String GET_ALL_USER = "SELECT * FROM users as u join roles as r  on r.id = u.role_id";
 
     private static final String SAVE_USER = "INSERT INTO users (login, password, role_id, name, surname, phone_number)" +
             " VALUES " + "(?,?,?,?,?,?)";
