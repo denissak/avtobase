@@ -4,6 +4,7 @@ import lombok.Builder;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Builder
@@ -15,12 +16,12 @@ public class Car implements Serializable {
     private Integer id;
     private String mark;
     private String model;
-    private LocalDate releaseDate;
-    private String type;
+    private LocalDateTime releaseDate;
+    private TypeTransport typeTransport;
     private Integer liftingCapacity;
     private Integer cargoCapacity;
     private Integer passengerCapacity;
-    private LocalDate inspectionPermission;
+    private LocalDateTime inspectionPermission;
     private StatusCar statusCar; //TODO
     private String carDescription;
     private String imagePath;
@@ -29,14 +30,14 @@ public class Car implements Serializable {
     public Car() {
     }
 
-    public Car(Integer id, String mark, String model, LocalDate releaseDate, String type, Integer liftingCapacity,
-               Integer cargoCapacity, Integer passengerCapacity, LocalDate inspectionPermission, StatusCar statusCar,
+    public Car(Integer id, String mark, String model, LocalDateTime releaseDate, TypeTransport typeTransport, Integer liftingCapacity,
+               Integer cargoCapacity, Integer passengerCapacity, LocalDateTime inspectionPermission, StatusCar statusCar,
                String carDescription, String imagePath) {
         this.id = id;
         this.mark = mark;
         this.model = model;
         this.releaseDate = releaseDate;
-        this.type = type;
+        this.typeTransport = typeTransport;
         this.liftingCapacity = liftingCapacity;
         this.cargoCapacity = cargoCapacity;
         this.passengerCapacity = passengerCapacity;
@@ -70,20 +71,20 @@ public class Car implements Serializable {
         this.model = model;
     }
 
-    public LocalDate getReleaseDate() {
+    public LocalDateTime getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(LocalDate releaseDate) {
+    public void setReleaseDate(LocalDateTime releaseDate) {
         this.releaseDate = releaseDate;
     }
 
-    public String getType() {
-        return type;
+    public TypeTransport getTypeTransport() {
+        return typeTransport;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(TypeTransport type) {
+        this.typeTransport = typeTransport;
     }
 
     public Integer getLiftingCapacity() {
@@ -110,11 +111,11 @@ public class Car implements Serializable {
         this.passengerCapacity = passengerCapacity;
     }
 
-    public LocalDate getInspectionPermission() {
+    public LocalDateTime getInspectionPermission() {
         return inspectionPermission;
     }
 
-    public void setInspectionPermission(LocalDate inspectionPermission) {
+    public void setInspectionPermission(LocalDateTime inspectionPermission) {
         this.inspectionPermission = inspectionPermission;
     }
 
@@ -168,7 +169,7 @@ public class Car implements Serializable {
         sb.append(", releaseDate = ");
         sb.append(releaseDate);
         sb.append(", type = ");
-        sb.append(type);
+        sb.append(typeTransport);
         sb.append(", liftingCapacity = ");
         sb.append(liftingCapacity);
         sb.append(", cargoCapacity = ");

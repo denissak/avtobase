@@ -1,6 +1,7 @@
 package by.epam.jwd.sak.avtobase.servlet;
 
 import by.epam.jwd.sak.avtobase.dto.UserDto;
+import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 
 import javax.servlet.RequestDispatcher;
@@ -28,7 +29,11 @@ public class Registration implements Command {
                     .surname(req.getParameter(SURNAME))
                     .phoneNumber(req.getParameter(PHONE_NUMBER))
                     .build();
-            factoryService.getUserService().create(userDto);
+            try {
+                factoryService.getUserService().create(userDto);
+            } catch (ServiceException e) {
+                throw new ServletException();
+            }
         }
         resp.sendRedirect("/");
         //HttpSession session = req.getSession(true);

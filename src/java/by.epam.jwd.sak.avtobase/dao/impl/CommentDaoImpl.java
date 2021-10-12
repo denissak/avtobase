@@ -2,6 +2,7 @@ package by.epam.jwd.sak.avtobase.dao.impl;
 
 import by.epam.jwd.sak.avtobase.bean.Comment;
 import by.epam.jwd.sak.avtobase.dao.CommentDao;
+import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.util.ConnectionManager;
 
 import java.sql.*;
@@ -16,22 +17,22 @@ public class CommentDaoImpl implements CommentDao {
     private static final String SAVE_COMMENT = "INSERT INTO comments (id, comment_date, mark, message) VALUES (?,?,?,?)";
 
     @Override
-    public List<Comment> findAll() {
-        List<Comment> users = new ArrayList<>();
+    public List<Comment> findAll() throws DAOException {
+        List<Comment> comments = new ArrayList<>();
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_COMMENT)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                users.add(buildEntity(resultSet));
+                comments.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DAOException();
         }
-        return users;
+        return comments;
     }
 
     @Override
-    public Comment save(Comment entity) {
+    public Comment save(Comment entity) throws DAOException {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE_COMMENT, RETURN_GENERATED_KEYS)) {
 
@@ -42,7 +43,7 @@ public class CommentDaoImpl implements CommentDao {
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DAOException();
         }
         return entity;
     }

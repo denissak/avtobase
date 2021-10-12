@@ -1,5 +1,6 @@
 package by.epam.jwd.sak.avtobase.service;
 
+import by.epam.jwd.sak.avtobase.service.impl.CarServiceImpl;
 import by.epam.jwd.sak.avtobase.service.impl.RequestServiceImpl;
 import by.epam.jwd.sak.avtobase.service.impl.UserServiceImpl;
 
@@ -9,6 +10,7 @@ public class FactoryService {
 
     private UserService userService = new UserServiceImpl();
     private RequestService requestService = new RequestServiceImpl();
+    private CarService carService = new CarServiceImpl();
 
     public static FactoryService getInstance() {
         FactoryService localInstance = instance;
@@ -32,6 +34,10 @@ public class FactoryService {
 
     public RequestService getRequestService() {
         return requestService;
+    }
+
+    public CarService getCarService() {
+        return carService;
     }
 
 }

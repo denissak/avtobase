@@ -1,21 +1,22 @@
 package by.epam.jwd.sak.avtobase.dao;
 
 import by.epam.jwd.sak.avtobase.bean.User;
+import by.epam.jwd.sak.avtobase.exception.DAOException;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface UserDao {
 //
-   List<User> findAll();
+   List<User> findAll() throws DAOException;
 //
-//    Optional<User> findById(Integer id);
+    Optional<User> findById(Integer id) throws DAOException;
 
-    Optional<User> findByLoginAndPassword(String login, String password);
+    Optional<User> findByLoginAndPassword(String login, String password) throws DAOException;
 
   //  boolean delete(Integer id);
 
-    User save(User entity);
+    User save(User entity) throws DAOException;
 
-    User update (User entity);
+    User update (User entity) throws DAOException;
 }

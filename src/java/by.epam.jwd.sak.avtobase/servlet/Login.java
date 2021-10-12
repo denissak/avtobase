@@ -2,6 +2,7 @@ package by.epam.jwd.sak.avtobase.servlet;
 
 import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
+import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 
 import javax.servlet.RequestDispatcher;
@@ -19,11 +20,15 @@ public class Login implements Command {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        factoryService.getUserService().findByLoginAndPassword(req.getParameter(LOGIN),req.getParameter(PASSWORD))
-                .ifPresentOrElse(
-                        user -> onLoginSuccess(user, req, resp),
-                        () -> onLoginFail (req, resp)
-                );
+        try {
+            factoryService.getUserService().findByLoginAndPassword(req.getParameter(LOGIN),req.getParameter(PASSWORD))
+                    .ifPresentOrElse(
+                            user -> onLoginSuccess(user, req, resp),
+                            () -> onLoginFail (req, resp)
+                    );
+        } catch (ServiceException e) {
+            throw new ServletException();
+        }
 /*        RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_LOGIN_PAGE);
         requestDispatcher.forward(req,resp);*/
     }

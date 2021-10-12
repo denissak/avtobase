@@ -7,14 +7,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
     <div class="container">
-        <a href="" class="navbar-brand">Автобаза</a>
+        <a href="/" class="navbar-brand">Автобаза</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav me-auto mb-2">
-                <li class="nav-item">
+<%--                <li class="nav-item">
                     <a href="" class="nav-link"> Меню 1</a>
                 </li>
                 <li class="nav-item">
@@ -22,7 +22,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="" class="nav-link"> Меню 3</a>
-                </li>
+                </li>--%>
             </ul>
             <div action="" class="d-flex">
                 <c:if test="${empty sessionScope.user}">
@@ -38,9 +38,7 @@
             </div>
         </div>
     </div>
-</nav>>
-
-<%--MODAL--%>
+</nav>
 
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -52,7 +50,6 @@
             <div class="modal-body"><%@ include file="login.jsp"%> </div>
         </div>
     </div>
-</div>
 </div>
 
 <div class="modal fade" id="createRequestModal" tabindex="-1" aria-labelledby="createRequestModalLabel" aria-hidden="true">
@@ -70,7 +67,7 @@
         </div>
     </div>
 </div>
-</div>
+
 
 <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
     <div class="modal-dialog">

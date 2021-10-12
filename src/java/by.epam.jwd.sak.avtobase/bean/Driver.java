@@ -15,17 +15,15 @@ public class Driver implements Serializable {
     private LocalDateTime doctorStamp;
     private Car car;
     private boolean isBusy; //TODO
-    private Comment comment;
 
     public Driver() {
     }
 
-    public Driver(Integer id, LocalDateTime doctorStamp, Car car, boolean isBusy, Comment comment) {
+    public Driver(Integer id, LocalDateTime doctorStamp, Car car, boolean isBusy) {
         this.id = id;
         this.doctorStamp = doctorStamp;
         this.car = car;
         this.isBusy = isBusy;
-        this.comment = comment;
     }
 
     public static long getSerialVersionUID() {
@@ -64,14 +62,6 @@ public class Driver implements Serializable {
         isBusy = busy;
     }
 
-    public Comment getComment() {
-        return comment;
-    }
-
-    public void setComment(Comment comment) {
-        this.comment = comment;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,8 +87,6 @@ public class Driver implements Serializable {
         sb.append(car);
         sb.append(", isBusy = ");
         sb.append(isBusy);
-        sb.append(", comment = ");
-        sb.append(comment);
         return sb.toString();
     }
 }

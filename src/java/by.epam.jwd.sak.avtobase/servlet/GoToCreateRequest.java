@@ -4,6 +4,7 @@ import by.epam.jwd.sak.avtobase.bean.StatusRequest;
 import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import by.epam.jwd.sak.avtobase.dto.RequestDto;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
+import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 import by.epam.jwd.sak.avtobase.util.LocalDateTimeFormatter;
 
@@ -39,7 +40,11 @@ public class GoToCreateRequest implements Command {
                     .typeTransport(TypeTransport.valueOf(req.getParameter("typeTransport")))
                     .detailsRequest(req.getParameter("detailsRequest"))
                     .build();
-            factoryService.getRequestService().create(requestDto);
+            try {
+                factoryService.getRequestService().create(requestDto);
+            } catch (ServiceException e) {
+                throw new ServletException();
+            }
         }
         req.setAttribute("typeTransports",TypeTransport.values());
         //HttpSession session = req.getSession(true);

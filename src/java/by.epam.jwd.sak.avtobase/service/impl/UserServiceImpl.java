@@ -3,6 +3,8 @@ package by.epam.jwd.sak.avtobase.service.impl;
 import by.epam.jwd.sak.avtobase.bean.User;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
+import by.epam.jwd.sak.avtobase.exception.DAOException;
+import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.UserService;
 import by.epam.jwd.sak.avtobase.validator.CreateUserValidator;
 
@@ -15,32 +17,58 @@ public class UserServiceImpl implements UserService {
     private final CreateUserValidator createUserValidator = CreateUserValidator.getInstance();
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
+
     @Override
-    public Integer update(UserDto entity) {
+    public Optional<UserDto> findById(Integer id) throws ServiceException {
+        try {
+            return daoFactory.getUserDao().findById(id).map(this::convertToUserDto);
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
+    }
+
+    @Override
+    public Integer update(UserDto entity) throws ServiceException {
         User userBean = convertToUser(entity);
-        daoFactory.getUserDao().update(userBean);
+        try {
+            daoFactory.getUserDao().update(userBean);
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
         return userBean.getId();
     }
 
     @Override
-    public List<UserDto> findAllUser() {
-        return daoFactory.getUserDao().findAll().stream().map(this::convertToUserDto).collect(Collectors.toList());
+    public List<UserDto> findAllUser() throws ServiceException {
+        try {
+            return daoFactory.getUserDao().findAll().stream().map(this::convertToUserDto).collect(Collectors.toList());
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
     }
 
     @Override
-    public Optional<UserDto> findByLoginAndPassword (String login, String password){
-        return daoFactory.getUserDao().findByLoginAndPassword(login,password)
-                .map(this::convertToUserDto);
+    public Optional<UserDto> findByLoginAndPassword (String login, String password) throws ServiceException {
+        try {
+            return daoFactory.getUserDao().findByLoginAndPassword(login,password)
+                    .map(this::convertToUserDto);
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
     }
 
     @Override
-    public Integer create (UserDto userDto){
+    public Integer create (UserDto userDto) throws ServiceException {
 /*        ValidationResult validationResult = createUserValidator.isValid(userCreateDto);
         if (!validationResult.isValid()) {
             throw new ValidationException(validationResult.getErrors());
         }*/
         User userBean = convertToUser(userDto);
-        daoFactory.getUserDao().save(userBean);
+        try {
+            daoFactory.getUserDao().save(userBean);
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
         return userBean.getId();
     }
 

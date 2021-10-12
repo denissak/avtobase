@@ -1,6 +1,7 @@
 package by.epam.jwd.sak.avtobase.servlet;
 
 import by.epam.jwd.sak.avtobase.dto.UserDto;
+import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 
 import javax.servlet.RequestDispatcher;
@@ -24,7 +25,11 @@ public class GoToAllUserRequestPage implements Command{
         //HttpSession session = req.getSession(true);
         UserDto user = (UserDto) req.getSession().getAttribute("user");
         Integer userId = user.getId();
-        req.setAttribute("requestsById", factoryService.getRequestService().findAllRequestByUser(userId));
+        try {
+            req.setAttribute("requestsById", factoryService.getRequestService().findAllRequestByUser(userId));
+        } catch (ServiceException e) {
+            throw new ServletException();
+        }
         //session.setAttribute(ATTRIBUTE_URL, GO_TO_ALL_USER_REQ_PAGE);
         //resp.sendRedirect("/userRequest");
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_ALL_USER_REQUEST_PAGE);

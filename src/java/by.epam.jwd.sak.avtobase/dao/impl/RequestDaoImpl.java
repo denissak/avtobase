@@ -4,11 +4,13 @@ import by.epam.jwd.sak.avtobase.bean.Request;
 import by.epam.jwd.sak.avtobase.bean.StatusRequest;
 import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import by.epam.jwd.sak.avtobase.dao.RequestDao;
+import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.util.ConnectionManager;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
@@ -17,9 +19,26 @@ public class RequestDaoImpl implements RequestDao {
 
     private static final String GET_ALL_REQUEST_BY_USERID = "SELECT * FROM requests WHERE user_id = ?";
     private static final String SAVE_REQUEST = "INSERT INTO requests (user_id, date_create, start_address, end_address, date_departure, status_request, type_transport, details_request) VALUES (?,?,?,?,?,?,?,?)";
+    private static final String GET_REQUEST_BY_ID = "SELECT * FROM requests WHERE id = ?";
+    
+    @Override
+    public Optional<Request> findById(Integer id) throws DAOException {
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_REQUEST_BY_ID)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Request request = null;
+            if (resultSet.next()) {
+                request = buildEntityById(resultSet);
+            }
+            return Optional.ofNullable(request);
+        } catch (SQLException e) {
+            throw new DAOException();
+        }
+    }
 
     @Override
-    public Request save(Request entity) {
+    public Request save(Request entity) throws DAOException {
         try (Connection connection = ConnectionManager.get();
             PreparedStatement preparedStatement = connection.prepareStatement(SAVE_REQUEST, RETURN_GENERATED_KEYS)) {
 
@@ -34,13 +53,13 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DAOException();
         }
         return entity;
     }
 
     @Override
-    public List<Request> findAllByUserId(Integer userId) {
+    public List<Request> findAllByUserId(Integer userId) throws DAOException {
         List<Request> requests = new ArrayList<>();
 
         try (Connection connection = ConnectionManager.get();
@@ -55,7 +74,7 @@ public class RequestDaoImpl implements RequestDao {
 
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DAOException();
         }
         return requests;
     }
