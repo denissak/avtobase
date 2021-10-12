@@ -12,12 +12,14 @@ public class CommandProvider {
         commands.put(CommandName.LOGIN, new Login());
         commands.put(CommandName.LOGOUT, new Logout());
         commands.put(CommandName.REGISTRATION, new Registration());
+        commands.put(CommandName.USEREDIT, new UserEdit());
+        commands.put(CommandName.USEREDITBYADMIN, new UserEditByAdmin());
         commands.put(CommandName.GOTOALLUSERREQUESTPAGE, new GoToAllUserRequestPage());
         commands.put(CommandName.GOTOCREATEREQUEST, new GoToCreateRequest());
         commands.put(CommandName.GOTOALLUSERPAGE, new GoToAllUserPage());
     }
 
-    public Command takeCommand (String name){
+    public Command takeCommand(String name) {
         CommandName commandName = CommandName.valueOf(name.toUpperCase());
         return commands.get(commandName);
     }

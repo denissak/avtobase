@@ -47,11 +47,6 @@ public class GoToCreateRequest implements Command {
             }
         }
         req.setAttribute("typeTransports",TypeTransport.values());
-        //HttpSession session = req.getSession(true);
-        //session.setAttribute(ATTRIBUTE_URL, "Controller?command=gotoalluserrequestpage");
-/*        UserDto user = (UserDto) req.getSession().getAttribute("user");
-        Integer userId = user.getId();
-        req.setAttribute("requestById", factoryService.getRequestService().findAllRequestByUser(userId));*/
         resp.sendRedirect("Controller?command=gotoalluserrequestpage");
     }
 }

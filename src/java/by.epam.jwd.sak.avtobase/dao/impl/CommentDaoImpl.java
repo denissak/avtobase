@@ -17,6 +17,11 @@ public class CommentDaoImpl implements CommentDao {
     private static final String SAVE_COMMENT = "INSERT INTO comments (id, comment_date, mark, message) VALUES (?,?,?,?)";
 
     @Override
+    public List<Comment> findAllByUserId(Integer userId) throws DAOException {
+        return null;
+    }
+
+    @Override
     public List<Comment> findAll() throws DAOException {
         List<Comment> comments = new ArrayList<>();
         try (Connection connection = ConnectionManager.get();

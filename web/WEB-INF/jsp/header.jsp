@@ -14,15 +14,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav me-auto mb-2">
-<%--                <li class="nav-item">
-                    <a href="" class="nav-link"> Меню 1</a>
+                <li class="nav-item">
+                    <a href="Controller?command=gotoalluserpage" class="nav-link"> Все пользователи</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link"> Меню 2</a>
+                    <a href="" class="nav-link"> Изменить пользователя</a>
                 </li>
                 <li class="nav-item">
                     <a href="" class="nav-link"> Меню 3</a>
-                </li>--%>
+                </li>
             </ul>
             <div action="" class="d-flex">
                 <c:if test="${empty sessionScope.user}">
@@ -31,6 +31,7 @@
                 </c:if>
                 <c:if test="${not empty sessionScope.user}">
                     <button class="btn btn-outline-success "data-bs-toggle="modal" data-bs-target="#createRequestModal">Создать заявку</button>
+                    <button class="btn btn-outline-success ms-3 "data-bs-toggle="modal" data-bs-target="#updateUserModal">Обновить юзера</button>
                     <form action="Controller?command=logout" method="POST">
                         <button class="btn btn-outline-danger ms-3">Выйти</button>
                     </form>
@@ -79,6 +80,20 @@
             <div class="modal-body"><%@ include file="registration.jsp"%> </div>
 
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="updateUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateUserModalLabel">Редактировать пользователя</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+            </div>
+            <%--<div class="modal-body"> <a href="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"></a></div>--%>
+            <div class="modal-body"><<%@ include file="userEditByAdmin.jsp"%>>
+<%--<%@ include file="createUserRequest.jsp"%>--%> <%--<jsp:include page="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"--%> </div>
         </div>
     </div>
 </div>

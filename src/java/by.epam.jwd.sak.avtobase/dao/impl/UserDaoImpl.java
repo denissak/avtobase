@@ -26,6 +26,8 @@ public class UserDaoImpl implements UserDao {
 
     private static final String GET_USER_BY_ID = "SELECT * FROM users as u join roles as r on r.id = u.role_id WHERE u.id = ?";
 
+    private static final String UPDATE_USER = "UPDATE users SET login = ?, password = ?, role_id = ?, name = ?, surname = ?, phone_number = ? WHERE id = ?";
+
     @Override
     public Optional<User> findById(Integer id) throws DAOException {
         try (Connection connection = ConnectionManager.get();
@@ -46,13 +48,13 @@ public class UserDaoImpl implements UserDao {
     public User update (User entity) throws DAOException { //TODO
         try {
             try (Connection connection = ConnectionManager.get();
-                 PreparedStatement preparedStatement = connection.prepareStatement(SAVE_USER, RETURN_GENERATED_KEYS)) {
+                 PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setObject(1, entity.getLogin());
                 preparedStatement.setObject(2, entity.getPassword());
                 preparedStatement.setObject(3, entity.getRole());
-                //preparedStatement.setObject(4, entity.getName());
-                //preparedStatement.setObject(5, entity.getSurname());
-                //preparedStatement.setObject(6, entity.getPhoneNumber());
+                preparedStatement.setObject(4, entity.getName());
+                preparedStatement.setObject(5, entity.getSurname());
+                preparedStatement.setObject(6, entity.getPhoneNumber());
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
