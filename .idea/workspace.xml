@@ -7,24 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e7e1528-5f2f-4ea3-801d-6a5fff8d7d0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/dto/CommentDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/service/CommentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/service/impl/CommentServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/UserEdit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/UserEditByAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/userEditByAdmin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/dao/CommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/dao/CommentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/dao/impl/CommentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/dao/impl/CommentDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/dao/impl/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/dao/impl/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/CommandName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/CommandName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/CommandParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/CommandParameter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/CommandProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/CommandProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/GoToCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/GoToCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/by.epam.jwd.sak.avtobase/servlet/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/jsp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/avtobase-0.1.0-SNAPSHOT/WEB-INF/jsp/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -144,12 +128,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\Java\avtobase\web" />
-      <recent name="F:\Java\avtobase\web\WEB-INF\jsp" />
-      <recent name="E:\avtobase\src\java" />
-      <recent name="E:\avtobase\src" />
-      <recent name="E:\avtobase\src\by.epam.jwd.sak.avtobase\java" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="by.epam.jwd.sak.avtobase.service" />
+      <recent name="StatusRequest" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\avtobase\web\WEB-INF\jsp" />
@@ -161,9 +142,12 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="dto" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="by.epam.jwd.sak.avtobase.service" />
-      <recent name="StatusRequest" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\avtobase\web" />
+      <recent name="E:\avtobase\web\resources" />
+      <recent name="F:\Java\avtobase\web" />
+      <recent name="F:\Java\avtobase\web\WEB-INF\jsp" />
+      <recent name="E:\avtobase\src\java" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -405,7 +389,7 @@
       <workItem from="1633928499669" duration="18417000" />
       <workItem from="1633954837307" duration="735000" />
       <workItem from="1633955745663" duration="6773000" />
-      <workItem from="1634019939471" duration="10935000" />
+      <workItem from="1634019939471" duration="20315000" />
     </task>
     <task id="LOCAL-00001" summary="fix logout">
       <created>1633327419645</created>
@@ -512,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634022667780</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add jsp">
+      <created>1634037854706</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1634037854706</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,7 +536,8 @@
     <MESSAGE value="add filter, dao, bean" />
     <MESSAGE value="fix servlets" />
     <MESSAGE value="add EXCEPTION, CAR (DAO,Service), Comment (DAO)" />
-    <option name="LAST_COMMIT_MESSAGE" value="add EXCEPTION, CAR (DAO,Service), Comment (DAO)" />
+    <MESSAGE value="add jsp" />
+    <option name="LAST_COMMIT_MESSAGE" value="add jsp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
