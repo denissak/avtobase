@@ -28,6 +28,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean delete (Integer id) throws ServiceException {
+        try {
+            return daoFactory.getUserDao().delete(id);
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
+    }
+
+    @Override
     public Integer update(UserDto entity) throws ServiceException {
         User userBean = convertToUser(entity);
         try {

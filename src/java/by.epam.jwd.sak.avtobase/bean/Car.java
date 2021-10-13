@@ -24,7 +24,7 @@ public class Car implements Serializable {
     private LocalDateTime inspectionPermission;
     private StatusCar statusCar; //TODO
     private String carDescription;
-    private String imagePath;
+    //private String imagePath;
 
 
     public Car() {
@@ -32,7 +32,7 @@ public class Car implements Serializable {
 
     public Car(Integer id, String mark, String model, LocalDateTime releaseDate, TypeTransport typeTransport, Integer liftingCapacity,
                Integer cargoCapacity, Integer passengerCapacity, LocalDateTime inspectionPermission, StatusCar statusCar,
-               String carDescription, String imagePath) {
+               String carDescription) {
         this.id = id;
         this.mark = mark;
         this.model = model;
@@ -44,7 +44,7 @@ public class Car implements Serializable {
         this.inspectionPermission = inspectionPermission;
         this.statusCar = statusCar;
         this.carDescription = carDescription;
-        this.imagePath = imagePath;
+        //this.imagePath = imagePath;
     }
 
     public Integer getId() {
@@ -135,13 +135,13 @@ public class Car implements Serializable {
         this.carDescription = carDescription;
     }
 
-    public String getImagePath() {
+/*    public String getImagePath() {
         return imagePath;
     }
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
@@ -182,8 +182,8 @@ public class Car implements Serializable {
         sb.append(statusCar);
         sb.append(", carDescription = ");
         sb.append(carDescription);
-        sb.append(", imagePath = ");
-        sb.append(imagePath);
+        //sb.append(", imagePath = ");
+       // sb.append(imagePath);
         return sb.toString();
     }
 }

@@ -35,7 +35,7 @@ public class Login implements Command {
 
     private void onLoginFail (HttpServletRequest req, HttpServletResponse resp){
         try {
-            resp.sendRedirect("Controller?command=gotoalluserpage");
+            resp.sendRedirect("/");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,10 +44,20 @@ public class Login implements Command {
     private void onLoginSuccess (UserDto user, HttpServletRequest req, HttpServletResponse resp){
         req.getSession().setAttribute("user", user);
         req.getSession().setAttribute("typeTransports", TypeTransport.values());
-        try {
-            resp.sendRedirect("/");
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (user.getRole().equals("user")){
+            try {
+                resp.sendRedirect("Controller?command=gotoalluserrequestpage");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        if (user.getRole().equals("admin")){
+            try {
+                resp.sendRedirect("Controller?command=gotoalluserpage");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

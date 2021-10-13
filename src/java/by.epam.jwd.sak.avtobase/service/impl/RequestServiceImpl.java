@@ -18,6 +18,26 @@ public class RequestServiceImpl implements RequestService{
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
+    public boolean delete(Integer id) throws ServiceException {
+        try {
+            return daoFactory.getRequestDao().delete(id);
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
+    }
+
+    @Override
+    public Integer update(RequestDto requestDto) throws ServiceException {
+        Request requestBean = convertToRequest(requestDto);
+        try {
+            daoFactory.getRequestDao().update(requestBean);
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
+        return requestBean.getId();
+    }
+
+    @Override
     public Optional<RequestDto> findById(Integer id) throws ServiceException {
         try {
             return daoFactory.getRequestDao().findById(id).map(this::convertToRequestDto);

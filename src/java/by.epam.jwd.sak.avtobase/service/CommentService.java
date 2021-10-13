@@ -10,4 +10,8 @@ public interface CommentService {
     List<CommentDto> findAllComment () throws ServiceException;
 
     Integer create (CommentDto commentDto) throws ServiceException;
+
+    boolean delete (Integer id) throws ServiceException;
+
+    List<CommentDto> findAllCommentByUser (Integer userId) throws ServiceException;
 }

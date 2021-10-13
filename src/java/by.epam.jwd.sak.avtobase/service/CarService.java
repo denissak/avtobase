@@ -14,4 +14,6 @@ public interface CarService {
     Integer create (CarDto carDto) throws ServiceException;
 
     Optional<CarDto> findById (Integer id) throws ServiceException;
+
+    boolean delete (Integer id) throws ServiceException;
 }

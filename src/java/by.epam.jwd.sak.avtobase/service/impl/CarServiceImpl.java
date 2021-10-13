@@ -16,6 +16,15 @@ public class CarServiceImpl implements CarService {
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
+    public boolean delete(Integer id) throws ServiceException {
+        try {
+            return daoFactory.getCarDao().delete(id);
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
+    }
+
+    @Override
     public List<CarDto> findAllCar() throws ServiceException {
 
         try {
@@ -25,11 +34,9 @@ public class CarServiceImpl implements CarService {
         }
     }
 
-
-
     @Override
     public Integer create(CarDto carDto) throws ServiceException {
-        Car carBean = convertToRequest(carDto);
+        Car carBean = convertToCar(carDto);
         try {
             daoFactory.getCarDao().save(carBean);
         } catch (DAOException e) {
@@ -63,7 +70,7 @@ public class CarServiceImpl implements CarService {
                 .build();
     }
 
-    private Car convertToRequest(CarDto carDto) {
+    private Car convertToCar(CarDto carDto) {
         return Car.builder()
                 .id(carDto.getId())
                 .mark(carDto.getMark())

@@ -19,6 +19,22 @@ public class CarDaoImpl implements CarDao {
     private static final String SAVE_CAR = "INSERT INTO cars (mark, model, release_date, type, lifting_capacity, cargo_capacity, passenger_capacity, inspection_permission, status_car, car_description) VALUES (?,?,?,?,?,?,?,?,?,?)";
     private static final String GET_CAR_BY_ID = "SELECT * FROM cars WHERE id = ?";
     private static final String GET_ALL_CAR = "SELECT * FROM cars";
+    private static final String DELETE_CAR = "DELETE FROM cars WHERE id = ?";
+
+    @Override
+    public boolean delete(Integer id) throws DAOException {
+        int result;
+        try {
+            try (Connection connection = ConnectionManager.get();
+                 PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CAR, RETURN_GENERATED_KEYS)) {
+                preparedStatement.setInt(1, id);
+                result = preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new DAOException();
+        }
+        return result==1;
+    }
 
     @Override
     public Optional<Car> findById(Integer id) throws DAOException {

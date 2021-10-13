@@ -22,5 +22,6 @@ public class CarDto {
     LocalDateTime inspectionPermission;
     StatusCar statusCar;
     String carDescription;
+
     
 }

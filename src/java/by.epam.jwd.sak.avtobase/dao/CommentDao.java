@@ -12,4 +12,6 @@ public interface CommentDao {
     Comment save(Comment entity) throws DAOException;
 
     List<Comment> findAllByUserId(Integer userId) throws DAOException;
+
+    boolean delete (Integer id) throws DAOException;
 }

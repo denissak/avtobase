@@ -28,6 +28,8 @@ public class UserDaoImpl implements UserDao {
 
     private static final String UPDATE_USER = "UPDATE users SET login = ?, password = ?, role_id = ?, name = ?, surname = ?, phone_number = ? WHERE id = ?";
 
+    private static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
+
     @Override
     public Optional<User> findById(Integer id) throws DAOException {
         try (Connection connection = ConnectionManager.get();
@@ -42,6 +44,21 @@ public class UserDaoImpl implements UserDao {
         } catch (SQLException e) {
             throw new DAOException();
         }
+    }
+
+    @Override
+    public boolean delete(Integer id) throws DAOException {
+        int result;
+        try {
+            try (Connection connection = ConnectionManager.get();
+                 PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER, RETURN_GENERATED_KEYS)) {
+                preparedStatement.setInt(1, id);
+                result = preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new DAOException();
+        }
+        return result==1;
     }
 
     @Override
@@ -62,6 +79,8 @@ public class UserDaoImpl implements UserDao {
         }
         return entity;
     }
+
+
 
     @Override
     public List<User> findAll() throws DAOException {

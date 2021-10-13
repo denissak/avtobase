@@ -18,4 +18,6 @@ public interface UserService {
 
     Optional<UserDto> findById (Integer id) throws ServiceException;
 
+    boolean delete (Integer id) throws ServiceException;
+
 }

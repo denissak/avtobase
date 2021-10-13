@@ -8,9 +8,11 @@ import java.util.Optional;
 
 public interface DriverDao {
 
-    Optional<Driver> findById(Integer id) throws DAOException;
+    Optional<Driver> findById(Integer userId) throws DAOException;
 
     List<Driver> findAll() throws DAOException;
 
     Driver save(Driver entity) throws DAOException;
+
+    boolean delete (Integer id) throws DAOException;
 }

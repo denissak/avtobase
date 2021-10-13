@@ -13,4 +13,6 @@ public interface CarDao {
     List<Car> findAll() throws DAOException;
 
     Car save(Car entity) throws DAOException;
+
+    boolean delete (Integer id) throws DAOException;
 }

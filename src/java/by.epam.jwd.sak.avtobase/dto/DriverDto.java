@@ -7,10 +7,11 @@ import java.time.LocalDateTime;
 
 @Value
 @Builder
-public class CommentDto {
+public class DriverDto {
 
     Integer id;
-    LocalDateTime commentDate;
-    Integer mark;
-    String message;
+    UserDto userDto;
+    LocalDateTime doctorStamp;
+    CarDto carDto;
+
 }

@@ -3,6 +3,7 @@ package by.epam.jwd.sak.avtobase.dao.impl;
 import by.epam.jwd.sak.avtobase.bean.Request;
 import by.epam.jwd.sak.avtobase.bean.StatusRequest;
 import by.epam.jwd.sak.avtobase.bean.TypeTransport;
+import by.epam.jwd.sak.avtobase.bean.User;
 import by.epam.jwd.sak.avtobase.dao.RequestDao;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.util.ConnectionManager;
@@ -20,7 +21,44 @@ public class RequestDaoImpl implements RequestDao {
     private static final String GET_ALL_REQUEST_BY_USERID = "SELECT * FROM requests WHERE user_id = ?";
     private static final String SAVE_REQUEST = "INSERT INTO requests (user_id, date_create, start_address, end_address, date_departure, status_request, type_transport, details_request) VALUES (?,?,?,?,?,?,?,?)";
     private static final String GET_REQUEST_BY_ID = "SELECT * FROM requests WHERE id = ?";
+    private static final String UPDATE_REQUEST = "UPDATE requests SET start_address = ?, end_address = ?, date_departure = ?, status_request = ?, type_transport = ?, details_request = ? WHERE id = ?";
+    private static final String DELETE_REQUEST = "DELETE FROM requests WHERE id = ?";
     
+    @Override
+    public boolean delete(Integer id) throws DAOException {
+        int result;
+        try {
+            try (Connection connection = ConnectionManager.get();
+                 PreparedStatement preparedStatement = connection.prepareStatement(DELETE_REQUEST, RETURN_GENERATED_KEYS)) {
+                preparedStatement.setInt(1, id);
+                result = preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new DAOException();
+        }
+        return result==1;
+    }
+
+    @Override
+    public Request update(Request entity) throws DAOException {
+
+        try {
+            try (Connection connection = ConnectionManager.get();
+                 PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_REQUEST, RETURN_GENERATED_KEYS)) {
+                preparedStatement.setObject(1, entity.getStartAddress());
+                preparedStatement.setObject(2, entity.getEndAddress());
+                preparedStatement.setObject(3, entity.getDateDeparture());
+                preparedStatement.setObject(4, entity.getStatusRequest());
+                preparedStatement.setObject(5, entity.getTypeTransport());
+                preparedStatement.setObject(6, entity.getDetailsRequest());
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new DAOException();
+        }
+        return entity;
+    }
+
     @Override
     public Optional<Request> findById(Integer id) throws DAOException {
         try (Connection connection = ConnectionManager.get();

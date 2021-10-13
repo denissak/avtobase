@@ -15,6 +15,22 @@ public class CommentDaoImpl implements CommentDao {
 
     private static final String GET_ALL_COMMENT = "SELECT * FROM comments";
     private static final String SAVE_COMMENT = "INSERT INTO comments (id, comment_date, mark, message) VALUES (?,?,?,?)";
+    private static final String DELETE_COMMENT = "DELETE FROM comments WHERE id = ?";
+
+    @Override
+    public boolean delete(Integer id) throws DAOException {
+        int result;
+        try {
+            try (Connection connection = ConnectionManager.get();
+                 PreparedStatement preparedStatement = connection.prepareStatement(DELETE_COMMENT, RETURN_GENERATED_KEYS)) {
+                preparedStatement.setInt(1, id);
+                result = preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new DAOException();
+        }
+        return result==1;
+    }
 
     @Override
     public List<Comment> findAllByUserId(Integer userId) throws DAOException {

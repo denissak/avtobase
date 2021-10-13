@@ -12,18 +12,20 @@ public class Driver implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
+    private User user;
     private LocalDateTime doctorStamp;
     private Car car;
-    private boolean isBusy; //TODO
+    //private boolean isBusy; //TODO
 
     public Driver() {
     }
 
-    public Driver(Integer id, LocalDateTime doctorStamp, Car car, boolean isBusy) {
+    public Driver(Integer id, User user, LocalDateTime doctorStamp, Car car) {
         this.id = id;
+        this.user = user;
         this.doctorStamp = doctorStamp;
         this.car = car;
-        this.isBusy = isBusy;
+
     }
 
     public static long getSerialVersionUID() {
@@ -46,20 +48,28 @@ public class Driver implements Serializable {
         this.doctorStamp = doctorStamp;
     }
 
-    public Car getCar() {
+    public Car getCarId() {
         return car;
     }
 
-    public void setCar(Car car) {
+    public void setCarId(Car car) {
         this.car = car;
     }
 
-    public boolean isBusy() {
+/*    public boolean isBusy() {
         return isBusy;
     }
 
     public void setBusy(boolean busy) {
         isBusy = busy;
+    }*/
+
+    public User getUserId() {
+        return user;
+    }
+
+    public void setUserId(User userId) {
+        this.user = user;
     }
 
     @Override
@@ -85,8 +95,10 @@ public class Driver implements Serializable {
         sb.append(doctorStamp);
         sb.append(", car = ");
         sb.append(car);
-        sb.append(", isBusy = ");
-        sb.append(isBusy);
+/*        sb.append(", isBusy = ");
+        sb.append(isBusy);*/
+        sb.append(", user = ");
+        sb.append(user);
         return sb.toString();
     }
 }
