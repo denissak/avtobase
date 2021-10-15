@@ -31,7 +31,7 @@
                 </c:if>
                 <c:if test="${not empty sessionScope.user}">
                     <button class="btn btn-outline-success "data-bs-toggle="modal" data-bs-target="#createRequestModal">Создать заявку</button>
-                    <%--<button class="btn btn-outline-success ms-3 "data-bs-toggle="modal" data-bs-target="#updateUserModal">Обновить юзера</button>--%>
+                    <button class="btn btn-outline-success ms-3 "data-bs-toggle="modal" data-bs-target="#createCarModal">Создать авто</button>
                     <form action="Controller?command=logout" method="POST">
                         <button class="btn btn-outline-danger ms-3">Выйти</button>
                     </form>
@@ -69,6 +69,25 @@
     </div>
 </div>
 
+<div class="modal fade" id="createCarModal" tabindex="-1" aria-labelledby="createCarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createCarModalLabel">Вход</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+            </div>
+            <%--<div class="modal-body"> <a href="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"></a></div>--%>
+            <div class="modal-body">
+                <jsp:include page="createCar.jsp">
+                    <jsp:param name="typeTransports" value="typeTransports" />
+
+                    <jsp:param name="statusCar" value="statusCar"/>
+                </jsp:include>
+<%--<%@ include file="createUserRequest.jsp"%>--%> <%--<jsp:include page="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"--%> </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -92,7 +111,7 @@
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             &lt;%&ndash;<div class="modal-body"> <a href="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"></a></div>&ndash;%&gt;
-            <div class="modal-body"><<%@ include file="userEditByAdmin.jsp"%>>
+            <div class="modal-body"><<%@ include file="createCar.jsp"%>>
 &lt;%&ndash;<%@ include file="createUserRequest.jsp"%>&ndash;%&gt; &lt;%&ndash;<jsp:include page="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"&ndash;%&gt; </div>
         </div>
     </div>

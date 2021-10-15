@@ -30,6 +30,18 @@
             <td>${request.getStatusRequest()}</td>
             <td>${request.getTypeTransport()}</td>
             <td>${request.getDetailsRequest()}</td>
+                    <td>
+                        <button class="btn btn-outline-success ms-3 "data-bs-toggle="modal" data-bs-target=".${user.getLogin()}">Обновить юзера
+                            <c:set var = "requestId" value = "${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <form action="Controller?command=requesteditbyuser" method="post">
+                            <input type="hidden" name="id" value="${request.getId()}">
+                            <input type="hidden" name="method" value="delete">
+                            <input class="btn btn-primary" type="submit" value="Удалить">
+                        </form>
+                    </td>
         </tr>
     </c:forEach>
     </thead>

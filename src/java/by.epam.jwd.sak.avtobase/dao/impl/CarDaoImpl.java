@@ -99,10 +99,10 @@ public class CarDaoImpl implements CarDao {
                 .releaseDate(resultSet.getObject("release_date", Timestamp.class).toLocalDateTime())
                 .typeTransport(TypeTransport.valueOf(resultSet.getObject("type", String.class)))
                 .liftingCapacity(resultSet.getObject("lifting_capacity", Integer.class))
-                .cargoCapacity(resultSet.getObject("date_departure", Integer.class))
-                .passengerCapacity(resultSet.getObject("status_request", Integer.class))
+                .cargoCapacity(resultSet.getObject("cargo_capacity", Integer.class))
+                .passengerCapacity(resultSet.getObject("passenger_capacity", Integer.class))
                 .releaseDate(resultSet.getObject("inspection_permission", Timestamp.class).toLocalDateTime())
-                .statusCar(StatusCar.valueOf(resultSet.getObject("details_request", String.class)))
+                .statusCar(StatusCar.valueOf(resultSet.getObject("status_car", String.class)))
                 .carDescription((resultSet.getObject("car_description", String.class)))
                 .build();
     }

@@ -17,6 +17,8 @@ public class CommandProvider {
         commands.put(CommandName.GOTOALLUSERREQUESTPAGE, new GoToAllUserRequestPage());
         commands.put(CommandName.GOTOCREATEREQUEST, new GoToCreateRequest());
         commands.put(CommandName.GOTOALLUSERPAGE, new GoToAllUserPage());
+        commands.put(CommandName.REQUESTEDITBYUSER, new RequestEditByUser());
+        commands.put(CommandName.GOTOCREATECAR, new GoToCreateCar());
     }
 
     public Command takeCommand(String name) {

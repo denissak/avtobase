@@ -22,7 +22,7 @@ public class Car implements Serializable {
     private Integer cargoCapacity;
     private Integer passengerCapacity;
     private LocalDateTime inspectionPermission;
-    private StatusCar statusCar; //TODO
+    private StatusCar statusCar;
     private String carDescription;
     //private String imagePath;
 

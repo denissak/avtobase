@@ -14,8 +14,8 @@ import static by.epam.jwd.sak.avtobase.servlet.CommandParameter.*;
 public class AuthorizationFilter implements Filter {
 
     private static final Set<String> PUBLIC_PATH = Set.of("/");
-    private static final Set<String> USER_PATH = Set.of("command=gotoalluserrequestpage", "command=gotocreaterequest", "command=logout");
-    private static final Set<String> DRIVER_PATH = Set.of("command=gotoalluserrequestpage", "command=gotocreaterequest", "command=logout");
+    private static final Set<String> USER_PATH = Set.of("command=gotoalluserrequestpage", "command=gotocreaterequest", "command=logout", "command=requesteditbyuser", "command=gotocreatecar");
+    private static final Set<String> DRIVER_PATH = Set.of("command=gotoalluserrequestpage", "command=gotocreaterequest", "command=logout", "command=gotocreatecar");
     private static final Set<String> DISPATCHER_PATH = Set.of("command=gotoalluserrequestpage", "command=gotocreaterequest", "command=logout");
     private static final Set<String> ADMIN_PATH = Set.of("/", "/Controller", "/index", PATH_TO_REGISTRATION, PATH_TO_LOGIN, "/userRequest", "/createUserRequest", "command=gotoalluserpage", "command=usereditbyadmin");
 

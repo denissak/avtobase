@@ -10,7 +10,9 @@
       <%--<%@ include file="header.jsp"%>--%>
       <jsp:include page="WEB-INF/jsp/header.jsp">
           <jsp:param name="typeTransports" value="typeTransports" />
+          <jsp:param name="statusCars" value="statusCars"/>
       </jsp:include>
+
   </head>
 
   <body>
