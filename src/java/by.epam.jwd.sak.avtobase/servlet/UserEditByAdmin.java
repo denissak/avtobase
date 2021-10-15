@@ -18,8 +18,22 @@ public class UserEditByAdmin implements Command {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getMethod().equals("POST")) {
+        if (req.getParameter("method") != null) {
+            if (req.getParameter("method").equals("delete")) {
+                int userId = Integer.parseInt(req.getParameter("id"));
+                try {
+                    factoryService.getUserService().delete(userId);
+                } catch (ServiceException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if (req.getMethod().equals("POST")) {
+            int id = 0;
+            if (req.getParameter("id") != null){
+                id = Integer.valueOf(req.getParameter("id"));
+            }
             UserDto userDto = UserDto.builder()
+                    .id(id)
                     .login(req.getParameter(LOGIN))
                     .password(req.getParameter(PASSWORD))
                     .role(req.getParameter(ROLE))
@@ -33,7 +47,6 @@ public class UserEditByAdmin implements Command {
                 throw new ServletException();
             }
         }
-
         resp.sendRedirect("Controller?command=gotoalluserpage");
     }
 }

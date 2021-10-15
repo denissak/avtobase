@@ -12,6 +12,17 @@
     <p><c:out value="${param.userId}" /></p>
     <c:forEach var="user" items="${allUser}">
         <c:if test="${user.getId() == param.userId}">
+            <div style="display: none" class="mb-3">
+                <label for="exampleInputId" class="form-label">Login</label>
+                <input type="text"
+                       readonly="readonly"
+                       name="id"
+                       class="form-control"
+                       id="exampleInputId"
+                       value="${user.getId()}"
+                >
+
+            </div>
             <div class="mb-3">
                 <label for="exampleInputLogin" class="form-label">Login</label>
                 <input type="text"
@@ -35,17 +46,17 @@
                        title="Пароль должен состоять из не менее 5 символов и не более 15. Должен включать в себя латинские символы верхнего и нижнего регистра, а также как минимум 1 цифру."
                 >
             </div>
-<%--            <div class="mb-3">
+            <div class="mb-3">
                 <label for="exampleInputRole" class="form-label">Role</label>
                 <input type="text"
-                       name="text"
+                       name="role"
                        class="form-control"
                        id="exampleInputRole"
                        required pattern="[A-Za-z0-9]{1,30}"
                        title="Пароль должен состоять из не менее 5 символов и не более 15. Должен включать в себя латинские символы верхнего и нижнего регистра, а также как минимум 1 цифру."
                        value="${user.getRole()}"
                 >
-            </div>--%>
+            </div>
             <div class="mb-3">
                 <label for="exampleInputName" class="form-label">Name</label>
                 <input type="text"

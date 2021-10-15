@@ -37,6 +37,13 @@
                     <c:set var = "userId" value = "${user.getId()}"/>
                 </button>
             </td>
+                    <td>
+                        <form action="Controller?command=usereditbyadmin" method="post">
+                            <input type="hidden" name="id" value="${user.getId()}">
+                            <input type="hidden" name="method" value="delete">
+                            <input class="btn btn-primary" type="submit" value="Удалить">
+                        </form>
+                    </td>
 
         </tr>
         <div class="modal fade ${user.getLogin()}" id="updateUserModal" tabindex="-1" aria-labelledby="updateUserModalLabel" aria-hidden="true">

@@ -68,7 +68,7 @@ public class UserDaoImpl implements UserDao {
                  PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setObject(1, entity.getLogin());
                 preparedStatement.setObject(2, entity.getPassword());
-                preparedStatement.setObject(3, entity.getRole());
+                preparedStatement.setObject(3, 1);
                 preparedStatement.setObject(4, entity.getName());
                 preparedStatement.setObject(5, entity.getSurname());
                 preparedStatement.setObject(6, entity.getPhoneNumber());
