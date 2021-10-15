@@ -59,7 +59,7 @@ public class DriverServiceImpl implements DriverService {
         return DriverDto.builder()
                 .id(driver.getId())
                 .doctorStamp(driver.getDoctorStamp())
-/*                .startAddress(request.getStartAddress())
+/*              .startAddress(request.getStartAddress())
                 .endAddress(request.getEndAddress())
                 .dateDeparture(request.getDateDeparture())
                 .statusRequest(request.getStatusRequest())

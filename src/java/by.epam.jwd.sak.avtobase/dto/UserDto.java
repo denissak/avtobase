@@ -1,5 +1,6 @@
 package by.epam.jwd.sak.avtobase.dto;
 
+import by.epam.jwd.sak.avtobase.bean.Role;
 import lombok.Builder;
 import lombok.Value;
 

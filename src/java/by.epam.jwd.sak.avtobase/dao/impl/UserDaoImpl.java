@@ -72,6 +72,7 @@ public class UserDaoImpl implements UserDao {
                 preparedStatement.setObject(4, entity.getName());
                 preparedStatement.setObject(5, entity.getSurname());
                 preparedStatement.setObject(6, entity.getPhoneNumber());
+                preparedStatement.setObject(7, entity.getId());
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
