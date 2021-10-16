@@ -13,6 +13,7 @@ public class Comment implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
+    User user;
     private LocalDateTime commentDate;
     private Integer mark;
     private String message;
@@ -20,8 +21,9 @@ public class Comment implements Serializable {
     public Comment() {
     }
 
-    public Comment(Integer id, LocalDateTime commentDate, Integer mark, String message) {
+    public Comment(Integer id, User user, LocalDateTime commentDate, Integer mark, String message) {
         this.id = id;
+        this.user = user;
         this.commentDate = commentDate;
         this.mark = mark;
         this.message = message;
@@ -37,6 +39,14 @@ public class Comment implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public LocalDateTime getCommentDate() {
@@ -82,6 +92,8 @@ public class Comment implements Serializable {
         sb.append("Comment ");
         sb.append("id = ");
         sb.append(id);
+        sb.append("user = ");
+        sb.append(user);
         sb.append(", commentDate = ");
         sb.append(commentDate);
         sb.append(", mark = ");

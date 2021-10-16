@@ -73,15 +73,16 @@ public class CarDaoImpl implements CarDao {
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE_CAR, RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setObject(1, entity.getMark());
-            preparedStatement.setObject(2, entity.getModel());
-            preparedStatement.setObject(3, entity.getReleaseDate());
-            preparedStatement.setObject(4, entity.getTypeTransport().name());
-            preparedStatement.setObject(5, entity.getLiftingCapacity());
-            preparedStatement.setObject(6, entity.getCargoCapacity());
-            preparedStatement.setObject(7, entity.getPassengerCapacity());
-            preparedStatement.setObject(8, entity.getInspectionPermission());
-            preparedStatement.setObject(9, entity.getStatusCar().name());
-            preparedStatement.setObject(10, entity.getCarDescription());
+            preparedStatement.setObject(2, entity.getDriver().getId());
+            preparedStatement.setObject(3, entity.getModel());
+            preparedStatement.setObject(4, entity.getReleaseDate());
+            preparedStatement.setObject(5, entity.getTypeTransport().name());
+            preparedStatement.setObject(6, entity.getLiftingCapacity());
+            preparedStatement.setObject(7, entity.getCargoCapacity());
+            preparedStatement.setObject(8, entity.getPassengerCapacity());
+            preparedStatement.setObject(9, entity.getInspectionPermission());
+            preparedStatement.setObject(10, entity.getStatusCar().name());
+            preparedStatement.setObject(11, entity.getCarDescription());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {

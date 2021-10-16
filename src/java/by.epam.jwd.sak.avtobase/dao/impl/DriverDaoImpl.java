@@ -84,6 +84,7 @@ public class DriverDaoImpl implements DriverDao {
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE_DRIVER, RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setObject(1, entity.getUserId());
+            preparedStatement.setObject(2,entity.getUserId().getId());
             preparedStatement.setObject(2, entity.getDoctorStamp());
             preparedStatement.setObject(3, entity.getCarId());
             preparedStatement.executeUpdate();
@@ -96,9 +97,13 @@ public class DriverDaoImpl implements DriverDao {
 
 
     private Driver buildEntity(ResultSet resultSet) throws SQLException {
+        Driver driver = new Driver(
+
+        );
         Car car = new Car(
 
                 resultSet.getObject("id", Integer.class),
+                driver,
                 resultSet.getObject("mark", String.class),
                 resultSet.getObject("model", String.class),
                 resultSet.getObject("release_date", Timestamp.class).toLocalDateTime(),
@@ -128,8 +133,7 @@ public class DriverDaoImpl implements DriverDao {
                 resultSet.getObject("name", String.class),
                 resultSet.getObject("surname", String.class),
                 resultSet.getObject("phone_number", String.class),
-                role,
-                comment
+                role
         );
         return Driver.builder()
                 .id(resultSet.getObject("id", Integer.class))

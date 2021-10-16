@@ -1,5 +1,6 @@
 package by.epam.jwd.sak.avtobase.servlet;
 
+import by.epam.jwd.sak.avtobase.bean.StatusCar;
 import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
@@ -43,7 +44,9 @@ public class Login implements Command {
 
     private void onLoginSuccess (UserDto user, HttpServletRequest req, HttpServletResponse resp){
         req.getSession().setAttribute("user", user);
+        //req.getSession().setAttribute("driver", d);
         req.getSession().setAttribute("typeTransports", TypeTransport.values());
+        req.getSession().setAttribute("statusCars", StatusCar.values());
         if (user.getRole().equals("user")){
             try {
                 resp.sendRedirect("Controller?command=gotoalluserrequestpage");

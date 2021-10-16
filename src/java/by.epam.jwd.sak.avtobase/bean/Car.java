@@ -14,6 +14,7 @@ public class Car implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
+    private Driver driver;
     private String mark;
     private String model;
     private LocalDateTime releaseDate;
@@ -30,10 +31,9 @@ public class Car implements Serializable {
     public Car() {
     }
 
-    public Car(Integer id, String mark, String model, LocalDateTime releaseDate, TypeTransport typeTransport, Integer liftingCapacity,
-               Integer cargoCapacity, Integer passengerCapacity, LocalDateTime inspectionPermission, StatusCar statusCar,
-               String carDescription) {
+    public Car(Integer id, Driver driver, String mark, String model, LocalDateTime releaseDate, TypeTransport typeTransport, Integer liftingCapacity, Integer cargoCapacity, Integer passengerCapacity, LocalDateTime inspectionPermission, StatusCar statusCar, String carDescription) {
         this.id = id;
+        this.driver = driver;
         this.mark = mark;
         this.model = model;
         this.releaseDate = releaseDate;
@@ -44,7 +44,6 @@ public class Car implements Serializable {
         this.inspectionPermission = inspectionPermission;
         this.statusCar = statusCar;
         this.carDescription = carDescription;
-        //this.imagePath = imagePath;
     }
 
     public Integer getId() {
@@ -55,12 +54,22 @@ public class Car implements Serializable {
         this.id = id;
     }
 
+
+
     public String getMark() {
         return mark;
     }
 
     public void setMark(String mark) {
         this.mark = mark;
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 
     public String getModel() {
@@ -83,7 +92,7 @@ public class Car implements Serializable {
         return typeTransport;
     }
 
-    public void setType(TypeTransport type) {
+    public void setTypeTransport(TypeTransport typeTransport) {
         this.typeTransport = typeTransport;
     }
 
@@ -135,13 +144,6 @@ public class Car implements Serializable {
         this.carDescription = carDescription;
     }
 
-/*    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }*/
 
     @Override
     public boolean equals(Object o) {
@@ -182,8 +184,9 @@ public class Car implements Serializable {
         sb.append(statusCar);
         sb.append(", carDescription = ");
         sb.append(carDescription);
-        //sb.append(", imagePath = ");
-       // sb.append(imagePath);
+        sb.append(", imagePath = ");
+        sb.append(statusCar);
+        sb.append(", statusCar = ");
         return sb.toString();
     }
 }

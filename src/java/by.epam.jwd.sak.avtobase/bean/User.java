@@ -18,12 +18,12 @@ public class User implements Serializable {
     private String surname;
     private String phoneNumber;
     private Role role;
-    private Comment comment;
+//    private Comment comment;
 
     public User() {
     }
 
-    public User(Integer id, String login, String password, String name, String surname, String phoneNumber, Role role, Comment comment) {
+    public User(Integer id, String login, String password, String name, String surname, String phoneNumber, Role role) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -31,7 +31,7 @@ public class User implements Serializable {
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.role = role;
-        this.comment = comment;
+//        this.comment = comment;
     }
 
     public static long getSerialVersionUID() {
@@ -94,13 +94,13 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public Comment getComment() {
+/*    public Comment getComment() {
         return comment;
     }
 
     public void setComment(Comment comment) {
         this.comment = comment;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
@@ -133,8 +133,8 @@ public class User implements Serializable {
         sb.append(phoneNumber);
         sb.append(", role = ");
         sb.append(role);
-        sb.append(", comment = ");
-        sb.append(comment);
+/*        sb.append(", comment = ");
+        sb.append(comment);*/
         return sb.toString();
     }
 }

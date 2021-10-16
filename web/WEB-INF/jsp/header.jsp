@@ -32,6 +32,7 @@
                 <c:if test="${not empty sessionScope.user}">
                     <button class="btn btn-outline-success "data-bs-toggle="modal" data-bs-target="#createRequestModal">Создать заявку</button>
                     <button class="btn btn-outline-success ms-3 "data-bs-toggle="modal" data-bs-target="#createCarModal">Создать авто</button>
+                    <button class="btn btn-outline-success ms-3 "data-bs-toggle="modal" data-bs-target="#createCommentModal">Оставить комментарий</button>
                     <form action="Controller?command=logout" method="POST">
                         <button class="btn btn-outline-danger ms-3">Выйти</button>
                     </form>
@@ -88,7 +89,6 @@
     </div>
 </div>
 
-
 <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -97,6 +97,20 @@
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             <div class="modal-body"><%@ include file="registration.jsp"%> </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="createCommentModal" tabindex="-1" aria-labelledby="createCommentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createCommentModalLabel">Напишите ваш комментарий</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+            </div>
+            <div class="modal-body"><%@ include file="createComment.jsp"%> </div>
 
             </div>
         </div>

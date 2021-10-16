@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 public class CarDto {
     
     Integer id;
+    DriverDto driverDto;
     String mark;
     String model;
     LocalDateTime releaseDate;

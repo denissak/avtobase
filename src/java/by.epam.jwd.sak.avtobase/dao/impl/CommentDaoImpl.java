@@ -58,9 +58,10 @@ public class CommentDaoImpl implements CommentDao {
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE_COMMENT, RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setInt(1, entity.getId());
-            preparedStatement.setObject(2 , entity.getCommentDate());
-            preparedStatement.setObject(3, entity.getMark());
-            preparedStatement.setObject(4, entity.getMessage());
+            preparedStatement.setObject(2, entity.getUser().getId());
+            preparedStatement.setObject(3 , entity.getCommentDate());
+            preparedStatement.setObject(4, entity.getMark());
+            preparedStatement.setObject(5, entity.getMessage());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {

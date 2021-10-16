@@ -6,7 +6,9 @@ import by.epam.jwd.sak.avtobase.dto.CommentDto;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.CommentService;
+import by.epam.jwd.sak.avtobase.service.Mapper;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -65,7 +67,8 @@ public class CommentServiceImpl implements CommentService {
     private Comment convertToComment(CommentDto commentDto) {
         return Comment.builder()
                 .id(commentDto.getId())
-                .commentDate(commentDto.getCommentDate())
+                .user(Mapper.convertToUser(commentDto.getUserDto()))
+                .commentDate(LocalDateTime.now())
                 .mark(commentDto.getMark())
                 .message(commentDto.getMessage())
                 .build();
