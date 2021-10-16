@@ -13,6 +13,8 @@ public interface RequestDao {
 
     List<Request> findAllByUserId(Integer userId) throws DAOException;
 
+    List<Request> findAll() throws DAOException;
+
     Request save(Request entity) throws DAOException;
 
     Request update (Request entity) throws DAOException;

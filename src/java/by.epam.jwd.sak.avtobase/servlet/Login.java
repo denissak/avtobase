@@ -54,6 +54,13 @@ public class Login implements Command {
                 e.printStackTrace();
             }
         }
+        if (user.getRole().equals("dispatcher")){
+            try {
+                resp.sendRedirect("Controller?command=gotoallrequestpage");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         if (user.getRole().equals("admin")){
             try {
                 resp.sendRedirect("Controller?command=gotoalluserpage");

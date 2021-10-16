@@ -1,6 +1,12 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<h1> Footer</h1>
+<body>
+
+<nav class="navbar navbar-expand-xxl navbar-dark bg-dark" >
+
+</nav>
+
+</body>
 
 

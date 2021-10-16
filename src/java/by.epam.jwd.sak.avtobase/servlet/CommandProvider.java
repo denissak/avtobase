@@ -22,6 +22,7 @@ public class CommandProvider {
         commands.put(CommandName.GOTOCREATECOMMENT, new GoToCreateComment());
         commands.put(CommandName.GOTOALLCOMMENT, new GoToAllComment());
         commands.put(CommandName.GOTOALLUSERCOMMENT, new GoToAllUserComment());
+        commands.put(CommandName.GOTOALLREQUESTPAGE, new GoToAllRequestPage());
     }
 
     public Command takeCommand(String name) {

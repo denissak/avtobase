@@ -97,35 +97,12 @@ public class DriverDaoImpl implements DriverDao {
 
 
     private Driver buildEntity(ResultSet resultSet) throws SQLException {
-        Driver driver = new Driver(
 
-        );
-        Car car = new Car(
-
-                resultSet.getObject("id", Integer.class),
-                driver,
-                resultSet.getObject("mark", String.class),
-                resultSet.getObject("model", String.class),
-                resultSet.getObject("release_date", Timestamp.class).toLocalDateTime(),
-                TypeTransport.valueOf(resultSet.getObject("type", String.class)),
-                resultSet.getObject("lifting_capacity", Integer.class),
-                resultSet.getObject("date_departure", Integer.class),
-                resultSet.getObject("status_request", Integer.class),
-                resultSet.getObject("inspection_permission", Timestamp.class).toLocalDateTime(),
-                StatusCar.valueOf(resultSet.getObject("details_request", String.class)),
-                resultSet.getObject("car_description", String.class)
-
-        );
         Role role = new Role(
                 resultSet.getObject("id", Integer.class),
                 resultSet.getObject("name", String.class)
         );
-        Comment comment = new Comment(
-/*                resultSet.getObject("id", Integer.class),
-                resultSet.getObject("comment_date", Timestamp.class).toLocalDateTime(),
-                resultSet.getObject("mark", Integer.class),
-                resultSet.getObject("message", String.class)*/
-        );
+
         User user = new User(
                 resultSet.getObject("id", Integer.class),
                 resultSet.getObject("login", String.class),
@@ -140,7 +117,7 @@ public class DriverDaoImpl implements DriverDao {
                 .user(user)
                 /*.userId(resultSet.getObject("user_id", Integer.class))*/
                 .doctorStamp(resultSet.getObject("doctor_stamp", Timestamp.class).toLocalDateTime())
-                .car(car)
+//                .car(car)
                 .build();
     }
 

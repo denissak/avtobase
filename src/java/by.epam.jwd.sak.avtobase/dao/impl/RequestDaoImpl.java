@@ -1,6 +1,7 @@
 package by.epam.jwd.sak.avtobase.dao.impl;
 
 import by.epam.jwd.sak.avtobase.bean.Request;
+import by.epam.jwd.sak.avtobase.bean.Role;
 import by.epam.jwd.sak.avtobase.bean.StatusRequest;
 import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import by.epam.jwd.sak.avtobase.bean.User;
@@ -18,12 +19,28 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
 public class RequestDaoImpl implements RequestDao {
 
-    private static final String GET_ALL_REQUEST_BY_USERID = "SELECT * FROM requests WHERE user_id = ?";
+    private static final String GET_ALL_REQUEST_BY_USER_ID = "SELECT * FROM requests WHERE user_id = ?";
+    private static final String GET_ALL_REQUEST = "SELECT * FROM requests as r join users as u  on u.id = r.user_id";
     private static final String SAVE_REQUEST = "INSERT INTO requests (user_id, date_create, start_address, end_address, date_departure, status_request, type_transport, details_request) VALUES (?,?,?,?,?,?,?,?)";
     private static final String GET_REQUEST_BY_ID = "SELECT * FROM requests WHERE id = ?";
     private static final String UPDATE_REQUEST = "UPDATE requests SET start_address = ?, end_address = ?, date_departure = ?, status_request = ?, type_transport = ?, details_request = ? WHERE id = ?";
     private static final String DELETE_REQUEST = "DELETE FROM requests WHERE id = ?";
-    
+
+    @Override
+    public List<Request> findAll() throws DAOException {
+        List<Request> requests = new ArrayList<>();
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_REQUEST)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                requests.add(buildEntity(resultSet));
+            }
+        } catch (SQLException e) {
+            throw new DAOException();
+        }
+        return requests;
+    }
+
     @Override
     public boolean delete(Integer id) throws DAOException {
         int result;
@@ -101,7 +118,7 @@ public class RequestDaoImpl implements RequestDao {
         List<Request> requests = new ArrayList<>();
 
         try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_REQUEST_BY_USERID)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_REQUEST_BY_USER_ID)) {
             preparedStatement.setObject(1, userId);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -121,6 +138,35 @@ public class RequestDaoImpl implements RequestDao {
 
         return Request.builder()
                 .id(resultSet.getObject("id", Integer.class))
+                .dateCreate(resultSet.getObject("date_create", Timestamp.class).toLocalDateTime())
+                .startAddress(resultSet.getObject("start_address", String.class))
+                .endAddress(resultSet.getObject("end_address", String.class))
+                .dateDeparture(resultSet.getObject("date_departure", Timestamp.class).toLocalDateTime())
+                .statusRequest(StatusRequest.valueOf(resultSet.getObject("status_request", String.class)))
+                .typeTransport(TypeTransport.valueOf(resultSet.getObject("type_transport", String.class)))
+                .detailsRequest(resultSet.getObject("details_request", String.class))
+                .build();
+    }
+
+    private Request buildEntity (ResultSet resultSet) throws SQLException {
+
+        Role role = new Role(
+                resultSet.getObject("id", Integer.class),
+                resultSet.getObject("name", String.class)
+        );
+
+        User user = new User(
+                resultSet.getObject("id", Integer.class),
+                resultSet.getObject("login", String.class),
+                resultSet.getObject("password", String.class),
+                resultSet.getObject("name", String.class),
+                resultSet.getObject("surname", String.class),
+                resultSet.getObject("phone_number", String.class),
+                role
+        );
+        return Request.builder()
+                .id(resultSet.getObject("id", Integer.class))
+                .user(user)
                 .dateCreate(resultSet.getObject("date_create", Timestamp.class).toLocalDateTime())
                 .startAddress(resultSet.getObject("start_address", String.class))
                 .endAddress(resultSet.getObject("end_address", String.class))

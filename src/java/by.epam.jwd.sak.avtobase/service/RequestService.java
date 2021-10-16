@@ -11,6 +11,8 @@ public interface RequestService {
 
     List<RequestDto> findAllRequestByUser (Integer userId) throws ServiceException;
 
+    List<RequestDto> findAllRequest () throws ServiceException;
+
     Integer create (RequestDto requestDto) throws ServiceException;
 
     Optional<RequestDto> findById (Integer id) throws ServiceException;

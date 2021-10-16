@@ -1,6 +1,7 @@
 package by.epam.jwd.sak.avtobase.service.impl;
 
 import by.epam.jwd.sak.avtobase.bean.Request;
+import by.epam.jwd.sak.avtobase.bean.User;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
 import by.epam.jwd.sak.avtobase.dto.RequestDto;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
@@ -14,6 +15,15 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class RequestServiceImpl implements RequestService{
+
+    @Override
+    public List<RequestDto> findAllRequest() throws ServiceException {
+        try {
+            return daoFactory.getRequestDao().findAll().stream().map(this::convertToRequestDto).collect(Collectors.toList());
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
+    }
 
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
@@ -68,8 +78,10 @@ public class RequestServiceImpl implements RequestService{
     }
 
     private RequestDto convertToRequestDto(Request request) {
+        User user = new User();
         return RequestDto.builder()
                 .id(request.getId())
+                .user(user.getLogin())
                 .dateCreate(request.getDateCreate())
                 .startAddress(request.getStartAddress())
                 .endAddress(request.getEndAddress())
