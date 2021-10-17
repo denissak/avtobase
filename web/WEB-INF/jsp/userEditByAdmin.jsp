@@ -9,7 +9,7 @@
 <body>
 
 <form action="Controller?command=usereditbyadmin" method="POST">
-<%--    <p><c:out value="${param.userId}" /></p>--%>
+    <%--    <p><c:out value="${param.userId}" /></p>--%>
     <c:forEach var="user" items="${allUser}">
         <c:if test="${user.getId() == param.userId}">
             <div style="display: none" class="mb-3">
@@ -21,7 +21,6 @@
                        id="exampleInputId"
                        value="${user.getId()}"
                 >
-
             </div>
             <div class="mb-3">
                 <label for="exampleInputLogin" class="form-label">Login</label>
