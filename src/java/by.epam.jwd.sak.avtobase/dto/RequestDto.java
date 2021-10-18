@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class RequestDto {
 
     Integer id;
+    String user;
     UserDto userDto;
     LocalDateTime dateCreate;
     String startAddress;
