@@ -72,7 +72,6 @@ public class DriverServiceImpl implements DriverService {
         return Driver.builder()
                 .user(Mapper.convertToUser(driverDto.getUserDto()))
                 .doctorStamp(driverDto.getDoctorStamp())
-                .car(Mapper.convertToCar(driverDto.getCarDto()))
                 .build();
     }
 }

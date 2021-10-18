@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class CommentDto {
 
     Integer id;
+    UserDto userDto;
     LocalDateTime commentDate;
     Integer mark;
     String message;

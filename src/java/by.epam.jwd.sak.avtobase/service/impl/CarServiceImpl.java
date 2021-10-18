@@ -6,6 +6,7 @@ import by.epam.jwd.sak.avtobase.dto.CarDto;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.CarService;
+import by.epam.jwd.sak.avtobase.service.Mapper;
 
 import java.util.List;
 import java.util.Optional;
@@ -73,6 +74,7 @@ public class CarServiceImpl implements CarService {
     private Car convertToCar(CarDto carDto) {
         return Car.builder()
                 .id(carDto.getId())
+                .driver(Mapper.convertToDriver(carDto.getDriverDto()))
                 .mark(carDto.getMark())
                 .model(carDto.getModel())
                 .releaseDate(carDto.getReleaseDate())

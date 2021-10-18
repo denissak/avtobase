@@ -14,6 +14,8 @@ public interface UserService {
 
     List<UserDto> findAllUser () throws ServiceException;
 
+    List<UserDto> findAllDrivers () throws ServiceException;
+
     Integer update (UserDto entity) throws ServiceException;
 
     Optional<UserDto> findById (Integer id) throws ServiceException;

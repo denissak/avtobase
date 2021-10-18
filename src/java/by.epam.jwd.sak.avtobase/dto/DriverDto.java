@@ -12,6 +12,4 @@ public class DriverDto {
     Integer id;
     UserDto userDto;
     LocalDateTime doctorStamp;
-    CarDto carDto;
-
 }

@@ -10,7 +10,9 @@
       <%--<%@ include file="header.jsp"%>--%>
       <jsp:include page="WEB-INF/jsp/header.jsp">
           <jsp:param name="typeTransports" value="typeTransports" />
+          <jsp:param name="statusCars" value="statusCars"/>
       </jsp:include>
+
   </head>
 
   <body>
@@ -18,10 +20,10 @@
   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner">
           <div class="carousel-item active">
-              <img src="https://kartinkin.com/uploads/posts/2021-01/1611320516_27-p-krasivii-fon-dlya-avto-30.jpg" class="d-block w-100" alt="...">
+              <img src="https://s1.1zoom.ru/big0/780/Trucks_FAW_Jiefang_J7_Eagle_6x4_Tractor_2017-2020_588483_1280x792.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-              <img src="https://kartinkin.net/uploads/posts/2021-07/thumbs/1625186709_25-kartinkin-com-p-fon-mashini-krasivie-foni-25.jpg" class="d-block w-100" alt="...">
+              <img src="https://s1.1zoom.ru/big0/206/BMW_X3_xDrive30i_M_Sport_(China_)_(G08)_2021_White_607978_1280x853.jpg" class="d-block w-100" alt="...">
           </div>
 <%--          <div class="carousel-item">
               <img src="..." class="d-block w-100" alt="...">
@@ -39,7 +41,10 @@
 
 
   </body>
-<footer>
-  <%@ include file="WEB-INF/jsp/footer.jsp"%>
+<footer id="footer" class="footer navbar-fixed-bottom">
+    <div class="position-absolute">
+        <%@ include file="WEB-INF/jsp/footer.jsp"%>
+    </div>
+
 </footer>
 </html>

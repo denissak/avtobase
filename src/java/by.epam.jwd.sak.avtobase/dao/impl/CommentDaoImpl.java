@@ -14,7 +14,7 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 public class CommentDaoImpl implements CommentDao {
 
     private static final String GET_ALL_COMMENT = "SELECT * FROM comments";
-    private static final String SAVE_COMMENT = "INSERT INTO comments (id, comment_date, mark, message) VALUES (?,?,?,?)";
+    private static final String SAVE_COMMENT = "INSERT INTO comments (user_id, comment_date, mark, message) VALUES (?,?,?,?)";
     private static final String DELETE_COMMENT = "DELETE FROM comments WHERE id = ?";
 
     @Override
@@ -56,8 +56,7 @@ public class CommentDaoImpl implements CommentDao {
     public Comment save(Comment entity) throws DAOException {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE_COMMENT, RETURN_GENERATED_KEYS)) {
-
-            preparedStatement.setInt(1, entity.getId());
+            preparedStatement.setObject(1, entity.getUser().getId());
             preparedStatement.setObject(2 , entity.getCommentDate());
             preparedStatement.setObject(3, entity.getMark());
             preparedStatement.setObject(4, entity.getMessage());

@@ -17,6 +17,13 @@ public class CommandProvider {
         commands.put(CommandName.GOTOALLUSERREQUESTPAGE, new GoToAllUserRequestPage());
         commands.put(CommandName.GOTOCREATEREQUEST, new GoToCreateRequest());
         commands.put(CommandName.GOTOALLUSERPAGE, new GoToAllUserPage());
+        commands.put(CommandName.REQUESTEDITBYUSER, new RequestEditByUser());
+        commands.put(CommandName.GOTOCREATECAR, new GoToCreateCar());
+        commands.put(CommandName.GOTOCREATECOMMENT, new GoToCreateComment());
+        commands.put(CommandName.GOTOALLCOMMENT, new GoToAllComment());
+        commands.put(CommandName.GOTOALLUSERCOMMENT, new GoToAllUserComment());
+        commands.put(CommandName.GOTOALLREQUESTPAGE, new GoToAllRequestPage());
+        commands.put(CommandName.SETDRIVERONREQUEST, new SetDriverOnRequest());
     }
 
     public Command takeCommand(String name) {

@@ -58,6 +58,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserDto> findAllDrivers() throws ServiceException {
+        try {
+            return daoFactory.getUserDao().findAllDrivers().stream().map(this::convertToUserDto).collect(Collectors.toList());
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
+    }
+
+    @Override
     public Optional<UserDto> findByLoginAndPassword (String login, String password) throws ServiceException {
         try {
             return daoFactory.getUserDao().findByLoginAndPassword(login,password)
@@ -94,6 +103,10 @@ public class UserServiceImpl implements UserService {
     }
 
     private User convertToUser(UserDto object) {
+        int role = 4;
+        if (object.getRole() != null) {
+            role = Integer.valueOf(object.getRole());
+        }
         return User.builder()
                 .id(object.getId())
                 .login(object.getLogin())
@@ -101,6 +114,7 @@ public class UserServiceImpl implements UserService {
                 .name(object.getName())
                 .surname(object.getSurname())
                 .phoneNumber(object.getPhoneNumber())
+                .role(new Role(role, null))
                 .build();
     }
 

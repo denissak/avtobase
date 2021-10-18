@@ -20,13 +20,17 @@ public class UserDaoImpl implements UserDao {
 
     private static final String GET_ALL_USER = "SELECT * FROM users as u join roles as r  on r.id = u.role_id";
 
+    private static final String GET_ALL_DRIVERS = "SELECT * FROM users as u join roles as r  on r.id = u.role_id WHERE r.id = 3";
+
     private static final String SAVE_USER = "INSERT INTO users (login, password, role_id, name, surname, phone_number)" +
             " VALUES " + "(?,?,?,?,?,?)";
     private static final String GET_BY_LOGIN_AND_PASSWORD = "SELECT * FROM users as u join roles as r on r.id = u.role_id WHERE login = ? AND password = ?";
 
     private static final String GET_USER_BY_ID = "SELECT * FROM users as u join roles as r on r.id = u.role_id WHERE u.id = ?";
 
-    private static final String UPDATE_USER = "UPDATE users SET login = ?, password = ?, role_id = ?, name = ?, surname = ?, phone_number = ? WHERE id = ?";
+    private static final String UPDATE_USER = "UPDATE users SET login = ?, role_id = ?, name = ?, surname = ?, phone_number = ? WHERE id = ?";
+
+    private static final String UPDATE_PASSWORD_USER = "UPDATE users SET password = ? WHERE id = ?";
 
     private static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
 
@@ -58,29 +62,35 @@ public class UserDaoImpl implements UserDao {
         } catch (SQLException e) {
             throw new DAOException();
         }
-        return result==1;
+        return result == 1;
     }
 
     @Override
-    public User update (User entity) throws DAOException { //TODO
-        try {
-            try (Connection connection = ConnectionManager.get();
-                 PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER, RETURN_GENERATED_KEYS)) {
-                preparedStatement.setObject(1, entity.getLogin());
-                preparedStatement.setObject(2, entity.getPassword());
-                preparedStatement.setObject(3, 1);
-                preparedStatement.setObject(4, entity.getName());
-                preparedStatement.setObject(5, entity.getSurname());
-                preparedStatement.setObject(6, entity.getPhoneNumber());
-                preparedStatement.setObject(7, entity.getId());
-                preparedStatement.executeUpdate();
-            }
+    public User update(User entity) throws DAOException { //TODO
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setObject(1, entity.getLogin());
+            preparedStatement.setObject(2, entity.getRole().getId());
+            preparedStatement.setObject(3, entity.getName());
+            preparedStatement.setObject(4, entity.getSurname());
+            preparedStatement.setObject(5, entity.getPhoneNumber());
+            preparedStatement.setObject(6, entity.getId());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException();
         }
+        if (!entity.getPassword().equals("")) {
+            try (Connection connection = ConnectionManager.get();
+                 PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PASSWORD_USER, RETURN_GENERATED_KEYS)) {
+                preparedStatement.setObject(1, entity.getPassword());
+                preparedStatement.setObject(2, entity.getId());
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new DAOException();
+            }
+        }
         return entity;
     }
-
 
 
     @Override
@@ -88,6 +98,21 @@ public class UserDaoImpl implements UserDao {
         List<User> users = new ArrayList<>();
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USER)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                users.add(buildEntity(resultSet));
+            }
+        } catch (SQLException e) {
+            throw new DAOException();
+        }
+        return users;
+    }
+
+    @Override
+    public List<User> findAllDrivers() throws DAOException {
+        List<User> users = new ArrayList<>();
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_DRIVERS)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 users.add(buildEntity(resultSet));
@@ -146,8 +171,7 @@ public class UserDaoImpl implements UserDao {
                 .name(resultSet.getObject("name", String.class))
                 .surname(resultSet.getObject("surname", String.class))
                 .phoneNumber(resultSet.getObject("phone_number", String.class))
-                .role(new Role(resultSet.getObject("role_id", Integer.class ), resultSet.getObject("r.name", String.class)))
+                .role(new Role(resultSet.getObject("role_id", Integer.class), resultSet.getObject("r.name", String.class)))
                 .build();
     }
-
 }

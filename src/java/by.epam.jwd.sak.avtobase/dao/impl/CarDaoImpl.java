@@ -73,15 +73,16 @@ public class CarDaoImpl implements CarDao {
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE_CAR, RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setObject(1, entity.getMark());
-            preparedStatement.setObject(2, entity.getModel());
-            preparedStatement.setObject(3, entity.getReleaseDate());
-            preparedStatement.setObject(4, entity.getTypeTransport().name());
-            preparedStatement.setObject(5, entity.getLiftingCapacity());
-            preparedStatement.setObject(6, entity.getCargoCapacity());
-            preparedStatement.setObject(7, entity.getPassengerCapacity());
-            preparedStatement.setObject(8, entity.getInspectionPermission());
-            preparedStatement.setObject(9, entity.getStatusCar().name());
-            preparedStatement.setObject(10, entity.getCarDescription());
+            preparedStatement.setObject(2, entity.getDriver().getId());
+            preparedStatement.setObject(3, entity.getModel());
+            preparedStatement.setObject(4, entity.getReleaseDate());
+            preparedStatement.setObject(5, entity.getTypeTransport().name());
+            preparedStatement.setObject(6, entity.getLiftingCapacity());
+            preparedStatement.setObject(7, entity.getCargoCapacity());
+            preparedStatement.setObject(8, entity.getPassengerCapacity());
+            preparedStatement.setObject(9, entity.getInspectionPermission());
+            preparedStatement.setObject(10, entity.getStatusCar().name());
+            preparedStatement.setObject(11, entity.getCarDescription());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -99,10 +100,10 @@ public class CarDaoImpl implements CarDao {
                 .releaseDate(resultSet.getObject("release_date", Timestamp.class).toLocalDateTime())
                 .typeTransport(TypeTransport.valueOf(resultSet.getObject("type", String.class)))
                 .liftingCapacity(resultSet.getObject("lifting_capacity", Integer.class))
-                .cargoCapacity(resultSet.getObject("date_departure", Integer.class))
-                .passengerCapacity(resultSet.getObject("status_request", Integer.class))
+                .cargoCapacity(resultSet.getObject("cargo_capacity", Integer.class))
+                .passengerCapacity(resultSet.getObject("passenger_capacity", Integer.class))
                 .releaseDate(resultSet.getObject("inspection_permission", Timestamp.class).toLocalDateTime())
-                .statusCar(StatusCar.valueOf(resultSet.getObject("details_request", String.class)))
+                .statusCar(StatusCar.valueOf(resultSet.getObject("status_car", String.class)))
                 .carDescription((resultSet.getObject("car_description", String.class)))
                 .build();
     }

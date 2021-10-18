@@ -2,14 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Registration</title>
+    <title>Edit User</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <%--<link href="avtobase.css">--%>
 </head>
 <body>
 
 <form action="Controller?command=usereditbyadmin" method="POST">
-    <p><c:out value="${param.userId}" /></p>
+<%--    <p><c:out value="${param.userId}" /></p>--%>
     <c:forEach var="user" items="${allUser}">
         <c:if test="${user.getId() == param.userId}">
             <div style="display: none" class="mb-3">
@@ -21,7 +21,6 @@
                        id="exampleInputId"
                        value="${user.getId()}"
                 >
-
             </div>
             <div class="mb-3">
                 <label for="exampleInputLogin" class="form-label">Login</label>
@@ -42,11 +41,11 @@
                        name="password"
                        class="form-control"
                        id="exampleInputPassword"
-                       required pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{5,25}"
+                       pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{5,25}"
                        title="Пароль должен состоять из не менее 5 символов и не более 15. Должен включать в себя латинские символы верхнего и нижнего регистра, а также как минимум 1 цифру."
                 >
             </div>
-            <div class="mb-3">
+           <%-- <div class="mb-3">
                 <label for="exampleInputRole" class="form-label">Role</label>
                 <input type="text"
                        name="role"
@@ -56,6 +55,14 @@
                        title="Пароль должен состоять из не менее 5 символов и не более 15. Должен включать в себя латинские символы верхнего и нижнего регистра, а также как минимум 1 цифру."
                        value="${user.getRole()}"
                 >
+            </div>--%>
+            <div class="mb-3">
+                <label for="exampleInputRole" class="form-label">Role</label>
+                <select class="form-select" name="role" required aria-label="select example" id="exampleInputRole">
+                    <c:forEach var="role" items="${roles}">
+                        <option value="${role.getId()}" ${user.getRole() == role.getName() ? 'selected="selected"' : ''}>${role.getName()}</option>
+                    </c:forEach>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="exampleInputName" class="form-label">Name</label>
@@ -94,7 +101,7 @@
             </div>
         </c:if>
     </c:forEach>
-    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    <button type="submit" class="btn btn-primary">Обновить</button>
 </form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

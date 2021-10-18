@@ -1,9 +1,12 @@
 
 package by.epam.jwd.sak.avtobase.bean;
 
+import lombok.Builder;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Builder
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;

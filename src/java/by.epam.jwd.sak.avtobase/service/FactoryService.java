@@ -3,7 +3,9 @@ package by.epam.jwd.sak.avtobase.service;
 import by.epam.jwd.sak.avtobase.service.impl.CarServiceImpl;
 import by.epam.jwd.sak.avtobase.service.impl.CommentServiceImpl;
 import by.epam.jwd.sak.avtobase.service.impl.DriverServiceImpl;
+import by.epam.jwd.sak.avtobase.service.impl.DriversRequestsServiceImpl;
 import by.epam.jwd.sak.avtobase.service.impl.RequestServiceImpl;
+import by.epam.jwd.sak.avtobase.service.impl.RolesServiceImpl;
 import by.epam.jwd.sak.avtobase.service.impl.UserServiceImpl;
 
 public class FactoryService {
@@ -15,6 +17,8 @@ public class FactoryService {
     private CarService carService = new CarServiceImpl();
     private DriverService driverService = new DriverServiceImpl();
     private CommentService commentService = new CommentServiceImpl();
+    private RolesService rolesService = new RolesServiceImpl();
+    private DriversRequestsService driversRequestsService = new DriversRequestsServiceImpl();
 
     public static FactoryService getInstance() {
         FactoryService localInstance = instance;
@@ -52,4 +56,11 @@ public class FactoryService {
         return commentService;
     }
 
+    public RolesService getRolesService() {
+        return rolesService;
+    }
+
+    public DriversRequestsService getDriversRequestsService() {
+        return driversRequestsService;
+    }
 }

@@ -1,11 +1,12 @@
 package by.epam.jwd.sak.avtobase.dto;
 
 import by.epam.jwd.sak.avtobase.bean.Role;
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 
-@Value
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDto {
 
     Integer id;
@@ -15,7 +16,4 @@ public class UserDto {
     String name;
     String surname;
     String phoneNumber;
-
-
-
 }
