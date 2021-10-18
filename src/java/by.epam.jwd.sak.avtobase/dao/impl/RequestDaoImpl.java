@@ -45,13 +45,13 @@ public class RequestDaoImpl implements RequestDao {
     @Override
     public boolean delete(Integer id) throws DAOException {
         int result;
-        try {
+
             try (Connection connection = ConnectionManager.get();
                  PreparedStatement preparedStatement = connection.prepareStatement(DELETE_REQUEST, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setInt(1, id);
                 result = preparedStatement.executeUpdate();
             }
-        } catch (SQLException e) {
+        catch (SQLException e) {
             throw new DAOException();
         }
         return result==1;
@@ -60,7 +60,7 @@ public class RequestDaoImpl implements RequestDao {
     @Override
     public Request update(Request entity) throws DAOException {
 
-        try {
+
             try (Connection connection = ConnectionManager.get();
                  PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_REQUEST, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setObject(1, entity.getStartAddress());
@@ -72,7 +72,7 @@ public class RequestDaoImpl implements RequestDao {
                 preparedStatement.setObject(7, entity.getId());
                 preparedStatement.executeUpdate();
             }
-        } catch (SQLException e) {
+        catch (SQLException e) {
             throw new DAOException();
         }
         return entity;
@@ -81,14 +81,13 @@ public class RequestDaoImpl implements RequestDao {
     @Override
     public boolean updateStatusById(Integer id, String status) throws DAOException {
         int result;
-        try {
-            try (Connection connection = ConnectionManager.get();
+        try (Connection connection = ConnectionManager.get();
                  PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATUS, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setString(1, status);
                 preparedStatement.setInt(2, id);
                 result = preparedStatement.executeUpdate();
             }
-        } catch (SQLException e) {
+        catch (SQLException e) {
             throw new DAOException();
         }
         return result==1;

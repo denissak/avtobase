@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Все пользователи</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <%@ include file="header.jsp"%>
     <%-- <jsp:include page="header.jsp">
@@ -33,7 +33,7 @@
             <td>${user.getSurname()}</td>
             <td>${user.getPhoneNumber()}</td>
             <td>
-                <button class="btn btn-outline-success ms-3 "data-bs-toggle="modal" data-bs-target=".${user.getLogin()}">Обновить юзера
+                <button class="btn btn-outline-warning ms-3 "data-bs-toggle="modal" data-bs-target=".${user.getLogin()}">Изменить
                     <c:set var = "userId" value = "${user.getId()}"/>
                 </button>
             </td>
@@ -41,7 +41,7 @@
                         <form action="Controller?command=usereditbyadmin" method="post">
                             <input type="hidden" name="id" value="${user.getId()}">
                             <input type="hidden" name="method" value="delete">
-                            <input class="btn btn-primary" type="submit" value="Удалить">
+                            <input class="btn btn-danger" type="submit" value="Удалить">
                         </form>
                     </td>
 

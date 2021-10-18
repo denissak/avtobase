@@ -34,8 +34,6 @@ public class RequestEditByUser implements Command {
             }
             RequestDto requestDto = RequestDto.builder()
                     .id(id)
-                    //.userDto(req.getParameter())
-                    //.userDto(user)
                     .startAddress(req.getParameter("startAddress"))
                     .endAddress(req.getParameter("endAddress"))
                     .dateDeparture(LocalDateTimeFormatter.format(req.getParameter("dateDeparture")))

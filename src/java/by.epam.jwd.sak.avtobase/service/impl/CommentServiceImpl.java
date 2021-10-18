@@ -3,6 +3,7 @@ package by.epam.jwd.sak.avtobase.service.impl;
 import by.epam.jwd.sak.avtobase.bean.Comment;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
 import by.epam.jwd.sak.avtobase.dto.CommentDto;
+import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.CommentService;
@@ -56,8 +57,13 @@ public class CommentServiceImpl implements CommentService {
     }
 
     private CommentDto convertToCommentDto(Comment comment) {
+        UserDto userDto = new UserDto();
+        if (comment.getUser() != null) {
+            userDto = Mapper.convertToUserDto(comment.getUser());
+        }
         return CommentDto.builder()
                 .id(comment.getId())
+                .userDto(userDto)
                 .commentDate(comment.getCommentDate())
                 .mark(comment.getMark())
                 .message(comment.getMessage())

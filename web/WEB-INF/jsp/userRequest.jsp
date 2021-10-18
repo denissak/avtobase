@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Заявки</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <%@ include file="header.jsp"%>
 </head>
@@ -31,7 +31,7 @@
             <td>${request.getTypeTransport()}</td>
             <td>${request.getDetailsRequest()}</td>
                     <td>
-                        <button class="btn btn-outline-success ms-3 "data-bs-toggle="modal" data-bs-target=".requestId_${request.getId()}">Обновить юзера
+                        <button class="btn btn-outline-warning ms-3 "data-bs-toggle="modal" data-bs-target=".requestId_${request.getId()}">Редактировать
                             <c:set var = "requestId" value = "${request.getId()}"/>
                         </button>
                     </td>
@@ -39,7 +39,7 @@
                         <form action="Controller?command=requesteditbyuser" method="post">
                             <input type="hidden" name="id" value="${request.getId()}">
                             <input type="hidden" name="method" value="delete">
-                            <input class="btn btn-primary" type="submit" value="Удалить">
+                            <input class="btn btn-danger" type="submit" value="Удалить">
                         </form>
                     </td>
         </tr>
@@ -47,7 +47,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateUserModalLabel">Редактировать пользователя</h5>
+                        <h5 class="modal-title" id="updateUserModalLabel">Редактировать заявку</h5>
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                         <%--<div class="modal-body"> <a href="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"></a></div>--%>

@@ -1,10 +1,7 @@
 package by.epam.jwd.sak.avtobase.service;
 
-import by.epam.jwd.sak.avtobase.bean.Car;
 import by.epam.jwd.sak.avtobase.bean.Driver;
 import by.epam.jwd.sak.avtobase.bean.User;
-import by.epam.jwd.sak.avtobase.dto.CarDto;
-import by.epam.jwd.sak.avtobase.dto.DriverDto;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
 
 public final class Mapper {
@@ -30,10 +27,5 @@ public final class Mapper {
                 .phoneNumber(object.getPhoneNumber())
                 .build();
     }
-    public static Driver convertToDriver(DriverDto driverDto) {
-        return Driver.builder()
-                .user(Mapper.convertToUser(driverDto.getUserDto()))
-                .doctorStamp(driverDto.getDoctorStamp())
-                .build();
-    }
+
 }

@@ -53,13 +53,13 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean delete(Integer id) throws DAOException {
         int result;
-        try {
+
             try (Connection connection = ConnectionManager.get();
                  PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setInt(1, id);
                 result = preparedStatement.executeUpdate();
             }
-        } catch (SQLException e) {
+        catch (SQLException e) {
             throw new DAOException();
         }
         return result == 1;
@@ -146,8 +146,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User save(User entity) throws DAOException {
-        try {
-            try (Connection connection = ConnectionManager.get();
+        try (Connection connection = ConnectionManager.get();
                  PreparedStatement preparedStatement = connection.prepareStatement(SAVE_USER, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setObject(1, entity.getLogin());
                 preparedStatement.setObject(2, entity.getPassword());
@@ -157,7 +156,7 @@ public class UserDaoImpl implements UserDao {
                 preparedStatement.setObject(6, entity.getPhoneNumber());
                 preparedStatement.executeUpdate();
             }
-        } catch (SQLException e) {
+        catch (SQLException e) {
             throw new DAOException();
         }
         return entity;

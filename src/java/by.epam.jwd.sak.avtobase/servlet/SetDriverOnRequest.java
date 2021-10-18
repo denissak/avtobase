@@ -1,7 +1,6 @@
 package by.epam.jwd.sak.avtobase.servlet;
 
-import by.epam.jwd.sak.avtobase.dto.DriverRequestDto;
-import by.epam.jwd.sak.avtobase.exception.DAOException;
+
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 
@@ -20,17 +19,13 @@ public class SetDriverOnRequest implements Command {
             String status = req.getParameter("status");
             Integer requestId = Integer.valueOf(req.getParameter("requestId"));
             Integer driverId = Integer.valueOf(req.getParameter("driver"));
-            /*DriverRequestDto driverRequestDto = DriverRequestDto.builder()
-                    .requestId(requestId)
-                    .driverId(driverId)
-                    .build();*/
             try {
                 factoryService.getDriversRequestsService().save(driverId, requestId);
                 factoryService.getRequestService().updateStatusById(requestId, status);
-            } catch (ServiceException | DAOException e) {
-                e.printStackTrace();
+            } catch (ServiceException e) {
+                throw new ServletException();
             }
+            resp.sendRedirect("Controller?command=gotoallrequestpage");
         }
-        resp.sendRedirect("Controller?command=gotoallrequestpage");
     }
 }

@@ -20,13 +20,12 @@ public class CommentDaoImpl implements CommentDao {
     @Override
     public boolean delete(Integer id) throws DAOException {
         int result;
-        try {
             try (Connection connection = ConnectionManager.get();
                  PreparedStatement preparedStatement = connection.prepareStatement(DELETE_COMMENT, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setInt(1, id);
                 result = preparedStatement.executeUpdate();
             }
-        } catch (SQLException e) {
+        catch (SQLException e) {
             throw new DAOException();
         }
         return result==1;
@@ -57,7 +56,7 @@ public class CommentDaoImpl implements CommentDao {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE_COMMENT, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getUser().getId());
-            preparedStatement.setObject(2 , entity.getCommentDate());
+            preparedStatement.setObject(2, entity.getCommentDate());
             preparedStatement.setObject(3, entity.getMark());
             preparedStatement.setObject(4, entity.getMessage());
             preparedStatement.executeUpdate();

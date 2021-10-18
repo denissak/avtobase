@@ -3,6 +3,7 @@ package by.epam.jwd.sak.avtobase.service.impl;
 import by.epam.jwd.sak.avtobase.bean.Car;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
 import by.epam.jwd.sak.avtobase.dto.CarDto;
+import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.CarService;
@@ -15,6 +16,15 @@ import java.util.stream.Collectors;
 public class CarServiceImpl implements CarService {
 
     private final DaoFactory daoFactory = DaoFactory.getInstance();
+
+    @Override
+    public boolean addDriver(Integer driverId) throws ServiceException {
+        try {
+            return daoFactory.getCarDao().addDriver(driverId);
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
+    }
 
     @Override
     public boolean delete(Integer id) throws ServiceException {
@@ -31,7 +41,7 @@ public class CarServiceImpl implements CarService {
         try {
             return daoFactory.getCarDao().findAll().stream().map(this::convertToCarDto).collect(Collectors.toList());
         } catch (DAOException e) {
-           throw new ServiceException();
+           throw new ServiceException(e.getMessage(), e);
         }
     }
 
@@ -56,8 +66,13 @@ public class CarServiceImpl implements CarService {
     }
 
     private CarDto convertToCarDto(Car car) {
+        UserDto userDto = new UserDto();
+        if (car.getUser() != null) {
+            userDto = Mapper.convertToUserDto(car.getUser());
+        }
         return CarDto.builder()
                 .id(car.getId())
+                .userDto(userDto)
                 .mark(car.getMark())
                 .model(car.getModel())
                 .releaseDate(car.getReleaseDate())
@@ -74,7 +89,7 @@ public class CarServiceImpl implements CarService {
     private Car convertToCar(CarDto carDto) {
         return Car.builder()
                 .id(carDto.getId())
-                .driver(Mapper.convertToDriver(carDto.getDriverDto()))
+                .user(Mapper.convertToUser(carDto.getUserDto()))
                 .mark(carDto.getMark())
                 .model(carDto.getModel())
                 .releaseDate(carDto.getReleaseDate())

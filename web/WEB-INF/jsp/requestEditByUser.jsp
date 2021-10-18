@@ -10,10 +10,10 @@
 <body>
 
 <form action="Controller?command=requesteditbyuser" method="POST">
-        <p><c:out value="${param.requestId}" /></p>
+<%--        <p><c:out value="${param.requestId}" /></p>--%>
 <c:forEach var="request" items="${requestsById}">
     <c:if test="${request.getId() == param.requestId}">
-        <p><c:out value="${request.getStartAddress()}" /></p>
+<%--        <p><c:out value="${request.getStartAddress()}" /></p>--%>
         <div style="display: none" class="mb-3">
             <label for="exampleInputId" class="form-label">Login</label>
             <input type="text"
@@ -60,7 +60,7 @@
     </div>
     </c:if>
 </c:forEach>
-    <button type="submit" class="btn btn-primary">Обновить</button>
+    <button type="submit" class="btn btn-success">Обновить</button>
 </form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

@@ -19,14 +19,13 @@ public class DriversRequestsDaoImpl implements DriversRequestsDao {
     @Override
     public boolean save(Integer driverId, Integer requestId) throws DAOException {
         int result;
-        try {
-            try (Connection connection = ConnectionManager.get();
+                    try (Connection connection = ConnectionManager.get();
                  PreparedStatement preparedStatement = connection.prepareStatement(SAVE_USER, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setObject(1, requestId);
                 preparedStatement.setObject(2, driverId);
                 result = preparedStatement.executeUpdate();
             }
-        } catch (SQLException e) {
+        catch (SQLException e) {
             throw new DAOException();
         }
         return result==1;

@@ -1,6 +1,5 @@
 package by.epam.jwd.sak.avtobase.servlet;
 
-import by.epam.jwd.sak.avtobase.bean.StatusRequest;
 import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import by.epam.jwd.sak.avtobase.dto.RequestDto;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
@@ -8,16 +7,10 @@ import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 import by.epam.jwd.sak.avtobase.util.LocalDateTimeFormatter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDateTime;
-
-import static by.epam.jwd.sak.avtobase.servlet.CommandParameter.ATTRIBUTE_URL;
 
 public class GoToCreateRequest implements Command {
 

@@ -21,7 +21,6 @@ public class GoToCreateComment  implements Command{
             UserDto userDto = (UserDto) req.getSession().getAttribute("user");
             CommentDto commentDto = CommentDto.builder()
                     .userDto(userDto)
-                    //.commentDate(LocalDateTimeFormatter.format(req.getParameter("commentDate")))
                     .mark(Integer.valueOf(req.getParameter("mark")))
                     .message(req.getParameter("message"))
                     .build();

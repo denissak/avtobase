@@ -7,7 +7,6 @@ import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,8 +30,6 @@ public class Login implements Command {
         } catch (ServiceException e) {
             throw new ServletException();
         }
-/*        RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_LOGIN_PAGE);
-        requestDispatcher.forward(req,resp);*/
     }
 
     private void onLoginFail (HttpServletRequest req, HttpServletResponse resp){
@@ -44,7 +41,13 @@ public class Login implements Command {
     }
 
     private void onLoginSuccess (UserDto user, HttpServletRequest req, HttpServletResponse resp){
+
         req.getSession().setAttribute("user", user);
+        try {
+            req.getSession().setAttribute("roles", factoryService.getRolesService().findAllRoles());
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
         //req.getSession().setAttribute("driver", d);
         req.getSession().setAttribute("typeTransports", TypeTransport.values());
         req.getSession().setAttribute("statusCars", StatusCar.values());
@@ -63,9 +66,9 @@ public class Login implements Command {
             }
         } else if (user.getRole().equals("admin")){
             try {
-                req.getSession().setAttribute("roles", factoryService.getRolesService().findAllRoles());
+                /*req.getSession().setAttribute("roles", factoryService.getRolesService().findAllRoles());*/
                 resp.sendRedirect("Controller?command=gotoalluserpage");
-            } catch (IOException | ServiceException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

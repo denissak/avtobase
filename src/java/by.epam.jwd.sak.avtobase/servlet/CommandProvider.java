@@ -24,6 +24,8 @@ public class CommandProvider {
         commands.put(CommandName.GOTOALLUSERCOMMENT, new GoToAllUserComment());
         commands.put(CommandName.GOTOALLREQUESTPAGE, new GoToAllRequestPage());
         commands.put(CommandName.SETDRIVERONREQUEST, new SetDriverOnRequest());
+        commands.put(CommandName.GOTOALLCAR, new GoToAllCar());
+        commands.put(CommandName.SETDRIVERONCAR, new SetDriverOnCar());
     }
 
     public Command takeCommand(String name) {

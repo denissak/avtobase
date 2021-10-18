@@ -16,4 +16,6 @@ public interface CarService {
     Optional<CarDto> findById (Integer id) throws ServiceException;
 
     boolean delete (Integer id) throws ServiceException;
+
+    boolean addDriver(Integer driverId) throws ServiceException;
 }

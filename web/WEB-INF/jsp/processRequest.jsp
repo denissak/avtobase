@@ -31,7 +31,7 @@
     <div class="mb-3">
         <label for="exampleInputDriver" class="form-label">Водитель</label>
         <select class="form-select" name="driver" required aria-label="select example" id="exampleInputDriver">
-            <option value="">Назначте водителя</option>
+            <option value="">Назначьте водителя</option>
             <c:forEach var="userDriver" items="${userDrivers}">
                 <option value="${userDriver.getId()}">${userDriver.getName()}</option>
             </c:forEach>
@@ -39,7 +39,7 @@
     </div>
     </c:if>
 </c:forEach>
-    <button type="submit" class="btn btn-primary">Создать</button>
+    <button type="submit" class="btn btn-success">Обновить</button>
 </form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

@@ -2,7 +2,6 @@ package by.epam.jwd.sak.avtobase.service;
 
 import by.epam.jwd.sak.avtobase.service.impl.CarServiceImpl;
 import by.epam.jwd.sak.avtobase.service.impl.CommentServiceImpl;
-import by.epam.jwd.sak.avtobase.service.impl.DriverServiceImpl;
 import by.epam.jwd.sak.avtobase.service.impl.DriversRequestsServiceImpl;
 import by.epam.jwd.sak.avtobase.service.impl.RequestServiceImpl;
 import by.epam.jwd.sak.avtobase.service.impl.RolesServiceImpl;
@@ -15,7 +14,6 @@ public class FactoryService {
     private UserService userService = new UserServiceImpl();
     private RequestService requestService = new RequestServiceImpl();
     private CarService carService = new CarServiceImpl();
-    private DriverService driverService = new DriverServiceImpl();
     private CommentService commentService = new CommentServiceImpl();
     private RolesService rolesService = new RolesServiceImpl();
     private DriversRequestsService driversRequestsService = new DriversRequestsServiceImpl();
@@ -46,10 +44,6 @@ public class FactoryService {
 
     public CarService getCarService() {
         return carService;
-    }
-
-    public DriverService getDriverService() {
-        return driverService;
     }
 
     public CommentService getCommentService() {

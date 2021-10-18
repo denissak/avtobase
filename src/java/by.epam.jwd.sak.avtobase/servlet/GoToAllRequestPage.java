@@ -24,8 +24,6 @@ public class GoToAllRequestPage implements Command {
         } catch (ServiceException e) {
             throw new ServletException();
         }
-        //session.setAttribute(ATTRIBUTE_URL, GO_TO_AUSER_PAGE);
-        //resp.sendRedirect("/userRequest");
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_ALL_REQUEST_PAGE);
         requestDispatcher.forward(req,resp);
 

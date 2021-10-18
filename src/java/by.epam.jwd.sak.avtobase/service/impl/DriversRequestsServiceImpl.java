@@ -10,7 +10,11 @@ public class DriversRequestsServiceImpl implements DriversRequestsService {
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
-    public boolean save(Integer driverId, Integer requestId) throws ServiceException, DAOException {
-        return daoFactory.getDriversRequestsDao().save(driverId, requestId);
+    public boolean save(Integer driverId, Integer requestId) throws ServiceException {
+        try {
+            return daoFactory.getDriversRequestsDao().save(driverId, requestId);
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
     }
 }

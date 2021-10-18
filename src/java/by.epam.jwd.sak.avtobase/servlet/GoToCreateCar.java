@@ -3,7 +3,6 @@ package by.epam.jwd.sak.avtobase.servlet;
 import by.epam.jwd.sak.avtobase.bean.StatusCar;
 import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import by.epam.jwd.sak.avtobase.dto.CarDto;
-import by.epam.jwd.sak.avtobase.dto.DriverDto;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
@@ -21,9 +20,9 @@ public class GoToCreateCar implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getMethod().equals("POST")) {
-            DriverDto driver = (DriverDto) req.getSession().getAttribute("user");
+            UserDto userDto = (UserDto) req.getSession().getAttribute("user");
             CarDto carDto = CarDto.builder()
-                    .driverDto(driver)
+                    .userDto(userDto)
                     .mark(req.getParameter("mark"))
                     .model(req.getParameter("model"))
                     .releaseDate(LocalDateTimeFormatter.format(req.getParameter("releaseDate")))
