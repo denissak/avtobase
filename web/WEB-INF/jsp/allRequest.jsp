@@ -3,8 +3,9 @@
 <html>
 <head>
     <title>Все заявки</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <%@ include file="header.jsp"%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <%@ include file="header.jsp" %>
 </head>
 
 <body>
@@ -24,7 +25,7 @@
     <c:forEach var="request" items="${allRequest}">
         <tr>
                 <%--<th scope="row">$${request.getDateCreate()}</th>--%>
-            <td>${request.getUserDto().getPhoneNumber()}</td>
+            <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
             <td>${request.getDateCreate()}</td>
             <td>${request.getStartAddress()}</td>
             <td>${request.getEndAddress()}</td>
@@ -33,8 +34,15 @@
             <td>${request.getTypeTransport()}</td>
             <td>${request.getDetailsRequest()}</td>
             <td>
-                <button class="btn btn-outline-warning ms-3 "data-bs-toggle="modal" data-bs-target=".requestId_${request.getId()}">Изменить
-                    <c:set var = "requestId" value = "${request.getId()}"/>
+                <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
+                        data-bs-target=".requestId_${request.getId()}">Обработать
+                    <c:set var="requestId" value="${request.getId()}"/>
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
+                        data-bs-target=".requestIdEdit_${request.getId()}">Редактировать
+                    <c:set var="requestId" value="${request.getId()}"/>
                 </button>
             </td>
             <td>
@@ -45,7 +53,8 @@
                 </form>
             </td>
         </tr>
-        <div class="modal fade requestId_${request.getId()}" id="updateUserModal" tabindex="-1" aria-labelledby="updateUserModalLabel" aria-hidden="true">
+        <div class="modal fade requestId_${request.getId()}" id="updateUserModal" tabindex="-1"
+             aria-labelledby="updateUserModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -53,10 +62,27 @@
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                     <div class="modal-body"
-                        <jsp:include page="processRequest.jsp">
-                            <jsp:param name="requestId" value="${requestId}" />
+                    <jsp:include page="processRequest.jsp">
+                        <jsp:param name="requestId" value="${requestId}"/>
+                    </jsp:include>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade requestIdEdit_${request.getId()}" id="updateCarModal" tabindex="-1"
+             aria-labelledby="updateCarModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateCarModalLabel">Редактировать заявку</h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <jsp:include page="requestEditByUser.jsp">
+                            <jsp:param name="requestId" value="${requestId}"/>
                         </jsp:include>
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -66,6 +92,6 @@
 
 </body>
 <footer>
-    <%@ include file="footer.jsp"%>
+    <%@ include file="footer.jsp" %>
 </footer>
 </html>

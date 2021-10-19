@@ -16,5 +16,7 @@ public interface CarDao {
 
     boolean delete (Integer id) throws DAOException;
 
-    boolean addDriver(Integer driverId) throws DAOException;
+    boolean addDriver(Integer driverId, Integer carId) throws DAOException;
+
+    boolean update (Car entity) throws DAOException;
 }

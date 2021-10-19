@@ -43,11 +43,11 @@ public class Login implements Command {
     private void onLoginSuccess (UserDto user, HttpServletRequest req, HttpServletResponse resp){
 
         req.getSession().setAttribute("user", user);
-        try {
+/*        try {
             req.getSession().setAttribute("roles", factoryService.getRolesService().findAllRoles());
         } catch (ServiceException e) {
             e.printStackTrace();
-        }
+        }*/
         //req.getSession().setAttribute("driver", d);
         req.getSession().setAttribute("typeTransports", TypeTransport.values());
         req.getSession().setAttribute("statusCars", StatusCar.values());
@@ -66,7 +66,11 @@ public class Login implements Command {
             }
         } else if (user.getRole().equals("admin")){
             try {
-                /*req.getSession().setAttribute("roles", factoryService.getRolesService().findAllRoles());*/
+                try {
+                    req.getSession().setAttribute("roles", factoryService.getRolesService().findAllRoles());
+                } catch (ServiceException e) {
+                    e.printStackTrace();
+                }
                 resp.sendRedirect("Controller?command=gotoalluserpage");
             } catch (IOException e) {
                 e.printStackTrace();

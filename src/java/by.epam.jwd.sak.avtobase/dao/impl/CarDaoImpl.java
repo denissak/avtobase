@@ -23,17 +23,44 @@ public class CarDaoImpl implements CarDao {
     private static final String GET_ALL_CAR = "SELECT * FROM cars as c join users as u on u.id = c.user_id";
     private static final String DELETE_CAR = "DELETE FROM cars WHERE id = ?";
     private static final String ADD_DRIVER = "UPDATE cars SET user_id = ? WHERE id = ?";
+    private static final String UPDATE_CAR = "UPDATE cars SET mark = ?, model = ?, release_date = ?, release_date = ?, type = ?, lifting_capacity = ?, cargo_capacity = ?, passenger_capacity = ?, inspection_permission = ?, status_car = ?, car_description = ? WHERE id = ?";
 
     @Override
-    public boolean addDriver(Integer driverId) throws DAOException {
+    public boolean update(Car entity) throws DAOException {
         int result;
         try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(ADD_DRIVER, RETURN_GENERATED_KEYS)) {
-            preparedStatement.setObject(1, driverId);
+             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CAR, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setObject(1, entity.getMark());
+            preparedStatement.setObject(2, entity.getModel());
+            preparedStatement.setObject(3, entity.getReleaseDate());
+            preparedStatement.setObject(4, entity.getTypeTransport());
+            preparedStatement.setObject(5, entity.getLiftingCapacity());
+            preparedStatement.setObject(6, entity.getCargoCapacity());
+            preparedStatement.setObject(7, entity.getPassengerCapacity());
+            preparedStatement.setObject(8, entity.getInspectionPermission());
+            preparedStatement.setObject(9, entity.getStatusCar());
+            preparedStatement.setObject(10, entity.getCarDescription());
+            preparedStatement.setObject(11, entity.getId());
             result = preparedStatement.executeUpdate();
         }
         catch (SQLException e) {
             throw new DAOException();
+        }
+        return result==1;
+    }
+
+    @Override
+    public boolean addDriver(Integer driverId, Integer carId) throws DAOException {
+        int result;
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(ADD_DRIVER, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setObject(1, driverId);
+            preparedStatement.setObject(2,carId);
+            /*preparedStatement.setObject(2, entity.getId());*/
+            result = preparedStatement.executeUpdate();
+        }
+        catch (SQLException e) {
+            throw new DAOException(e.getMessage(), e);
         }
         return result==1;
     }

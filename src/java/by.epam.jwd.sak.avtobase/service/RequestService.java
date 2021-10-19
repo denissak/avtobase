@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface RequestService {
 
-    List<RequestDto> findAllRequestByUser (Integer userId) throws ServiceException, DAOException;
+    List<RequestDto> findAllRequestByUser (Integer userId) throws ServiceException;
 
     List<RequestDto> findAllRequest () throws ServiceException;
 

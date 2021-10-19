@@ -17,6 +17,10 @@ import java.util.stream.Collectors;
 
 public class RequestServiceImpl implements RequestService{
 
+
+
+    private final DaoFactory daoFactory = DaoFactory.getInstance();
+
     @Override
     public List<RequestDto> findAllRequest() throws ServiceException {
         try {
@@ -25,8 +29,6 @@ public class RequestServiceImpl implements RequestService{
             throw new ServiceException();
         }
     }
-
-    private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
     public boolean delete(Integer id) throws ServiceException {
@@ -78,9 +80,13 @@ public class RequestServiceImpl implements RequestService{
     }
 
     @Override
-    public List<RequestDto> findAllRequestByUser (Integer userId) throws ServiceException, DAOException {
+    public List<RequestDto> findAllRequestByUser (Integer userId) throws ServiceException {
+        try {
             return daoFactory.getRequestDao().findAllByUserId(userId).stream()
                     .map(this::convertToRequestDto).collect(Collectors.toList());
+        } catch (DAOException e) {
+            throw new ServiceException();
+        }
     }
 
     private RequestDto convertToRequestDto(Request request) {

@@ -17,5 +17,7 @@ public interface CarService {
 
     boolean delete (Integer id) throws ServiceException;
 
-    boolean addDriver(Integer driverId) throws ServiceException;
+    boolean addDriver(Integer driverId, Integer carId) throws ServiceException;
+
+    Integer update (CarDto entity) throws ServiceException;
 }

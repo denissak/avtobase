@@ -5,6 +5,7 @@ public enum CommandName {
     LOGOUT,
     USEREDIT,
     USEREDITBYADMIN,
+    EDITCAR,
     REQUESTEDITBYUSER,
     GOTOMAINPAGE,
     REGISTRATION,
@@ -19,4 +20,5 @@ public enum CommandName {
     GOTOALLCAR,
     SETDRIVERONREQUEST,
     SETDRIVERONCAR
+
 }

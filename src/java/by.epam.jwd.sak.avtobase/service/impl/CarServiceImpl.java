@@ -18,11 +18,22 @@ public class CarServiceImpl implements CarService {
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
-    public boolean addDriver(Integer driverId) throws ServiceException {
+    public Integer update(CarDto carDto) throws ServiceException {
+        Car car = convertToCar(carDto);
         try {
-            return daoFactory.getCarDao().addDriver(driverId);
+            daoFactory.getCarDao().update(car);
         } catch (DAOException e) {
             throw new ServiceException();
+        }
+        return car.getId();
+    }
+
+    @Override
+    public boolean addDriver(Integer driverId, Integer carId) throws ServiceException {
+        try {
+            return daoFactory.getCarDao().addDriver(driverId, carId);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 

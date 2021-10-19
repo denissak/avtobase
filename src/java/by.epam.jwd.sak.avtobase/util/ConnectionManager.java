@@ -52,6 +52,9 @@ public final class ConnectionManager {
 
     public static Connection get() {
         try {
+            if (pool.size() == 0) {
+                initConnectionPool();
+            }
             return pool.take();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

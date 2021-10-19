@@ -26,8 +26,6 @@ public class GoToAllUserRequestPage implements Command{
             req.setAttribute("requestsById", factoryService.getRequestService().findAllRequestByUser(userId));
         } catch (ServiceException e) {
             e.printStackTrace();
-        } catch (DAOException e) {
-            e.printStackTrace();
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_ALL_USER_REQUEST_PAGE);
         requestDispatcher.forward(req,resp);
