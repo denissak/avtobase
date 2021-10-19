@@ -68,7 +68,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User update(User entity) throws DAOException { //TODO
+    public User update(User entity) throws DAOException {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getLogin());
