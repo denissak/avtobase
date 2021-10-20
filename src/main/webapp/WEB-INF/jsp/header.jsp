@@ -66,6 +66,9 @@
                         <li class="nav-item">
                             <a href="Controller?command=gotoallrequestpage" class="nav-link"> Все заявки</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="Controller?command=gotoalldriver" class="nav-link"> Все водители</a>
+                        </li>
                     </ul>
                     <div action="" class="d-flex">
                         <button class="btn btn-outline-success " data-bs-toggle="modal"

@@ -27,6 +27,7 @@ public class CommandProvider {
         commands.put(CommandName.GOTOALLCAR, new GoToAllCar());
         commands.put(CommandName.SETDRIVERONCAR, new SetDriverOnCar());
         commands.put(CommandName.EDITCAR, new EditCar());
+        commands.put(CommandName.GOTOALLDRIVER, new GoToAllDriver());
     }
 
     public Command takeCommand(String name) {
