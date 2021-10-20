@@ -4,6 +4,7 @@ import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 import by.epam.jwd.sak.avtobase.controller.Command;
+import by.epam.jwd.sak.avtobase.service.PasswordEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +30,7 @@ public class Registration implements Command {
             try {
                 factoryService.getUserService().create(userDto);
             } catch (ServiceException e) {
-                throw new ServletException();
+                throw new ServletException(e.getMessage(), e);
             }
         }
         resp.sendRedirect("/");

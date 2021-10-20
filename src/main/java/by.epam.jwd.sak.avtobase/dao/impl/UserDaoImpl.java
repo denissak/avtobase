@@ -27,7 +27,7 @@ public class UserDaoImpl implements UserDao {
 
     private static final String SAVE_USER = "INSERT INTO users (login, password, role_id, name, surname, phone_number)" +
             " VALUES " + "(?,?,?,?,?,?)";
-    private static final String GET_BY_LOGIN_AND_PASSWORD = "SELECT * FROM users as u join roles as r on r.id = u.role_id WHERE login = ? AND password = ?";
+    private static final String GET_BY_LOGIN = "SELECT * FROM users as u join roles as r on r.id = u.role_id WHERE login = ?";
 
     private static final String GET_USER_BY_ID = "SELECT * FROM users as u join roles as r on r.id = u.role_id WHERE u.id = ?";
 
@@ -138,17 +138,17 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Optional<User> findByLoginAndPassword(String login, String password) throws DAOException {
+    public User findByLogin(String login) throws DAOException {
         Connection connection = ConnectionManager.get();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_BY_LOGIN_AND_PASSWORD)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_BY_LOGIN)) {
             preparedStatement.setString(1, login);
-            preparedStatement.setString(2, password);
+            /*preparedStatement.setString(2, password);*/
             ResultSet resultSet = preparedStatement.executeQuery();
             User user = null;
             if (resultSet.next()) {
                 user = buildEntity(resultSet);
             }
-            return Optional.ofNullable(user);
+            return user;
         } catch (SQLException e) {
             throw new DAOException();
         } finally {
@@ -168,7 +168,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setObject(6, entity.getPhoneNumber());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

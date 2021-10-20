@@ -14,7 +14,7 @@ public interface UserDao {
 
     Optional<User> findById(Integer id) throws DAOException;
 
-    Optional<User> findByLoginAndPassword(String login, String password) throws DAOException;
+    User findByLogin(String login) throws DAOException;
 
     User save(User entity) throws DAOException;
 

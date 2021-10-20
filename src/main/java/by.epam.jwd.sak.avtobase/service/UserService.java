@@ -8,15 +8,15 @@ import java.util.Optional;
 
 public interface UserService {
 
-    Optional<UserDto> findByLoginAndPassword(String login, String password) throws ServiceException;
+    UserDto findByLogin(String login) throws ServiceException;
 
-    Integer create (UserDto userDto) throws ServiceException;
+    Integer create(UserDto userDto) throws ServiceException;
 
     List<UserDto> findAllUser() throws ServiceException;
 
     List<UserDto> findAllDrivers() throws ServiceException;
 
-    Integer update (UserDto entity) throws ServiceException;
+    Integer update(UserDto entity) throws ServiceException;
 
     Optional<UserDto> findById(Integer id) throws ServiceException;
 
