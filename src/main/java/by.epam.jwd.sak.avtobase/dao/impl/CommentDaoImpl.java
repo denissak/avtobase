@@ -22,22 +22,23 @@ public class CommentDaoImpl implements CommentDao {
     @Override
     public boolean delete(Integer id) throws DAOException {
         int result;
-            try (Connection connection = ConnectionManager.get();
-                 PreparedStatement preparedStatement = connection.prepareStatement(DELETE_COMMENT, RETURN_GENERATED_KEYS)) {
-                preparedStatement.setInt(1, id);
-                result = preparedStatement.executeUpdate();
-            }
-        catch (SQLException e) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_COMMENT, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1, id);
+            result = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
-        return result==1;
+        return result == 1;
     }
 
     @Override
     public List<Comment> findAllByUserId(Integer userId) throws DAOException {
         List<Comment> comments = new ArrayList<>();
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_COMMENT_BY_USER_ID)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_COMMENT_BY_USER_ID)) {
             preparedStatement.setObject(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -45,6 +46,8 @@ public class CommentDaoImpl implements CommentDao {
             }
         } catch (SQLException e) {
             throw new DAOException(e.getMessage(), e);
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return comments;
     }
@@ -52,22 +55,24 @@ public class CommentDaoImpl implements CommentDao {
     @Override
     public List<Comment> findAll() throws DAOException {
         List<Comment> comments = new ArrayList<>();
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_COMMENT)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_COMMENT)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 comments.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return comments;
     }
 
     @Override
     public Comment save(Comment entity) throws DAOException {
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(SAVE_COMMENT, RETURN_GENERATED_KEYS)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SAVE_COMMENT, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getUser().getId());
             preparedStatement.setObject(2, entity.getCommentDate());
             preparedStatement.setObject(3, entity.getMark());
@@ -75,6 +80,8 @@ public class CommentDaoImpl implements CommentDao {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return entity;
     }

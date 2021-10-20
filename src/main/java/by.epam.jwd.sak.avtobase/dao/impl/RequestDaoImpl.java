@@ -30,14 +30,16 @@ public class RequestDaoImpl implements RequestDao {
     @Override
     public List<Request> findAll() throws DAOException {
         List<Request> requests = new ArrayList<>();
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_REQUEST)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_REQUEST)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 requests.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return requests;
     }
@@ -45,35 +47,34 @@ public class RequestDaoImpl implements RequestDao {
     @Override
     public boolean delete(Integer id) throws DAOException {
         int result;
-
-            try (Connection connection = ConnectionManager.get();
-                 PreparedStatement preparedStatement = connection.prepareStatement(DELETE_REQUEST, RETURN_GENERATED_KEYS)) {
-                preparedStatement.setInt(1, id);
-                result = preparedStatement.executeUpdate();
-            }
-        catch (SQLException e) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_REQUEST, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1, id);
+            result = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
-        return result==1;
+        return result == 1;
     }
 
     @Override
     public Request update(Request entity) throws DAOException {
-
-
-            try (Connection connection = ConnectionManager.get();
-                 PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_REQUEST, RETURN_GENERATED_KEYS)) {
-                preparedStatement.setObject(1, entity.getStartAddress());
-                preparedStatement.setObject(2, entity.getEndAddress());
-                preparedStatement.setObject(3, entity.getDateDeparture());
-                preparedStatement.setObject(4, entity.getStatusRequest().name());
-                preparedStatement.setObject(5, entity.getTypeTransport().name());
-                preparedStatement.setObject(6, entity.getDetailsRequest());
-                preparedStatement.setObject(7, entity.getId());
-                preparedStatement.executeUpdate();
-            }
-        catch (SQLException e) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_REQUEST, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setObject(1, entity.getStartAddress());
+            preparedStatement.setObject(2, entity.getEndAddress());
+            preparedStatement.setObject(3, entity.getDateDeparture());
+            preparedStatement.setObject(4, entity.getStatusRequest().name());
+            preparedStatement.setObject(5, entity.getTypeTransport().name());
+            preparedStatement.setObject(6, entity.getDetailsRequest());
+            preparedStatement.setObject(7, entity.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return entity;
     }
@@ -81,22 +82,23 @@ public class RequestDaoImpl implements RequestDao {
     @Override
     public boolean updateStatusById(Integer id, String status) throws DAOException {
         int result;
-        try (Connection connection = ConnectionManager.get();
-                 PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATUS, RETURN_GENERATED_KEYS)) {
-                preparedStatement.setString(1, status);
-                preparedStatement.setInt(2, id);
-                result = preparedStatement.executeUpdate();
-            }
-        catch (SQLException e) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATUS, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, status);
+            preparedStatement.setInt(2, id);
+            result = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
-        return result==1;
+        return result == 1;
     }
 
     @Override
     public Optional<Request> findById(Integer id) throws DAOException {
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_REQUEST_BY_ID)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_REQUEST_BY_ID)) {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             Request request = null;
@@ -106,14 +108,15 @@ public class RequestDaoImpl implements RequestDao {
             return Optional.ofNullable(request);
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
     }
 
     @Override
     public Request save(Request entity) throws DAOException {
-        try (Connection connection = ConnectionManager.get();
-            PreparedStatement preparedStatement = connection.prepareStatement(SAVE_REQUEST, RETURN_GENERATED_KEYS)) {
-
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SAVE_REQUEST, RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, entity.getUser().getId());
             preparedStatement.setObject(2, entity.getDateCreate());
             preparedStatement.setObject(3, entity.getStartAddress());
@@ -123,9 +126,10 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(7, entity.getTypeTransport().name());
             preparedStatement.setObject(8, entity.getDetailsRequest());
             preparedStatement.executeUpdate();
-
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return entity;
     }
@@ -133,9 +137,8 @@ public class RequestDaoImpl implements RequestDao {
     @Override
     public List<Request> findAllByUserId(Integer userId) throws DAOException {
         List<Request> requests = new ArrayList<>();
-
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_REQUEST_BY_USER_ID)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_REQUEST_BY_USER_ID)) {
             preparedStatement.setObject(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -143,6 +146,8 @@ public class RequestDaoImpl implements RequestDao {
             }
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return requests;
     }
@@ -161,7 +166,7 @@ public class RequestDaoImpl implements RequestDao {
                 .build();
     }
 
-    private Request buildEntity (ResultSet resultSet) throws SQLException {
+    private Request buildEntity(ResultSet resultSet) throws SQLException {
 
         Role role = new Role(
                 resultSet.getObject(ID, Integer.class),

@@ -39,8 +39,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public Optional<User> findById(Integer id) throws DAOException {
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_USER_BY_ID)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_USER_BY_ID)) {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             User user = null;
@@ -50,6 +50,8 @@ public class UserDaoImpl implements UserDao {
             return Optional.ofNullable(user);
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
     }
 
@@ -57,21 +59,22 @@ public class UserDaoImpl implements UserDao {
     public boolean delete(Integer id) throws DAOException {
         int result;
 
-            try (Connection connection = ConnectionManager.get();
-                 PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER, RETURN_GENERATED_KEYS)) {
-                preparedStatement.setInt(1, id);
-                result = preparedStatement.executeUpdate();
-            }
-        catch (SQLException e) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1, id);
+            result = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return result == 1;
     }
 
     @Override
     public User update(User entity) throws DAOException {
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER, RETURN_GENERATED_KEYS)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getLogin());
             preparedStatement.setObject(2, entity.getRole().getId());
             preparedStatement.setObject(3, entity.getName());
@@ -81,15 +84,18 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         if (!entity.getPassword().equals("")) {
-            try (Connection connection = ConnectionManager.get();
-                 PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PASSWORD_USER, RETURN_GENERATED_KEYS)) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PASSWORD_USER, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setObject(1, entity.getPassword());
                 preparedStatement.setObject(2, entity.getId());
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 throw new DAOException();
+            } finally {
+                ConnectionManager.returnConnection(connection);
             }
         }
         return entity;
@@ -99,14 +105,17 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> findAll() throws DAOException {
         List<User> users = new ArrayList<>();
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USER)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USER)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 users.add(buildEntity(resultSet));
             }
+
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return users;
     }
@@ -114,53 +123,54 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> findAllDrivers() throws DAOException {
         List<User> users = new ArrayList<>();
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_DRIVERS)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_DRIVERS)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 users.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return users;
     }
 
     @Override
     public Optional<User> findByLoginAndPassword(String login, String password) throws DAOException {
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_BY_LOGIN_AND_PASSWORD)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_BY_LOGIN_AND_PASSWORD)) {
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, password);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             User user = null;
             if (resultSet.next()) {
                 user = buildEntity(resultSet);
             }
-
             return Optional.ofNullable(user);
-
-
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
     }
 
     @Override
     public User save(User entity) throws DAOException {
-        try (Connection connection = ConnectionManager.get();
-                 PreparedStatement preparedStatement = connection.prepareStatement(SAVE_USER, RETURN_GENERATED_KEYS)) {
-                preparedStatement.setObject(1, entity.getLogin());
-                preparedStatement.setObject(2, entity.getPassword());
-                preparedStatement.setObject(3, USER_ROLE_ID);
-                preparedStatement.setObject(4, entity.getName());
-                preparedStatement.setObject(5, entity.getSurname());
-                preparedStatement.setObject(6, entity.getPhoneNumber());
-                preparedStatement.executeUpdate();
-            }
-        catch (SQLException e) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SAVE_USER, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setObject(1, entity.getLogin());
+            preparedStatement.setObject(2, entity.getPassword());
+            preparedStatement.setObject(3, USER_ROLE_ID);
+            preparedStatement.setObject(4, entity.getName());
+            preparedStatement.setObject(5, entity.getSurname());
+            preparedStatement.setObject(6, entity.getPhoneNumber());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return entity;
     }

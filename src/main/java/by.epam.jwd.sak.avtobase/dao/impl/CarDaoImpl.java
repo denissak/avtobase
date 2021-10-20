@@ -29,8 +29,8 @@ public class CarDaoImpl implements CarDao {
     @Override
     public boolean update(Car entity) throws DAOException {
         int result;
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CAR, RETURN_GENERATED_KEYS)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CAR, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getMark());
             preparedStatement.setObject(2, entity.getModel());
             preparedStatement.setObject(3, entity.getReleaseDate());
@@ -43,48 +43,49 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(10, entity.getCarDescription());
             preparedStatement.setObject(11, entity.getId());
             result = preparedStatement.executeUpdate();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
-        return result==1;
+        return result == 1;
     }
 
     @Override
     public boolean addDriver(Integer driverId, Integer carId) throws DAOException {
         int result;
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(ADD_DRIVER, RETURN_GENERATED_KEYS)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(ADD_DRIVER, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, driverId);
-            preparedStatement.setObject(2,carId);
-            /*preparedStatement.setObject(2, entity.getId());*/
+            preparedStatement.setObject(2, carId);
             result = preparedStatement.executeUpdate();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DAOException(e.getMessage(), e);
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
-        return result==1;
+        return result == 1;
     }
 
     @Override
     public boolean delete(Integer id) throws DAOException {
         int result;
-
-            try (Connection connection = ConnectionManager.get();
-                 PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CAR, RETURN_GENERATED_KEYS)) {
-                preparedStatement.setInt(1, id);
-                result = preparedStatement.executeUpdate();
-            }
-        catch (SQLException e) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CAR, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1, id);
+            result = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
-        return result==1;
+        return result == 1;
     }
 
     @Override
     public Optional<Car> findById(Integer id) throws DAOException {
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_CAR_BY_ID)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_CAR_BY_ID)) {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             Car car = null;
@@ -94,29 +95,32 @@ public class CarDaoImpl implements CarDao {
             return Optional.ofNullable(car);
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
     }
 
     @Override
     public List<Car> findAll() throws DAOException {
         List<Car> cars = new ArrayList<>();
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_CAR)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_CAR)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 cars.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
             throw new DAOException(e.getMessage(), e);
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return cars;
     }
 
     @Override
     public Car save(Car entity) throws DAOException {
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(SAVE_CAR, RETURN_GENERATED_KEYS)) {
-
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SAVE_CAR, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getUser().getId());
             preparedStatement.setObject(2, entity.getMark());
             preparedStatement.setObject(3, entity.getModel());
@@ -129,9 +133,10 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(10, entity.getStatusCar().name());
             preparedStatement.setObject(11, entity.getCarDescription());
             preparedStatement.executeUpdate();
-
         } catch (SQLException e) {
             throw new DAOException(e.getMessage(), e);
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return entity;
     }

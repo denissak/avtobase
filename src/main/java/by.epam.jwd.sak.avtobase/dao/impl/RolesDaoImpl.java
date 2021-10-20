@@ -21,14 +21,16 @@ public class RolesDaoImpl implements RolesDao {
     @Override
     public List<Role> findAll() throws DAOException {
         List<Role> roles = new ArrayList<>();
-        try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_ROLE)) {
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_ROLE)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 roles.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
             throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
         }
         return roles;
     }

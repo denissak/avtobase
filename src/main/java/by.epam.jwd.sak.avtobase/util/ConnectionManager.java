@@ -24,7 +24,7 @@ public final class ConnectionManager {
         initConnectionPool();
     }
 
-    private static void loadDriver(){
+    private static void loadDriver() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -52,9 +52,6 @@ public final class ConnectionManager {
 
     public static Connection get() {
         try {
-            if (pool.size() == 0) {
-                initConnectionPool();
-            }
             return pool.take();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -82,6 +79,10 @@ public final class ConnectionManager {
             throw new RuntimeException();
         }
 
+    }
+
+    public static void returnConnection(Connection connection) {
+        pool.offer(connection);
     }
 }
 
