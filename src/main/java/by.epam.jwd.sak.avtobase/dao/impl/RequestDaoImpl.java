@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
+import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
 public class RequestDaoImpl implements RequestDao {
 
@@ -149,43 +150,43 @@ public class RequestDaoImpl implements RequestDao {
     private Request buildEntityById(ResultSet resultSet) throws SQLException {
 
         return Request.builder()
-                .id(resultSet.getObject("id", Integer.class))
-                .dateCreate(resultSet.getObject("date_create", Timestamp.class).toLocalDateTime())
-                .startAddress(resultSet.getObject("start_address", String.class))
-                .endAddress(resultSet.getObject("end_address", String.class))
-                .dateDeparture(resultSet.getObject("date_departure", Timestamp.class).toLocalDateTime())
-                .statusRequest(StatusRequest.valueOf(resultSet.getObject("status_request", String.class)))
-                .typeTransport(TypeTransport.valueOf(resultSet.getObject("type_transport", String.class)))
-                .detailsRequest(resultSet.getObject("details_request", String.class))
+                .id(resultSet.getObject(ID, Integer.class))
+                .dateCreate(resultSet.getObject(DATE_CREATE, Timestamp.class).toLocalDateTime())
+                .startAddress(resultSet.getObject(START_ADDRESS, String.class))
+                .endAddress(resultSet.getObject(END_ADDRESS, String.class))
+                .dateDeparture(resultSet.getObject(DATE_DEPARTURE, Timestamp.class).toLocalDateTime())
+                .statusRequest(StatusRequest.valueOf(resultSet.getObject(STATUS_REQUEST, String.class)))
+                .typeTransport(TypeTransport.valueOf(resultSet.getObject(TYPE_TRANSPORT, String.class)))
+                .detailsRequest(resultSet.getObject(DETAIL_REQUEST, String.class))
                 .build();
     }
 
     private Request buildEntity (ResultSet resultSet) throws SQLException {
 
         Role role = new Role(
-                resultSet.getObject("id", Integer.class),
-                resultSet.getObject("name", String.class)
+                resultSet.getObject(ID, Integer.class),
+                resultSet.getObject(NAME, String.class)
         );
 
         User user = new User(
-                resultSet.getObject("id", Integer.class),
-                resultSet.getObject("login", String.class),
-                resultSet.getObject("password", String.class),
-                resultSet.getObject("name", String.class),
-                resultSet.getObject("surname", String.class),
-                resultSet.getObject("phone_number", String.class),
+                resultSet.getObject(ID, Integer.class),
+                resultSet.getObject(LOGIN, String.class),
+                resultSet.getObject(PASSWORD, String.class),
+                resultSet.getObject(NAME, String.class),
+                resultSet.getObject(SURNAME, String.class),
+                resultSet.getObject(PHONE_NUMBER, String.class),
                 role
         );
         return Request.builder()
-                .id(resultSet.getObject("id", Integer.class))
+                .id(resultSet.getObject(ID, Integer.class))
                 .user(user)
-                .dateCreate(resultSet.getObject("date_create", Timestamp.class).toLocalDateTime())
-                .startAddress(resultSet.getObject("start_address", String.class))
-                .endAddress(resultSet.getObject("end_address", String.class))
-                .dateDeparture(resultSet.getObject("date_departure", Timestamp.class).toLocalDateTime())
-                .statusRequest(StatusRequest.valueOf(resultSet.getObject("status_request", String.class)))
-                .typeTransport(TypeTransport.valueOf(resultSet.getObject("type_transport", String.class)))
-                .detailsRequest(resultSet.getObject("details_request", String.class))
+                .dateCreate(resultSet.getObject(DATE_CREATE, Timestamp.class).toLocalDateTime())
+                .startAddress(resultSet.getObject(START_ADDRESS, String.class))
+                .endAddress(resultSet.getObject(END_ADDRESS, String.class))
+                .dateDeparture(resultSet.getObject(DATE_DEPARTURE, Timestamp.class).toLocalDateTime())
+                .statusRequest(StatusRequest.valueOf(resultSet.getObject(STATUS_REQUEST, String.class)))
+                .typeTransport(TypeTransport.valueOf(resultSet.getObject(TYPE_TRANSPORT, String.class)))
+                .detailsRequest(resultSet.getObject(DETAIL_REQUEST, String.class))
                 .build();
     }
 }

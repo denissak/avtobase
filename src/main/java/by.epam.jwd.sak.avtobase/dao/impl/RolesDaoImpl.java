@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
+
 public class RolesDaoImpl implements RolesDao {
 
     private static final String GET_ALL_ROLE = "SELECT * FROM roles";
@@ -33,8 +35,8 @@ public class RolesDaoImpl implements RolesDao {
 
     private Role buildEntity(ResultSet resultSet) throws SQLException {
         return Role.builder()
-                .id(resultSet.getObject("id", Integer.class))
-                .name(resultSet.getObject("name", String.class))
+                .id(resultSet.getObject(ID, Integer.class))
+                .name(resultSet.getObject(NAME, String.class))
                 .build();
     }
 }

@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
+import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
 public class UserDaoImpl implements UserDao {
 
@@ -166,13 +167,13 @@ public class UserDaoImpl implements UserDao {
 
     private User buildEntity(ResultSet resultSet) throws SQLException {
         return User.builder()
-                .id(resultSet.getObject("id", Integer.class))
-                .login(resultSet.getObject("login", String.class))
-                .password(resultSet.getObject("password", String.class))
-                .name(resultSet.getObject("name", String.class))
-                .surname(resultSet.getObject("surname", String.class))
-                .phoneNumber(resultSet.getObject("phone_number", String.class))
-                .role(new Role(resultSet.getObject("role_id", Integer.class), resultSet.getObject("r.name", String.class)))
+                .id(resultSet.getObject(ID, Integer.class))
+                .login(resultSet.getObject(LOGIN, String.class))
+                .password(resultSet.getObject(PASSWORD, String.class))
+                .name(resultSet.getObject(NAME, String.class))
+                .surname(resultSet.getObject(SURNAME, String.class))
+                .phoneNumber(resultSet.getObject(PHONE_NUMBER, String.class))
+                .role(new Role(resultSet.getObject(ROLE_ID, Integer.class), resultSet.getObject("r.name", String.class)))
                 .build();
     }
 }

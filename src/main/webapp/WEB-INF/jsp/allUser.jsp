@@ -38,7 +38,7 @@
                 </button>
             </td>
                     <td>
-                        <form action="Controller?command=usereditbyadmin" method="post">
+                        <form action="Controller?command=edituserbyadmin" method="post">
                             <input type="hidden" name="id" value="${user.getId()}">
                             <input type="hidden" name="method" value="delete">
                             <input class="btn btn-danger" type="submit" value="Удалить">
@@ -54,9 +54,9 @@
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                         <%--<div class="modal-body"> <a href="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"></a></div>--%>
-                    <div class="modal-body"><%--<<%@ include file="userEditByAdmin.jsp"%>>--%>
+                    <div class="modal-body"><%--<<%@ include file="editUserByAdmin.jsp"%>>--%>
                             <%--                            <jsp:param name="type1" value="${user}" />--%>
-                        <jsp:include page="userEditByAdmin.jsp">
+                        <jsp:include page="editUserByAdmin.jsp">
                             <jsp:param name="userId" value="${userId}" />
                         </jsp:include>
                             <%--                <c:redirect url="Controller?command=usereditbyadmin"/>--%>
@@ -77,8 +77,8 @@
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             &lt;%&ndash;<div class="modal-body"> <a href="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"></a></div>&ndash;%&gt;
-            <div class="modal-body">&lt;%&ndash;<<%@ include file="userEditByAdmin.jsp"%>>&ndash;%&gt;
-                <jsp:include page="userEditByAdmin.jsp">
+            <div class="modal-body">&lt;%&ndash;<<%@ include file="editUserByAdmin.jsp"%>>&ndash;%&gt;
+                <jsp:include page="editUserByAdmin.jsp">
                     <jsp:param name="type1" value="${user}" />
                 </jsp:include>
                 &lt;%&ndash;                <c:redirect url="Controller?command=usereditbyadmin"/>&ndash;%&gt;

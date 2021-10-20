@@ -1,0 +1,75 @@
+package by.epam.jwd.sak.avtobase.controller.impl;
+
+import by.epam.jwd.sak.avtobase.bean.StatusCar;
+import by.epam.jwd.sak.avtobase.bean.StatusRequest;
+import by.epam.jwd.sak.avtobase.bean.TypeTransport;
+import by.epam.jwd.sak.avtobase.dto.UserDto;
+import by.epam.jwd.sak.avtobase.exception.ServiceException;
+import by.epam.jwd.sak.avtobase.service.FactoryService;
+import by.epam.jwd.sak.avtobase.controller.Command;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
+
+public class Login implements Command {
+
+    private final FactoryService factoryService = FactoryService.getInstance();
+
+    @Override
+    public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            factoryService.getUserService().findByLoginAndPassword(req.getParameter(LOGIN),req.getParameter(PASSWORD))
+                    .ifPresentOrElse(
+                            user -> onLoginSuccess(user, req, resp),
+                            () -> onLoginFail (req, resp)
+                    );
+        } catch (ServiceException e) {
+            throw new ServletException();
+        }
+    }
+
+    private void onLoginFail (HttpServletRequest req, HttpServletResponse resp){
+        try {
+            resp.sendRedirect("/");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void onLoginSuccess (UserDto user, HttpServletRequest req, HttpServletResponse resp){
+
+        req.getSession().setAttribute(USER, user);
+        req.getSession().setAttribute(TYPE_TRANSPORTS, TypeTransport.values());
+        req.getSession().setAttribute(STATUS_CARS, StatusCar.values());
+        if (user.getRole().equals(USER)){
+            try {
+                resp.sendRedirect(COMMAND_ALL_USER_REQUEST);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (user.getRole().equals(DISPATCHER)){
+            try {
+                req.getSession().setAttribute(STATUS_REQUESTS, StatusRequest.values());
+                resp.sendRedirect(COMMAND_ALL_REQUEST);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (user.getRole().equals(ADMIN)){
+            try {
+                try {
+                    req.getSession().setAttribute(ROLES, factoryService.getRolesService().findAllRoles());
+                } catch (ServiceException e) {
+                    e.printStackTrace();
+                }
+                resp.sendRedirect(COMMAND_ALL_USER);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+}

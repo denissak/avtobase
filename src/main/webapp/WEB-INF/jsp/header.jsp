@@ -39,13 +39,13 @@
 
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=gotoalluserpage" class="nav-link"> Все пользователи</a>
+                            <a href="Controller?command=alluser" class="nav-link"> Все пользователи</a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=gotoallcar" class="nav-link"> Все автомобили</a>
+                            <a href="Controller?command=allcar" class="nav-link"> Все автомобили</a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=gotoallrequestpage" class="nav-link"> Все заявки</a>
+                            <a href="Controller?command=allrequest" class="nav-link"> Все заявки</a>
                         </li>
                     </ul>
                     <div action="" class="d-flex">
@@ -61,13 +61,13 @@
                 <c:when test="${user.getRole().equals('dispatcher')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=gotoallcar" class="nav-link"> Все автомобили</a>
+                            <a href="Controller?command=allcar" class="nav-link"> Все автомобили</a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=gotoallrequestpage" class="nav-link"> Все заявки</a>
+                            <a href="Controller?command=allrequest" class="nav-link"> Все заявки</a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=gotoalldriver" class="nav-link"> Все водители</a>
+                            <a href="Controller?command=alldriver" class="nav-link"> Все водители</a>
                         </li>
                     </ul>
                     <div action="" class="d-flex">
@@ -96,10 +96,10 @@
                 <c:when test="${user.getRole().equals('user')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=gotoalluserrequestpage" class="nav-link"> Мои заявки</a>
+                            <a href="Controller?command=alluserrequest" class="nav-link"> Мои заявки</a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=gotoallusercomment" class="nav-link"> Мои комментарии</a>
+                            <a href="Controller?command=allusercomment" class="nav-link"> Мои комментарии</a>
                         </li>
                     </ul>
                     <div action="" class="d-flex">
@@ -184,7 +184,7 @@
         </div>
     </div>
 </div>
-</div>
+
 
 <div class="modal fade" id="createCommentModal" tabindex="-1" aria-labelledby="createCommentModalLabel"
      aria-hidden="true">

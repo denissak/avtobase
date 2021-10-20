@@ -46,7 +46,7 @@
                 </button>
             </td>
             <td>
-                <form action="Controller?command=requesteditbyuser" method="post">
+                <form action="Controller?command=editrequestbyuser" method="post">
                     <input type="hidden" name="id" value="${request.getId()}">
                     <input type="hidden" name="method" value="delete">
                     <input class="btn btn-danger" type="submit" value="Удалить">
@@ -79,7 +79,7 @@
 
                     <div class="modal-body">
 
-                        <jsp:include page="requestEditByUser.jsp">
+                        <jsp:include page="editRequestByUser.jsp">
                             <jsp:param name="requestId" value="${requestId}"/>
                         </jsp:include>
                     </div>

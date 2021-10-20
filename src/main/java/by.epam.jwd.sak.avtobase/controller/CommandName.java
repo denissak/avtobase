@@ -1,0 +1,25 @@
+package by.epam.jwd.sak.avtobase.controller;
+
+public enum CommandName {
+    LOGIN,
+    LOGOUT,
+    EDITUSER,
+    EDITUSERBYADMIN,
+    EDITCAR,
+    EDITREQUESTBYUSER,
+    GOTOMAINPAGE,
+    REGISTRATION,
+    ALLUSERREQUEST,
+    CREATEREQUEST,
+    ALLUSER,
+    CREATECAR,
+    CREATECOMMENT,
+    ALLCOMMENT,
+    ALLDRIVER,
+    ALLUSERCOMMENT,
+    ALLREQUEST,
+    ALLCAR,
+    SETDRIVERONREQUEST,
+    SETDRIVERONCAR
+
+}

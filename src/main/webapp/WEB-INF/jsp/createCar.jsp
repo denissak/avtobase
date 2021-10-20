@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="Controller?command=gotocreatecar" method="POST">
+<form action="Controller?command=createcar" method="POST">
 
     <div class="mb-3">
         <label for="examplemark" class="form-label">Марка автомобиля</label>

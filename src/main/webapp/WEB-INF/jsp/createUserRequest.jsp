@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="Controller?command=gotocreaterequest" method="POST">
+<form action="Controller?command=createrequest" method="POST">
 <%--    <div class="mb-3">
         <label for="exampleDateCreate" class="form-label">Дата создания</label>
         <input type="date" name="dateCreate" class="form-control" id="exampleDateCreate" required aria-describedby="emailHelp">

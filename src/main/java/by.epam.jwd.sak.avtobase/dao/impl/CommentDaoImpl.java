@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
+import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
 public class CommentDaoImpl implements CommentDao {
 
@@ -80,10 +81,10 @@ public class CommentDaoImpl implements CommentDao {
 
     private Comment buildEntity(ResultSet resultSet) throws SQLException {
         return Comment.builder()
-                .id(resultSet.getObject("id", Integer.class))
-                .commentDate(resultSet.getObject("comment_date", Timestamp.class).toLocalDateTime())
-                .mark(resultSet.getObject("mark", Integer.class))
-                .message(resultSet.getObject("message", String.class))
+                .id(resultSet.getObject(ID, Integer.class))
+                .commentDate(resultSet.getObject(COMMENT_DATE, Timestamp.class).toLocalDateTime())
+                .mark(resultSet.getObject(MARK, Integer.class))
+                .message(resultSet.getObject(MESSAGE, String.class))
                 .build();
     }
 }

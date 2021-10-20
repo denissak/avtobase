@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="Controller?command=gotocreatecomment" method="POST">
+<form action="Controller?command=createcomment" method="POST">
 
     <div class="mb-3">
         <label for="examplemark" class="form-label">Оценка</label>

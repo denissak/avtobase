@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
+import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
 public class CarDaoImpl implements CarDao {
 
@@ -138,33 +139,33 @@ public class CarDaoImpl implements CarDao {
     private Car buildEntity(ResultSet resultSet) throws SQLException {
 
         Role role = new Role(
-                resultSet.getObject("id", Integer.class),
-                resultSet.getObject("name", String.class)
+                resultSet.getObject(ID, Integer.class),
+                resultSet.getObject(NAME, String.class)
         );
 
         User user = new User(
-                resultSet.getObject("id", Integer.class),
-                resultSet.getObject("login", String.class),
-                resultSet.getObject("password", String.class),
-                resultSet.getObject("name", String.class),
-                resultSet.getObject("surname", String.class),
-                resultSet.getObject("phone_number", String.class),
+                resultSet.getObject(ID, Integer.class),
+                resultSet.getObject(LOGIN, String.class),
+                resultSet.getObject(PASSWORD, String.class),
+                resultSet.getObject(NAME, String.class),
+                resultSet.getObject(SURNAME, String.class),
+                resultSet.getObject(PHONE_NUMBER, String.class),
                 role
         );
         return Car.builder()
 
-                .id(resultSet.getObject("id", Integer.class))
+                .id(resultSet.getObject(ID, Integer.class))
                 .user(user)
-                .mark(resultSet.getObject("mark", String.class))
-                .model(resultSet.getObject("model", String.class))
-                .releaseDate(resultSet.getObject("release_date", Timestamp.class).toLocalDateTime())
-                .typeTransport(TypeTransport.valueOf(resultSet.getObject("type", String.class)))
-                .liftingCapacity(resultSet.getObject("lifting_capacity", Integer.class))
-                .cargoCapacity(resultSet.getObject("cargo_capacity", Integer.class))
-                .passengerCapacity(resultSet.getObject("passenger_capacity", Integer.class))
-                .releaseDate(resultSet.getObject("inspection_permission", Timestamp.class).toLocalDateTime())
-                .statusCar(StatusCar.valueOf(resultSet.getObject("status_car", String.class)))
-                .carDescription((resultSet.getObject("car_description", String.class)))
+                .mark(resultSet.getObject(MARK, String.class))
+                .model(resultSet.getObject(MODEL, String.class))
+                .releaseDate(resultSet.getObject(RELEASE_DATE, Timestamp.class).toLocalDateTime())
+                .typeTransport(TypeTransport.valueOf(resultSet.getObject(TYPE, String.class)))
+                .liftingCapacity(resultSet.getObject(LIFTING_CAPACITY, Integer.class))
+                .cargoCapacity(resultSet.getObject(CARGO_CAPACITY, Integer.class))
+                .passengerCapacity(resultSet.getObject(PASSENGER_CAPACITY, Integer.class))
+                .releaseDate(resultSet.getObject(INSPECTION_PERMISSION, Timestamp.class).toLocalDateTime())
+                .statusCar(StatusCar.valueOf(resultSet.getObject(STATUS_CAR, String.class)))
+                .carDescription((resultSet.getObject(CAR_DESCRIPTION, String.class)))
                 .build();
     }
 
