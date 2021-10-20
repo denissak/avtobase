@@ -21,9 +21,9 @@ public class GoToAllUserComment implements Command {
         UserDto user = (UserDto) req.getSession().getAttribute("user");
         Integer userId = user.getId();
         try {
-            req.setAttribute("requestsById", factoryService.getCommentService().findAllCommentByUser(userId));
+            req.setAttribute("commentsById", factoryService.getCommentService().findAllCommentByUser(userId));
         } catch (ServiceException e) {
-            throw new ServletException();
+            throw new ServletException(e.getMessage(), e);
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(GO_TO_ALL_COMMENT_BY_USER_PAGE);
         requestDispatcher.forward(req,resp);

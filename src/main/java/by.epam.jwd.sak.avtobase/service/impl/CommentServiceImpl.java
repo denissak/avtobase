@@ -23,7 +23,7 @@ public class CommentServiceImpl implements CommentService {
             return daoFactory.getCommentDao().findAllByUserId(userId).stream()
                     .map(this::convertToCommentDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 

@@ -14,6 +14,7 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 public class CommentDaoImpl implements CommentDao {
 
     private static final String GET_ALL_COMMENT = "SELECT * FROM comments";
+    private static final String GET_ALL_COMMENT_BY_USER_ID = "SELECT * FROM comments WHERE user_id = ?";
     private static final String SAVE_COMMENT = "INSERT INTO comments (user_id, comment_date, mark, message) VALUES (?,?,?,?)";
     private static final String DELETE_COMMENT = "DELETE FROM comments WHERE id = ?";
 
@@ -33,7 +34,18 @@ public class CommentDaoImpl implements CommentDao {
 
     @Override
     public List<Comment> findAllByUserId(Integer userId) throws DAOException {
-        return null;
+        List<Comment> comments = new ArrayList<>();
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_COMMENT_BY_USER_ID)) {
+            preparedStatement.setObject(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                comments.add(buildEntity(resultSet));
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e.getMessage(), e);
+        }
+        return comments;
     }
 
     @Override
@@ -60,7 +72,6 @@ public class CommentDaoImpl implements CommentDao {
             preparedStatement.setObject(3, entity.getMark());
             preparedStatement.setObject(4, entity.getMessage());
             preparedStatement.executeUpdate();
-
         } catch (SQLException e) {
             throw new DAOException();
         }
@@ -72,7 +83,7 @@ public class CommentDaoImpl implements CommentDao {
                 .id(resultSet.getObject("id", Integer.class))
                 .commentDate(resultSet.getObject("comment_date", Timestamp.class).toLocalDateTime())
                 .mark(resultSet.getObject("mark", Integer.class))
-                .message(resultSet.getObject("name", String.class))
+                .message(resultSet.getObject("message", String.class))
                 .build();
     }
 }

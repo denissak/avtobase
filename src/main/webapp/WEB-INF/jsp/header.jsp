@@ -92,6 +92,12 @@
 
                 <c:when test="${user.getRole().equals('user')}">
                     <ul class="navbar-nav me-auto mb-2">
+                        <li class="nav-item">
+                            <a href="Controller?command=gotoalluserrequestpage" class="nav-link"> Мои заявки</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Controller?command=gotoallusercomment" class="nav-link"> Мои комментарии</a>
+                        </li>
                     </ul>
                     <div action="" class="d-flex">
                         <button class="btn btn-outline-success " data-bs-toggle="modal"

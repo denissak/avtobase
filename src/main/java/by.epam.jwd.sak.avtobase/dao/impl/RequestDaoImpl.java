@@ -136,14 +136,10 @@ public class RequestDaoImpl implements RequestDao {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_REQUEST_BY_USER_ID)) {
             preparedStatement.setObject(1, userId);
-
             ResultSet resultSet = preparedStatement.executeQuery();
-
             while (resultSet.next()) {
                 requests.add(buildEntityById(resultSet));
             }
-
-
         } catch (SQLException e) {
             throw new DAOException();
         }
