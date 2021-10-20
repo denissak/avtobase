@@ -7,7 +7,7 @@ import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.UserService;
-import by.epam.jwd.sak.avtobase.validator.CreateUserValidator;
+import by.epam.jwd.sak.avtobase.service.validator.CreateUserValidator;
 
 import java.util.List;
 import java.util.Optional;

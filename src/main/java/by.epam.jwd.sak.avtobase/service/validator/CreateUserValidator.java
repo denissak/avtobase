@@ -1,4 +1,4 @@
-package by.epam.jwd.sak.avtobase.validator;
+package by.epam.jwd.sak.avtobase.service.validator;
 
 
 import by.epam.jwd.sak.avtobase.dto.UserDto;

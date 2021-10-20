@@ -1,4 +1,4 @@
-package by.epam.jwd.sak.avtobase.filter;
+package by.epam.jwd.sak.avtobase.servlet.filter;
 
         import javax.servlet.*;
         import javax.servlet.annotation.WebFilter;

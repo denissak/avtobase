@@ -1,6 +1,6 @@
 package by.epam.jwd.sak.avtobase.exception;
 
-import by.epam.jwd.sak.avtobase.validator.Error;
+import by.epam.jwd.sak.avtobase.service.validator.Error;
 import lombok.Getter;
 
 import java.util.List;
