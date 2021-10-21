@@ -24,13 +24,12 @@ public class AllUser implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
         List<UserDto> userDtoList = (List<UserDto>) req.getSession().getAttribute(ALL_USER);
-        String page = req.getParameter("page");
+        String page = req.getParameter(PAGE);
         int numberOfPages = userDtoList.size() / 5 + 1;
-        req.setAttribute("numberOfPages", numberOfPages);
+        req.setAttribute(NUMBER_OF_PAGES, numberOfPages);
         Pagination.process(userDtoList, page);
-        req.setAttribute("usersDisplay", Pagination.process(userDtoList, page));
+        req.setAttribute(USER_DISPLAY, Pagination.process(userDtoList, page));
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_USER);
         requestDispatcher.forward(req, resp);
 

@@ -45,8 +45,11 @@ public final class CommandParameter {
     public static final String COMMENT_BY_ID = "commentsById";
     public static final String REQUEST_BY_ID = "requestsById";
     public static final String REQUEST_ID = "requestId";
+    public static final String NUMBER_OF_PAGES = "numberOfPages";
+    public static final String USER_DISPLAY = "usersDisplay";
     public static final String CAR_ID = "carId";
     public static final String STATUS = "status";
+    public static final String PAGE = "page";
 
 
 
