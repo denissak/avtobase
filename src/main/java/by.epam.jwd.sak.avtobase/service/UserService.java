@@ -12,7 +12,7 @@ public interface UserService {
 
     Integer create(UserDto userDto) throws ServiceException;
 
-    List<UserDto> findAllUser() throws ServiceException;
+    List<UserDto> findAllUser(Integer limit) throws ServiceException;
 
     List<UserDto> findAllDrivers() throws ServiceException;
 

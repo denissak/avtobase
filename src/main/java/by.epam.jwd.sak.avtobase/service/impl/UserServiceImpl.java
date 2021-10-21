@@ -51,9 +51,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> findAllUser() throws ServiceException {
+    public List<UserDto> findAllUser(Integer limit) throws ServiceException {
         try {
-            return daoFactory.getUserDao().findAll().stream().map(this::convertToUserDto).collect(Collectors.toList());
+            return daoFactory.getUserDao().findAll(limit).stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
             throw new ServiceException();
         }

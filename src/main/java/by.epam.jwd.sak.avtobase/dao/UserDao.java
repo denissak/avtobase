@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface UserDao {
 
-    List<User> findAll() throws DAOException;
+    List<User> findAll(Integer limit) throws DAOException;
 
     List<User> findAllDrivers() throws DAOException;
 

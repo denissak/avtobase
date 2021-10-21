@@ -12,6 +12,43 @@
 
 <body>
 
+<%--<nav aria-label="...">
+    <ul class="pagination">
+        <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+        </li>
+        <li class="page-item"><a class="page-link" href="Controller?command=alluser&page=1">1</a></li>
+        <li class="page-item active" aria-current="page">
+            <span class="page-link">2</span>
+        </li>
+        <li class="page-item"><a class="page-link" href="Controller?command=alluser&page=3">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>--%>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+<%--        <c:forEach var="statusRequest" items="${statusRequests}">
+            <li class="page-item"><a class="page-link" href="Controller?command=alluser&page=1">1</a></li>
+        </c:forEach>--%>
+        <li class="page-item"><a class="page-link" href="Controller?command=alluser&page=1">1</a></li>
+        <li class="page-item"><a class="page-link" href="Controller?command=alluser&page=2">2</a></li>
+        <li class="page-item"><a class="page-link" href="Controller?command=alluser&page=3">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
 <table class="table">
     <thead>
     <tr>
@@ -67,6 +104,8 @@
     </c:forEach>
     </thead>
 </table>
+
+
 
 
 <%--<div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="updateUserModalLabel" aria-hidden="true">

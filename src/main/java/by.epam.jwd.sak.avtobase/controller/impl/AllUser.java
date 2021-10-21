@@ -19,12 +19,18 @@ public class AllUser implements Command {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        try {
-            req.setAttribute(ALL_USER, factoryService.getUserService().findAllUser());
-        } catch (ServiceException e) {
-            throw new ServletException();
+        if (req.getParameter("page") != null) {
+            String page = req.getParameter("page");
+            Integer pageInt = Integer.parseInt(page);
+            Integer limit  = (pageInt - 1) *5;
+            try {
+                req.setAttribute(ALL_USER, factoryService.getUserService().findAllUser(limit));
+            } catch (ServiceException e) {
+                throw new ServletException();
+            }
         }
+
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_USER);
         requestDispatcher.forward(req, resp);
 

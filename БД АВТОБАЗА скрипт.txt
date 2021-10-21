@@ -1,0 +1,133 @@
+CREATE DATABASE avtobase character set utf8 collate utf8_general_ci;
+
+DROP DATABASE avtobase;
+
+DROP TABLE drivers_requests;
+
+DROP TABLE users_requests;
+
+USE avtobase;
+
+CREATE TABLE roles(
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(15)
+);
+
+CREATE TABLE users(
+id INT AUTO_INCREMENT PRIMARY KEY,
+login VARCHAR (20) UNIQUE NOT NULL,
+password VARCHAR (60) NOT NULL,
+role_id INT,
+name VARCHAR (20) NOT NULL,
+surname VARCHAR (20) NOT NULL,
+phone_number LONG NOT NULL,
+FOREIGN KEY (role_id) REFERENCES roles (id)
+);
+
+CREATE TABLE comments (
+id INT AUTO_INCREMENT PRIMARY KEY,
+user_id INT NOT NULL,
+comment_date TIMESTAMP,
+mark INT NOT NULL,
+message VARCHAR (300),
+FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+
+CREATE TABLE requests (
+id INT AUTO_INCREMENT PRIMARY KEY,
+user_id INT NOT NULL,
+date_create TIMESTAMP (6) NOT NULL,
+start_address VARCHAR (100) NOT NULL,
+end_address VARCHAR (100) NOT NULL,
+date_departure TIMESTAMP (6) NOT NULL,
+status_request VARCHAR (15),
+type_transport VARCHAR (15) NOT NULL,
+details_request VARCHAR (300),
+FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+
+CREATE TABLE cars (
+id INT AUTO_INCREMENT PRIMARY KEY,
+user_id INT,
+mark VARCHAR (15) NOT NULL,
+model VARCHAR (15) NOT NULL,
+release_date TIMESTAMP NOT NULL,
+type VARCHAR (15) NOT NULL,
+lifting_capacity INT,
+cargo_capacity INT,
+passenger_capacity INT,
+inspection_permission TIMESTAMP,
+status_car VARCHAR (15) NOT NULL,
+car_description VARCHAR (300),
+FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+CREATE TABLE drivers_requests(
+request_id INT NOT NULL,
+user_id  INT NOT NULL,
+FOREIGN KEY (request_id) REFERENCES requests (id),
+FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+
+
+
+
+
+INSERT INTO roles (name)
+VALUES ('admin'),
+       ('dispatcher'),
+       ('driver'),
+       ('user');
+
+    INSERT INTO users (login, password, role_id, name, surname, phone_number)
+             VALUES ('userr','$2a$10$/WQA6i2qTKLFz7KN5hspL.NWBpu0A5XN9U9zlw2iY8fQxyl0GYiRG','4','Григорий','Семенов','+375338794567'),
+                    ('dispatcher','$2a$10$/WQA6i2qTKLFz7KN5hspL.NWBpu0A5XN9U9zlw2iY8fQxyl0GYiRG','2','Мария','Белова','+375337859632'),
+                    ('driver','$2a$10$/WQA6i2qTKLFz7KN5hspL.NWBpu0A5XN9U9zlw2iY8fQxyl0GYiRG','3','Егор','Астафьев','+375445263478'),
+                    ('admin','$2a$10$/WQA6i2qTKLFz7KN5hspL.NWBpu0A5XN9U9zlw2iY8fQxyl0GYiRG','1','Елена','Калачева','+375293256984'),
+                    ('Valuser','Dd123','4','Валерий','Сидоров','+375298799654'),
+                    ('Valdisp','Dd123','2','Ирина','Легкая','+375331233256'),
+                    ('Valdriver','Dd123','3','Аркадий','Васильев','+375298563214'),
+                    ('Valadmin','Dd123','1','Максим','Самсонов','+375331256398'),
+                    ('Seruser','Dd123','4','Никита','Полевой','+375335896325'),
+                    ('Serdisp','Dd123','2','Влада','Кондратьева','+375448746329'),
+                    ('Serdriver','Dd123','3','Екатерина','Ложкина','+37529123568'),
+                    ('Seradmin','Dd123','1','Михаил','Мешков','+375333652987'),
+                    ('Igoruser','Dd123','4','Алексей','Ионов','+375447789652'),
+                    ('Igordisp','Dd123','2','Светлана','Иванова','+375331126589'),
+                    ('Igordriver','Dd123','3','Кирилл','Шустик','+375291238569'),
+                    ('Igoradmin','Dd123','1','Константин','Заяц','+375298765924');
+
+
+INSERT INTO comments (user_id, comment_date, mark, message)
+VALUES ('1','2021-10-18 11:18:37','5','perfect'),
+       ('9','2021-02-15 18:18:37','1','Не понравилось'),
+       ('13','2019-05-09 11:39:37','3','так себе'),
+       ('5','2020-12-13 14:18:37','3','отлично');
+
+
+INSERT INTO requests (user_id, date_create, start_address, end_address, date_departure, status_request, type_transport, details_request)
+VALUES ('1', '2021-10-18 11:18:37', 'Минск', 'Москва', '2021-10-30 11:18:37', 'PROCESSING', 'FREIGHT', 'хрупкий груз'),
+       ('5', '2021-03-15 11:18:37', 'Минск', 'Киев', '2021-10-21 11:18:37', 'PROCESSING', 'PASSENGER', '10 человек'),
+       ('9', '2021-10-18 11:18:37', 'Минск', 'Санкт-Петербург', '2021-11-13 11:18:37', 'PROCESSING', 'PASSENGER', '7 человек, к подъезду'),
+       ('13', '2021-10-18 11:18:37', 'Минск', 'Сочи', '2021-12-03 11:18:37', 'PROCESSING', 'FREIGHT', 'габаритный груз'),
+       ('1', '2021-10-18 11:18:37', 'Минск', 'Брест', '2021-10-25 11:18:37', 'PROCESSING', 'PASSENGER', '20 человек экскурсия'),
+       ('5', '2021-10-18 11:18:37', 'Минск', 'Рига', '2021-11-07 11:18:37', 'PROCESSING', 'FREIGHT', 'объёмный груз'),
+       ('9', '2021-10-18 11:18:37', 'Минск', 'Москва', '2021-12-18 11:18:37', 'PROCESSING', 'FREIGHT', 'груз'),
+       ('13', '2021-10-18 11:18:37', 'Минск', 'Варшава', '2021-12-28 11:18:37', 'PROCESSING', 'PASSENGER', '5 человек с ребенком');
+
+INSERT INTO cars (user_id, mark, model, release_date, type, lifting_capacity, cargo_capacity, passenger_capacity, inspection_permission, status_car, car_description)
+VALUES ('3','SCANIA', 'ZX3', '2018-03-18 11:18:37', 'FREIGHT', '12', '45', '0', '2022-10-18 11:18:37', 'BROKEN', 'грузовой автомобиль, .......'),
+       ('7','MERSCEDES', '12dd', '2020-10-18 11:18:37', 'PASSENGER', '0', '0', '20', '2023-08-18 11:18:37', 'READY', 'микроавтобус, .......'),
+       ('11','VOLVO', 'XC192', '2015-03-13 11:18:37', 'FREIGHT', '20', '53', '0', '2021-12-18 11:18:37', 'INWORK', 'грузовой автомобиль, .......'),
+       ('15','MAN', '1D', '2013-02-07 11:18:37', 'PASSENGER', '0', '0', '45', '2022-05-29 11:18:37', 'READY', 'автобус, .......');
+
+
+INSERT INTO drivers_requests (request_id, user_id) VALUES ('1','11'),
+                                                          ('2','7'),
+                                                          ('5','15');
+
+
+
