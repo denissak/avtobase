@@ -49,6 +49,7 @@ public class Login implements Command {
         req.getSession().setAttribute(USER, userDto);
         req.getSession().setAttribute(TYPE_TRANSPORTS, TypeTransport.values());
         req.getSession().setAttribute(STATUS_CARS, StatusCar.values());
+
         if (userDto.getRole().equals(USER)) {
             try {
                 resp.sendRedirect(COMMAND_ALL_USER_REQUEST);
@@ -66,6 +67,11 @@ public class Login implements Command {
             try {
                 try {
                     req.getSession().setAttribute(ROLES, factoryService.getRolesService().findAllRoles());
+                    req.getSession().setAttribute(ALL_USER, factoryService.getUserService().findAllUser());
+                    req.getSession().setAttribute(ALL_CAR, factoryService.getCarService().findAllCar());
+                    //req.getSession().getAttribute(ALL_DRIVER, factoryService.getUserService().findAllDrivers())
+                    req.getSession().setAttribute(ALL_REQUEST,factoryService.getRequestService().findAllRequest());
+
                 } catch (ServiceException e) {
                     e.printStackTrace();
                 }

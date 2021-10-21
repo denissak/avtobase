@@ -12,43 +12,6 @@
 
 <body>
 
-<%--<nav aria-label="...">
-    <ul class="pagination">
-        <li class="page-item disabled">
-            <span class="page-link">Previous</span>
-        </li>
-        <li class="page-item"><a class="page-link" href="Controller?command=alluser&page=1">1</a></li>
-        <li class="page-item active" aria-current="page">
-            <span class="page-link">2</span>
-        </li>
-        <li class="page-item"><a class="page-link" href="Controller?command=alluser&page=3">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</nav>--%>
-
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-<%--        <c:forEach var="statusRequest" items="${statusRequests}">
-            <li class="page-item"><a class="page-link" href="Controller?command=alluser&page=1">1</a></li>
-        </c:forEach>--%>
-        <li class="page-item"><a class="page-link" href="Controller?command=alluser&page=1">1</a></li>
-        <li class="page-item"><a class="page-link" href="Controller?command=alluser&page=2">2</a></li>
-        <li class="page-item"><a class="page-link" href="Controller?command=alluser&page=3">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>
-
 <table class="table">
     <thead>
     <tr>
@@ -60,10 +23,8 @@
         <th scope="col">Фамилия</th>
         <th scope="col">Номер телефона</th>
     </tr>
-    <c:forEach var="user" items="${allUser}">
+    <c:forEach var="user" items="${usersDisplay}">
         <tr>
-                <%--<th scope="row">$${request.getDateCreate()}</th>--%>
-                <%--<td>${user.getId()}</td>--%>
             <td>${user.getLogin()}</td>
             <td>${user.getRole()}</td>
             <td>${user.getName()}</td>
@@ -105,26 +66,13 @@
     </thead>
 </table>
 
-
-
-
-<%--<div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="updateUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="updateUserModalLabel">Редактировать пользователя</h5>
-                <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
-            </div>
-            &lt;%&ndash;<div class="modal-body"> <a href="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"></a></div>&ndash;%&gt;
-            <div class="modal-body">&lt;%&ndash;<<%@ include file="editUserByAdmin.jsp"%>>&ndash;%&gt;
-                <jsp:include page="editUserByAdmin.jsp">
-                    <jsp:param name="type1" value="${user}" />
-                </jsp:include>
-                &lt;%&ndash;                <c:redirect url="Controller?command=usereditbyadmin"/>&ndash;%&gt;
-                &lt;%&ndash;<%@ include file="createUserRequest.jsp"%>&ndash;%&gt; &lt;%&ndash;<jsp:include page="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"&ndash;%&gt; </div>
-        </div>
-    </div>
-</div>--%>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <c:forEach begin="1" end="${numberOfPages}" var="val">
+            <li class="page-item ${val == param.page ? 'active' : ''}"><a class="page-link" href="Controller?command=alluser&page=${val}">${val}</a></li>
+        </c:forEach>
+    </ul>
+</nav>
 
 
 </body>

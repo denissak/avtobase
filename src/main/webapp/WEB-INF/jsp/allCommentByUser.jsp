@@ -24,6 +24,14 @@
     </thead>
 </table>
 </body>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <c:forEach begin="1" end="${numberOfPages}" var="val">
+            <li class="page-item ${val == param.page ? 'active' : ''}"><a class="page-link" href="Controller?command=allusercomment&page=${val}">${val}</a></li>
+        </c:forEach>
+    </ul>
+</nav>
 <footer>
     <%@ include file="footer.jsp"%>
 </footer>

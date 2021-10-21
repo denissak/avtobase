@@ -53,10 +53,10 @@ public final class CommandParameter {
 
 
 
-    public static final String COMMAND_ALL_CAR= "Controller?command=allcar";
+    public static final String COMMAND_ALL_CAR= "Controller?command=allcar&page=1";
     public static final String COMMAND_ALL_USER_REQUEST = "Controller?command=alluserrequest";
-    public static final String COMMAND_ALL_USER = "Controller?command=alluser";
-    public static final String COMMAND_ALL_REQUEST = "Controller?command=allrequest";
+    public static final String COMMAND_ALL_USER = "Controller?command=alluser&page=1";
+    public static final String COMMAND_ALL_REQUEST = "Controller?command=allrequest&page=1";
 
 
 

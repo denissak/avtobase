@@ -30,6 +30,14 @@
     </thead>
 </table>
 
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <c:forEach begin="1" end="${numberOfPages}" var="val">
+            <li class="page-item ${val == param.page ? 'active' : ''}"><a class="page-link" href="Controller?command=alldriver&page=${val}">${val}</a></li>
+        </c:forEach>
+    </ul>
+</nav>
+
 </body>
 <footer>
     <%@ include file="footer.jsp"%>

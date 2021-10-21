@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao {
 
     private static final int USER_ROLE_ID = 4;
 
-    private static final String GET_ALL_USER = "SELECT * FROM users as u join roles as r  on r.id = u.role_id ORDER BY u.id LIMIT ? , 5";
+    private static final String GET_ALL_USER = "SELECT * FROM users as u join roles as r  on r.id = u.role_id ORDER BY u.id ";
 
     private static final String GET_ALL_DRIVERS = "SELECT * FROM users as u join roles as r  on r.id = u.role_id WHERE r.id = 3";
 
@@ -103,11 +103,10 @@ public class UserDaoImpl implements UserDao {
 
 
     @Override
-    public List<User> findAll(Integer limit) throws DAOException {
+    public List<User> findAll() throws DAOException {
         List<User> users = new ArrayList<>();
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USER)) {
-            preparedStatement.setObject(1,limit);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 users.add(buildEntity(resultSet));
