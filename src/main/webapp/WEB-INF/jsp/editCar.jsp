@@ -11,7 +11,7 @@
 
 <form action="Controller?command=editcar" method="POST">
             <p><c:out value="${param.requestId}" /></p>
-    <c:forEach var="car" items="${carId}">
+    <c:forEach var="car" items="${allCar}">
         <c:if test="${car.getId() == param.carId}">
             <%--        <p><c:out value="${request.getStartAddress()}" /></p>--%>
             <div style="display: none" class="mb-3">
@@ -36,11 +36,11 @@
             </div>--%>
             <div class="mb-3">
                 <label for="exampleMark" class="form-label">Модель</label>
-                <input type="text" name="mark" class="form-control" id="exampleMark" value="${car.getModel()}" >
+                <input type="text" name="mark" class="form-control" id="exampleMark" value="${car.getMark()}" >
             </div>
             <div class="mb-3">
                 <label for="exampleModel" class="form-label">Марка</label>
-                <input type="text" name="model" class="form-control" id="exampleModel" value="${car.getMark()}">
+                <input type="text" name="model" class="form-control" id="exampleModel" value="${car.getModel()}">
             </div>
             <div class="mb-3">
                 <label for="exampleReleaseDate" class="form-label">Дата выпуска</label>
@@ -56,15 +56,15 @@
             </div>
             <div class="mb-3">
                 <label for="exampleLiftingCapacity" class="form-label">Грузовместимость</label>
-                <input type="datetime-local" name="liftingCapacity" class="form-control" id="exampleLiftingCapacity" value="${car.getLiftingCapacity()}">
+                <input type="text" name="liftingCapacity" class="form-control" id="exampleLiftingCapacity" value="${car.getLiftingCapacity()}">
             </div>
             <div class="mb-3">
                 <label for="exampleCargoCapacity" class="form-label">Грузоподъемность</label>
-                <input type="datetime-local" name="cargoCapacity" class="form-control" id="exampleCargoCapacity" value="${car.getCargoCapacity()}">
+                <input type="text" name="cargoCapacity" class="form-control" id="exampleCargoCapacity" value="${car.getCargoCapacity()}">
             </div>
             <div class="mb-3">
                 <label for="examplePassengerCapacity" class="form-label">Пассажировместимость</label>
-                <input type="datetime-local" name="passengerCapacity" class="form-control" id="examplePassengerCapacity" value="${car.getPassengerCapacity()}">
+                <input type="text" name="passengerCapacity" class="form-control" id="examplePassengerCapacity" value="${car.getPassengerCapacity()}">
             </div>
             <div class="mb-3">
                 <label for="exampleInspectionPermission" class="form-label">Дата допуска к движению</label>

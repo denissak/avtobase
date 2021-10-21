@@ -61,10 +61,11 @@
                         <h5 class="modal-title" id="updateUserModalLabel">Редактировать статус заказа</h5>
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
-                    <div class="modal-body"
+                    <div class="modal-body">
                     <jsp:include page="processRequest.jsp">
                         <jsp:param name="requestId" value="${requestId}"/>
                     </jsp:include>
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,7 +79,6 @@
                     </div>
 
                     <div class="modal-body">
-
                         <jsp:include page="editRequestByUser.jsp">
                             <jsp:param name="requestId" value="${requestId}"/>
                         </jsp:include>

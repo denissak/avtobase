@@ -13,13 +13,10 @@ public class Pagination {
         int limit = (pageInt - 1) * 5;
         for (int i = limit; i < pageInt * 5; i++) {
             if (userDtoList.size() > i) {
-
                 userDtoDisplayList.add(userDtoList.get(i));
-
             } else {
                 break;
             }
-
         }
         return userDtoDisplayList;
     }

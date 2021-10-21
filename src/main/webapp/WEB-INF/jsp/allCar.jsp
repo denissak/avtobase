@@ -67,14 +67,15 @@
                         <h5 class="modal-title" id="updateCarDriverModalLabel">Назначить водителя</h5>
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
-                    <div class="modal-body"
+                    <div class="modal-body">
                     <jsp:include page="processCar.jsp">
                         <jsp:param name="carId" value="${carId}"/>
                     </jsp:include>
                 </div>
+                </div>
             </div>
         </div>
-        <div class="modal fade carIdEdit_${car.getId()}" id="updateCarModal" tabindex="-1"
+        <div class="modal fade carIdEdit_${car.getId()}" id="updateEditCarModal" tabindex="-1"
              aria-labelledby="updateCarModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -82,10 +83,11 @@
                         <h5 class="modal-title" id="updateCarModalLabel">Редактировать автомобиль</h5>
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
-                    <div class="modal-body"
+                    <div class="modal-body">
                     <jsp:include page="editCar.jsp">
                         <jsp:param name="carId" value="${carId}"/>
                     </jsp:include>
+                </div>
                 </div>
             </div>
         </div>

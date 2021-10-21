@@ -26,7 +26,6 @@ public class AllRequest implements Command {
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_REQUEST);
         requestDispatcher.forward(req,resp);
-
     }
     }
 
