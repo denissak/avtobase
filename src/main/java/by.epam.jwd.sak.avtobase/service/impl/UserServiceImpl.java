@@ -125,16 +125,5 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    private User convertToUserUpdate(UserDto object) {
-        return User.builder()
-                //.id(object.getId())
-                .login(object.getLogin())
-                .password(object.getPassword())
-                .name(object.getName())
-
-                .surname(object.getSurname())
-                .phoneNumber(object.getPhoneNumber())
-                .build();
-    }
 
 }

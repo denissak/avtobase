@@ -13,7 +13,7 @@ public class Comment implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
-    User user;
+    private User user;
     private LocalDateTime commentDate;
     private Integer mark;
     private String message;

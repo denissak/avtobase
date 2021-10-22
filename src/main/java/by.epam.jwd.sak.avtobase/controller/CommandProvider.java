@@ -4,6 +4,7 @@ import by.epam.jwd.sak.avtobase.controller.impl.AllCar;
 import by.epam.jwd.sak.avtobase.controller.impl.AllComment;
 import by.epam.jwd.sak.avtobase.controller.impl.AllDriver;
 import by.epam.jwd.sak.avtobase.controller.impl.AllRequest;
+import by.epam.jwd.sak.avtobase.controller.impl.AllRequestByDriver;
 import by.epam.jwd.sak.avtobase.controller.impl.AllUser;
 import by.epam.jwd.sak.avtobase.controller.impl.AllUserComment;
 import by.epam.jwd.sak.avtobase.controller.impl.AllUserRequest;
@@ -48,6 +49,7 @@ public class CommandProvider {
         commands.put(CommandName.SETDRIVERONCAR, new SetDriverOnCar());
         commands.put(CommandName.EDITCAR, new EditCar());
         commands.put(CommandName.ALLDRIVER, new AllDriver());
+        commands.put(CommandName.ALLREQUESTBYDRIVER, new AllRequestByDriver());
     }
 
     public Command takeCommand(String name) {

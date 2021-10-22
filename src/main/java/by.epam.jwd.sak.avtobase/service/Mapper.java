@@ -1,6 +1,8 @@
 package by.epam.jwd.sak.avtobase.service;
 
+import by.epam.jwd.sak.avtobase.bean.Request;
 import by.epam.jwd.sak.avtobase.bean.User;
+import by.epam.jwd.sak.avtobase.dto.RequestDto;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
 
 public final class Mapper {
@@ -27,4 +29,21 @@ public final class Mapper {
                 .build();
     }
 
+    public static RequestDto convertToRequestDto(Request request) {
+        UserDto userDto = new UserDto();
+        if (request.getUser() != null) {
+            userDto = Mapper.convertToUserDto(request.getUser());
+        }
+        return RequestDto.builder()
+                .id(request.getId())
+                .userDto(userDto)
+                .dateCreate(request.getDateCreate())
+                .startAddress(request.getStartAddress())
+                .endAddress(request.getEndAddress())
+                .dateDeparture(request.getDateDeparture())
+                .statusRequest(request.getStatusRequest())
+                .typeTransport(request.getTypeTransport())
+                .detailsRequest(request.getDetailsRequest())
+                .build();
+    }
 }

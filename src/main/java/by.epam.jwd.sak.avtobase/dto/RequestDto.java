@@ -2,17 +2,18 @@ package by.epam.jwd.sak.avtobase.dto;
 
 import by.epam.jwd.sak.avtobase.bean.StatusRequest;
 import by.epam.jwd.sak.avtobase.bean.TypeTransport;
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Value
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class RequestDto {
 
     Integer id;
-    String user;
+    //String user;
     UserDto userDto;
     LocalDateTime dateCreate;
     String startAddress;

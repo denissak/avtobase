@@ -36,6 +36,7 @@ public final class CommandParameter {
     public static final String ALL_COMMENT = "allComment";
     public static final String ALL_DRIVER = "allDriver";
     public static final String ALL_REQUEST = "allRequest";
+    public static final String ALL_REQUEST_BY_DRIVER = "allRequestByDriver";
     public static final String ALL_USER = "allUser";
     public static final String USER = "user";
     public static final String DISPATCHER = "dispatcher";
@@ -57,6 +58,7 @@ public final class CommandParameter {
     public static final String COMMAND_ALL_USER_REQUEST = "Controller?command=alluserrequest";
     public static final String COMMAND_ALL_USER = "Controller?command=alluser&page=1";
     public static final String COMMAND_ALL_REQUEST = "Controller?command=allrequest&page=1";
+    public static final String COMMAND_ALL_REQUEST_BY_DRIVER  = "Controller?command=allrequestbydriver";
 
 
     public static final String PAGE_ALL_CAR = "/WEB-INF/jsp/allCar.jsp";
@@ -66,6 +68,7 @@ public final class CommandParameter {
     public static final String PAGE_ALL_USER = "/WEB-INF/jsp/allUser.jsp";
     public static final String PAGE_ALL_USER_REQUEST = "/WEB-INF/jsp/allUserRequest.jsp";
     public static final String PAGE_ALL_COMMENT_BY_USER = "/WEB-INF/jsp/allCommentByUser.jsp";
+    public static final String PAGE_ALL_REQUEST_BY_DRIVER = "/WEB-INF/jsp/allRequestByDriver.jsp";
 
 
 

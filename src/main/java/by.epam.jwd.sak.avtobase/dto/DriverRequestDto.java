@@ -7,6 +7,6 @@ import lombok.Value;
 @Builder
 public class DriverRequestDto {
 
-    Integer requestId;
-    Integer driverId;
+    UserDto userDto;
+    RequestDto requestDto;
 }

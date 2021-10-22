@@ -4,6 +4,8 @@ import by.epam.jwd.sak.avtobase.bean.Comment;
 import by.epam.jwd.sak.avtobase.dao.CommentDao;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.util.ConnectionManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,6 +15,8 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
 public class CommentDaoImpl implements CommentDao {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private static final String GET_ALL_COMMENT = "SELECT * FROM comments";
     private static final String GET_ALL_COMMENT_BY_USER_ID = "SELECT * FROM comments WHERE user_id = ?";
@@ -27,6 +31,7 @@ public class CommentDaoImpl implements CommentDao {
             preparedStatement.setInt(1, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -45,6 +50,7 @@ public class CommentDaoImpl implements CommentDao {
                 comments.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -62,6 +68,7 @@ public class CommentDaoImpl implements CommentDao {
                 comments.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);

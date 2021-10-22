@@ -85,6 +85,9 @@
 
                 <c:when test="${user.getRole().equals('driver')}">
                     <ul class="navbar-nav me-auto mb-2">
+                        <li class="nav-item">
+                            <a href="Controller?command=allrequestbydriver" class="nav-link"> Мои заявки</a>
+                        </li>
                     </ul>
                     <div action="" class="d-flex">
                         <form action="Controller?command=logout" method="POST">

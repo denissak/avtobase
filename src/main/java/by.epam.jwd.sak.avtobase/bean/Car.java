@@ -1,6 +1,7 @@
 package by.epam.jwd.sak.avtobase.bean;
 
 import lombok.Builder;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

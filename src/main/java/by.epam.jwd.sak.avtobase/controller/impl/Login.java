@@ -64,15 +64,15 @@ public class Login implements Command {
                 e.printStackTrace();
             }
 
-        } /*else if (userDto.getRole().equals(DRIVER)) {
+        } else if (userDto.getRole().equals(DRIVER)) {
             try {
                 req.getSession().setAttribute(STATUS_REQUESTS, StatusRequest.values());
-                resp.sendRedirect(COMMAND_ALL_REQUEST);
+                resp.sendRedirect(COMMAND_ALL_REQUEST_BY_DRIVER);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-        } */else if (userDto.getRole().equals(ADMIN)) {
+        } else if (userDto.getRole().equals(ADMIN)) {
             try {
                 try {
                     req.getSession().setAttribute(ROLES, factoryService.getRolesService().findAllRoles());

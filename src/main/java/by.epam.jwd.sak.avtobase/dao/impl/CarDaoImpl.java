@@ -8,6 +8,8 @@ import by.epam.jwd.sak.avtobase.bean.User;
 import by.epam.jwd.sak.avtobase.dao.CarDao;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.util.ConnectionManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
 public class CarDaoImpl implements CarDao {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private static final String SAVE_CAR = "INSERT INTO cars (user_id, mark, model, release_date, type, lifting_capacity, cargo_capacity, passenger_capacity, inspection_permission, status_car, car_description) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
     private static final String GET_CAR_BY_ID = "SELECT * FROM cars WHERE id = ?";
@@ -44,8 +48,10 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(11, entity.getId());
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException(e.getMessage(), e);
         } finally {
+
             ConnectionManager.returnConnection(connection);
         }
         return result == 1;
@@ -60,6 +66,7 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(2, carId);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -75,6 +82,7 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setInt(1, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -94,6 +102,7 @@ public class CarDaoImpl implements CarDao {
             }
             return Optional.ofNullable(car);
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -110,6 +119,7 @@ public class CarDaoImpl implements CarDao {
                 cars.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -134,6 +144,7 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(11, entity.getCarDescription());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
