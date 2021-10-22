@@ -44,7 +44,7 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(11, entity.getId());
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

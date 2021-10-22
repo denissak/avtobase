@@ -6,6 +6,7 @@ import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 import by.epam.jwd.sak.avtobase.controller.Command;
+import by.epam.jwd.sak.avtobase.util.LocalDateFormatter;
 import by.epam.jwd.sak.avtobase.util.LocalDateTimeFormatter;
 
 import javax.servlet.ServletException;
@@ -29,7 +30,7 @@ public class CreateRequest implements Command {
                     .userDto(user)
                     .startAddress(req.getParameter(START_ADDRESS))
                     .endAddress(req.getParameter(END_ADDRESS))
-                    .dateDeparture(LocalDateTimeFormatter.format(req.getParameter(DATE_DEPARTURE)))
+                    .dateDeparture(LocalDateFormatter.format(req.getParameter(DATE_DEPARTURE)))
                     .typeTransport(TypeTransport.valueOf(req.getParameter(TYPE_TRANSPORT)))
                     .detailsRequest(req.getParameter(DETAILS_REQUEST))
                     .build();

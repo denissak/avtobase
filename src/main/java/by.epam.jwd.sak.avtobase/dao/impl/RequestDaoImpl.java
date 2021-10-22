@@ -72,7 +72,7 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(7, entity.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

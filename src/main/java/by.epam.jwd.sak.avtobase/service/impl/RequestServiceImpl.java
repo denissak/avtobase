@@ -45,7 +45,7 @@ public class RequestServiceImpl implements RequestService {
         try {
             daoFactory.getRequestDao().update(requestBean);
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
         return requestBean.getId();
     }

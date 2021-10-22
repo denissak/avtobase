@@ -23,7 +23,7 @@ public class CarServiceImpl implements CarService {
         try {
             daoFactory.getCarDao().update(car);
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
         return car.getId();
     }
