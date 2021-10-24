@@ -10,6 +10,8 @@ import by.epam.jwd.sak.avtobase.dao.DriverRequestDao;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.util.ConnectionManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,6 +21,8 @@ import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
 public class DriverRequestDaoImpl implements DriverRequestDao {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private static final String SAVE_USER = "INSERT INTO drivers_requests (request_id, user_id)" +
             " VALUES " + "(?,?)";
@@ -37,6 +41,7 @@ public class DriverRequestDaoImpl implements DriverRequestDao {
                 requests.add(buildEntityById(resultSet));
             }
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -53,6 +58,7 @@ public class DriverRequestDaoImpl implements DriverRequestDao {
             preparedStatement.setObject(2, driverId);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -85,7 +91,7 @@ public class DriverRequestDaoImpl implements DriverRequestDao {
                 resultSet.getObject(DATE_CREATE, Timestamp.class).toLocalDateTime(),
                 resultSet.getObject(START_ADDRESS, String.class),
                 resultSet.getObject(END_ADDRESS, String.class),
-                resultSet.getObject(DATE_DEPARTURE, Timestamp.class).toLocalDateTime(),
+                resultSet.getObject(DATE_DEPARTURE, Date.class).toLocalDate(),
                 StatusRequest.valueOf(resultSet.getObject(STATUS_REQUEST, String.class)),
                 TypeTransport.valueOf(resultSet.getObject(TYPE_TRANSPORT, String.class)),
                 resultSet.getObject(DETAIL_REQUEST, String.class)

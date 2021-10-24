@@ -5,11 +5,10 @@ import by.epam.jwd.sak.avtobase.bean.User;
 import by.epam.jwd.sak.avtobase.dao.UserDao;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.util.ConnectionManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,9 +18,15 @@ import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
 public class UserDaoImpl implements UserDao {
 
+    private static final Logger LOGGER = LogManager.getLogger();
+
     private static final int USER_ROLE_ID = 4;
 
     private static final String GET_ALL_USER = "SELECT * FROM users as u join roles as r  on r.id = u.role_id ORDER BY u.id ";
+
+    private static final String GET_ALL_FREE_DRIVERS = "SELECT * FROM users as u JOIN cars as c on u.id = c.user_id WHERE c.status_car != 'BROKEN'\n" +
+            "                                      AND c.id != (SELECT car_id FROM requests as r WHERE r.date_departure = ? \n" +
+            "                                      AND r.car_id IN (SELECT c.id FROM users as u JOIN cars as c on u.id = c.user_id WHERE c.status_car != 'BROKEN'))";
 
     private static final String GET_ALL_DRIVERS = "SELECT * FROM users as u join roles as r  on r.id = u.role_id WHERE r.id = 3";
 
@@ -38,6 +43,24 @@ public class UserDaoImpl implements UserDao {
     private static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
 
     @Override
+    public List<User> findAllDrivers() throws DAOException {
+        List<User> users = new ArrayList<>();
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_DRIVERS)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                users.add(buildEntity(resultSet));
+            }
+        } catch (SQLException e) {
+            LOGGER.error(e);
+            throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
+        }
+        return users;
+    }
+
+    @Override
     public Optional<User> findById(Integer id) throws DAOException {
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_USER_BY_ID)) {
@@ -49,6 +72,7 @@ public class UserDaoImpl implements UserDao {
             }
             return Optional.ofNullable(user);
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -64,6 +88,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setInt(1, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -83,6 +108,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setObject(6, entity.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -93,6 +119,7 @@ public class UserDaoImpl implements UserDao {
                 preparedStatement.setObject(2, entity.getId());
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
+                LOGGER.error(e);
                 throw new DAOException();
             } finally {
                 ConnectionManager.returnConnection(connection);
@@ -113,6 +140,7 @@ public class UserDaoImpl implements UserDao {
             }
 
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -121,16 +149,18 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> findAllDrivers() throws DAOException {
+    public List<User> findAllFreeDrivers(Date date) throws DAOException {
         List<User> users = new ArrayList<>();
         Connection connection = ConnectionManager.get();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_DRIVERS)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_FREE_DRIVERS)) {
+            preparedStatement.setObject(1, date);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 users.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
-            throw new DAOException();
+            LOGGER.error(e);
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -142,7 +172,6 @@ public class UserDaoImpl implements UserDao {
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_BY_LOGIN)) {
             preparedStatement.setString(1, login);
-            /*preparedStatement.setString(2, password);*/
             ResultSet resultSet = preparedStatement.executeQuery();
             User user = null;
             if (resultSet.next()) {
@@ -150,6 +179,7 @@ public class UserDaoImpl implements UserDao {
             }
             return user;
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -168,6 +198,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setObject(6, entity.getPhoneNumber());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);

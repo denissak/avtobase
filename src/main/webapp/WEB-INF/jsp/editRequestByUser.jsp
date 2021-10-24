@@ -44,7 +44,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleDateDeparture" class="form-label">Дата поездки</label>
-        <input type="datetime-local" name="dateDeparture" class="form-control" id="exampleDateDeparture" value="${request.getDateDeparture()}">
+        <input type="date" name="dateDeparture" class="form-control" id="exampleDateDeparture" value="${request.getDateDeparture()}">
     </div>
     <div class="mb-3">
         <label for="exampleInputTypeTransport" class="form-label">Тип транспорта</label>

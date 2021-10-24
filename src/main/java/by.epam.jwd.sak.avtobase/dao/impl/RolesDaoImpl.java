@@ -4,6 +4,8 @@ import by.epam.jwd.sak.avtobase.bean.Role;
 import by.epam.jwd.sak.avtobase.dao.RolesDao;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.util.ConnectionManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +17,8 @@ import java.util.List;
 import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
 public class RolesDaoImpl implements RolesDao {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private static final String GET_ALL_ROLE = "SELECT * FROM roles";
 
@@ -28,6 +32,7 @@ public class RolesDaoImpl implements RolesDao {
                 roles.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);

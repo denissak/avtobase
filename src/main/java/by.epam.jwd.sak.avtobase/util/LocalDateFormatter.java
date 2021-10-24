@@ -9,10 +9,10 @@ import java.time.format.DateTimeFormatter;
 @UtilityClass
 public class LocalDateFormatter {
 
-    private static final String PATTERN = "yyyy-MM-dd'T'HH:mm";
+    private static final String PATTERN = "yyyy-MM-dd";
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(PATTERN);
 
-    public LocalDateTime format(String date) {
-        return LocalDateTime.parse(date, FORMATTER);
+    public LocalDate format(String date) {
+        return LocalDate.parse(date, FORMATTER);
     }
 }

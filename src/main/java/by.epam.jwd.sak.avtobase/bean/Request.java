@@ -3,6 +3,7 @@ package by.epam.jwd.sak.avtobase.bean;
 import lombok.Builder;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -16,7 +17,7 @@ public class Request  implements Serializable {
     private LocalDateTime dateCreate;
     private String startAddress;
     private String endAddress;
-    private LocalDateTime dateDeparture;
+    private LocalDate dateDeparture;
     private StatusRequest statusRequest;
     private TypeTransport typeTransport;
     private String detailsRequest;
@@ -25,7 +26,7 @@ public class Request  implements Serializable {
     }
 
     public Request(Integer id, User user, LocalDateTime dateCreate, String startAddress, String endAddress,
-                   LocalDateTime dateDeparture, StatusRequest statusRequest, TypeTransport typeTransport, String detailsRequest) {
+                   LocalDate dateDeparture, StatusRequest statusRequest, TypeTransport typeTransport, String detailsRequest) {
         this.id = id;
         this.user = user;
         this.dateCreate = dateCreate;
@@ -81,11 +82,11 @@ public class Request  implements Serializable {
         this.endAddress = endAddress;
     }
 
-    public LocalDateTime getDateDeparture() {
+    public LocalDate getDateDeparture() {
         return dateDeparture;
     }
 
-    public void setDateDeparture(LocalDateTime dateDeparture) {
+    public void setDateDeparture(LocalDate dateDeparture) {
         this.dateDeparture = dateDeparture;
     }
 

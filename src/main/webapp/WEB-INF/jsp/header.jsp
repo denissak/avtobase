@@ -39,7 +39,7 @@
 
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=alluser" class="nav-link"> Все пользователи</a>
+                            <a href="Controller?command=alluser&page=1" class="nav-link"> Все пользователи</a>
                         </li>
                         <li class="nav-item">
                             <a href="Controller?command=allcar" class="nav-link"> Все автомобили</a>

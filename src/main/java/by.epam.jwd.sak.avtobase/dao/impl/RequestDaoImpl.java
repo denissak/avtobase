@@ -8,6 +8,8 @@ import by.epam.jwd.sak.avtobase.bean.User;
 import by.epam.jwd.sak.avtobase.dao.RequestDao;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.util.ConnectionManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
 public class RequestDaoImpl implements RequestDao {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private static final String GET_ALL_REQUEST_BY_USER_ID = "SELECT * FROM requests WHERE user_id = ?";
     private static final String GET_ALL_REQUEST = "SELECT * FROM requests as r join users as u  on u.id = r.user_id";
@@ -37,6 +41,7 @@ public class RequestDaoImpl implements RequestDao {
                 requests.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -52,6 +57,7 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setInt(1, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -72,6 +78,7 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(7, entity.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -88,6 +95,7 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setInt(2, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -107,6 +115,7 @@ public class RequestDaoImpl implements RequestDao {
             }
             return Optional.ofNullable(request);
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -127,6 +136,7 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(8, entity.getDetailsRequest());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -145,6 +155,7 @@ public class RequestDaoImpl implements RequestDao {
                 requests.add(buildEntityById(resultSet));
             }
         } catch (SQLException e) {
+            LOGGER.error(e);
             throw new DAOException();
         } finally {
             ConnectionManager.returnConnection(connection);
@@ -159,7 +170,7 @@ public class RequestDaoImpl implements RequestDao {
                 .dateCreate(resultSet.getObject(DATE_CREATE, Timestamp.class).toLocalDateTime())
                 .startAddress(resultSet.getObject(START_ADDRESS, String.class))
                 .endAddress(resultSet.getObject(END_ADDRESS, String.class))
-                .dateDeparture(resultSet.getObject(DATE_DEPARTURE, Timestamp.class).toLocalDateTime())
+                .dateDeparture(resultSet.getObject(DATE_DEPARTURE, Date.class).toLocalDate())
                 .statusRequest(StatusRequest.valueOf(resultSet.getObject(STATUS_REQUEST, String.class)))
                 .typeTransport(TypeTransport.valueOf(resultSet.getObject(TYPE_TRANSPORT, String.class)))
                 .detailsRequest(resultSet.getObject(DETAIL_REQUEST, String.class))
@@ -188,7 +199,7 @@ public class RequestDaoImpl implements RequestDao {
                 .dateCreate(resultSet.getObject(DATE_CREATE, Timestamp.class).toLocalDateTime())
                 .startAddress(resultSet.getObject(START_ADDRESS, String.class))
                 .endAddress(resultSet.getObject(END_ADDRESS, String.class))
-                .dateDeparture(resultSet.getObject(DATE_DEPARTURE, Timestamp.class).toLocalDateTime())
+                .dateDeparture(resultSet.getObject(DATE_DEPARTURE, Date.class).toLocalDate())
                 .statusRequest(StatusRequest.valueOf(resultSet.getObject(STATUS_REQUEST, String.class)))
                 .typeTransport(TypeTransport.valueOf(resultSet.getObject(TYPE_TRANSPORT, String.class)))
                 .detailsRequest(resultSet.getObject(DETAIL_REQUEST, String.class))

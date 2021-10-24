@@ -26,7 +26,7 @@ public class AllRequestByDriver implements Command {
         Integer driverId = user.getId();
 
         try {
-            List<DriverRequestDto> a = factoryService.getDriversRequestsService().findAllRequestByDriver(driverId);
+            /*List<DriverRequestDto> a = factoryService.getDriversRequestsService().findAllRequestByDriver(driverId);*/
 
             req.setAttribute(ALL_REQUEST_BY_DRIVER, factoryService.getDriversRequestsService().findAllRequestByDriver(driverId));
 /*            req.setAttribute(USER_DRIVERS, factoryService.getUserService().findAllDrivers());*/

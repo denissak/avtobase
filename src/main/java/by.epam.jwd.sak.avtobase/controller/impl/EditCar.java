@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
@@ -40,7 +41,7 @@ public class EditCar implements Command {
                     .id(id)
                     .mark(req.getParameter(MARK))
                     .model(req.getParameter(MODEL))
-                    .releaseDate(LocalDateFormatter.format(req.getParameter(RELEASE_DATE)))
+                    .releaseDate(LocalDate.parse(req.getParameter(RELEASE_DATE)))
                     .typeTransport(TypeTransport.valueOf(req.getParameter(TYPE_TRANSPORT)))
                     .liftingCapacity(Integer.valueOf(req.getParameter(LIFTING_CAPACITY)))
                     .cargoCapacity(Integer.valueOf(req.getParameter(CARGO_CAPACITY)))

@@ -39,7 +39,7 @@ public class DriverRequestServiceImpl implements DriverRequestService {
 
     private DriverRequestDto convertToDriverRequestDto(DriverRequest driverRequest) {
         UserDto userDto = new UserDto();
-        RequestDto requestDto = new RequestDto();
+        RequestDto requestDto;/* = new RequestDto();*/
 /*        if (driverRequest.getDriver() != null) {
             userDto = Mapper.convertToUserDto(driverRequest.getDriver());
             requestDto = Mapper.convertToRequestDto(driverRequest.getRequest());

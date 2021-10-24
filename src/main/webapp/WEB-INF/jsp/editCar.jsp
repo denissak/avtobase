@@ -44,7 +44,7 @@
             </div>
             <div class="mb-3">
                 <label for="exampleReleaseDate" class="form-label">Дата выпуска</label>
-                <input type="datetime-local" name="releaseDate" class="form-control" id="exampleReleaseDate" value="${car.getReleaseDate()}">
+                <input type="date" name="releaseDate" class="form-control" id="exampleReleaseDate" value="${car.getReleaseDate()}">
             </div>
             <div class="mb-3">
                 <label for="exampleInputTypeTransport" class="form-label">Тип транспорта</label>
@@ -68,7 +68,7 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInspectionPermission" class="form-label">Дата допуска к движению</label>
-                <input type="datetime-local" name="inspectionPermission" class="form-control" id="exampleInspectionPermission" value="${car.getInspectionPermission()}">
+                <input type="date" name="inspectionPermission" class="form-control" id="exampleInspectionPermission" value="${car.getInspectionPermission()}">
             </div>
             <div class="mb-3">
                 <label for="examplestatusCar" class="form-label">Статус автомобиля</label>

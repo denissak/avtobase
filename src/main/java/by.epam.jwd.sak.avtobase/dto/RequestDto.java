@@ -4,6 +4,7 @@ import by.epam.jwd.sak.avtobase.bean.StatusRequest;
 import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,7 +19,7 @@ public class RequestDto {
     LocalDateTime dateCreate;
     String startAddress;
     String endAddress;
-    LocalDateTime dateDeparture;
+    LocalDate dateDeparture;
     StatusRequest statusRequest;
     TypeTransport typeTransport;
     String detailsRequest;

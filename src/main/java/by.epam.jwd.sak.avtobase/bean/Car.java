@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -17,12 +18,12 @@ public class Car implements Serializable {
     private User user;
     private String mark;
     private String model;
-    private LocalDateTime releaseDate;
+    private LocalDate releaseDate;
     private TypeTransport typeTransport;
     private Integer liftingCapacity;
     private Integer cargoCapacity;
     private Integer passengerCapacity;
-    private LocalDateTime inspectionPermission;
+    private LocalDate inspectionPermission;
     private StatusCar statusCar;
     private String carDescription;
     //private String imagePath;
@@ -31,7 +32,7 @@ public class Car implements Serializable {
     public Car() {
     }
 
-    public Car(Integer id, User user, String mark, String model, LocalDateTime releaseDate, TypeTransport typeTransport, Integer liftingCapacity, Integer cargoCapacity, Integer passengerCapacity, LocalDateTime inspectionPermission, StatusCar statusCar, String carDescription) {
+    public Car(Integer id, User user, String mark, String model, LocalDate releaseDate, TypeTransport typeTransport, Integer liftingCapacity, Integer cargoCapacity, Integer passengerCapacity, LocalDate inspectionPermission, StatusCar statusCar, String carDescription) {
         this.id = id;
         this.user = user;
         this.mark = mark;
@@ -80,12 +81,20 @@ public class Car implements Serializable {
         this.model = model;
     }
 
-    public LocalDateTime getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(LocalDateTime releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public LocalDate getInspectionPermission() {
+        return inspectionPermission;
+    }
+
+    public void setInspectionPermission(LocalDate inspectionPermission) {
+        this.inspectionPermission = inspectionPermission;
     }
 
     public TypeTransport getTypeTransport() {
@@ -120,13 +129,7 @@ public class Car implements Serializable {
         this.passengerCapacity = passengerCapacity;
     }
 
-    public LocalDateTime getInspectionPermission() {
-        return inspectionPermission;
-    }
 
-    public void setInspectionPermission(LocalDateTime inspectionPermission) {
-        this.inspectionPermission = inspectionPermission;
-    }
 
     public StatusCar getStatusCar() {
         return statusCar;

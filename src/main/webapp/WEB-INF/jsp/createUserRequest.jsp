@@ -23,7 +23,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleDateDeparture" class="form-label">Дата поездки</label>
-        <input type="datetime-local" name="dateDeparture" class="form-control" id="exampleDateDeparture" required>
+        <input type="date" name="dateDeparture" class="form-control" id="exampleDateDeparture" required>
     </div>
 <%--    <div class="mb-3">
         <label for="exampleStatusRequest" class="form-label">Статус заказа</label>

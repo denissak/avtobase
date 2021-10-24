@@ -5,6 +5,7 @@ import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import lombok.Builder;
 import lombok.Value;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Value
@@ -15,12 +16,12 @@ public class CarDto {
     UserDto userDto;
     String mark;
     String model;
-    LocalDateTime releaseDate;
+    LocalDate releaseDate;
     TypeTransport typeTransport;
     Integer liftingCapacity;
     Integer cargoCapacity;
     Integer passengerCapacity;
-    LocalDateTime inspectionPermission;
+    LocalDate inspectionPermission;
     StatusCar statusCar;
     String carDescription;
 

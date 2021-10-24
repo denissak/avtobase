@@ -11,6 +11,7 @@ import by.epam.jwd.sak.avtobase.service.PasswordEncoder;
 import by.epam.jwd.sak.avtobase.service.UserService;
 import by.epam.jwd.sak.avtobase.service.validator.CreateUserValidator;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -20,6 +21,15 @@ public class UserServiceImpl implements UserService {
     private final CreateUserValidator createUserValidator = CreateUserValidator.getInstance();
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
+
+    @Override
+    public List<UserDto> findAllDrivers() throws ServiceException {
+        try {
+            return daoFactory.getUserDao().findAllDrivers().stream().map(this::convertToUserDto).collect(Collectors.toList());
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
 
     @Override
     public Optional<UserDto> findById(Integer id) throws ServiceException {
@@ -60,11 +70,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> findAllDrivers() throws ServiceException {
+    public List<UserDto> findAllFreeDrivers(Date date) throws ServiceException {
         try {
-            return daoFactory.getUserDao().findAllDrivers().stream().map(this::convertToUserDto).collect(Collectors.toList());
+            return daoFactory.getUserDao().findAllFreeDrivers(date).stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 

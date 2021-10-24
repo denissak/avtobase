@@ -14,7 +14,7 @@
     <thead>
     <tr>
         <th scope="col">Кто составил</th>
-        <th scope="col">Дата заявки</th>
+        <%--        <th scope="col">Дата заявки</th>--%>
         <th scope="col">Начальный маршрут</th>
         <th scope="col">Конечный маршрут</th>
         <th scope="col">Дата отправки</th>
@@ -23,29 +23,56 @@
         <th scope="col">Детали заказа</th>
     </tr>
     <c:forEach var="request" items="${allRequestByDriver}">
+<%--        <c:if test="${request.getId() == param.requestId}">--%>
+
+        <div style="display: none" class="mb-3">
+            <input type="text"
+                   readonly="readonly"
+                   name="requestId"
+                   class="form-control"
+                   id="exampleInputId"
+                   value="${param.requestId}"
+            >
+        </div>
         <tr>
+
+
                 <%--<th scope="row">$${request.getDateCreate()}</th>--%>
             <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
-            <td>${request.getRequestDto().getDateCreate()}</td>
-            <%--<td>
-                <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                        data-bs-target=".requestId_${request.getId()}">Обработать
-                    <c:set var="requestId" value="${request.getId()}"/>
-                </button>
-            </td>
-            <td>
-                <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
-                        data-bs-target=".requestIdEdit_${request.getId()}">Редактировать
-                    <c:set var="requestId" value="${request.getId()}"/>
-                </button>
-            </td>
-            <td>
-                <form action="Controller?command=editrequestbyuser" method="post">
-                    <input type="hidden" name="id" value="${request.getId()}">
-                    <input type="hidden" name="method" value="delete">
-                    <input class="btn btn-danger" type="submit" value="Удалить">
-                </form>
-            </td>--%>
+                <%--            <td>${request.getRequestDto().getDateCreate()}</td>--%>
+            <td>${request.getRequestDto().getStartAddress()}</td>
+            <td>${request.getRequestDto().getEndAddress()}</td>
+            <td>${request.getRequestDto().getDateDeparture()}</td>
+            <td>${request.getRequestDto().getStatusRequest()}</td>
+            <td>${request.getRequestDto().getTypeTransport()}</td>
+            <td>${request.getRequestDto().getDetailsRequest()}</td>
+                    <td>
+                        <form action="Controller?command=editstatusrequestbydriver" method="post">
+<%--                            <input type="hidden" name="id" value="${request.getId()}">
+                            <input type="hidden" name="method" value="update">--%>
+                            <input class="btn btn-danger" type="submit" value="Подтвердить">
+                        </form>
+                    </td>
+
+                    <%--<td>
+                        <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
+                                data-bs-target=".requestId_${request.getId()}">Обработать
+                            <c:set var="requestId" value="${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
+                                data-bs-target=".requestIdEdit_${request.getId()}">Редактировать
+                            <c:set var="requestId" value="${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <form action="Controller?command=editrequestbyuser" method="post">
+                            <input type="hidden" name="id" value="${request.getId()}">
+                            <input type="hidden" name="method" value="delete">
+                            <input class="btn btn-danger" type="submit" value="Удалить">
+                        </form>
+                    </td>--%>
         </tr>
         <%--<div class="modal fade requestId_${request.getId()}" id="updateUserModal" tabindex="-1"
              aria-labelledby="updateUserModalLabel" aria-hidden="true">
@@ -80,6 +107,7 @@
                 </div>
             </div>
         </div>--%>
+<%--        </c:if>--%>
     </c:forEach>
     </thead>
 </table>
