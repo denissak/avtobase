@@ -11,7 +11,7 @@ public interface CarService {
 
     List<CarDto> findAllCar() throws ServiceException;
 
-    List<CarDto> findAllFreeDriver(Date data) throws ServiceException;
+    List<CarDto> findAllFreeDriver() throws ServiceException;
 
     Long create (CarDto carDto) throws ServiceException;
 

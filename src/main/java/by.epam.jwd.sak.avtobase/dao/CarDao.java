@@ -14,7 +14,7 @@ public interface CarDao {
 
     List<Car> findAll() throws DAOException;
 
-    List<Car> findAllFreeDriver(Date date) throws DAOException;
+    List<Car> findAllFreeDriver() throws DAOException;
 
     Car save(Car entity) throws DAOException;
 

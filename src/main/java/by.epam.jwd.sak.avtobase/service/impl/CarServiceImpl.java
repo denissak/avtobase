@@ -20,9 +20,9 @@ public class CarServiceImpl implements CarService {
 
 
     @Override
-    public List<CarDto> findAllFreeDriver(Date date) throws ServiceException {
+    public List<CarDto> findAllFreeDriver() throws ServiceException {
         try {
-            return daoFactory.getCarDao().findAllFreeDriver(date).stream().map(this::convertToCarDto).collect(Collectors.toList());
+            return daoFactory.getCarDao().findAllFreeDriver().stream().map(this::convertToCarDto).collect(Collectors.toList());
         } catch (DAOException e) {
             throw new ServiceException(e.getMessage(), e);
         }
