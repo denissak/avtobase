@@ -14,7 +14,7 @@ public class Car implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
+    private Long id;
     private User user;
     private String mark;
     private String model;
@@ -32,7 +32,7 @@ public class Car implements Serializable {
     public Car() {
     }
 
-    public Car(Integer id, User user, String mark, String model, LocalDate releaseDate, TypeTransport typeTransport, Integer liftingCapacity, Integer cargoCapacity, Integer passengerCapacity, LocalDate inspectionPermission, StatusCar statusCar, String carDescription) {
+    public Car(Long id, User user, String mark, String model, LocalDate releaseDate, TypeTransport typeTransport, Integer liftingCapacity, Integer cargoCapacity, Integer passengerCapacity, LocalDate inspectionPermission, StatusCar statusCar, String carDescription) {
         this.id = id;
         this.user = user;
         this.mark = mark;
@@ -47,11 +47,11 @@ public class Car implements Serializable {
         this.carDescription = carDescription;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

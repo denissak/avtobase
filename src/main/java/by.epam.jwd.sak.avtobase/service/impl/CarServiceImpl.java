@@ -18,7 +18,7 @@ public class CarServiceImpl implements CarService {
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
-    public Integer update(CarDto carDto) throws ServiceException {
+    public Long update(CarDto carDto) throws ServiceException {
         Car car = convertToCar(carDto);
         try {
             daoFactory.getCarDao().update(car);
@@ -29,7 +29,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public boolean addDriver(Integer driverId, Integer carId) throws ServiceException {
+    public boolean addDriver(Long driverId, Long carId) throws ServiceException {
         try {
             return daoFactory.getCarDao().addDriver(driverId, carId);
         } catch (DAOException e) {
@@ -38,7 +38,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public boolean delete(Integer id) throws ServiceException {
+    public boolean delete(Long id) throws ServiceException {
         try {
             return daoFactory.getCarDao().delete(id);
         } catch (DAOException e) {
@@ -57,7 +57,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Integer create(CarDto carDto) throws ServiceException {
+    public Long create(CarDto carDto) throws ServiceException {
         Car carBean = convertToCar(carDto);
         try {
             daoFactory.getCarDao().save(carBean);
@@ -68,7 +68,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Optional<CarDto> findById(Integer id) throws ServiceException {
+    public Optional<CarDto> findById(Long id) throws ServiceException {
         try {
             return daoFactory.getCarDao().findById(id).map(this::convertToCarDto);
         } catch (DAOException e) {

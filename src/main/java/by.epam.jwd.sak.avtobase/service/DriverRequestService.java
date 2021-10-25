@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface DriverRequestService {
 
-    boolean save(Integer driverId, Integer requestId) throws ServiceException;
+    boolean save(Long driverId, Long requestId) throws ServiceException;
 
-    List<DriverRequestDto> findAllRequestByDriver(Integer driverId) throws ServiceException;
+    List<DriverRequestDto> findAllRequestByDriver(Long driverId) throws ServiceException;
 }

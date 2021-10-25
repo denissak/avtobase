@@ -18,7 +18,7 @@ public class CommentServiceImpl implements CommentService {
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
-    public List<CommentDto> findAllCommentByUser(Integer userId) throws ServiceException {
+    public List<CommentDto> findAllCommentByUser(Long userId) throws ServiceException {
         try {
             return daoFactory.getCommentDao().findAllByUserId(userId).stream()
                     .map(this::convertToCommentDto).collect(Collectors.toList());
@@ -28,7 +28,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public boolean delete(Integer id) throws ServiceException {
+    public boolean delete(Long id) throws ServiceException {
         try {
             return daoFactory.getCommentDao().delete(id);
         } catch (DAOException e) {
@@ -46,7 +46,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Integer create(CommentDto commentDto) throws ServiceException {
+    public Long create(CommentDto commentDto) throws ServiceException {
         Comment commentBean = convertToComment(commentDto);
         try {
             daoFactory.getCommentDao().save(commentBean);

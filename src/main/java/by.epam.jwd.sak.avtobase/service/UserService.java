@@ -11,7 +11,7 @@ public interface UserService {
 
     UserDto findByLogin(String login) throws ServiceException;
 
-    Integer create(UserDto userDto) throws ServiceException;
+    Long create(UserDto userDto) throws ServiceException;
 
     List<UserDto> findAllUser() throws ServiceException;
 
@@ -19,10 +19,10 @@ public interface UserService {
 
     List<UserDto> findAllDrivers() throws ServiceException;
 
-    Integer update(UserDto entity) throws ServiceException;
+    Long update(UserDto entity) throws ServiceException;
 
-    Optional<UserDto> findById(Integer id) throws ServiceException;
+    Optional<UserDto> findById(Long id) throws ServiceException;
 
-    boolean delete(Integer id) throws ServiceException;
+    boolean delete(Long id) throws ServiceException;
 
 }

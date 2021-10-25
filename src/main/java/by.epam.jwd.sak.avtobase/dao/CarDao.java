@@ -8,15 +8,15 @@ import java.util.Optional;
 
 public interface CarDao {
 
-    Optional<Car> findById(Integer id) throws DAOException;
+    Optional<Car> findById(Long id) throws DAOException;
 
     List<Car> findAll() throws DAOException;
 
     Car save(Car entity) throws DAOException;
 
-    boolean delete(Integer id) throws DAOException;
+    boolean delete(Long id) throws DAOException;
 
-    boolean addDriver(Integer driverId, Integer carId) throws DAOException;
+    boolean addDriver(Long driverId, Long carId) throws DAOException;
 
     boolean update(Car entity) throws DAOException;
 }

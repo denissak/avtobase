@@ -23,7 +23,7 @@ public class AllRequestByDriver implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserDto user = (UserDto) req.getSession().getAttribute(USER);
-        Integer driverId = user.getId();
+        Long driverId = user.getId();
 
         try {
             /*List<DriverRequestDto> a = factoryService.getDriversRequestsService().findAllRequestByDriver(driverId);*/

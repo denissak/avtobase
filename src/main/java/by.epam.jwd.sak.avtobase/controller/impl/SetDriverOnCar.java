@@ -18,8 +18,8 @@ public class SetDriverOnCar implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getMethod().equals(POST)) {
-            Integer carId = Integer.valueOf(req.getParameter(CAR_ID));
-            Integer driverId = Integer.valueOf(req.getParameter(DRIVER));
+            Long carId = Long.valueOf(req.getParameter(CAR_ID));
+            Long driverId = Long.valueOf(req.getParameter(DRIVER));
             try {
                 factoryService.getCarService().addDriver(driverId, carId);
             } catch (ServiceException e) {

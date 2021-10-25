@@ -25,7 +25,7 @@ public class EditCar implements Command {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter(METHOD) != null) {
             if (req.getParameter(METHOD).equals(DELETE)) {
-                int carId = Integer.parseInt(req.getParameter(ID));
+                long carId = Integer.parseInt(req.getParameter(ID));
                 try {
                     factoryService.getCarService().delete(carId);
                 } catch (ServiceException e) {
@@ -33,7 +33,7 @@ public class EditCar implements Command {
                 }
             }
         } else if (req.getMethod().equals(POST)) {
-            int id = 0;
+            long id = 0;
             if (req.getParameter(ID) != null) {
                 id = Integer.valueOf(req.getParameter(ID));
             }

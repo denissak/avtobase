@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserDto> findById(Integer id) throws ServiceException {
+    public Optional<UserDto> findById(Long id) throws ServiceException {
         try {
             return daoFactory.getUserDao().findById(id).map(this::convertToUserDto);
         } catch (DAOException e) {
@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean delete(Integer id) throws ServiceException {
+    public boolean delete(Long id) throws ServiceException {
         try {
             return daoFactory.getUserDao().delete(id);
         } catch (DAOException e) {
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer update(UserDto entity) throws ServiceException {
+    public Long update(UserDto entity) throws ServiceException {
         User userBean = convertToUser(entity);
         try {
             daoFactory.getUserDao().update(userBean);
@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Integer create (UserDto userDto) throws ServiceException {
+    public Long create (UserDto userDto) throws ServiceException {
 /*        ValidationResult validationResult = createUserValidator.isValid(userCreateDto);
         if (!validationResult.isValid()) {
             throw new ValidationException(validationResult.getErrors());
@@ -130,7 +130,7 @@ public class UserServiceImpl implements UserService {
                 .name(object.getName())
                 .surname(object.getSurname())
                 .phoneNumber(object.getPhoneNumber())
-                .role(new Role(role, null))
+                .role(new Role((long) role, null))
                 .build();
     }
 

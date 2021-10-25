@@ -8,9 +8,9 @@ import java.util.Optional;
 
 public interface RequestDao {
 
-    Optional<Request> findById(Integer id) throws DAOException;
+    Optional<Request> findById(Long id) throws DAOException;
 
-    List<Request> findAllByUserId(Integer userId) throws DAOException;
+    List<Request> findAllByUserId(Long userId) throws DAOException;
 
     List<Request> findAll() throws DAOException;
 
@@ -18,8 +18,8 @@ public interface RequestDao {
 
     Request update(Request entity) throws DAOException;
 
-    boolean updateStatusById(Integer id, String status) throws DAOException;
+    boolean updateStatusById(Long id, String status) throws DAOException;
 
-    boolean delete(Integer id) throws DAOException;
+    boolean delete(Long id) throws DAOException;
 
 }

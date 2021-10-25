@@ -10,13 +10,13 @@ public interface CarService {
 
     List<CarDto> findAllCar() throws ServiceException;
 
-    Integer create (CarDto carDto) throws ServiceException;
+    Long create (CarDto carDto) throws ServiceException;
 
-    Optional<CarDto> findById(Integer id) throws ServiceException;
+    Optional<CarDto> findById(Long id) throws ServiceException;
 
-    boolean delete(Integer id) throws ServiceException;
+    boolean delete(Long id) throws ServiceException;
 
-    boolean addDriver(Integer driverId, Integer carId) throws ServiceException;
+    boolean addDriver(Long driverId, Long carId) throws ServiceException;
 
-    Integer update (CarDto entity) throws ServiceException;
+    Long update (CarDto entity) throws ServiceException;
 }

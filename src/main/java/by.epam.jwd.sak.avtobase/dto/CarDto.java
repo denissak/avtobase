@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Builder
 public class CarDto {
     
-    Integer id;
+    Long id;
     UserDto userDto;
     String mark;
     String model;

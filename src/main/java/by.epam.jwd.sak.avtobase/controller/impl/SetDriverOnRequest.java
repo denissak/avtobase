@@ -20,8 +20,8 @@ public class SetDriverOnRequest implements Command {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getMethod().equals(POST)) {
             String status = req.getParameter(STATUS);
-            Integer requestId = Integer.valueOf(req.getParameter(REQUEST_ID));
-            Integer driverId = Integer.valueOf(req.getParameter(DRIVER));
+            Long requestId = Long.valueOf(req.getParameter(REQUEST_ID));
+            Long driverId = Long.valueOf(req.getParameter(DRIVER));
             try {
                 factoryService.getDriversRequestsService().save(driverId, requestId);
                 factoryService.getRequestService().updateStatusById(requestId, status);

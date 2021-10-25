@@ -15,7 +15,7 @@ public interface UserDao {
 
     List<User> findAllDrivers() throws DAOException;
 
-    Optional<User> findById(Integer id) throws DAOException;
+    Optional<User> findById(Long id) throws DAOException;
 
     User findByLogin(String login) throws DAOException;
 
@@ -23,5 +23,5 @@ public interface UserDao {
 
     User update (User entity) throws DAOException;
 
-    boolean delete(Integer id) throws DAOException;
+    boolean delete(Long id) throws DAOException;
 }

@@ -20,7 +20,7 @@ public class AllUserRequest implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserDto user = (UserDto) req.getSession().getAttribute(USER);
-        Integer userId = user.getId();
+        Long userId = user.getId();
         try {
             req.setAttribute(REQUEST_BY_ID, factoryService.getRequestService().findAllRequestByUser(userId));
         } catch (ServiceException e) {

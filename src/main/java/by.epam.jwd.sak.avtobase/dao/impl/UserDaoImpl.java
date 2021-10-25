@@ -61,10 +61,10 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Optional<User> findById(Integer id) throws DAOException {
+    public Optional<User> findById(Long id) throws DAOException {
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_USER_BY_ID)) {
-            preparedStatement.setInt(1, id);
+            preparedStatement.setObject(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             User user = null;
             if (resultSet.next()) {
@@ -80,12 +80,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean delete(Integer id) throws DAOException {
+    public boolean delete(Long id) throws DAOException {
         int result;
 
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER, RETURN_GENERATED_KEYS)) {
-            preparedStatement.setInt(1, id);
+            preparedStatement.setObject(1, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
@@ -208,13 +208,13 @@ public class UserDaoImpl implements UserDao {
 
     private User buildEntity(ResultSet resultSet) throws SQLException {
         return User.builder()
-                .id(resultSet.getObject(ID, Integer.class))
+                .id(resultSet.getObject(ID, Long.class))
                 .login(resultSet.getObject(LOGIN, String.class))
                 .password(resultSet.getObject(PASSWORD, String.class))
                 .name(resultSet.getObject(NAME, String.class))
                 .surname(resultSet.getObject(SURNAME, String.class))
                 .phoneNumber(resultSet.getObject(PHONE_NUMBER, String.class))
-                .role(new Role(resultSet.getObject(ROLE_ID, Integer.class), resultSet.getObject("r.name", String.class)))
+                .role(new Role(resultSet.getObject(ROLE_ID, Long.class), resultSet.getObject("r.name", String.class)))
                 .build();
     }
 }

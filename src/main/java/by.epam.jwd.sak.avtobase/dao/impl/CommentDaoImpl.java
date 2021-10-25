@@ -24,11 +24,11 @@ public class CommentDaoImpl implements CommentDao {
     private static final String DELETE_COMMENT = "DELETE FROM comments WHERE id = ?";
 
     @Override
-    public boolean delete(Integer id) throws DAOException {
+    public boolean delete(Long id) throws DAOException {
         int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_COMMENT, RETURN_GENERATED_KEYS)) {
-            preparedStatement.setInt(1, id);
+            preparedStatement.setObject(1, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
@@ -40,7 +40,7 @@ public class CommentDaoImpl implements CommentDao {
     }
 
     @Override
-    public List<Comment> findAllByUserId(Integer userId) throws DAOException {
+    public List<Comment> findAllByUserId(Long userId) throws DAOException {
         List<Comment> comments = new ArrayList<>();
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_COMMENT_BY_USER_ID)) {
@@ -95,7 +95,7 @@ public class CommentDaoImpl implements CommentDao {
 
     private Comment buildEntity(ResultSet resultSet) throws SQLException {
         return Comment.builder()
-                .id(resultSet.getObject(ID, Integer.class))
+                .id(resultSet.getObject(ID, Long.class))
                 .commentDate(resultSet.getObject(COMMENT_DATE, Timestamp.class).toLocalDateTime())
                 .mark(resultSet.getObject(MARK, Integer.class))
                 .message(resultSet.getObject(MESSAGE, String.class))

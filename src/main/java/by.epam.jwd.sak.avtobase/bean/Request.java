@@ -12,7 +12,7 @@ public class Request  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
+    private Long id;
     private User user;
     private LocalDateTime dateCreate;
     private String startAddress;
@@ -25,7 +25,7 @@ public class Request  implements Serializable {
     public Request() {
     }
 
-    public Request(Integer id, User user, LocalDateTime dateCreate, String startAddress, String endAddress,
+    public Request(Long id, User user, LocalDateTime dateCreate, String startAddress, String endAddress,
                    LocalDate dateDeparture, StatusRequest statusRequest, TypeTransport typeTransport, String detailsRequest) {
         this.id = id;
         this.user = user;
@@ -42,11 +42,11 @@ public class Request  implements Serializable {
         return serialVersionUID;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

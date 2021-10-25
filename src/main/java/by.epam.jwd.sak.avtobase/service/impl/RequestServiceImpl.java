@@ -31,7 +31,7 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public boolean delete(Integer id) throws ServiceException {
+    public boolean delete(Long id) throws ServiceException {
         try {
             return daoFactory.getRequestDao().delete(id);
         } catch (DAOException e) {
@@ -40,7 +40,7 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public Integer update(RequestDto requestDto) throws ServiceException {
+    public Long update(RequestDto requestDto) throws ServiceException {
         Request requestBean = convertToRequest(requestDto);
         try {
             daoFactory.getRequestDao().update(requestBean);
@@ -51,7 +51,7 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public boolean updateStatusById(Integer id, String status) throws ServiceException {
+    public boolean updateStatusById(Long id, String status) throws ServiceException {
         try {
             return daoFactory.getRequestDao().updateStatusById(id, status);
         } catch (DAOException e) {
@@ -60,7 +60,7 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public Optional<RequestDto> findById(Integer id) throws ServiceException {
+    public Optional<RequestDto> findById(Long id) throws ServiceException {
         try {
             return daoFactory.getRequestDao().findById(id).map(this::convertToRequestDto);
         } catch (DAOException e) {
@@ -69,7 +69,7 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public Integer create(RequestDto requestDto) throws ServiceException {
+    public Long create(RequestDto requestDto) throws ServiceException {
         Request requestBean = convertToRequest(requestDto);
         try {
             daoFactory.getRequestDao().save(requestBean);
@@ -80,7 +80,7 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public List<RequestDto> findAllRequestByUser (Integer userId) throws ServiceException {
+    public List<RequestDto> findAllRequestByUser (Long userId) throws ServiceException {
         try {
             return daoFactory.getRequestDao().findAllByUserId(userId).stream()
                     .map(this::convertToRequestDto).collect(Collectors.toList());

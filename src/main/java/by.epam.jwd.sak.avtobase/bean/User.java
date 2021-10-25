@@ -11,7 +11,7 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
+    private Long id;
     private String login;
     private String password;
     private String name;
@@ -22,7 +22,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Integer id, String login, String password, String name, String surname, String phoneNumber, Role role) {
+    public User(Long id, String login, String password, String name, String surname, String phoneNumber, Role role) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -32,11 +32,11 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

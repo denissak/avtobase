@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 public class UserDto {
 
-    Integer id;
+    Long id;
     String login;
     String password;
     String role;

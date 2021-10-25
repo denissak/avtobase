@@ -58,7 +58,7 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public boolean addDriver(Integer driverId, Integer carId) throws DAOException {
+    public boolean addDriver(Long driverId, Long carId) throws DAOException {
         int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(ADD_DRIVER, RETURN_GENERATED_KEYS)) {
@@ -75,11 +75,11 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public boolean delete(Integer id) throws DAOException {
+    public boolean delete(Long id) throws DAOException {
         int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CAR, RETURN_GENERATED_KEYS)) {
-            preparedStatement.setInt(1, id);
+            preparedStatement.setObject(1, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
@@ -91,10 +91,10 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public Optional<Car> findById(Integer id) throws DAOException {
+    public Optional<Car> findById(Long id) throws DAOException {
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_CAR_BY_ID)) {
-            preparedStatement.setInt(1, id);
+            preparedStatement.setObject(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             Car car = null;
             if (resultSet.next()) {
@@ -155,12 +155,12 @@ public class CarDaoImpl implements CarDao {
     private Car buildEntity(ResultSet resultSet) throws SQLException {
 
         Role role = new Role(
-                resultSet.getObject(ID, Integer.class),
+                resultSet.getObject(ID, Long.class),
                 resultSet.getObject(NAME, String.class)
         );
 
         User user = new User(
-                resultSet.getObject(ID, Integer.class),
+                resultSet.getObject(ID, Long.class),
                 resultSet.getObject(LOGIN, String.class),
                 resultSet.getObject(PASSWORD, String.class),
                 resultSet.getObject(NAME, String.class),
@@ -170,7 +170,7 @@ public class CarDaoImpl implements CarDao {
         );
         return Car.builder()
 
-                .id(resultSet.getObject(ID, Integer.class))
+                .id(resultSet.getObject(ID, Long.class))
                 .user(user)
                 .mark(resultSet.getObject(MARK, String.class))
                 .model(resultSet.getObject(MODEL, String.class))

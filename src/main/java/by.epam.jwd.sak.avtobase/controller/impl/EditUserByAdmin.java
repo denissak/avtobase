@@ -20,7 +20,7 @@ public class EditUserByAdmin implements Command {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter(METHOD) != null) {
             if (req.getParameter(METHOD).equals(DELETE)) {
-                int userId = Integer.parseInt(req.getParameter(ID));
+                long userId = Integer.parseInt(req.getParameter(ID));
                 try {
                     factoryService.getUserService().delete(userId);
                 } catch (ServiceException e) {
@@ -28,7 +28,7 @@ public class EditUserByAdmin implements Command {
                 }
             }
         } else if (req.getMethod().equals(POST)) {
-            int id = 0;
+            long id = 0;
             if (req.getParameter(ID) != null){
                 id = Integer.valueOf(req.getParameter(ID));
             }

@@ -42,7 +42,7 @@ public class RolesDaoImpl implements RolesDao {
 
     private Role buildEntity(ResultSet resultSet) throws SQLException {
         return Role.builder()
-                .id(resultSet.getObject(ID, Integer.class))
+                .id(resultSet.getObject(ID, Long.class))
                 .name(resultSet.getObject(NAME, String.class))
                 .build();
     }

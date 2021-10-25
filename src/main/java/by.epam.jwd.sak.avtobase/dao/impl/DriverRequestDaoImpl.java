@@ -31,7 +31,7 @@ public class DriverRequestDaoImpl implements DriverRequestDao {
 
 
     @Override
-    public List<DriverRequest> findAllRequestByDriver(Integer driverId) throws DAOException {
+    public List<DriverRequest> findAllRequestByDriver(Long driverId) throws DAOException {
         List<DriverRequest> requests = new ArrayList<>();
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(ALL_REQUEST_BY_DRIVER)) {
@@ -50,7 +50,7 @@ public class DriverRequestDaoImpl implements DriverRequestDao {
     }
 
     @Override
-    public boolean save(Integer driverId, Integer requestId) throws DAOException {
+    public boolean save(Long driverId, Long requestId) throws DAOException {
         int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SAVE_USER, RETURN_GENERATED_KEYS)) {
@@ -74,7 +74,7 @@ public class DriverRequestDaoImpl implements DriverRequestDao {
 
 
         User user = new User(
-                resultSet.getObject("u.id", Integer.class),
+                resultSet.getObject("u.id", Long.class),
                 resultSet.getObject(LOGIN, String.class),
                 resultSet.getObject(PASSWORD, String.class),
                 resultSet.getObject(NAME, String.class),
@@ -86,7 +86,7 @@ public class DriverRequestDaoImpl implements DriverRequestDao {
 
         Request request = new Request(
 
-                resultSet.getObject("r.id", Integer.class),
+                resultSet.getObject("r.id", Long.class),
                 user,
                 resultSet.getObject(DATE_CREATE, Timestamp.class).toLocalDateTime(),
                 resultSet.getObject(START_ADDRESS, String.class),

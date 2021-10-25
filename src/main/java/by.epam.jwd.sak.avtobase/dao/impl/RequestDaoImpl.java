@@ -50,11 +50,11 @@ public class RequestDaoImpl implements RequestDao {
     }
 
     @Override
-    public boolean delete(Integer id) throws DAOException {
+    public boolean delete(Long id) throws DAOException {
         int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_REQUEST, RETURN_GENERATED_KEYS)) {
-            preparedStatement.setInt(1, id);
+            preparedStatement.setObject(1, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
@@ -87,12 +87,12 @@ public class RequestDaoImpl implements RequestDao {
     }
 
     @Override
-    public boolean updateStatusById(Integer id, String status) throws DAOException {
+    public boolean updateStatusById(Long id, String status) throws DAOException {
         int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATUS, RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, status);
-            preparedStatement.setInt(2, id);
+            preparedStatement.setObject(1, status);
+            preparedStatement.setObject(2, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
@@ -104,10 +104,10 @@ public class RequestDaoImpl implements RequestDao {
     }
 
     @Override
-    public Optional<Request> findById(Integer id) throws DAOException {
+    public Optional<Request> findById(Long id) throws DAOException {
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_REQUEST_BY_ID)) {
-            preparedStatement.setInt(1, id);
+            preparedStatement.setObject(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             Request request = null;
             if (resultSet.next()) {
@@ -126,7 +126,7 @@ public class RequestDaoImpl implements RequestDao {
     public Request save(Request entity) throws DAOException {
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SAVE_REQUEST, RETURN_GENERATED_KEYS)) {
-            preparedStatement.setInt(1, entity.getUser().getId());
+            preparedStatement.setObject(1, entity.getUser().getId());
             preparedStatement.setObject(2, entity.getDateCreate());
             preparedStatement.setObject(3, entity.getStartAddress());
             preparedStatement.setObject(4, entity.getEndAddress());
@@ -145,7 +145,7 @@ public class RequestDaoImpl implements RequestDao {
     }
 
     @Override
-    public List<Request> findAllByUserId(Integer userId) throws DAOException {
+    public List<Request> findAllByUserId(Long userId) throws DAOException {
         List<Request> requests = new ArrayList<>();
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_REQUEST_BY_USER_ID)) {
@@ -166,7 +166,7 @@ public class RequestDaoImpl implements RequestDao {
     private Request buildEntityById(ResultSet resultSet) throws SQLException {
 
         return Request.builder()
-                .id(resultSet.getObject(ID, Integer.class))
+                .id(resultSet.getObject(ID, Long.class))
                 .dateCreate(resultSet.getObject(DATE_CREATE, Timestamp.class).toLocalDateTime())
                 .startAddress(resultSet.getObject(START_ADDRESS, String.class))
                 .endAddress(resultSet.getObject(END_ADDRESS, String.class))
@@ -180,12 +180,12 @@ public class RequestDaoImpl implements RequestDao {
     private Request buildEntity(ResultSet resultSet) throws SQLException {
 
         Role role = new Role(
-                resultSet.getObject(ID, Integer.class),
+                resultSet.getObject(ID, Long.class),
                 resultSet.getObject(NAME, String.class)
         );
 
         User user = new User(
-                resultSet.getObject(ID, Integer.class),
+                resultSet.getObject(ID, Long.class),
                 resultSet.getObject(LOGIN, String.class),
                 resultSet.getObject(PASSWORD, String.class),
                 resultSet.getObject(NAME, String.class),
@@ -194,7 +194,7 @@ public class RequestDaoImpl implements RequestDao {
                 role
         );
         return Request.builder()
-                .id(resultSet.getObject(ID, Integer.class))
+                .id(resultSet.getObject(ID, Long.class))
                 .user(user)
                 .dateCreate(resultSet.getObject(DATE_CREATE, Timestamp.class).toLocalDateTime())
                 .startAddress(resultSet.getObject(START_ADDRESS, String.class))

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Builder
 public class CommentDto {
 
-    Integer id;
+    Long id;
     UserDto userDto;
     LocalDateTime commentDate;
     Integer mark;

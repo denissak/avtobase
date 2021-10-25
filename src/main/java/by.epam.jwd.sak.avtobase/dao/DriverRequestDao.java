@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface DriverRequestDao {
 
-    boolean save(Integer driverId, Integer requestId) throws DAOException;
+    boolean save(Long driverId, Long requestId) throws DAOException;
 
-    List<DriverRequest> findAllRequestByDriver(Integer driverId) throws DAOException;
+    List<DriverRequest> findAllRequestByDriver(Long driverId) throws DAOException;
 }

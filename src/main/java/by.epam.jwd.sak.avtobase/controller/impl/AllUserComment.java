@@ -20,7 +20,7 @@ public class AllUserComment implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserDto user = (UserDto) req.getSession().getAttribute(USER);
-        Integer userId = user.getId();
+        Long userId = user.getId();
         try {
             req.setAttribute(COMMENT_BY_ID, factoryService.getCommentService().findAllCommentByUser(userId));
         } catch (ServiceException e) {

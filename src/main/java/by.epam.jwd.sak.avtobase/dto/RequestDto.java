@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class RequestDto {
 
-    Integer id;
+    Long id;
     //String user;
     UserDto userDto;
     LocalDateTime dateCreate;

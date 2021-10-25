@@ -19,7 +19,7 @@ public class DriverRequestServiceImpl implements DriverRequestService {
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
-    public List<DriverRequestDto> findAllRequestByDriver(Integer driverId) throws ServiceException {
+    public List<DriverRequestDto> findAllRequestByDriver(Long driverId) throws ServiceException {
         try {
             return daoFactory.getDriversRequestsDao().findAllRequestByDriver(driverId).stream()
                     .map(this::convertToDriverRequestDto).collect(Collectors.toList());
@@ -29,7 +29,7 @@ public class DriverRequestServiceImpl implements DriverRequestService {
     }
 
     @Override
-    public boolean save(Integer driverId, Integer requestId) throws ServiceException {
+    public boolean save(Long driverId, Long requestId) throws ServiceException {
         try {
             return daoFactory.getDriversRequestsDao().save(driverId, requestId);
         } catch (DAOException e) {

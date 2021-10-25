@@ -25,7 +25,7 @@ public class EditRequestByUser implements Command {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter(METHOD) != null) {
             if (req.getParameter(METHOD).equals(DELETE)) {
-                int requestId = Integer.parseInt(req.getParameter(ID));
+                long requestId = Integer.parseInt(req.getParameter(ID));
                 try {
                     factoryService.getRequestService().delete(requestId);
                 } catch (ServiceException e) {
@@ -33,7 +33,7 @@ public class EditRequestByUser implements Command {
                 }
             }
         } else if (req.getMethod().equals(POST)) {
-            int id = 0;
+            long id = 0;
             if (req.getParameter(ID) != null){
                 id = Integer.valueOf(req.getParameter(ID));
             }
