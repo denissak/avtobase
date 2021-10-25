@@ -14,6 +14,8 @@ public interface RequestService {
 
     Long create(RequestDto requestDto) throws ServiceException;
 
+    Long addDriverOnRequest(Long carId, Long requestId) throws ServiceException;
+
     Optional<RequestDto> findById(Long id) throws ServiceException;
 
     Long update(RequestDto entity) throws ServiceException;

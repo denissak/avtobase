@@ -16,6 +16,8 @@ public interface RequestDao {
 
     Request save(Request entity) throws DAOException;
 
+    Long addDriverOnRequest(Long carId, Long requestId) throws DAOException;
+
     Request update(Request entity) throws DAOException;
 
     boolean updateStatusById(Long id, String status) throws DAOException;

@@ -22,6 +22,15 @@ public class RequestServiceImpl implements RequestService {
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
+    public Long addDriverOnRequest(Long carId, Long requestId) throws ServiceException {
+        try {
+            return daoFactory.getRequestDao().addDriverOnRequest(carId, requestId);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
     public List<RequestDto> findAllRequest() throws ServiceException {
         try {
             return daoFactory.getRequestDao().findAll().stream().map(this::convertToRequestDto).collect(Collectors.toList());

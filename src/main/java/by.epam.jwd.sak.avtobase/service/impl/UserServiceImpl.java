@@ -2,14 +2,13 @@ package by.epam.jwd.sak.avtobase.service.impl;
 
 import by.epam.jwd.sak.avtobase.bean.Role;
 import by.epam.jwd.sak.avtobase.bean.User;
-import by.epam.jwd.sak.avtobase.controller.filter.EncodingFilter;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.PasswordEncoder;
 import by.epam.jwd.sak.avtobase.service.UserService;
-import by.epam.jwd.sak.avtobase.service.validator.CreateUserValidator;
+import by.epam.jwd.sak.avtobase.service.validator.UserValidator;
 
 import java.sql.Date;
 import java.util.List;
@@ -18,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class UserServiceImpl implements UserService {
 
-    private final CreateUserValidator createUserValidator = CreateUserValidator.getInstance();
+
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
 
@@ -93,10 +92,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Long create (UserDto userDto) throws ServiceException {
-/*        ValidationResult validationResult = createUserValidator.isValid(userCreateDto);
-        if (!validationResult.isValid()) {
-            throw new ValidationException(validationResult.getErrors());
-        }*/
         User userBean = convertToUser(userDto);
         try {
             daoFactory.getUserDao().save(userBean);

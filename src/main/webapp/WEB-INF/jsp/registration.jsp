@@ -16,7 +16,7 @@
                class="form-control"
                id="exampleInputLogin"
                aria-describedby="emailHelp"
-               required pattern="[a-z]{5,15}"
+               required pattern="[A-Za-z0-9]{5,15}"
                title="Имя пользователя должно состоять из не менее 5 символов и не более 15, а также включать в себя только латинские символы"
         >
     </div>

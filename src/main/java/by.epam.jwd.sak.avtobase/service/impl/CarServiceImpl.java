@@ -9,6 +9,7 @@ import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.CarService;
 import by.epam.jwd.sak.avtobase.service.Mapper;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,6 +17,16 @@ import java.util.stream.Collectors;
 public class CarServiceImpl implements CarService {
 
     private final DaoFactory daoFactory = DaoFactory.getInstance();
+
+
+    @Override
+    public List<CarDto> findAllFreeDriver(Date date) throws ServiceException {
+        try {
+            return daoFactory.getCarDao().findAllFreeDriver(date).stream().map(this::convertToCarDto).collect(Collectors.toList());
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
 
     @Override
     public Long update(CarDto carDto) throws ServiceException {

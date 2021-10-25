@@ -11,6 +11,7 @@ import by.epam.jwd.sak.avtobase.util.ConnectionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,27 @@ public class CarDaoImpl implements CarDao {
     private static final String DELETE_CAR = "DELETE FROM cars WHERE id = ?";
     private static final String ADD_DRIVER = "UPDATE cars SET user_id = ? WHERE id = ?";
     private static final String UPDATE_CAR = "UPDATE cars SET mark = ?, model = ?, release_date = ?, release_date = ?, type = ?, lifting_capacity = ?, cargo_capacity = ?, passenger_capacity = ?, inspection_permission = ?, status_car = ?, car_description = ? WHERE id = ?";
+    private static final String GET_ALL_FREE_DRIVERS = "SELECT * FROM cars as c JOIN users as u on u.id = c.user_id WHERE c.status_car != 'BROKEN'\n" +
+            "                                      AND c.id != (SELECT car_id FROM requests as r WHERE r.date_departure = ? \n" +
+            "                                      AND r.car_id IN (SELECT c.id FROM users as u JOIN cars as c on u.id = c.user_id WHERE c.status_car != 'BROKEN'))";
+
+    @Override
+    public List<Car> findAllFreeDriver(Date date) throws DAOException {
+        List<Car> cars = new ArrayList<>();
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_FREE_DRIVERS)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                cars.add(buildEntity(resultSet));
+            }
+        } catch (SQLException e) {
+            LOGGER.error(e);
+            throw new DAOException(e.getMessage(), e);
+        } finally {
+            ConnectionManager.returnConnection(connection);
+        }
+        return cars;
+    }
 
     @Override
     public boolean update(Car entity) throws DAOException {
@@ -154,20 +176,25 @@ public class CarDaoImpl implements CarDao {
 
     private Car buildEntity(ResultSet resultSet) throws SQLException {
 
-        Role role = new Role(
-                resultSet.getObject(ID, Long.class),
-                resultSet.getObject(NAME, String.class)
-        );
-
-        User user = new User(
-                resultSet.getObject(ID, Long.class),
-                resultSet.getObject(LOGIN, String.class),
-                resultSet.getObject(PASSWORD, String.class),
-                resultSet.getObject(NAME, String.class),
-                resultSet.getObject(SURNAME, String.class),
-                resultSet.getObject(PHONE_NUMBER, String.class),
-                role
-        );
+        Role role = null;
+        if (resultSet.getObject("role_id", Long.class) != null) {
+            role = new Role(
+                    resultSet.getObject("role_id", Long.class),
+                    resultSet.getObject("r.name", String.class)
+            );
+        }
+        User user = null;
+        if (resultSet.getObject("user_id", Long.class) != null) {
+            user = new User(
+                    resultSet.getObject(USER_ID, Long.class),
+                    resultSet.getObject(LOGIN, String.class),
+                    resultSet.getObject(PASSWORD, String.class),
+                    resultSet.getObject("u.name", String.class),
+                    resultSet.getObject(SURNAME, String.class),
+                    resultSet.getObject(PHONE_NUMBER, String.class),
+                    role
+            );
+        }
         return Car.builder()
 
                 .id(resultSet.getObject(ID, Long.class))

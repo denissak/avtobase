@@ -3,12 +3,15 @@ package by.epam.jwd.sak.avtobase.service;
 import by.epam.jwd.sak.avtobase.dto.CarDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
 public interface CarService {
 
     List<CarDto> findAllCar() throws ServiceException;
+
+    List<CarDto> findAllFreeDriver(Date data) throws ServiceException;
 
     Long create (CarDto carDto) throws ServiceException;
 

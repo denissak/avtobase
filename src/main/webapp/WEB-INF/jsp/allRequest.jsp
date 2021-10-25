@@ -34,10 +34,15 @@
             <td>${request.getTypeTransport()}</td>
             <td>${request.getDetailsRequest()}</td>
             <td>
-                <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
+                <form action="Controller?command=test" method="GET">
+                    <button class="btn btn-outline-danger ms-3" data-bs-toggle="modal" name="data" data-bs-target=".requestId_${request.getId()}" value="${request.getDateDeparture()}">Обработать
+                        <c:set var="requestId" value="${request.getId()}"/>
+                    </button>
+                </form>
+<%--                <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
                         data-bs-target=".requestId_${request.getId()}">Обработать
                     <c:set var="requestId" value="${request.getId()}"/>
-                </button>
+                </button>--%>
             </td>
             <td>
                 <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"

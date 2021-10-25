@@ -1,0 +1,1 @@
+25.10.2021 10:27:13,058 ERROR RequestDaoImpl:44 - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`avtobase`.`requests`, CONSTRAINT `requests_ibfk_2` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`))

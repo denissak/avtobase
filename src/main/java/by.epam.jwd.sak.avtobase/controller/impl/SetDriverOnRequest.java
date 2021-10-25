@@ -21,12 +21,12 @@ public class SetDriverOnRequest implements Command {
         if (req.getMethod().equals(POST)) {
             String status = req.getParameter(STATUS);
             Long requestId = Long.valueOf(req.getParameter(REQUEST_ID));
-            Long driverId = Long.valueOf(req.getParameter(DRIVER));
+            Long carId = Long.valueOf(req.getParameter(DRIVER));
             try {
-                factoryService.getDriversRequestsService().save(driverId, requestId);
+                factoryService.getRequestService().addDriverOnRequest(carId, requestId);
                 factoryService.getRequestService().updateStatusById(requestId, status);
             } catch (ServiceException e) {
-                throw new ServletException();
+                throw new ServletException(e.getMessage(), e);
             }
             resp.sendRedirect(COMMAND_ALL_REQUEST);
         }

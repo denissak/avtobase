@@ -20,7 +20,7 @@ public class AllCar implements Command {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             req.setAttribute(ALL_CAR, factoryService.getCarService().findAllCar());
-            req.setAttribute(USER_DRIVERS, factoryService.getUserService().findAllDrivers());
+            req.setAttribute(USER_DRIVERS, factoryService.getUserService().findAllDrivers().get(0));
         } catch (ServiceException e) {
             throw new ServletException(e.getMessage(), e);
         }

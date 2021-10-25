@@ -30,6 +30,24 @@ public class RequestDaoImpl implements RequestDao {
     private static final String UPDATE_REQUEST = "UPDATE requests SET start_address = ?, end_address = ?, date_departure = ?, status_request = ?, type_transport = ?, details_request = ? WHERE id = ?";
     private static final String UPDATE_STATUS = "UPDATE requests SET status_request = ? WHERE id = ?";
     private static final String DELETE_REQUEST = "DELETE FROM requests WHERE id = ?";
+    private static final String ADD_DRIVER_ON_REQUEST = "UPDATE requests SET car_id = ? WHERE id = ?";
+
+    @Override
+    public Long addDriverOnRequest(Long carId, Long requestId) throws DAOException {
+        long result;
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(ADD_DRIVER_ON_REQUEST, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setObject(1, carId);
+            preparedStatement.setObject(2, requestId);
+            result = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.error(e);
+            throw new DAOException(e.getMessage(), e);
+        } finally {
+            ConnectionManager.returnConnection(connection);
+        }
+        return result;
+    }
 
     @Override
     public List<Request> findAll() throws DAOException {
