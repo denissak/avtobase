@@ -1,8 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="loc"/>
 <html>
 <head>
-    <title>Edit User</title>
+    <title><fmt:message key="text.edit"/></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <%--<link href="avtobase.css">--%>
 </head>
@@ -13,7 +17,7 @@
     <c:forEach var="user" items="${allUser}">
         <c:if test="${user.getId() == param.userId}">
             <div style="display: none" class="mb-3">
-                <label for="exampleInputId" class="form-label">Login</label>
+                <label for="exampleInputId" class="form-label"><fmt:message key="text.edit"/></label>
                 <input type="text"
                        readonly="readonly"
                        name="id"
@@ -23,7 +27,7 @@
                 >
             </div>
             <div class="mb-3">
-                <label for="exampleInputLogin" class="form-label">Login</label>
+                <label for="exampleInputLogin" class="form-label"><fmt:message key="text.login"/></label>
                 <input type="text"
                        name="login"
                        class="form-control"
@@ -36,7 +40,7 @@
 
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword" class="form-label">Password</label>
+                <label for="exampleInputPassword" class="form-label"><fmt:message key="text.password"/></label>
                 <input type="password"
                        name="password"
                        class="form-control"
@@ -45,19 +49,8 @@
                        title="Пароль должен состоять из не менее 5 символов и не более 15. Должен включать в себя латинские символы верхнего и нижнего регистра, а также как минимум 1 цифру."
                 >
             </div>
-           <%-- <div class="mb-3">
-                <label for="exampleInputRole" class="form-label">Role</label>
-                <input type="text"
-                       name="role"
-                       class="form-control"
-                       id="exampleInputRole"
-                       required pattern="[A-Za-z0-9]{1,30}"
-                       title="Пароль должен состоять из не менее 5 символов и не более 15. Должен включать в себя латинские символы верхнего и нижнего регистра, а также как минимум 1 цифру."
-                       value="${user.getRole()}"
-                >
-            </div>--%>
             <div class="mb-3">
-                <label for="exampleInputRole" class="form-label">Role</label>
+                <label for="exampleInputRole" class="form-label"><fmt:message key="text.role"/></label>
                 <select class="form-select" name="role" required aria-label="select example" id="exampleInputRole">
                     <c:forEach var="role" items="${roles}">
                         <option value="${role.getId()}" ${user.getRole() == role.getName() ? 'selected="selected"' : ''}>${role.getName()}</option>
@@ -65,7 +58,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="exampleInputName" class="form-label">Name</label>
+                <label for="exampleInputName" class="form-label"><fmt:message key="text.name"/></label>
                 <input type="text"
                        name="name"
                        class="form-control"
@@ -77,7 +70,7 @@
 
             </div>
             <div class="mb-3">
-                <label for="exampleInputSurname" class="form-label">Surname</label>
+                <label for="exampleInputSurname" class="form-label"><fmt:message key="text.surname"/></label>
                 <input type="text"
                        name="surname"
                        class="form-control"
@@ -88,7 +81,7 @@
                 >
             </div>
             <div class="mb-3">
-                <label for="exampleInputPhoneNumber" class="form-label">PhoneNumber</label>
+                <label for="exampleInputPhoneNumber" class="form-label"><fmt:message key="text.phone_number"/></label>
                 <input type="text"
                        name="phoneNumber"
                        placeholder="+375XXXXXXXXX"
@@ -101,7 +94,7 @@
             </div>
         </c:if>
     </c:forEach>
-    <button type="submit" class="btn btn-success">Обновить</button>
+    <button type="submit" class="btn btn-success"><fmt:message key="text.edit"/></button>
 </form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

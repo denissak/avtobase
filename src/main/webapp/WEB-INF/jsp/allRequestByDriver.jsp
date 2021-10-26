@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Все заявки</title>
+    <title><fmt:message key="text.all_requests"/></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <%@ include file="header.jsp" %>
@@ -13,14 +14,14 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">Кто составил</th>
+        <th scope="col"><fmt:message key="text.who_created"/></th>
         <%--        <th scope="col">Дата заявки</th>--%>
-        <th scope="col">Начальный маршрут</th>
-        <th scope="col">Конечный маршрут</th>
-        <th scope="col">Дата отправки</th>
-        <th scope="col">Статус заказа</th>
-        <th scope="col">Тип транспорта</th>
-        <th scope="col">Детали заказа</th>
+        <th scope="col"><fmt:message key="text.start_address"/></th>
+        <th scope="col"><fmt:message key="text.end_address"/></th>
+        <th scope="col"><fmt:message key="text.date_departure"/></th>
+        <th scope="col"><fmt:message key="text.status_request"/></th>
+        <th scope="col"><fmt:message key="text.type_transport"/></th>
+        <th scope="col"><fmt:message key="text.request_details"/></th>
     </tr>
     <c:forEach var="request" items="${allRequestByDriver}">
 <%--        <c:if test="${request.getId() == param.requestId}">--%>

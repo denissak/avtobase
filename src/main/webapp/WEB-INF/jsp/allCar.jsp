@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Все автомобили</title>
+    <title><fmt:message key="text.all_cars"/></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <%@ include file="header.jsp" %>
@@ -13,16 +14,16 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">Водитель</th>
-        <th scope="col">Марка автомобиля</th>
-        <th scope="col">Модель автомобиля</th>
-        <th scope="col">Дата выпуска</th>
-        <th scope="col">Тип автомобиля</th>
-        <th scope="col">Макс. объем груза</th>
-        <th scope="col">Макс. вес груза</th>
-        <th scope="col">Макс. мест</th>
-        <th scope="col">Дата допуска</th>
-        <th scope="col">Статус</th>
+        <th scope="col"><fmt:message key="text.driver"/></th>
+        <th scope="col"><fmt:message key="text.mark"/></th>
+        <th scope="col"><fmt:message key="text.model"/></th>
+        <th scope="col"><fmt:message key="text.date_release"/></th>
+        <th scope="col"><fmt:message key="text.type_transport"/></th>
+        <th scope="col"><fmt:message key="text.max_volume"/></th>
+        <th scope="col"><fmt:message key="text.max_weight"/></th>
+        <th scope="col"><fmt:message key="text.max_passengers"/></th>
+        <th scope="col"><fmt:message key="text.date_inspection_permission"/></th>
+        <th scope="col"><fmt:message key="text.status_car"/></th>
 <%--        <th scope="col">Доп. сведения</th>--%>
     </tr>
     <c:forEach var="car" items="${allCar}">
@@ -47,7 +48,7 @@
             </td>
             <td>
                 <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
-                        data-bs-target=".carIdEdit_${car.getId()}">Редактировать
+                        data-bs-target=".carIdEdit_${car.getId()}"><fmt:message key="text.add"/>
                     <c:set var="carId" value="${car.getId()}"/>
                 </button>
             </td>
@@ -64,7 +65,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateCarDriverModalLabel">Назначить водителя</h5>
+                        <h5 class="modal-title" id="updateCarDriverModalLabel"><fmt:message key="text.make_driver"/></h5>
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                     <div class="modal-body">
@@ -80,7 +81,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateCarModalLabel">Редактировать автомобиль</h5>
+                        <h5 class="modal-title" id="updateCarModalLabel"><fmt:message key="text.edit"/></h5>
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                     <div class="modal-body">

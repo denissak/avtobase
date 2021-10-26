@@ -16,6 +16,7 @@ import by.epam.jwd.sak.avtobase.controller.impl.EditRequestByUser;
 import by.epam.jwd.sak.avtobase.controller.impl.EditStatusRequestByDriver;
 import by.epam.jwd.sak.avtobase.controller.impl.EditUser;
 import by.epam.jwd.sak.avtobase.controller.impl.EditUserByAdmin;
+import by.epam.jwd.sak.avtobase.controller.impl.Language;
 import by.epam.jwd.sak.avtobase.controller.impl.Login;
 import by.epam.jwd.sak.avtobase.controller.impl.Logout;
 import by.epam.jwd.sak.avtobase.controller.impl.Registration;
@@ -54,6 +55,7 @@ public class CommandProvider {
         commands.put(CommandName.ALLREQUESTBYDRIVER, new AllRequestByDriver());
         commands.put(CommandName.EDITSTATUSREQUESTBYDRIVER, new EditStatusRequestByDriver());
         commands.put(CommandName.TEST, new Test());
+        commands.put(CommandName.LANGUAGE, new Language());
     }
 
     public Command takeCommand(String name) {

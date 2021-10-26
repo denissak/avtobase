@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Все пользователи</title>
+    <title><fmt:message key="text.all_users"/></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <%@ include file="header.jsp"%>
     <%-- <jsp:include page="header.jsp">
@@ -16,12 +17,12 @@
     <thead>
     <tr>
         <%--<th scope="col">Номер</th>--%>
-        <th scope="col">Логин</th>
+        <th scope="col"><fmt:message key="text.login"/></th>
         <%--<th scope="col">Пароль</th>--%>
-        <th scope="col">Роль</th>
-        <th scope="col">Имя</th>
-        <th scope="col">Фамилия</th>
-        <th scope="col">Номер телефона</th>
+        <th scope="col"><fmt:message key="text.role"/></th>
+        <th scope="col"><fmt:message key="text.name"/></th>
+        <th scope="col"><fmt:message key="text.surname"/></th>
+        <th scope="col"><fmt:message key="text.phone_number"/></th>
     </tr>
     <c:forEach var="user" items="${usersDisplay}">
         <tr>
@@ -31,7 +32,7 @@
             <td>${user.getSurname()}</td>
             <td>${user.getPhoneNumber()}</td>
             <td>
-                <button class="btn btn-outline-warning ms-3 "data-bs-toggle="modal" data-bs-target=".${user.getLogin()}">Изменить
+                <button class="btn btn-outline-warning ms-3 "data-bs-toggle="modal" data-bs-target=".${user.getLogin()}"><fmt:message key="text.edit"/>
                     <c:set var = "userId" value = "${user.getId()}"/>
                 </button>
             </td>
@@ -48,7 +49,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateUserModalLabel">Редактировать пользователя</h5>
+                        <h5 class="modal-title" id="updateUserModalLabel"><fmt:message key="text.edit"/></h5>
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                         <%--<div class="modal-body"> <a href="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"></a></div>--%>

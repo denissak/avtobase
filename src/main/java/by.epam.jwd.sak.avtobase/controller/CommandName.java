@@ -22,6 +22,7 @@ public enum CommandName {
     ALLCAR,
     SETDRIVERONREQUEST,
     SETDRIVERONCAR,
-    TEST
+    TEST,
+    LANGUAGE
 
 }

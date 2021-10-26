@@ -1,59 +1,74 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="loc"/>
+
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
     <div class="container">
-        <a href="/" class="navbar-brand">Автобаза</a>
+        <a href="/" class="navbar-brand"><fmt:message key="text.avtobase"/></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarContent">
-            <%--<div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav me-auto mb-2">
-
-                    <div action="" class="d-flex">--%>
             <c:choose>
-
                 <c:when test="${empty sessionScope.user}">
-
                     <ul class="navbar-nav me-auto mb-2">
                     </ul>
                     <div action="" class="d-flex">
                         <button class="btn btn-outline-success" data-bs-toggle="modal"
-                                data-bs-target="#registrationModal">Зарегистрироваться
+                                data-bs-target="#registrationModal"><fmt:message key="button.register"/>
                         </button>
                         <button class="btn btn-success ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-                            Войти
+                            <fmt:message key="button.log_in"/>
                         </button>
+                            <%--                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                                        <div class="btn-group" role="group">
+                                                            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                Язык
+                                                            </button>
+                                                            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                                <li><a class="dropdown-item" href="Controller?command=language">RU</a></li>
+                                                                <li><a class="dropdown-item" href="Controller?command=language">EN</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>--%>
+
+
+                            <%--                        <form action=""
+                                                    <button class="btn btn-success ms-3" data-bs-toggle="modal" name="lang" value="ru_RU">
+                                                        Русский
+                                                    </button>
+                                                    <button class="btn btn-success ms-3" data-bs-toggle="modal" name="lang" value="en_US">
+                                                        Английский
+                                                    </button>--%>
                     </div>
-
                 </c:when>
-
                 <c:when test="${user.getRole().equals('admin')}">
-
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=alluser&page=1" class="nav-link"> Все пользователи</a>
+                            <a href="Controller?command=alluser&page=1" class="nav-link"><fmt:message key="text.all_users"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=allcar" class="nav-link"> Все автомобили</a>
+                            <a href="Controller?command=allcar" class="nav-link"><fmt:message key="text.all_cars"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=allrequest" class="nav-link"> Все заявки</a>
+                            <a href="Controller?command=allrequest" class="nav-link"><fmt:message key="text.all_requests"/></a>
                         </li>
                     </ul>
                     <div action="" class="d-flex">
                         <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                                data-bs-target="#createCarModal">Создать авто
+                                data-bs-target="#createCarModal"><fmt:message key="button.create_car"/>
                         </button>
                         <form action="Controller?command=logout" method="POST">
-                            <button class="btn btn-outline-danger ms-3">Выйти</button>
+                            <button class="btn btn-outline-danger ms-3"><fmt:message key="button.log_out"/></button>
                         </form>
                     </div>
                 </c:when>
@@ -61,24 +76,24 @@
                 <c:when test="${user.getRole().equals('dispatcher')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=allcar" class="nav-link"> Все автомобили</a>
+                            <a href="Controller?command=allcar" class="nav-link"><fmt:message key="text.all_cars"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=allrequest" class="nav-link"> Все заявки</a>
+                            <a href="Controller?command=allrequest" class="nav-link"><fmt:message key="text.all_requests"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=alldriver" class="nav-link"> Все водители</a>
+                            <a href="Controller?command=alldriver" class="nav-link"><fmt:message key="text.all_driver"/></a>
                         </li>
                     </ul>
                     <div action="" class="d-flex">
                         <button class="btn btn-outline-success " data-bs-toggle="modal"
-                                data-bs-target="#createCarModal">Создать авто
+                                data-bs-target="#createCarModal"><fmt:message key="button.create_car"/>
                         </button>
                         <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                                data-bs-target="#createRequestModal">Создать заявку
+                                data-bs-target="#createRequestModal"><fmt:message key="button.create_request"/>
                         </button>
                         <form action="Controller?command=logout" method="POST">
-                            <button class="btn btn-outline-danger ms-3">Выйти</button>
+                            <button class="btn btn-outline-danger ms-3"><fmt:message key="button.log_out"/></button>
                         </form>
                     </div>
                 </c:when>
@@ -86,12 +101,12 @@
                 <c:when test="${user.getRole().equals('driver')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=allrequestbydriver" class="nav-link"> Мои заявки</a>
+                            <a href="Controller?command=allrequestbydriver" class="nav-link"><fmt:message key="text.my_requests"/></a>
                         </li>
                     </ul>
                     <div action="" class="d-flex">
                         <form action="Controller?command=logout" method="POST">
-                            <button class="btn btn-outline-danger ms-3">Выйти</button>
+                            <button class="btn btn-outline-danger ms-3"><fmt:message key="button.log_out"/></button>
                         </form>
                     </div>
                 </c:when>
@@ -99,26 +114,34 @@
                 <c:when test="${user.getRole().equals('user')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=alluserrequest" class="nav-link"> Мои заявки</a>
+                            <a href="Controller?command=alluserrequest" class="nav-link"><fmt:message key="text.my_requests"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=allusercomment" class="nav-link"> Мои комментарии</a>
+                            <a href="Controller?command=allusercomment" class="nav-link"><fmt:message key="text.my_comments"/></a>
                         </li>
                     </ul>
                     <div action="" class="d-flex">
                         <button class="btn btn-outline-success " data-bs-toggle="modal"
-                                data-bs-target="#createRequestModal">Создать заявку
+                                data-bs-target="#createRequestModal"><fmt:message key="button.create_request"/>
                         </button>
                         <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                                data-bs-target="#createCommentModal">Оставить комментарий
+                                data-bs-target="#createCommentModal"><fmt:message key="text.send_comment"/>
                         </button>
                         <form action="Controller?command=logout" method="POST">
-                            <button class="btn btn-outline-danger ms-3">Выйти</button>
+                            <button class="btn btn-outline-danger ms-3"><fmt:message key="button.log_out"/></button>
                         </form>
                     </div>
                 </c:when>
+
             </c:choose>
+
         </div>
+    </div>
+    <div class="btn-group" role="group" name="lang" aria-label="Basic outlined example">
+        <form action="Controller?command=language" method="POST">
+            <button type="button" class="btn btn-outline-primary">RU</button>
+            <button type="button" class="btn btn-outline-primary">EN</button>
+        </form>
     </div>
 </nav>
 
@@ -126,7 +149,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Вход</h5>
+                <h5 class="modal-title" id="loginModalLabel"><fmt:message key="button.log_in"/></h5>
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             <div class="modal-body">
@@ -141,7 +164,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createRequestModalLabel">Создание заявки</h5>
+                <h5 class="modal-title" id="createRequestModalLabel"><fmt:message key="button.create_request"/></h5>
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             <div class="modal-body">
@@ -157,7 +180,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createCarModalLabel">Создание автомобиля</h5>
+                <h5 class="modal-title" id="createCarModalLabel"><fmt:message key="button.create_car"/></h5>
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             <%--<div class="modal-body"> <a href="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"></a></div>--%>
@@ -177,7 +200,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="registrationModalLabel">Регистрация</h5>
+                <h5 class="modal-title" id="registrationModalLabel"><fmt:message key="text.registration"/></h5>
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             <div class="modal-body">
@@ -194,7 +217,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createCommentModalLabel">Напишите ваш комментарий</h5>
+                <h5 class="modal-title" id="createCommentModalLabel"><fmt:message key="text.create_your_comment"/></h5>
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             <div class="modal-body">
@@ -204,7 +227,7 @@
         </div>
     </div>
 </div>
-</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"

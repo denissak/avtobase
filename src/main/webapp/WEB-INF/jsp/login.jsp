@@ -1,15 +1,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login</title>
+    <title><fmt:message key="button.log_in"/></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
 
 <form action="Controller?command=login" method="POST">
     <div class="mb-3">
-        <label for="exampleInputLogin" class="form-label">Login</label>
+        <label for="exampleInputLogin" class="form-label"><fmt:message key="text.login"/></label>
         <input type="text"
                name="login"
                class="form-control"
@@ -19,18 +20,18 @@
                required>
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword" class="form-label">Password</label>
+        <label for="exampleInputPassword" class="form-label"><fmt:message key="text.password"/></label>
         <input type="password"
                name="password"
                class="form-control"
                id="exampleInputPassword"
                required>
     </div>
-    <button type="submit" class="btn btn-primary">Войти</button>
+    <button type="submit" class="btn btn-primary"><fmt:message key="button.log_in"/></button>
     <c:if test="${param.error != null}">
-        <div>
+<%--        <div>
             <span>Login or Password is not correct</span>
-        </div>
+        </div>--%>
     </c:if>
 
 </form>
