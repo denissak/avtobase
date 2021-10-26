@@ -37,7 +37,7 @@
         <select class="form-select" name="driver" required aria-label="select example" id="exampleInputDriver">
             <option value=""><fmt:message key="text.make_driver"/></option>
             <c:forEach var="userDriver" items="${userDrivers}">
-                <option value="${userDriver.getId()}">${userDriver.getName()}</option>
+                <option value="${userDriver.getId()}">${userDriver.getUserDto().getName()}</option>
             </c:forEach>
         </select>
     </div>

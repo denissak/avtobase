@@ -41,12 +41,12 @@
                 <%--<th scope="row">$${request.getDateCreate()}</th>--%>
             <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
                 <%--            <td>${request.getRequestDto().getDateCreate()}</td>--%>
-            <td>${request.getRequestDto().getStartAddress()}</td>
-            <td>${request.getRequestDto().getEndAddress()}</td>
-            <td>${request.getRequestDto().getDateDeparture()}</td>
-            <td>${request.getRequestDto().getStatusRequest()}</td>
-            <td>${request.getRequestDto().getTypeTransport()}</td>
-            <td>${request.getRequestDto().getDetailsRequest()}</td>
+            <td>${request.getStartAddress()}</td>
+            <td>${request.getEndAddress()}</td>
+            <td>${request.getDateDeparture()}</td>
+            <td>${request.getStatusRequest()}</td>
+            <td>${request.getTypeTransport()}</td>
+            <td>${request.getDetailsRequest()}</td>
                     <td>
                         <form action="Controller?command=editstatusrequestbydriver" method="post">
 <%--                            <input type="hidden" name="id" value="${request.getId()}">

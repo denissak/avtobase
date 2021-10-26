@@ -20,9 +20,10 @@ public class EditStatusRequestByDriver implements Command {
         if (req.getMethod().equals(POST)) {
             String status = "BEINPROGRESS";
             Long requestId = Long.valueOf(req.getParameter(REQUEST_ID));
-/*            Integer driverId = Integer.valueOf(req.getParameter(DRIVER));*/
+            Long driverId = Long.valueOf(req.getParameter(DRIVER));
             try {
-/*                factoryService.getDriversRequestsService().save(driverId, requestId);*/
+                factoryService.getRequestService().addDriverOnRequest(driverId, requestId);
+               /* factoryService.getDriversRequestsService().save(driverId, requestId);*/
                 factoryService.getRequestService().updateStatusById(requestId, status);
             } catch (ServiceException e) {
                 throw new ServletException();

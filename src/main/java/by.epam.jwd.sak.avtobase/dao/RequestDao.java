@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface RequestDao {
 
+    List<Request> findAllByCarId(Long carId) throws DAOException;
+
     Optional<Request> findById(Long id) throws DAOException;
 
     List<Request> findAllByUserId(Long userId) throws DAOException;

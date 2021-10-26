@@ -2,7 +2,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<%--<fmt:setLocale value="${sessionScope.lang != null ? sessionScope.lang : (param.lang != null ? param.lang : 'en_US')}"/>--%>
+<fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="loc"/>
 
 <head>
@@ -29,26 +30,6 @@
                         <button class="btn btn-success ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
                             <fmt:message key="button.log_in"/>
                         </button>
-                            <%--                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                                        <div class="btn-group" role="group">
-                                                            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                Язык
-                                                            </button>
-                                                            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                                <li><a class="dropdown-item" href="Controller?command=language">RU</a></li>
-                                                                <li><a class="dropdown-item" href="Controller?command=language">EN</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>--%>
-
-
-                            <%--                        <form action=""
-                                                    <button class="btn btn-success ms-3" data-bs-toggle="modal" name="lang" value="ru_RU">
-                                                        Русский
-                                                    </button>
-                                                    <button class="btn btn-success ms-3" data-bs-toggle="modal" name="lang" value="en_US">
-                                                        Английский
-                                                    </button>--%>
                     </div>
                 </c:when>
                 <c:when test="${user.getRole().equals('admin')}">
@@ -135,12 +116,16 @@
 
             </c:choose>
 
+            <%--<form action="Controller?command=language" method="POST">
+                <button class="btn btn-outline-primary" &lt;%&ndash;name="lang" value="ru_RU"&ndash;%&gt;>RU</button>
+                &lt;%&ndash;<button type="button" class="btn btn-outline-primary" name="lang" value="en_US">EN</button>&ndash;%&gt;
+            </form>--%>
         </div>
     </div>
-    <div class="btn-group" role="group" name="lang" aria-label="Basic outlined example">
+    <div class="btn-group" <%--role="group"--%> aria-label="Basic outlined example">
         <form action="Controller?command=language" method="POST">
-            <button type="button" class="btn btn-outline-primary">RU</button>
-            <button type="button" class="btn btn-outline-primary">EN</button>
+            <button class="btn btn-outline-primary" name="lang" value="ru_RU">RU</button>
+            <button class="btn btn-outline-primary" name="lang" value="en_US">EN</button>
         </form>
     </div>
 </nav>

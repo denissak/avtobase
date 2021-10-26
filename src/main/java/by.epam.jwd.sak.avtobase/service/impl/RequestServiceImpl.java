@@ -64,7 +64,7 @@ public class RequestServiceImpl implements RequestService {
         try {
             return daoFactory.getRequestDao().updateStatusById(id, status);
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 
@@ -73,7 +73,7 @@ public class RequestServiceImpl implements RequestService {
         try {
             return daoFactory.getRequestDao().findById(id).map(this::convertToRequestDto);
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 
@@ -83,9 +83,19 @@ public class RequestServiceImpl implements RequestService {
         try {
             daoFactory.getRequestDao().save(requestBean);
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
         return requestBean.getId();
+    }
+
+    @Override
+    public List<RequestDto> findAllByCarId(Long carId) throws ServiceException {
+        try {
+            return daoFactory.getRequestDao().findAllByCarId(carId).stream()
+                    .map(this::convertToRequestDto).collect(Collectors.toList());
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
@@ -94,7 +104,7 @@ public class RequestServiceImpl implements RequestService {
             return daoFactory.getRequestDao().findAllByUserId(userId).stream()
                     .map(this::convertToRequestDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 

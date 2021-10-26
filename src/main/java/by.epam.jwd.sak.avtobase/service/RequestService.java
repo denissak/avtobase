@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface RequestService {
 
+    List<RequestDto> findAllByCarId(Long carId) throws ServiceException;
+
     List<RequestDto> findAllRequestByUser(Long userId) throws ServiceException;
 
     List<RequestDto> findAllRequest() throws ServiceException;

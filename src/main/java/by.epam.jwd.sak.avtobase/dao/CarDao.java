@@ -10,7 +10,9 @@ import java.util.Optional;
 
 public interface CarDao {
 
-    Optional<Car> findById(Long id) throws DAOException;
+    Car findByUserId(Long id) throws DAOException;
+
+    Car findById(Long id) throws DAOException;
 
     List<Car> findAll() throws DAOException;
 

@@ -25,6 +25,9 @@ public class SetDriverOnRequest implements Command {
             try {
 /*                req.getSession().setAttribute(USER_DRIVERS, factoryService.getCarService().findAllFreeDriver());*/
                 factoryService.getCarService().findAllFreeDriver();
+                factoryService.getRequestService().addDriverOnRequest(carId, requestId);
+//                req.setAttribute(USER_DRIVERS, factoryService.getCarService().findAllFreeDriver());
+                /*req.getSession().setAttribute();*/
                 /*factoryService.getRequestService().addDriverOnRequest(carId, requestId);*/
                 factoryService.getRequestService().updateStatusById(requestId, status);
             } catch (ServiceException e) {

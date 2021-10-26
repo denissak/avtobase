@@ -15,7 +15,9 @@ public interface CarService {
 
     Long create (CarDto carDto) throws ServiceException;
 
-    Optional<CarDto> findById(Long id) throws ServiceException;
+    CarDto findByUserId(Long id) throws ServiceException;
+
+    CarDto findById(Long id) throws ServiceException;
 
     boolean delete(Long id) throws ServiceException;
 

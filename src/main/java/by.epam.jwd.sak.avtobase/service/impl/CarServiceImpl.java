@@ -73,15 +73,24 @@ public class CarServiceImpl implements CarService {
         try {
             daoFactory.getCarDao().save(carBean);
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
         return carBean.getId();
     }
 
     @Override
-    public Optional<CarDto> findById(Long id) throws ServiceException {
+    public CarDto findByUserId(Long id) throws ServiceException {
         try {
-            return daoFactory.getCarDao().findById(id).map(this::convertToCarDto);
+            return convertToCarDto(daoFactory.getCarDao().findByUserId(id));
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public CarDto findById(Long id) throws ServiceException {
+        try {
+            return convertToCarDto(daoFactory.getCarDao().findById(id));
         } catch (DAOException e) {
             throw new ServiceException();
         }

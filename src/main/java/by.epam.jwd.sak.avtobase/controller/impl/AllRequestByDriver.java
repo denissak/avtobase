@@ -2,7 +2,9 @@ package by.epam.jwd.sak.avtobase.controller.impl;
 
 import by.epam.jwd.sak.avtobase.bean.DriverRequest;
 import by.epam.jwd.sak.avtobase.controller.Command;
+import by.epam.jwd.sak.avtobase.dto.CarDto;
 import by.epam.jwd.sak.avtobase.dto.DriverRequestDto;
+import by.epam.jwd.sak.avtobase.dto.RequestDto;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
@@ -27,8 +29,11 @@ public class AllRequestByDriver implements Command {
 
         try {
             /*List<DriverRequestDto> a = factoryService.getDriversRequestsService().findAllRequestByDriver(driverId);*/
-
-            req.setAttribute(ALL_REQUEST_BY_DRIVER, factoryService.getDriversRequestsService().findAllRequestByDriver(driverId));
+//            List<RequestDto>  sd = factoryService.getRequestService().findAllByCarId(driverId);
+            CarDto carDto = factoryService.getCarService().findByUserId(driverId);
+//            sd.get(0).getStartAddress();
+            req.setAttribute(ALL_REQUEST_BY_DRIVER, factoryService.getRequestService().findAllByCarId(carDto.getId()));
+            /*req.setAttribute(ALL_REQUEST_BY_DRIVER, factoryService.getUserService().findAllDrivers());*/
 /*            req.setAttribute(USER_DRIVERS, factoryService.getUserService().findAllDrivers());*/
         } catch (ServiceException e) {
             throw new ServletException(e.getMessage(), e);

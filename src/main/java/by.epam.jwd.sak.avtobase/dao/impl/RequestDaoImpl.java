@@ -23,6 +23,7 @@ public class RequestDaoImpl implements RequestDao {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
+    private static final String GET_ALL_REQUEST_BY_CAR_ID = "SELECT * FROM requests WHERE car_id = ?";
     private static final String GET_ALL_REQUEST_BY_USER_ID = "SELECT * FROM requests WHERE user_id = ?";
     private static final String GET_ALL_REQUEST = "SELECT * FROM requests as r join users as u  on u.id = r.user_id";
     private static final String SAVE_REQUEST = "INSERT INTO requests (user_id, date_create, start_address, end_address, date_departure, status_request, type_transport, details_request) VALUES (?,?,?,?,?,?,?,?)";
@@ -60,7 +61,7 @@ public class RequestDaoImpl implements RequestDao {
             }
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -76,7 +77,7 @@ public class RequestDaoImpl implements RequestDao {
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -114,7 +115,7 @@ public class RequestDaoImpl implements RequestDao {
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -134,7 +135,7 @@ public class RequestDaoImpl implements RequestDao {
             return Optional.ofNullable(request);
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -155,7 +156,7 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -174,7 +175,26 @@ public class RequestDaoImpl implements RequestDao {
             }
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
+        } finally {
+            ConnectionManager.returnConnection(connection);
+        }
+        return requests;
+    }
+
+    @Override
+    public List<Request> findAllByCarId(Long carId) throws DAOException {
+        List<Request> requests = new ArrayList<>();
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_REQUEST_BY_CAR_ID)) {
+            preparedStatement.setObject(1, carId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                requests.add(buildEntityById(resultSet));
+            }
+        } catch (SQLException e) {
+            LOGGER.error(e);
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
