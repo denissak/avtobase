@@ -64,6 +64,7 @@
                required pattern="^\+375(17|29|33|44)[0-9]{7}$"
                title="<fmt:message key="error.phone_number"/>"
         >
+
     </div>
     <button type="submit" class="btn btn-primary"><fmt:message key="button.register"/></button>
 </form>
