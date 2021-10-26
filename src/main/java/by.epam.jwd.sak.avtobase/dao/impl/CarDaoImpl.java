@@ -30,12 +30,10 @@ public class CarDaoImpl implements CarDao {
     private static final String DELETE_CAR = "DELETE FROM cars WHERE id = ?";
     private static final String ADD_DRIVER = "UPDATE cars SET user_id = ? WHERE id = ?";
     private static final String UPDATE_CAR = "UPDATE cars SET mark = ?, model = ?, release_date = ?, release_date = ?, type = ?, lifting_capacity = ?, cargo_capacity = ?, passenger_capacity = ?, inspection_permission = ?, status_car = ?, car_description = ? WHERE id = ?";
-    private static final String GET_ALL_FREE_DRIVERS = "SELECT * FROM cars as c JOIN users as u on u.id = c.user_id WHERE c.status_car != 'BROKEN'\n" +
-            "                                      AND c.id != (SELECT car_id FROM requests as r WHERE r.date_departure = ? \n" +
-            "                                      AND r.car_id IN (SELECT c.id FROM users as u JOIN cars as c on u.id = c.user_id WHERE c.status_car != 'BROKEN'))";
+    private static final String GET_ALL_FREE_DRIVERS = "SELECT * FROM cars as c JOIN users as u on u.id = c.user_id where c.status_car != 'BROKEN'";
 
     @Override
-    public List<Car> findAllFreeDriver(Date date) throws DAOException {
+    public List<Car> findAllFreeDriver() throws DAOException {
         List<Car> cars = new ArrayList<>();
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_FREE_DRIVERS)) {

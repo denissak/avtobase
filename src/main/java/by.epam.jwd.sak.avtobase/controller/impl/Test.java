@@ -21,15 +21,15 @@ public class Test implements Command {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Date date = Date.valueOf(req.getParameter("data"));
+        /*Date date = Date.valueOf(req.getParameter("data"));*/
         try {
 
-            req.getSession().setAttribute(USER_DRIVERS, factoryService.getCarService().findAllFreeDriver(date));
+            req.getSession().setAttribute(USER_DRIVERS, factoryService.getCarService().findAllFreeDriver());
 /*            req.setAttribute(USER_DRIVERS, factoryService.getCarService().findAllFreeDriver(date));*/
         } catch (ServiceException e) {
            throw new ServletException(e.getMessage(), e);
         }
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(COMMAND_ALL_REQUEST);
-        requestDispatcher.forward(req,resp);
+/*        RequestDispatcher requestDispatcher = req.getRequestDispatcher(COMMAND_ALL_REQUEST);
+        requestDispatcher.forward(req,resp);*/
     }
 }

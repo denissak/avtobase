@@ -23,7 +23,9 @@ public class SetDriverOnRequest implements Command {
             Long requestId = Long.valueOf(req.getParameter(REQUEST_ID));
             Long carId = Long.valueOf(req.getParameter(DRIVER));
             try {
-                factoryService.getRequestService().addDriverOnRequest(carId, requestId);
+/*                req.getSession().setAttribute(USER_DRIVERS, factoryService.getCarService().findAllFreeDriver());*/
+                factoryService.getCarService().findAllFreeDriver();
+                /*factoryService.getRequestService().addDriverOnRequest(carId, requestId);*/
                 factoryService.getRequestService().updateStatusById(requestId, status);
             } catch (ServiceException e) {
                 throw new ServletException(e.getMessage(), e);
