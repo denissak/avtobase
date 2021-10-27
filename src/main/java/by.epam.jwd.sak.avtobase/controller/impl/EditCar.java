@@ -46,7 +46,7 @@ public class EditCar implements Command {
                     .liftingCapacity(Integer.valueOf(req.getParameter(LIFTING_CAPACITY)))
                     .cargoCapacity(Integer.valueOf(req.getParameter(CARGO_CAPACITY)))
                     .passengerCapacity(Integer.valueOf(req.getParameter(PASSENGER_CAPACITY)))
-                    .inspectionPermission(LocalDateFormatter.format(req.getParameter(INSPECTION_PERMISSION)))
+                    .inspectionPermission(LocalDate.parse(req.getParameter(INSPECTION_PERMISSION))) //TODO
                     .statusCar(StatusCar.valueOf(req.getParameter(STATUS_CAR)))
                     .carDescription(req.getParameter(CAR_DESCRIPTION))
                     .build();
