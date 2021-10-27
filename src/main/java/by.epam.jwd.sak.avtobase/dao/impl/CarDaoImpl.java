@@ -27,7 +27,7 @@ public class CarDaoImpl implements CarDao {
     private static final String SAVE_CAR = "INSERT INTO cars (user_id, mark, model, release_date, type, lifting_capacity, cargo_capacity, passenger_capacity, inspection_permission, status_car, car_description) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
     private static final String GET_CAR_BY_ID = "SELECT * FROM cars WHERE id = ?";
     private static final String GET_CAR_BY_USER_ID = "SELECT * FROM cars as c JOIN users as u on c.user_id = u.id JOIN roles as r on u.role_id = r.id WHERE user_id = ?";
-    private static final String GET_ALL_CAR = "SELECT * FROM cars as c join users as u on u.id = c.user_id";
+    private static final String GET_ALL_CAR = "SELECT * FROM cars as c join users as u on u.id = c.user_id JOIN roles r on u.role_id = r.id";
     private static final String DELETE_CAR = "DELETE FROM cars WHERE id = ?";
     private static final String ADD_DRIVER = "UPDATE cars SET user_id = ? WHERE id = ?";
     private static final String UPDATE_CAR = "UPDATE cars SET mark = ?, model = ?, release_date = ?, release_date = ?, type = ?, lifting_capacity = ?, cargo_capacity = ?, passenger_capacity = ?, inspection_permission = ?, status_car = ?, car_description = ? WHERE id = ?";
@@ -194,16 +194,12 @@ public class CarDaoImpl implements CarDao {
 
     private Car buildEntity(ResultSet resultSet) throws SQLException {
 
-        Role role = null;
-        if (resultSet.getObject("role_id", Long.class) != null) {
-            role = new Role(
+        Role role = new Role(
                     resultSet.getObject("role_id", Long.class),
                     resultSet.getObject("r.name", String.class)
             );
-        }
-        User user = null;
-        if (resultSet.getObject("user_id", Long.class) != null) {
-            user = new User(
+
+        User user = new User(
                     resultSet.getObject(USER_ID, Long.class),
                     resultSet.getObject(LOGIN, String.class),
                     resultSet.getObject(PASSWORD, String.class),
@@ -212,7 +208,7 @@ public class CarDaoImpl implements CarDao {
                     resultSet.getObject(PHONE_NUMBER, String.class),
                     role
             );
-        }
+
         return Car.builder()
 
                 .id(resultSet.getObject(ID, Long.class))

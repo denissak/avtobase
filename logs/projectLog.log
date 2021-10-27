@@ -1,1 +1,1 @@
-26.10.2021 23:29:13,969 ERROR CarDaoImpl:162 - java.sql.SQLException: Column 'r.name' not found.
+27.10.2021 09:07:48,917 ERROR CarDaoImpl:162 - java.sql.SQLException: Column 'r.name' not found.

@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
 <table class="table">
     <thead>
     <tr>

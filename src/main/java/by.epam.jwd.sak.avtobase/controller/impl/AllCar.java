@@ -1,5 +1,6 @@
 package by.epam.jwd.sak.avtobase.controller.impl;
 
+import by.epam.jwd.sak.avtobase.dto.CarDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 import by.epam.jwd.sak.avtobase.controller.Command;
@@ -20,7 +21,7 @@ public class AllCar implements Command {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             req.setAttribute(ALL_CAR, factoryService.getCarService().findAllCar());
-            req.setAttribute(USER_DRIVERS, factoryService.getUserService().findAllDrivers().get(0));
+            req.setAttribute(USER_DRIVERS, factoryService.getUserService().findAllDrivers());
         } catch (ServiceException e) {
             throw new ServletException(e.getMessage(), e);
         }
