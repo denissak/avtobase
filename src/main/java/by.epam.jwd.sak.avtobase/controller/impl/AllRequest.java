@@ -26,8 +26,6 @@ public class AllRequest implements Command {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             req.setAttribute(ALL_REQUEST, factoryService.getRequestService().findAllRequest());
-            /*List<CarDto> sd = factoryService.getCarService().findAllFreeDriver();
-            sd.get(0).getUserDto().getName()*/
             req.setAttribute(USER_DRIVERS, factoryService.getCarService().findAllFreeDriver());
         } catch (ServiceException e) {
             LOGGER.error(e);

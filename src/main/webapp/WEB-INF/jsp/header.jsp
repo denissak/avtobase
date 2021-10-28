@@ -2,7 +2,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%--<fmt:setLocale value="${sessionScope.lang != null ? sessionScope.lang : (param.lang != null ? param.lang : 'en_US')}"/>--%>
 <fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="loc"/>
 
@@ -35,13 +34,15 @@
                 <c:when test="${user.getRole().equals('admin')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=alluser&page=1" class="nav-link"><fmt:message key="text.all_users"/></a>
+                            <a href="Controller?command=alluser&page=1" class="nav-link"><fmt:message
+                                    key="text.all_users"/></a>
                         </li>
                         <li class="nav-item">
                             <a href="Controller?command=allcar" class="nav-link"><fmt:message key="text.all_cars"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=allrequest" class="nav-link"><fmt:message key="text.all_requests"/></a>
+                            <a href="Controller?command=allrequest" class="nav-link"><fmt:message
+                                    key="text.all_requests"/></a>
                         </li>
                     </ul>
                     <div action="" class="d-flex">
@@ -60,10 +61,12 @@
                             <a href="Controller?command=allcar" class="nav-link"><fmt:message key="text.all_cars"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=allrequest" class="nav-link"><fmt:message key="text.all_requests"/></a>
+                            <a href="Controller?command=allrequest" class="nav-link"><fmt:message
+                                    key="text.all_requests"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=alldriver" class="nav-link"><fmt:message key="text.all_driver"/></a>
+                            <a href="Controller?command=alldriver" class="nav-link"><fmt:message
+                                    key="text.all_driver"/></a>
                         </li>
                     </ul>
                     <div action="" class="d-flex">
@@ -82,7 +85,8 @@
                 <c:when test="${user.getRole().equals('driver')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=allrequestbydriver" class="nav-link"><fmt:message key="text.my_requests"/></a>
+                            <a href="Controller?command=allrequestbydriver" class="nav-link"><fmt:message
+                                    key="text.my_requests"/></a>
                         </li>
                     </ul>
                     <div action="" class="d-flex">
@@ -95,10 +99,12 @@
                 <c:when test="${user.getRole().equals('user')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=alluserrequest" class="nav-link"><fmt:message key="text.my_requests"/></a>
+                            <a href="Controller?command=alluserrequest" class="nav-link"><fmt:message
+                                    key="text.my_requests"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=allusercomment" class="nav-link"><fmt:message key="text.my_comments"/></a>
+                            <a href="Controller?command=allusercomment" class="nav-link"><fmt:message
+                                    key="text.my_comments"/></a>
                         </li>
                     </ul>
                     <div action="" class="d-flex">
@@ -115,14 +121,9 @@
                 </c:when>
 
             </c:choose>
-
-            <%--<form action="Controller?command=language" method="POST">
-                <button class="btn btn-outline-primary" &lt;%&ndash;name="lang" value="ru_RU"&ndash;%&gt;>RU</button>
-                &lt;%&ndash;<button type="button" class="btn btn-outline-primary" name="lang" value="en_US">EN</button>&ndash;%&gt;
-            </form>--%>
         </div>
     </div>
-    <div class="btn-group" <%--role="group"--%> aria-label="Basic outlined example">
+    <div class="btn-group" aria-label="Basic outlined example">
         <form action="Controller?command=language" method="POST">
             <button class="btn btn-outline-primary" name="lang" value="ru_RU">RU</button>
             <button class="btn btn-outline-primary" name="lang" value="en_US">EN</button>
@@ -168,7 +169,6 @@
                 <h5 class="modal-title" id="createCarModalLabel"><fmt:message key="button.create_car"/></h5>
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
-            <%--<div class="modal-body"> <a href="${pageContext.request.contextPath}/Controller?command=gotocreaterequest"></a></div>--%>
             <div class="modal-body">
                 <jsp:include page="createCar.jsp">
                     <jsp:param name="typeTransports" value="typeTransports"/>

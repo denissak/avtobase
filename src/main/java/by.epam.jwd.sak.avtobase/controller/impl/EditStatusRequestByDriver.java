@@ -1,5 +1,6 @@
 package by.epam.jwd.sak.avtobase.controller.impl;
 
+import by.epam.jwd.sak.avtobase.bean.StatusRequest;
 import by.epam.jwd.sak.avtobase.controller.Command;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
@@ -21,12 +22,9 @@ public class EditStatusRequestByDriver implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getMethod().equals(POST)) {
-            String status = "BEINPROGRESS";
             Long requestId = Long.valueOf(req.getParameter(REQUEST_ID));
-            Long driverId = Long.valueOf(req.getParameter(DRIVER));
-            try {
-                factoryService.getRequestService().addDriverOnRequest(driverId, requestId);
-               /* factoryService.getDriversRequestsService().save(driverId, requestId);*/
+            String status = StatusRequest.valueOf(req.getParameter("status")).name();
+             try {
                 factoryService.getRequestService().updateStatusById(requestId, status);
             } catch (ServiceException e) {
                 LOGGER.error(e);

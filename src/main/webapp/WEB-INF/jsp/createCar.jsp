@@ -7,7 +7,8 @@
 <html>
 <head>
     <title><fmt:message key="button.create_car"/></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
 </head>
 <body>
@@ -28,7 +29,8 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputTypeTransport" class="form-label"><fmt:message key="text.type_transport"/></label>
-        <select class="form-select" name="typeTransport" required aria-label="select example" id="exampleInputTypeTransport">
+        <select class="form-select" name="typeTransport" required aria-label="select example"
+                id="exampleInputTypeTransport">
             <option value=""><fmt:message key="text.type_transport"/></option>
             <c:forEach var="typeTransport" items="${typeTransports}">
                 <option value="${typeTransport}">${typeTransport}</option>
@@ -48,12 +50,14 @@
         <input type="text" name="passengerCapacity" class="form-control" id="examplePassengerCapacity">
     </div>
     <div class="mb-3">
-        <label for="exampleInspectionPermission" class="form-label"><fmt:message key="text.date_inspection_permission"/></label>
+        <label for="exampleInspectionPermission" class="form-label"><fmt:message
+                key="text.date_inspection_permission"/></label>
         <input type="date" name="inspectionPermission" class="form-control" id="exampleInspectionPermission" required>
     </div>
     <div class="mb-3">
         <label for="exampleInputStatusCar" class="form-label"><fmt:message key="text.status_car"/></label>
-        <select class="form-select" name="statusCar" <%--required--%> aria-label="select example" id="exampleInputStatusCar">
+        <select class="form-select" name="statusCar" <%--required--%> aria-label="select example"
+                id="exampleInputStatusCar">
             <option value=""><fmt:message key="text.status_car"/></option>
             <c:forEach var="statusCar" items="${statusCars}">
                 <option value="${statusCar}">${statusCar}</option>
@@ -67,9 +71,15 @@
     <button type="submit" class="btn btn-success"><fmt:message key="button.create"/></button>
 </form>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+        crossorigin="anonymous"></script>
 </body>
 </html>
 

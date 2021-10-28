@@ -31,13 +31,8 @@ public class AllRequestByDriver implements Command {
         Long driverId = user.getId();
 
         try {
-            /*List<DriverRequestDto> a = factoryService.getDriversRequestsService().findAllRequestByDriver(driverId);*/
-//            List<RequestDto>  sd = factoryService.getRequestService().findAllByCarId(driverId);
             CarDto carDto = factoryService.getCarService().findByUserId(driverId);
-//            sd.get(0).getStartAddress();
             req.setAttribute(ALL_REQUEST_BY_DRIVER, factoryService.getRequestService().findAllByCarId(carDto.getId()));
-            /*req.setAttribute(ALL_REQUEST_BY_DRIVER, factoryService.getUserService().findAllDrivers());*/
-/*            req.setAttribute(USER_DRIVERS, factoryService.getUserService().findAllDrivers());*/
         } catch (ServiceException e) {
             LOGGER.error(e);
             throw new ServletException(e.getMessage(), e);

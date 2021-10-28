@@ -23,7 +23,6 @@
         <th scope="col"><fmt:message key="text.max_passengers"/></th>
         <th scope="col"><fmt:message key="text.date_inspection_permission"/></th>
         <th scope="col"><fmt:message key="text.status_car"/></th>
-<%--        <th scope="col">Доп. сведения</th>--%>
     </tr>
     <c:forEach var="car" items="${allCar}">
         <tr>
@@ -38,7 +37,6 @@
             <td>${car.getPassengerCapacity()}</td>
             <td>${car.getInspectionPermission()}</td>
             <td>${car.getStatusCar()}</td>
-<%--            <td>${car.getCarDescription()}</td>--%>
             <td>
                 <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
                         data-bs-target=".carId_${car.getId()}">Установить

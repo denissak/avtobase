@@ -85,7 +85,6 @@ public class Login implements Command {
                     req.getSession().setAttribute(ROLES, factoryService.getRolesService().findAllRoles());
                     req.getSession().setAttribute(ALL_USER, factoryService.getUserService().findAllUser());
                     req.getSession().setAttribute(ALL_CAR, factoryService.getCarService().findAllCar());
-                    //req.getSession().getAttribute(ALL_DRIVER, factoryService.getUserService().findAllDrivers())
                     req.getSession().setAttribute(ALL_REQUEST,factoryService.getRequestService().findAllRequest());
 
                 } catch (ServiceException e) {
