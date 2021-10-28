@@ -8,6 +8,8 @@ import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.CommentService;
 import by.epam.jwd.sak.avtobase.service.Mapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.stream.Collectors;
 
 public class CommentServiceImpl implements CommentService {
 
+    private static final Logger LOGGER = LogManager.getLogger();
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
@@ -23,6 +26,7 @@ public class CommentServiceImpl implements CommentService {
             return daoFactory.getCommentDao().findAllByUserId(userId).stream()
                     .map(this::convertToCommentDto).collect(Collectors.toList());
         } catch (DAOException e) {
+            LOGGER.error(e);
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -32,7 +36,7 @@ public class CommentServiceImpl implements CommentService {
         try {
             return daoFactory.getCommentDao().delete(id);
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 
@@ -41,7 +45,7 @@ public class CommentServiceImpl implements CommentService {
         try {
             return daoFactory.getCommentDao().findAll().stream().map(this::convertToCommentDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 
@@ -51,7 +55,7 @@ public class CommentServiceImpl implements CommentService {
         try {
             daoFactory.getCommentDao().save(commentBean);
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
         return commentBean.getId();
     }

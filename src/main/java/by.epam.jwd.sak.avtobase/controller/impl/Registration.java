@@ -5,6 +5,8 @@ import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 import by.epam.jwd.sak.avtobase.controller.Command;
 import by.epam.jwd.sak.avtobase.service.PasswordEncoder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
 public class Registration implements Command {
 
+    private static final Logger LOGGER = LogManager.getLogger();
     private final FactoryService factoryService = FactoryService.getInstance();
 
     @Override
@@ -30,6 +33,7 @@ public class Registration implements Command {
             try {
                 factoryService.getUserService().create(userDto);
             } catch (ServiceException e) {
+                LOGGER.error(e);
                 throw new ServletException(e.getMessage(), e);
             }
         }

@@ -5,6 +5,8 @@ import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 import by.epam.jwd.sak.avtobase.controller.Command;
 import by.epam.jwd.sak.avtobase.service.Pagination;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +20,7 @@ import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
 public class AllUser implements Command {
 
+    private static final Logger LOGGER = LogManager.getLogger();
     private final FactoryService factoryService = FactoryService.getInstance();
 
     @Override

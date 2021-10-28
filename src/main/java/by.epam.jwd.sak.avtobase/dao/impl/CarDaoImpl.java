@@ -104,7 +104,7 @@ public class CarDaoImpl implements CarDao {
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -124,7 +124,7 @@ public class CarDaoImpl implements CarDao {
             return car;
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

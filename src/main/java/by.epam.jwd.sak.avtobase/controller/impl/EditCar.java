@@ -8,6 +8,8 @@ import by.epam.jwd.sak.avtobase.service.FactoryService;
 import by.epam.jwd.sak.avtobase.controller.Command;
 import by.epam.jwd.sak.avtobase.util.LocalDateFormatter;
 import by.epam.jwd.sak.avtobase.util.LocalDateTimeFormatter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +21,7 @@ import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
 public class EditCar implements Command {
 
+    private static final Logger LOGGER = LogManager.getLogger();
     private final FactoryService factoryService = FactoryService.getInstance();
 
     @Override
@@ -29,7 +32,8 @@ public class EditCar implements Command {
                 try {
                     factoryService.getCarService().delete(carId);
                 } catch (ServiceException e) {
-                    e.printStackTrace();
+                    LOGGER.error(e);
+                    throw new ServletException(e.getMessage(), e);
                 }
             }
         } else if (req.getMethod().equals(POST)) {
@@ -53,7 +57,8 @@ public class EditCar implements Command {
             try {
                 factoryService.getCarService().update(carDto);
             } catch (ServiceException e) {
-                throw new ServletException();
+                LOGGER.error(e);
+                throw new ServletException(e.getMessage(), e);
             }
         }
         resp.sendRedirect(COMMAND_ALL_CAR);

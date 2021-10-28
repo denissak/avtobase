@@ -8,6 +8,8 @@ import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 import by.epam.jwd.sak.avtobase.controller.Command;
 import by.epam.jwd.sak.avtobase.service.PasswordEncoder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
 public class Login implements Command {
 
+    private static final Logger LOGGER = LogManager.getLogger();
     private final FactoryService factoryService = FactoryService.getInstance();
 
     @Override
@@ -32,7 +35,8 @@ public class Login implements Command {
                 onLoginFail(req,resp);
             }
         } catch (ServiceException e) {
-            throw new ServletException();
+            LOGGER.error(e);
+            throw new ServletException(e.getMessage(), e);
         }
     }
 
@@ -44,7 +48,7 @@ public class Login implements Command {
         }
     }
 
-    private void onLoginSuccess(UserDto userDto, HttpServletRequest req, HttpServletResponse resp) {
+    private void onLoginSuccess(UserDto userDto, HttpServletRequest req, HttpServletResponse resp) throws ServletException {
 
         req.getSession().setAttribute(USER, userDto);
         req.getSession().setAttribute(TYPE_TRANSPORTS, TypeTransport.values());
@@ -54,14 +58,16 @@ public class Login implements Command {
             try {
                 resp.sendRedirect(COMMAND_ALL_USER_REQUEST);
             } catch (IOException e) {
-                e.printStackTrace();
+                LOGGER.error(e);
+                throw new ServletException(e.getMessage(), e);
             }
         } else if (userDto.getRole().equals(DISPATCHER)) {
             try {
                 req.getSession().setAttribute(STATUS_REQUESTS, StatusRequest.values());
                 resp.sendRedirect(COMMAND_ALL_REQUEST);
             } catch (IOException e) {
-                e.printStackTrace();
+                LOGGER.error(e);
+                throw new ServletException(e.getMessage(), e);
             }
 
         } else if (userDto.getRole().equals(DRIVER)) {
@@ -69,7 +75,8 @@ public class Login implements Command {
                 req.getSession().setAttribute(STATUS_REQUESTS, StatusRequest.values());
                 resp.sendRedirect(COMMAND_ALL_REQUEST_BY_DRIVER);
             } catch (IOException e) {
-                e.printStackTrace();
+                LOGGER.error(e);
+                throw new ServletException(e.getMessage(), e);
             }
 
         } else if (userDto.getRole().equals(ADMIN)) {
@@ -82,10 +89,12 @@ public class Login implements Command {
                     req.getSession().setAttribute(ALL_REQUEST,factoryService.getRequestService().findAllRequest());
 
                 } catch (ServiceException e) {
-                    e.printStackTrace();
+                    LOGGER.error(e);
+                    throw new ServletException(e.getMessage(), e);
                 }
                 resp.sendRedirect(COMMAND_ALL_USER);
             } catch (IOException e) {
+                LOGGER.error(e);
                 e.printStackTrace();
             }
         }

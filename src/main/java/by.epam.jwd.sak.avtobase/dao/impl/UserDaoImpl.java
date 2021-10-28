@@ -120,7 +120,7 @@ public class UserDaoImpl implements UserDao {
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 LOGGER.error(e);
-                throw new DAOException();
+                throw new DAOException(e.getMessage(), e);
             } finally {
                 ConnectionManager.returnConnection(connection);
             }
@@ -141,7 +141,7 @@ public class UserDaoImpl implements UserDao {
 
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -180,7 +180,7 @@ public class UserDaoImpl implements UserDao {
             return user;
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

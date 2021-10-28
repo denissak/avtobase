@@ -150,7 +150,7 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(3, entity.getStartAddress());
             preparedStatement.setObject(4, entity.getEndAddress());
             preparedStatement.setObject(5, entity.getDateDeparture());
-            preparedStatement.setObject(6, StatusRequest.PROCESSING.name());
+            preparedStatement.setObject(6, StatusRequest.CREATED.name());
             preparedStatement.setObject(7, entity.getTypeTransport().name());
             preparedStatement.setObject(8, entity.getDetailsRequest());
             preparedStatement.executeUpdate();

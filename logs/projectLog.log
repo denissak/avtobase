@@ -1,1 +1,1 @@
-27.10.2021 09:07:48,917 ERROR CarDaoImpl:162 - java.sql.SQLException: Column 'r.name' not found.
+28.10.2021 08:23:18,969 ERROR UserDaoImpl:91 - java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`avtobase`.`cars`, CONSTRAINT `cars_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))

@@ -9,6 +9,8 @@ import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.Mapper;
 import by.epam.jwd.sak.avtobase.service.RequestService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,8 +19,7 @@ import java.util.stream.Collectors;
 
 public class RequestServiceImpl implements RequestService {
 
-
-
+    private static final Logger LOGGER = LogManager.getLogger();
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
@@ -26,6 +27,7 @@ public class RequestServiceImpl implements RequestService {
         try {
             return daoFactory.getRequestDao().addDriverOnRequest(carId, requestId);
         } catch (DAOException e) {
+            LOGGER.error(e);
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -35,7 +37,7 @@ public class RequestServiceImpl implements RequestService {
         try {
             return daoFactory.getRequestDao().findAll().stream().map(this::convertToRequestDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 
@@ -44,7 +46,7 @@ public class RequestServiceImpl implements RequestService {
         try {
             return daoFactory.getRequestDao().delete(id);
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 

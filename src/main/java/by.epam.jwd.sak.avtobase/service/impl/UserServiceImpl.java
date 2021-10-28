@@ -9,6 +9,8 @@ import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.PasswordEncoder;
 import by.epam.jwd.sak.avtobase.service.UserService;
 import by.epam.jwd.sak.avtobase.service.validator.UserValidator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Date;
 import java.util.List;
@@ -17,7 +19,7 @@ import java.util.stream.Collectors;
 
 public class UserServiceImpl implements UserService {
 
-
+    private static final Logger LOGGER = LogManager.getLogger();
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
 
@@ -26,6 +28,7 @@ public class UserServiceImpl implements UserService {
         try {
             return daoFactory.getUserDao().findAllDrivers().stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
+            LOGGER.error(e);
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -35,7 +38,7 @@ public class UserServiceImpl implements UserService {
         try {
             return daoFactory.getUserDao().findById(id).map(this::convertToUserDto);
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 
@@ -44,7 +47,7 @@ public class UserServiceImpl implements UserService {
         try {
             return daoFactory.getUserDao().delete(id);
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 
@@ -54,7 +57,7 @@ public class UserServiceImpl implements UserService {
         try {
             daoFactory.getUserDao().update(userBean);
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
         return userBean.getId();
     }
@@ -64,7 +67,7 @@ public class UserServiceImpl implements UserService {
         try {
             return daoFactory.getUserDao().findAll().stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 
@@ -84,7 +87,7 @@ public class UserServiceImpl implements UserService {
             return convertToUserDto(daoFactory.getUserDao().findByLogin(login));
 
         } catch (DAOException e) {
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 

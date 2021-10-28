@@ -8,6 +8,8 @@ import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.CarService;
 import by.epam.jwd.sak.avtobase.service.Mapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Date;
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
 
 public class CarServiceImpl implements CarService {
 
+    private static final Logger LOGGER = LogManager.getLogger();
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
 
@@ -24,6 +27,7 @@ public class CarServiceImpl implements CarService {
         try {
             return daoFactory.getCarDao().findAllFreeDriver().stream().map(this::convertToCarDto).collect(Collectors.toList());
         } catch (DAOException e) {
+            LOGGER.error(e);
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -34,6 +38,7 @@ public class CarServiceImpl implements CarService {
         try {
             daoFactory.getCarDao().update(car);
         } catch (DAOException e) {
+            LOGGER.error(e);
             throw new ServiceException(e.getMessage(), e);
         }
         return car.getId();
@@ -44,6 +49,7 @@ public class CarServiceImpl implements CarService {
         try {
             return daoFactory.getCarDao().addDriver(driverId, carId);
         } catch (DAOException e) {
+            LOGGER.error(e);
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -53,7 +59,8 @@ public class CarServiceImpl implements CarService {
         try {
             return daoFactory.getCarDao().delete(id);
         } catch (DAOException e) {
-            throw new ServiceException();
+            LOGGER.error(e);
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 
@@ -63,6 +70,7 @@ public class CarServiceImpl implements CarService {
         try {
             return daoFactory.getCarDao().findAll().stream().map(this::convertToCarDto).collect(Collectors.toList());
         } catch (DAOException e) {
+            LOGGER.error(e);
            throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -73,6 +81,7 @@ public class CarServiceImpl implements CarService {
         try {
             daoFactory.getCarDao().save(carBean);
         } catch (DAOException e) {
+            LOGGER.error(e);
             throw new ServiceException(e.getMessage(), e);
         }
         return carBean.getId();
@@ -83,6 +92,7 @@ public class CarServiceImpl implements CarService {
         try {
             return convertToCarDto(daoFactory.getCarDao().findByUserId(id));
         } catch (DAOException e) {
+            LOGGER.error(e);
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -92,7 +102,8 @@ public class CarServiceImpl implements CarService {
         try {
             return convertToCarDto(daoFactory.getCarDao().findById(id));
         } catch (DAOException e) {
-            throw new ServiceException();
+            LOGGER.error(e);
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 

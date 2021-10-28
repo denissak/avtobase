@@ -33,7 +33,7 @@ public class RolesDaoImpl implements RolesDao {
             }
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

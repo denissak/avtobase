@@ -22,7 +22,6 @@ import by.epam.jwd.sak.avtobase.controller.impl.Logout;
 import by.epam.jwd.sak.avtobase.controller.impl.Registration;
 import by.epam.jwd.sak.avtobase.controller.impl.SetDriverOnCar;
 import by.epam.jwd.sak.avtobase.controller.impl.SetDriverOnRequest;
-import by.epam.jwd.sak.avtobase.controller.impl.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -54,7 +53,6 @@ public class CommandProvider {
         commands.put(CommandName.ALLDRIVER, new AllDriver());
         commands.put(CommandName.ALLREQUESTBYDRIVER, new AllRequestByDriver());
         commands.put(CommandName.EDITSTATUSREQUESTBYDRIVER, new EditStatusRequestByDriver());
-        commands.put(CommandName.TEST, new Test());
         commands.put(CommandName.LANGUAGE, new Language());
     }
 

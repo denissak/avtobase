@@ -32,7 +32,7 @@ public class CommentDaoImpl implements CommentDao {
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -69,7 +69,7 @@ public class CommentDaoImpl implements CommentDao {
             }
         } catch (SQLException e) {
             LOGGER.error(e);
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -86,7 +86,7 @@ public class CommentDaoImpl implements CommentDao {
             preparedStatement.setObject(4, entity.getMessage());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException();
+            throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

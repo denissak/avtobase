@@ -6,12 +6,15 @@ import by.epam.jwd.sak.avtobase.dto.RoleDto;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.RolesService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RolesServiceImpl implements RolesService {
 
+    private static final Logger LOGGER = LogManager.getLogger();
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
@@ -19,7 +22,8 @@ public class RolesServiceImpl implements RolesService {
         try {
             return daoFactory.getRolesDao().findAll().stream().map(this::convertToRoleDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException();
+            LOGGER.error(e);
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 
