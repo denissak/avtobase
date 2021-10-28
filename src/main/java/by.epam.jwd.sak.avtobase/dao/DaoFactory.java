@@ -2,7 +2,6 @@ package by.epam.jwd.sak.avtobase.dao;
 
 import by.epam.jwd.sak.avtobase.dao.impl.CarDaoImpl;
 import by.epam.jwd.sak.avtobase.dao.impl.CommentDaoImpl;
-import by.epam.jwd.sak.avtobase.dao.impl.DriverRequestDaoImpl;
 import by.epam.jwd.sak.avtobase.dao.impl.RequestDaoImpl;
 import by.epam.jwd.sak.avtobase.dao.impl.RolesDaoImpl;
 import by.epam.jwd.sak.avtobase.dao.impl.UserDaoImpl;
@@ -15,7 +14,6 @@ public class DaoFactory {
         private final CarDao carDao = new CarDaoImpl();
         private final CommentDao commentDao = new CommentDaoImpl();
         private final RolesDao rolesDao = new RolesDaoImpl();
-        private final DriverRequestDao driversRequestsDao = new DriverRequestDaoImpl();
 
         private DaoFactory() {
         }
@@ -47,6 +45,5 @@ public class DaoFactory {
 
         public RolesDao getRolesDao() { return rolesDao; }
 
-        public DriverRequestDao getDriversRequestsDao() { return driversRequestsDao; }
 }
 
