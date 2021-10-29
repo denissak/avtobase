@@ -220,7 +220,7 @@ public class CarDaoImpl implements CarDao {
                 .liftingCapacity(resultSet.getObject(LIFTING_CAPACITY, Integer.class))
                 .cargoCapacity(resultSet.getObject(CARGO_CAPACITY, Integer.class))
                 .passengerCapacity(resultSet.getObject(PASSENGER_CAPACITY, Integer.class))
-                .releaseDate(resultSet.getObject(INSPECTION_PERMISSION, Date.class).toLocalDate())
+                .inspectionPermission(resultSet.getObject(INSPECTION_PERMISSION, Date.class).toLocalDate())
                 .statusCar(StatusCar.valueOf(resultSet.getObject(STATUS_CAR, String.class)))
                 .carDescription((resultSet.getObject(CAR_DESCRIPTION, String.class)))
                 .build();

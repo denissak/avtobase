@@ -39,13 +39,13 @@
             <td>${car.getStatusCar()}</td>
             <td>
                 <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                        data-bs-target=".carId_${car.getId()}">Установить
+                        data-bs-target=".carId_${car.getId()}"><fmt:message key="text.add"/>
                     <c:set var="carId" value="${car.getId()}"/>
                 </button>
             </td>
             <td>
                 <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
-                        data-bs-target=".carIdEdit_${car.getId()}"><fmt:message key="text.add"/>
+                        data-bs-target=".carIdEdit_${car.getId()}"><fmt:message key="text.edit"/>
                     <c:set var="carId" value="${car.getId()}"/>
                 </button>
             </td>

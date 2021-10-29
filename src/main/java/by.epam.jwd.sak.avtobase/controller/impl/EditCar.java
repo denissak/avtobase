@@ -37,10 +37,10 @@ public class EditCar implements Command {
                 }
             }
         } else if (req.getMethod().equals(POST)) {
-            long id = 0;
-            if (req.getParameter(ID) != null) {
-                id = Integer.valueOf(req.getParameter(ID));
-            }
+            long id = Long.valueOf(req.getParameter(ID));
+/*            if (req.getParameter(ID) != null) {
+                id = Long.valueOf(req.getParameter(ID));
+            }*/
             CarDto carDto = CarDto.builder()
                     .id(id)
                     .mark(req.getParameter(MARK))
@@ -50,7 +50,7 @@ public class EditCar implements Command {
                     .liftingCapacity(Integer.valueOf(req.getParameter(LIFTING_CAPACITY)))
                     .cargoCapacity(Integer.valueOf(req.getParameter(CARGO_CAPACITY)))
                     .passengerCapacity(Integer.valueOf(req.getParameter(PASSENGER_CAPACITY)))
-                    .inspectionPermission(LocalDate.parse(req.getParameter(INSPECTION_PERMISSION))) //TODO
+                    .inspectionPermission(LocalDate.parse(req.getParameter(INSPECTION_PERMISSION)))
                     .statusCar(StatusCar.valueOf(req.getParameter(STATUS_CAR)))
                     .carDescription(req.getParameter(CAR_DESCRIPTION))
                     .build();
