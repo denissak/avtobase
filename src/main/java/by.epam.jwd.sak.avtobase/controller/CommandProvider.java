@@ -14,7 +14,7 @@ import by.epam.jwd.sak.avtobase.controller.impl.CreateRequest;
 import by.epam.jwd.sak.avtobase.controller.impl.EditCar;
 import by.epam.jwd.sak.avtobase.controller.impl.EditRequestByUser;
 import by.epam.jwd.sak.avtobase.controller.impl.EditStatusRequestByDriver;
-import by.epam.jwd.sak.avtobase.controller.impl.EditUser;
+/*import by.epam.jwd.sak.avtobase.controller.impl.EditUser;*/
 import by.epam.jwd.sak.avtobase.controller.impl.EditUserByAdmin;
 import by.epam.jwd.sak.avtobase.controller.impl.Language;
 import by.epam.jwd.sak.avtobase.controller.impl.Login;
@@ -35,7 +35,7 @@ public class CommandProvider {
         commands.put(CommandName.LOGIN, new Login());
         commands.put(CommandName.LOGOUT, new Logout());
         commands.put(CommandName.REGISTRATION, new Registration());
-        commands.put(CommandName.EDITUSER, new EditUser());
+/*        commands.put(CommandName.EDITUSER, new EditUser());*/
         commands.put(CommandName.EDITUSERBYADMIN, new EditUserByAdmin());
         commands.put(CommandName.ALLUSERREQUEST, new AllUserRequest());
         commands.put(CommandName.CREATEREQUEST, new CreateRequest());

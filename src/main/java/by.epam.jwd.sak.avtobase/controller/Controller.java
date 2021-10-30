@@ -36,7 +36,7 @@ public class Controller extends HttpServlet {
                 command.execute(req, resp);
             }
         } catch (RuntimeException e) {
-            e.printStackTrace();
+            throw new ServletException(e.getMessage(), e);
             //req.getRequestDispatcher("error404.html").forward(req,resp);
         }
     }

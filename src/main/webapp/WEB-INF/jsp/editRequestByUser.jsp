@@ -16,7 +16,7 @@
 
 <form action="Controller?command=editrequestbyuser" method="POST">
     <p><c:out value="${param.requestId}"/></p>
-    <c:forEach var="request" items="${requestsById}">
+    <c:forEach var="request" items="${allRequest}">
         <c:if test="${request.getId() == param.requestId}">
 
             <div style="display: none" class="mb-3">

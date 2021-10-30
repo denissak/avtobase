@@ -1,3 +1,4 @@
+/*
 package by.epam.jwd.sak.avtobase.controller.impl;
 
 
@@ -39,3 +40,4 @@ public class EditUser implements Command {
         resp.sendRedirect(COMMAND_ALL_USER_REQUEST);
     }
 }
+*/

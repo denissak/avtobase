@@ -131,7 +131,7 @@ public class CarServiceImpl implements CarService {
     private Car convertToCar(CarDto carDto) {
         return Car.builder()
                 .id(carDto.getId())
-                .user(Mapper.convertToUser(carDto.getUserDto()))
+//                .user(Mapper.convertToUser(carDto.getUserDto()))
                 .mark(carDto.getMark())
                 .model(carDto.getModel())
                 .releaseDate(carDto.getReleaseDate())

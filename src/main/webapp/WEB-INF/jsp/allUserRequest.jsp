@@ -22,7 +22,7 @@
         <th scope="col"><fmt:message key="text.type_transport"/></th>
         <th scope="col"><fmt:message key="text.request_details"/></th>
     </tr>
-    <c:forEach var="request" items="${requestsById}">
+    <c:forEach var="request" items="${allRequest}">
         <tr>
             <td>${request.getDateCreate()}</td>
             <td>${request.getStartAddress()}</td>

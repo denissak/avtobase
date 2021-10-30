@@ -25,7 +25,7 @@ public class AllUserRequest implements Command {
         UserDto user = (UserDto) req.getSession().getAttribute(USER);
         Long userId = user.getId();
         try {
-            req.setAttribute(REQUEST_BY_ID, factoryService.getRequestService().findAllRequestByUser(userId));
+            req.setAttribute(ALL_REQUEST, factoryService.getRequestService().findAllRequestByUser(userId));
         } catch (ServiceException e) {
             LOGGER.error(e);
             throw new ServletException(e.getMessage(), e);

@@ -47,11 +47,16 @@ public class EditUserByAdmin implements Command {
                     .build();
             try {
                 factoryService.getUserService().update(userDto);
-                req.getSession().setAttribute(ALL_USER, factoryService.getUserService().findAllUser());
             } catch (ServiceException e) {
                 LOGGER.error(e);
                 throw new ServletException(e.getMessage(), e);
             }
+        }
+        try {
+            req.getSession().setAttribute(ALL_USER, factoryService.getUserService().findAllUser());
+        } catch (ServiceException e) {
+            LOGGER.error(e);
+            throw new ServletException(e.getMessage(), e);
         }
         resp.sendRedirect(COMMAND_ALL_USER);
     }

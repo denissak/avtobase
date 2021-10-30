@@ -26,9 +26,9 @@ public class CreateCar implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getMethod().equals(POST)) {
-            UserDto userDto = (UserDto) req.getSession().getAttribute(USER);
+//            UserDto userDto = (UserDto) req.getSession().getAttribute(USER);
             CarDto carDto = CarDto.builder()
-                    .userDto(userDto)
+//                    .userDto(userDto)
                     .mark(req.getParameter(MARK))
                     .model(req.getParameter(MODEL))
                     .releaseDate(LocalDateFormatter.format(req.getParameter(RELEASE_DATE)))

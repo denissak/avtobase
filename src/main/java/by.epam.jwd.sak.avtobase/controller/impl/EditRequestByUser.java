@@ -3,6 +3,7 @@ package by.epam.jwd.sak.avtobase.controller.impl;
 import by.epam.jwd.sak.avtobase.bean.StatusRequest;
 import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import by.epam.jwd.sak.avtobase.dto.RequestDto;
+import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 import by.epam.jwd.sak.avtobase.controller.Command;
@@ -26,6 +27,7 @@ public class EditRequestByUser implements Command {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserDto userDto = (UserDto) req.getSession().getAttribute("user");
         if (req.getParameter(METHOD) != null) {
             if (req.getParameter(METHOD).equals(DELETE)) {
                 long requestId = Integer.parseInt(req.getParameter(ID));
@@ -57,6 +59,10 @@ public class EditRequestByUser implements Command {
                 throw new ServletException(e.getMessage(), e);
             }
         }
-        resp.sendRedirect(COMMAND_ALL_USER_REQUEST);
+        if (userDto.getRole().equals("dispatcher")) {
+            resp.sendRedirect(COMMAND_ALL_REQUEST);
+        } else {
+            resp.sendRedirect(COMMAND_ALL_USER_REQUEST);
+        }
     }
 }
