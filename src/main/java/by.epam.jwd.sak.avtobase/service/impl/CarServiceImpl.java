@@ -65,6 +65,15 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public boolean updateStatusById(Long id, String status) throws ServiceException {
+        try {
+            return daoFactory.getCarDao().updateStatusById(id, status);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
     public List<CarDto> findAllCar() throws ServiceException {
 
         try {

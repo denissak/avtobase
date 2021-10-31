@@ -16,7 +16,7 @@
 <form action="Controller?command=edituserbyadmin" method="POST">
 
     <c:forEach var="user" items="${allUser}">
-        <c:if test="${user.getId() == param.userId}">
+        <c:if test="${user.getId() == param.userId()}">
             <div style="display: none" class="mb-3">
                 <label for="exampleInputId" class="form-label"><fmt:message key="text.edit"/></label>
                 <input type="text"

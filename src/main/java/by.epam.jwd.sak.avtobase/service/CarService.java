@@ -24,4 +24,6 @@ public interface CarService {
     boolean addDriver(Long driverId, Long carId) throws ServiceException;
 
     Long update (CarDto entity) throws ServiceException;
+
+    boolean updateStatusById(Long id, String status) throws ServiceException;
 }

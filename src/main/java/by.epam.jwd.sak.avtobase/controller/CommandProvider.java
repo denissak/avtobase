@@ -13,8 +13,8 @@ import by.epam.jwd.sak.avtobase.controller.impl.CreateComment;
 import by.epam.jwd.sak.avtobase.controller.impl.CreateRequest;
 import by.epam.jwd.sak.avtobase.controller.impl.EditCar;
 import by.epam.jwd.sak.avtobase.controller.impl.EditRequestByUser;
+import by.epam.jwd.sak.avtobase.controller.impl.EditStatusCar;
 import by.epam.jwd.sak.avtobase.controller.impl.EditStatusRequestByDriver;
-/*import by.epam.jwd.sak.avtobase.controller.impl.EditUser;*/
 import by.epam.jwd.sak.avtobase.controller.impl.EditUserByAdmin;
 import by.epam.jwd.sak.avtobase.controller.impl.Language;
 import by.epam.jwd.sak.avtobase.controller.impl.Login;
@@ -22,6 +22,7 @@ import by.epam.jwd.sak.avtobase.controller.impl.Logout;
 import by.epam.jwd.sak.avtobase.controller.impl.Registration;
 import by.epam.jwd.sak.avtobase.controller.impl.SetDriverOnCar;
 import by.epam.jwd.sak.avtobase.controller.impl.SetDriverOnRequest;
+/*import by.epam.jwd.sak.avtobase.controller.impl.EditUser;*/
 
 import java.util.HashMap;
 import java.util.Map;
@@ -54,6 +55,7 @@ public class CommandProvider {
         commands.put(CommandName.ALLREQUESTBYDRIVER, new AllRequestByDriver());
         commands.put(CommandName.EDITSTATUSREQUESTBYDRIVER, new EditStatusRequestByDriver());
         commands.put(CommandName.LANGUAGE, new Language());
+        commands.put(CommandName.EDITSTATUSCAR, new EditStatusCar());
     }
 
     public Command takeCommand(String name) {

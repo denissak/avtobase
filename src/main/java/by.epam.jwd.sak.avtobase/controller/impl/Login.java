@@ -73,8 +73,9 @@ public class Login implements Command {
         } else if (userDto.getRole().equals(DRIVER)) {
             try {
                 req.getSession().setAttribute(STATUS_REQUESTS, StatusRequest.values());
+                req.getSession().setAttribute(ALL_CAR, factoryService.getCarService().findAllCar());
                 resp.sendRedirect(COMMAND_ALL_REQUEST_BY_DRIVER);
-            } catch (IOException e) {
+            } catch (IOException | ServiceException e) {
                 LOGGER.error(e);
                 throw new ServletException(e.getMessage(), e);
             }

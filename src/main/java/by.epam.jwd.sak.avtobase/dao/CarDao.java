@@ -25,4 +25,6 @@ public interface CarDao {
     boolean addDriver(Long driverId, Long carId) throws DAOException;
 
     boolean update(Car entity) throws DAOException;
+
+    boolean updateStatusById(Long id, String status) throws DAOException;
 }

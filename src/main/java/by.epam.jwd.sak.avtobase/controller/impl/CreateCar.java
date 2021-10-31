@@ -40,6 +40,7 @@ public class CreateCar implements Command {
                     .statusCar(StatusCar.valueOf(req.getParameter(STATUS_CAR)))
                     .carDescription(req.getParameter(CAR_DESCRIPTION))
                     .build();
+
             try {
                 factoryService.getCarService().create(carDto);
             } catch (ServiceException e) {

@@ -89,6 +89,9 @@
                                     key="text.my_requests"/></a>
                         </li>
                     </ul>
+                    <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
+                            data-bs-target="#changeStatusCar"><fmt:message key="button.create_request"/>
+                    </button>
                     <div action="" class="d-flex">
                         <form action="Controller?command=logout" method="POST">
                             <button class="btn btn-outline-danger ms-3"><fmt:message key="button.log_out"/></button>
@@ -156,6 +159,22 @@
             <div class="modal-body">
                 <jsp:include page="createUserRequest.jsp">
                     <jsp:param name="typeTransports" value="typeTransports"/>
+                </jsp:include>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="changeStatusCar" tabindex="-1" aria-labelledby="changeStatusCarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changeStatusCarLabel"><fmt:message key="button.create_car"/></h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <jsp:include page="editStatusCar.jsp">
+                    <jsp:param name="statusCar" value="statusCar"/>
                 </jsp:include>
             </div>
         </div>

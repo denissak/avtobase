@@ -31,6 +31,7 @@ public class CarDaoImpl implements CarDao {
     private static final String DELETE_CAR = "DELETE FROM cars WHERE id = ?";
     private static final String ADD_DRIVER = "UPDATE cars SET user_id = ? WHERE id = ?";
     private static final String UPDATE_CAR = "UPDATE cars SET mark = ?, model = ?, release_date = ?, release_date = ?, type = ?, lifting_capacity = ?, cargo_capacity = ?, passenger_capacity = ?, inspection_permission = ?, status_car = ?, car_description = ? WHERE id = ?";
+    private static final String UPDATE_STATUS = "UPDATE cars SET status_car = ? WHERE id = ?";
     private static final String GET_ALL_FREE_DRIVERS = "SELECT * FROM cars as c JOIN users as u on u.id = c.user_id JOIN roles as r on r.id = u.role_id where c.status_car != 'BROKEN'";
 
     @Override
@@ -190,6 +191,23 @@ public class CarDaoImpl implements CarDao {
             ConnectionManager.returnConnection(connection);
         }
         return entity;
+    }
+
+    @Override
+    public boolean updateStatusById(Long id, String status) throws DAOException {
+        int result;
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATUS, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setObject(1, status);
+            preparedStatement.setObject(2, id);
+            result = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.error(e);
+            throw new DAOException(e.getMessage(), e);
+        } finally {
+            ConnectionManager.returnConnection(connection);
+        }
+        return result == 1;
     }
 
     private Car buildEntity(ResultSet resultSet) throws SQLException {
