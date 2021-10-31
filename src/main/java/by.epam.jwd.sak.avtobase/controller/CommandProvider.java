@@ -36,7 +36,6 @@ public class CommandProvider {
         commands.put(CommandName.LOGIN, new Login());
         commands.put(CommandName.LOGOUT, new Logout());
         commands.put(CommandName.REGISTRATION, new Registration());
-/*        commands.put(CommandName.EDITUSER, new EditUser());*/
         commands.put(CommandName.EDITUSERBYADMIN, new EditUserByAdmin());
         commands.put(CommandName.ALLUSERREQUEST, new AllUserRequest());
         commands.put(CommandName.CREATEREQUEST, new CreateRequest());

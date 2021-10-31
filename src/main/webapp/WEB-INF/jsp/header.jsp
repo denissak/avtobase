@@ -90,7 +90,7 @@
                         </li>
                     </ul>
                     <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                            data-bs-target="#changeStatusCar"><fmt:message key="button.create_request"/>
+                            data-bs-target="#changeStatusCar"><fmt:message key="button.status_car"/>
                     </button>
                     <div action="" class="d-flex">
                         <form action="Controller?command=logout" method="POST">
@@ -169,7 +169,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="changeStatusCarLabel"><fmt:message key="button.create_car"/></h5>
+                <h5 class="modal-title" id="changeStatusCarLabel"><fmt:message key="text.edit_status_car"/></h5>
                 <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
             </div>
             <div class="modal-body">

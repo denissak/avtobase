@@ -3,7 +3,6 @@ package by.epam.jwd.sak.avtobase.controller;
 public enum CommandName {
     LOGIN,
     LOGOUT,
-    EDITUSER,
     EDITUSERBYADMIN,
     EDITCAR,
     EDITREQUESTBYUSER,

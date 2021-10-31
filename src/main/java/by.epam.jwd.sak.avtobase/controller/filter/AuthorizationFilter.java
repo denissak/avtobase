@@ -15,7 +15,7 @@
 //    private static final Set<String> USER_PATH = Set.of("command=gotoalluserrequestpage", "command=gotocreaterequest", "command=logout", "command=requesteditbyuser", "command=gotocreatecar", "command=gotocreatecomment", "command=gotoallrequestpage");
 //    private static final Set<String> DRIVER_PATH = Set.of("command=gotoalluserrequestpage", "command=gotocreaterequest", "command=logout", "command=gotocreatecar");
 //    private static final Set<String> DISPATCHER_PATH = Set.of("command=gotoalluserrequestpage", "command=gotocreaterequest", "command=logout", "command=gotoallrequestpage");
-//    private static final Set<String> ADMIN_PATH = Set.of("/", "/Controller", "/index", PATH_TO_REGISTRATION, PATH_TO_LOGIN, "/userRequest", "/createUserRequest", "command=gotoalluserpage", "command=usereditbyadmin");
+//    private static final Set<String> ADMIN_PATH = Set.of("/", "/Controller", "/index", "/userRequest", "/createUserRequest", "command=gotoalluserpage", "command=usereditbyadmin");
 //
 //    @Override
 //    public void init(FilterConfig filterConfig) throws ServletException {
