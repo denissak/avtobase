@@ -15,7 +15,13 @@
 
     <div class="mb-3">
         <label for="examplemark" class="form-label"><fmt:message key="text.marks"/></label>
-        <input type="text" name="mark" class="form-control" id="examplemark" required>
+        <input type="text"
+               name="mark"
+               class="form-control"
+               id="examplemark"
+               required pattern="^[1-5]{1}\d*(\d+)?$"
+               title="<fmt:message key="error.only_positive_numbers"/>"
+        >
     </div>
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label"><fmt:message

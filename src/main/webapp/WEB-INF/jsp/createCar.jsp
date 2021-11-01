@@ -17,15 +17,31 @@
 
     <div class="mb-3">
         <label for="examplemark" class="form-label"><fmt:message key="text.mark"/></label>
-        <input type="text" name="mark" class="form-control" id="examplemark" required>
+        <input type="text"
+               name="mark"
+               class="form-control"
+               id="examplemark"
+               required pattern="[А-Яа-яA-Za-z]{2,15}"
+               title="<fmt:message key="error.only_character_l_c"/>"
+        >
     </div>
     <div class="mb-3">
         <label for="exampleModel" class="form-label"><fmt:message key="text.model"/></label>
-        <input type="text" name="model" class="form-control" id="exampleModel" required>
+        <input type="text"
+               name="model"
+               class="form-control"
+               id="exampleModel"
+               required pattern="[А-Яа-яA-Za-z0-9]{2,15}"
+               title="<fmt:message key="error.only_character_l_c_numbers"/>"
+        >
     </div>
     <div class="mb-3">
         <label for="exampleReleaseDate" class="form-label"><fmt:message key="text.date_release"/></label>
-        <input type="date" name="releaseDate" class="form-control" id="exampleReleaseDate" required>
+        <input type="date"
+               name="releaseDate"
+               class="form-control"
+               id="exampleReleaseDate"
+               required>
     </div>
     <div class="mb-3">
         <label for="exampleInputTypeTransport" class="form-label"><fmt:message key="text.type_transport"/></label>
@@ -39,25 +55,51 @@
     </div>
     <div class="mb-3">
         <label for="exampleLiftingCapacity" class="form-label"><fmt:message key="text.lifting_capacity"/></label>
-        <input type="text" name="liftingCapacity" class="form-control" id="exampleLiftingCapacity">
+        <input type="text"
+               name="liftingCapacity"
+               class="form-control"
+               id="exampleLiftingCapacity"
+               pattern="^[0-9]\d*(\d+)?$"
+               title="<fmt:message key="error.only_positive_numbers"/>"
+        >
     </div>
     <div class="mb-3">
         <label for="exampleCargoCapacity" class="form-label"><fmt:message key="text.cargo_capacity"/></label>
-        <input type="text" name="cargoCapacity" class="form-control" id="exampleCargoCapacity">
+        <input type="text"
+               name="cargoCapacity"
+               class="form-control"
+               id="exampleCargoCapacity"
+               pattern="^[0-9]\d*(\d+)?$"
+               title="<fmt:message key="error.only_positive_numbers"/>"
+        >
     </div>
     <div class="mb-3">
         <label for="examplePassengerCapacity" class="form-label"><fmt:message key="text.passenger_capacity"/></label>
-        <input type="text" name="passengerCapacity" class="form-control" id="examplePassengerCapacity">
+        <input type="text"
+               name="passengerCapacity"
+               class="form-control"
+               id="examplePassengerCapacity"
+               pattern=^[0-9]\d*(\d+)?$"
+               title="<fmt:message key="error.only_positive_numbers"/>"
+        >
     </div>
     <div class="mb-3">
         <label for="exampleInspectionPermission" class="form-label"><fmt:message
                 key="text.date_inspection_permission"/></label>
-        <input type="date" name="inspectionPermission" class="form-control" id="exampleInspectionPermission" required>
+        <input type="date"
+               name="inspectionPermission"
+               class="form-control"
+               id="exampleInspectionPermission"
+               required>
     </div>
     <div class="mb-3">
         <label for="exampleInputStatusCar" class="form-label"><fmt:message key="text.status_car"/></label>
-        <select class="form-select" name="statusCar" <%--required--%> aria-label="select example"
-                id="exampleInputStatusCar">
+        <select class="form-select"
+                name="statusCar"
+                aria-label="select example"
+                id="exampleInputStatusCar"
+                required
+        >
             <option value=""><fmt:message key="text.status_car"/></option>
             <c:forEach var="statusCar" items="${statusCars}">
                 <option value="${statusCar}">${statusCar}</option>
@@ -66,7 +108,11 @@
     </div>
     <div class="mb-3">
         <label for="exampleCarDescription" class="form-label"><fmt:message key="text.details"/></label>
-        <input type="text" name="carDescription" class="form-control" id="exampleCarDescription" required>
+        <input type="text"
+               name="carDescription"
+               class="form-control"
+               id="exampleCarDescription"
+        >
     </div>
     <button type="submit" class="btn btn-success"><fmt:message key="button.create"/></button>
 </form>

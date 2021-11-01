@@ -31,15 +31,30 @@
 
             <div class="mb-3">
                 <label for="exampleMark" class="form-label"><fmt:message key="text.model"/></label>
-                <input type="text" name="mark" class="form-control" id="exampleMark" value="${car.getMark()}">
+                <input type="text"
+                       name="mark"
+                       class="form-control"
+                       id="exampleMark"
+                       pattern="[А-Яа-яA-Za-z]{2,15}"
+                       title="<fmt:message key="error.only_character_l_c"/>"
+                       value="${car.getMark()}">
             </div>
             <div class="mb-3">
                 <label for="exampleModel" class="form-label"><fmt:message key="text.mark"/></label>
-                <input type="text" name="model" class="form-control" id="exampleModel" value="${car.getModel()}">
+                <input type="text"
+                       name="model"
+                       class="form-control"
+                       id="exampleModel"
+                       pattern="[А-Яа-яA-Za-z0-9]{2,15}"
+                       title="<fmt:message key="error.only_character_l_c_numbers"/>"
+                       value="${car.getModel()}">
             </div>
             <div class="mb-3">
                 <label for="exampleReleaseDate" class="form-label"><fmt:message key="text.date_release"/></label>
-                <input type="date" name="releaseDate" class="form-control" id="exampleReleaseDate"
+                <input type="date"
+                       name="releaseDate"
+                       class="form-control"
+                       id="exampleReleaseDate"
                        value="${car.getReleaseDate()}">
             </div>
             <div class="mb-3">
@@ -55,18 +70,33 @@
             <div class="mb-3">
                 <label for="exampleLiftingCapacity" class="form-label"><fmt:message
                         key="text.lifting_capacity"/></label>
-                <input type="text" name="liftingCapacity" class="form-control" id="exampleLiftingCapacity"
+                <input type="text"
+                       name="liftingCapacity"
+                       class="form-control"
+                       id="exampleLiftingCapacity"
+                       pattern="^[0-9]\d*(\d+)?$"
+                       title="<fmt:message key="error.only_positive_numbers"/>"
                        value="${car.getLiftingCapacity()}">
             </div>
             <div class="mb-3">
                 <label for="exampleCargoCapacity" class="form-label"><fmt:message key="text.cargo_capacity"/></label>
-                <input type="text" name="cargoCapacity" class="form-control" id="exampleCargoCapacity"
+                <input type="text"
+                       name="cargoCapacity"
+                       class="form-control"
+                       id="exampleCargoCapacity"
+                       pattern=^[0-9]\d*(\d+)?$"
+                       title="<fmt:message key="error.only_positive_numbers"/>"
                        value="${car.getCargoCapacity()}">
             </div>
             <div class="mb-3">
                 <label for="examplePassengerCapacity" class="form-label"><fmt:message
                         key="text.passenger_capacity"/></label>
-                <input type="text" name="passengerCapacity" class="form-control" id="examplePassengerCapacity"
+                <input type="text"
+                       name="passengerCapacity"
+                       class="form-control"
+                       id="examplePassengerCapacity"
+                       pattern="^[0-9]\d*(\d+)?$"
+                       title="<fmt:message key="error.only_positive_numbers"/>"
                        value="${car.getPassengerCapacity()}">
             </div>
             <div class="mb-3">

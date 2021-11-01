@@ -16,15 +16,31 @@
 
     <div class="mb-3">
         <label for="exampleStartAddress" class="form-label"><fmt:message key="text.start_address"/></label>
-        <input type="text" name="startAddress" class="form-control" id="exampleStartAddress" required>
+        <input type="text"
+               name="startAddress"
+               class="form-control"
+               id="exampleStartAddress"
+               required pattern="[А-Яа-яA-Za-z0-9]{5,50}"
+               title="<fmt:message key="error.only_character_l_c_numbers"/>"
+        >
     </div>
     <div class="mb-3">
         <label for="exampleEndAddress" class="form-label"><fmt:message key="text.end_address"/></label>
-        <input type="text" name="endAddress" class="form-control" id="exampleEndAddress" required>
+        <input type="text"
+               name="endAddress"
+               class="form-control"
+               id="exampleEndAddress"
+               required pattern="[А-Яа-яA-Za-z0-9]{5,50}"
+               title="<fmt:message key="error.only_character_l_c_numbers"/>"
+        >
     </div>
     <div class="mb-3">
         <label for="exampleDateDeparture" class="form-label"><fmt:message key="text.date_departure"/></label>
-        <input type="date" name="dateDeparture" class="form-control" id="exampleDateDeparture" required>
+        <input type="date"
+               name="dateDeparture"
+               class="form-control"
+               id="exampleDateDeparture"
+               required>
     </div>
     <div class="mb-3">
         <label for="exampleInputTypeTransport" class="form-label"><fmt:message key="text.type_transport"/></label>
@@ -33,12 +49,15 @@
             <c:forEach var="typeTransport" items="${typeTransports}">
                         <option value="${typeTransport}">${typeTransport}</option>
             </c:forEach>
-
         </select>
     </div>
     <div class="mb-3">
         <label for="exampleDetailsRequest" class="form-label"><fmt:message key="text.details"/></label>
-        <input type="text" name="detailsRequest" class="form-control" id="exampleDetailsRequest" required>
+        <input type="text"
+               name="detailsRequest"
+               class="form-control"
+               id="exampleDetailsRequest"
+               required>
     </div>
     <button type="submit" class="btn btn-success"><fmt:message key="button.create"/></button>
 </form>

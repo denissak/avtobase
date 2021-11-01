@@ -41,23 +41,38 @@
             </div>
             <div class="mb-3">
                 <label for="exampleStartAddress" class="form-label"><fmt:message key="text.start_address"/></label>
-                <input type="text" name="startAddress" class="form-control" id="exampleStartAddress"
+                <input type="text"
+                       name="startAddress"
+                       class="form-control"
+                       id="exampleStartAddress"
+                       pattern="[А-Яа-яA-Za-z0-9]{5,50}"
+                       title="<fmt:message key="error.only_character_l_c_numbers"/>"
                        value="${request.getStartAddress()}">
             </div>
             <div class="mb-3">
                 <label for="exampleEndAddress" class="form-label"><fmt:message key="text.end_address"/></label>
-                <input type="text" name="endAddress" class="form-control" id="exampleEndAddress"
+                <input type="text"
+                       name="endAddress"
+                       class="form-control"
+                       id="exampleEndAddress"
+                       pattern="[А-Яа-яA-Za-z0-9]{5,50}"
+                       title="<fmt:message key="error.only_character_l_c_numbers"/>"
                        value="${request.getEndAddress()}">
             </div>
             <div class="mb-3">
                 <label for="exampleDateDeparture" class="form-label"><fmt:message key="text.date_departure"/></label>
-                <input type="date" name="dateDeparture" class="form-control" id="exampleDateDeparture"
+                <input type="date"
+                       name="dateDeparture"
+                       class="form-control"
+                       id="exampleDateDeparture"
                        value="${request.getDateDeparture()}">
             </div>
             <div class="mb-3">
                 <label for="exampleInputTypeTransport" class="form-label"><fmt:message
                         key="text.type_transport"/></label>
-                <select class="form-select" name="typeTransport" required aria-label="select example"
+                <select class="form-select"
+                        name="typeTransport"
+                        required aria-label="select example"
                         id="exampleInputTypeTransport">
                     <c:forEach var="typeTransport" items="${typeTransports}">
                         <option value="${typeTransport}" ${typeTransport == request.getTypeTransport() ? 'selected="selected"' : ''}>${typeTransport}</option>
@@ -66,7 +81,10 @@
             </div>
             <div class="mb-3">
                 <label for="exampleDetailsRequest" class="form-label"><fmt:message key="text.request_details"/></label>
-                <input type="text" name="detailsRequest" class="form-control" id="exampleDetailsRequest"
+                <input type="text"
+                       name="detailsRequest"
+                       class="form-control"
+                       id="exampleDetailsRequest"
                        value="${request.getDetailsRequest()}" required>
             </div>
         </c:if>
