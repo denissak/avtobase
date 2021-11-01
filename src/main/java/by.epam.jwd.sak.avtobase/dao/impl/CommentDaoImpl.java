@@ -1,6 +1,8 @@
 package by.epam.jwd.sak.avtobase.dao.impl;
 
 import by.epam.jwd.sak.avtobase.bean.Comment;
+import by.epam.jwd.sak.avtobase.bean.Role;
+import by.epam.jwd.sak.avtobase.bean.User;
 import by.epam.jwd.sak.avtobase.dao.CommentDao;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.util.ConnectionManager;
@@ -18,7 +20,7 @@ public class CommentDaoImpl implements CommentDao {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private static final String GET_ALL_COMMENT = "SELECT * FROM comments";
+    private static final String GET_ALL_COMMENT = "SELECT * FROM comments as c JOIN users u on c.user_id = u.id";
     private static final String GET_ALL_COMMENT_BY_USER_ID = "SELECT * FROM comments WHERE user_id = ?";
     private static final String SAVE_COMMENT = "INSERT INTO comments (user_id, comment_date, mark, message) VALUES (?,?,?,?)";
     private static final String DELETE_COMMENT = "DELETE FROM comments WHERE id = ?";
@@ -94,8 +96,23 @@ public class CommentDaoImpl implements CommentDao {
     }
 
     private Comment buildEntity(ResultSet resultSet) throws SQLException {
+        Role role = new Role(
+                resultSet.getObject(ROLE_ID, Long.class),
+                resultSet.getObject(NAME, String.class)
+        );
+
+        User user = new User(
+                resultSet.getObject(USER_ID, Long.class),
+                resultSet.getObject(LOGIN, String.class),
+                resultSet.getObject(PASSWORD, String.class),
+                resultSet.getObject(NAME, String.class),
+                resultSet.getObject(SURNAME, String.class),
+                resultSet.getObject(PHONE_NUMBER, String.class),
+                role
+        );
         return Comment.builder()
                 .id(resultSet.getObject(ID, Long.class))
+                .user(user)
                 .commentDate(resultSet.getObject(COMMENT_DATE, Timestamp.class).toLocalDateTime())
                 .mark(resultSet.getObject(MARK, Integer.class))
                 .message(resultSet.getObject(MESSAGE, String.class))
