@@ -28,7 +28,7 @@ public class UserDaoImpl implements UserDao {
             "                                      AND c.id != (SELECT car_id FROM requests as r WHERE r.date_departure = ? \n" +
             "                                      AND r.car_id IN (SELECT c.id FROM users as u JOIN cars as c on u.id = c.user_id WHERE c.status_car != 'BROKEN'))";
 
-    private static final String GET_ALL_DRIVERS = "SELECT * FROM users as u join roles as r  on r.id = u.role_id WHERE r.id = 3";
+    private static final String GET_ALL_DRIVERS = "SELECT * FROM users as u join roles as r  on r.id = u.role_id WHERE r.id = 3 ORDER BY u.surname";
 
     private static final String SAVE_USER = "INSERT INTO users (login, password, role_id, name, surname, phone_number)" +
             " VALUES " + "(?,?,?,?,?,?)";

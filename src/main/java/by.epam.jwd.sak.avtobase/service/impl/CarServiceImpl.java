@@ -35,8 +35,12 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Long update(CarDto carDto) throws ServiceException {
-        if (CarValidation.isCorrectModel(carDto.getModel()) || CarValidation.isCorrectMark(carDto.getMark()) || CarValidation.isCorrectCapacity(carDto.getLiftingCapacity()) || CarValidation.isCorrectCapacity(carDto.getCargoCapacity()) || CarValidation.isCorrectCapacity(carDto.getPassengerCapacity())) {
-// TODO type to return
+        if (CarValidation.isCorrectModel(carDto.getModel())
+                || CarValidation.isCorrectMark(carDto.getMark())
+                || CarValidation.isCorrectCapacity(carDto.getLiftingCapacity())
+                || CarValidation.isCorrectCapacity(carDto.getCargoCapacity())
+                || CarValidation.isCorrectCapacity(carDto.getPassengerCapacity())) {
+            throw new ServiceException();
         }
         Car car = convertToCar(carDto);
         try {
@@ -84,7 +88,7 @@ public class CarServiceImpl implements CarService {
             return daoFactory.getCarDao().findAll().stream().map(this::convertToCarDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error(e);
-           throw new ServiceException(e.getMessage(), e);
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 

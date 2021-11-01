@@ -23,9 +23,9 @@ public class RequestDaoImpl implements RequestDao {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private static final String GET_ALL_REQUEST_BY_CAR_ID = "SELECT * FROM requests as r JOIN users as u on u.id = r.user_id WHERE car_id = ?"; // TODO
-    private static final String GET_ALL_REQUEST_BY_USER_ID = "SELECT * FROM requests WHERE user_id = ?";
-    private static final String GET_ALL_REQUEST = "SELECT * FROM requests as r join users as u  on u.id = r.user_id";
+    private static final String GET_ALL_REQUEST_BY_CAR_ID = "SELECT * FROM requests as r JOIN users as u on u.id = r.user_id WHERE car_id = ? ORDER BY r.date_departure <= CURRENT_DATE() AND r.status_request = 'COMPLETE'"; // TODO
+    private static final String GET_ALL_REQUEST_BY_USER_ID = "SELECT * FROM requests WHERE user_id = ? ORDER BY date_departure <= CURRENT_DATE() AND r.status_request = 'COMPLETE'";
+    private static final String GET_ALL_REQUEST = "SELECT * FROM requests as r join users as u  on u.id = r.user_id ORDER BY r.date_departure AND r.date_departure <= CURRENT_DATE() AND r.status_request = 'COMPLETE'";
     private static final String SAVE_REQUEST = "INSERT INTO requests (user_id, date_create, start_address, end_address, date_departure, status_request, type_transport, details_request) VALUES (?,?,?,?,?,?,?,?)";
     private static final String GET_REQUEST_BY_ID = "SELECT * FROM requests WHERE id = ?";
     private static final String UPDATE_REQUEST = "UPDATE requests SET start_address = ?, end_address = ?, date_departure = ?, status_request = ?, type_transport = ?, details_request = ? WHERE id = ?";

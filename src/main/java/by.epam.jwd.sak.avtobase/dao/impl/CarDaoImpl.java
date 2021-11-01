@@ -27,12 +27,12 @@ public class CarDaoImpl implements CarDao {
     private static final String SAVE_CAR = "INSERT INTO cars ( mark, model, release_date, type, lifting_capacity, cargo_capacity, passenger_capacity, inspection_permission, status_car, car_description) VALUES (?,?,?,?,?,?,?,?,?,?)";
     private static final String GET_CAR_BY_ID = "SELECT * FROM cars WHERE id = ?";
     private static final String GET_CAR_BY_USER_ID = "SELECT * FROM cars as c JOIN users as u on c.user_id = u.id JOIN roles as r on u.role_id = r.id WHERE user_id = ?";
-    private static final String GET_ALL_CAR = "SELECT * FROM cars as c  left join users as u on u.id = c.user_id left JOIN roles r on u.role_id = r.id";
+    private static final String GET_ALL_CAR = "SELECT * FROM cars as c  left join users as u on u.id = c.user_id left JOIN roles r on u.role_id = r.id ORDER BY c.user_id ";
     private static final String DELETE_CAR = "DELETE FROM cars WHERE id = ?";
     private static final String ADD_DRIVER = "UPDATE cars SET user_id = ? WHERE id = ?";
     private static final String UPDATE_CAR = "UPDATE cars SET mark = ?, model = ?, release_date = ?, release_date = ?, type = ?, lifting_capacity = ?, cargo_capacity = ?, passenger_capacity = ?, inspection_permission = ?, status_car = ?, car_description = ? WHERE id = ?";
     private static final String UPDATE_STATUS = "UPDATE cars SET status_car = ? WHERE id = ?";
-    private static final String GET_ALL_FREE_DRIVERS = "SELECT * FROM cars as c JOIN users as u on u.id = c.user_id JOIN roles as r on r.id = u.role_id where c.status_car != 'BROKEN'";
+    private static final String GET_ALL_FREE_DRIVERS = "SELECT * FROM cars as c JOIN users as u on u.id = c.user_id JOIN roles as r on r.id = u.role_id WHERE c.status_car != 'BROKEN' ORDER BY c.release_date";
 
     @Override
     public List<Car> findAllFreeDriver() throws DAOException {
