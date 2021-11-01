@@ -8,6 +8,7 @@ import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.CarService;
 import by.epam.jwd.sak.avtobase.service.Mapper;
+import by.epam.jwd.sak.avtobase.service.validator.CarValidation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -34,6 +35,9 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Long update(CarDto carDto) throws ServiceException {
+        if (CarValidation.isCorrectModel(carDto.getModel()) || CarValidation.isCorrectMark(carDto.getMark()) || CarValidation.isCorrectCapacity(carDto.getLiftingCapacity()) || CarValidation.isCorrectCapacity(carDto.getCargoCapacity()) || CarValidation.isCorrectCapacity(carDto.getPassengerCapacity())) {
+// TODO type to return
+        }
         Car car = convertToCar(carDto);
         try {
             daoFactory.getCarDao().update(car);
