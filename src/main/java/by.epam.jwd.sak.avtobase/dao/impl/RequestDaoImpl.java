@@ -192,7 +192,7 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(1, carId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                requests.add(buildEntityById(resultSet));
+                requests.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
             LOGGER.error(e);

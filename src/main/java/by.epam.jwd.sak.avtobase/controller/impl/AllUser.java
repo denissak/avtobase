@@ -30,7 +30,7 @@ public class AllUser implements Command {
         String page = req.getParameter(PAGE);
         double numberOfPages = Math.ceil(userDtoList.size()/5.0);
         req.setAttribute(NUMBER_OF_PAGES, numberOfPages);
-        Pagination.process(userDtoList, page);
+//        Pagination.process(userDtoList, page);
         req.setAttribute(USER_DISPLAY, Pagination.process(userDtoList, page));
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_USER);
         requestDispatcher.forward(req, resp);

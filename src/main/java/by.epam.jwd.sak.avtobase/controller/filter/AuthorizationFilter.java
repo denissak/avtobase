@@ -30,27 +30,28 @@ public class AuthorizationFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String uri = ((HttpServletRequest) servletRequest).getRequestURI();
         String queryString = ((HttpServletRequest) servletRequest).getQueryString();
+        if (queryString != null) {
+            queryString = queryString.replaceAll("&page=\\d+", "");
+        }
+//        ((HttpServletRequest) servletRequest).getQueryString().replaceAll("&page=\\d", "")
         UserDto user = (UserDto) ((HttpServletRequest) servletRequest).getSession().getAttribute(USER);
-        if (isPublicPath(uri)) {
-            filterChain.doFilter(servletRequest, servletResponse);
-        } else if (queryString != null) {
-            if (queryString.equals(ACCESS_LOGIN) || queryString.equals(ACCESS_REGISTRATION)) {
+//        if (isPublicPath(uri)) {
+//            filterChain.doFilter(servletRequest, servletResponse);
+//        } else if (queryString != null) {
+            if (isPublicPath(uri) || isPublicPath(queryString) /*queryString.equals(ACCESS_LOGIN) || queryString.equals(ACCESS_REGISTRATION)*/) {
                 filterChain.doFilter(servletRequest, servletResponse);
             } else if (user != null) {
                 if (USER_PATH.contains(queryString) && user.getRole().equals(USER)) {
                     filterChain.doFilter(servletRequest, servletResponse);
-                }
-                if (DRIVER_PATH.contains(queryString) && user.getRole().equals(DRIVER)) {
+                } else if (DRIVER_PATH.contains(queryString) && user.getRole().equals(DRIVER)) {
                     filterChain.doFilter(servletRequest, servletResponse);
-                }
-                if (DISPATCHER_PATH.contains(queryString) && user.getRole().equals(DISPATCHER)) {
+                } else if (DISPATCHER_PATH.contains(queryString) && user.getRole().equals(DISPATCHER)) {
                     filterChain.doFilter(servletRequest, servletResponse);
-                }
-                if ((USER_PATH.contains(queryString) || ADMIN_PATH.contains(queryString)) && user.getRole().equals(ADMIN)) {
+                } else if ((USER_PATH.contains(queryString) || ADMIN_PATH.contains(queryString)) && user.getRole().equals(ADMIN)) {
                     filterChain.doFilter(servletRequest, servletResponse);
                 }
             }
-        }
+//        }
     }
 
 //        if (user != null) {
@@ -71,7 +72,10 @@ public class AuthorizationFilter implements Filter {
     }
 
     private boolean isPublicPath(String uri) {
-        return PUBLIC_PATH.contains(uri);
+        if (uri != null) {
+            return PUBLIC_PATH.contains(uri);
+        }
+        return false;
         //return PUBLIC_PATH.stream().anyMatch(path -> uri.startsWith(path));
     }
 }

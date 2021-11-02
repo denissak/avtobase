@@ -2,9 +2,11 @@ package by.epam.jwd.sak.avtobase.controller.impl;
 
 import by.epam.jwd.sak.avtobase.dao.CarDao;
 import by.epam.jwd.sak.avtobase.dto.CarDto;
+import by.epam.jwd.sak.avtobase.dto.RequestDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 import by.epam.jwd.sak.avtobase.controller.Command;
+import by.epam.jwd.sak.avtobase.service.Pagination;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,7 +27,11 @@ public class AllRequest implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            req.setAttribute(ALL_REQUEST, factoryService.getRequestService().findAllRequest());
+            List<RequestDto> requestDtoList = factoryService.getRequestService().findAllRequest();
+            String page = req.getParameter(PAGE);
+            double numberOfPages = Math.ceil(requestDtoList.size()/5.0);
+            req.setAttribute(NUMBER_OF_PAGES, numberOfPages);
+            req.setAttribute(ALL_REQUEST, Pagination.process(requestDtoList, page));
             req.setAttribute(USER_DRIVERS, factoryService.getCarService().findAllFreeDriver());
         } catch (ServiceException e) {
             LOGGER.error(e);

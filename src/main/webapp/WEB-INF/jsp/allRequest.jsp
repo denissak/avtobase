@@ -27,9 +27,10 @@
         <th scope="col"><fmt:message key="text.request_details"/></th>
     </tr>
     <c:forEach var="request" items="${allRequest}">
-        <c:choose>
-            <c:when test="${request.getStatusRequest().equals('COMPLETE')}">
-                <tr class="table-success">
+<%--        <c:choose>--%>
+            <%--<c:when test="${request.getStatusRequest() == 'COMPLETE')}">--%>
+                <tr ${request.getStatusRequest() == 'COMPLETE' ? 'class="table-success"' : ''}
+                    ${request.getStatusRequest() == 'CREATED' ? 'class="table-warning"' : ''}>
                     <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
                     <td>${request.getDateCreate()}</td>
                     <td>${request.getStartAddress()}</td>
@@ -58,8 +59,8 @@
                         </form>
                     </td>
                 </tr>
-            </c:when>
-            <c:when test="${request.getStatusRequest().equals('CANCELED')}">
+<%--            </c:when>--%>
+            <%--<c:when test="${request.getStatusRequest().equals('CANCELED')}">
                 <tr class="table-danger">
                     <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
                     <td>${request.getDateCreate()}</td>
@@ -183,9 +184,9 @@
                     </td>
                 </tr>
             </c:when>
-        </c:choose>
+        </c:choose>--%>
 
-              <tr>
+              <%--<tr>
                   <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
                   <td>${request.getDateCreate()}</td>
                   <td>${request.getStartAddress()}</td>
@@ -213,7 +214,7 @@
                           <input class="btn btn-danger" type="submit" value="Удалить">
                       </form>
                   </td>
-              </tr>
+              </tr>--%>
         <div class="modal fade requestId_${request.getId()}" id="updateUserModal" tabindex="-1"
              aria-labelledby="updateUserModalLabel" aria-hidden="true">
             <div class="modal-dialog">

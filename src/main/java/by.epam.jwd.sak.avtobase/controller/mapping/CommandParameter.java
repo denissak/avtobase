@@ -78,7 +78,7 @@ public final class CommandParameter {
     public static final String ACCESS_ALL_DRIVER = "command=alldriver";
     public static final String ACCESS_ALL_REQUEST = "command=allrequest";
     public static final String ACCESS_ALL_REQUESTBYDRIVER = "command=allrequestbydriver";
-    public static final String ACCESS_ALL_USER = "command=alluser&page=\\d";// TODO
+    public static final String ACCESS_ALL_USER = "command=alluser";// TODO
     public static final String ACCESS_ALL_USER_COMMENT = "command=allusercomment";
     public static final String ACCESS_ALL_USER_REQUEST = "command=alluserrequest";
     public static final String ACCESS_CREATE_CAR = "command=createcar";
