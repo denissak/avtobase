@@ -3,7 +3,6 @@ package by.epam.jwd.sak.avtobase.util;
 import lombok.experimental.UtilityClass;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @UtilityClass

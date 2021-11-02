@@ -1,5 +1,7 @@
 package by.epam.jwd.sak.avtobase.controller.mapping;
 
+import java.net.FileNameMap;
+
 public final class CommandParameter {
 
     public static final String ID = "id";
@@ -62,6 +64,7 @@ public final class CommandParameter {
     public static final String COMMAND_LOGIN  = "Controller?command=login";
 
 
+
     public static final String PAGE_ALL_CAR = "/WEB-INF/jsp/allCar.jsp";
     public static final String PAGE_ALL_COMMENT = "/WEB-INF/jsp/allComment.jsp";
     public static final String PAGE_ALL_DRIVER = "/WEB-INF/jsp/allDriver.jsp";
@@ -72,10 +75,28 @@ public final class CommandParameter {
     public static final String PAGE_ALL_REQUEST_BY_DRIVER = "/WEB-INF/jsp/allRequestByDriver.jsp";
 
 
-
-
-
-
+    public static final String ACCESS_ALL_CAR = "command=allcar";
+    public static final String ACCESS_ALL_COMMENT = "command=allcomment";
+    public static final String ACCESS_ALL_DRIVER = "command=alldriver";
+    public static final String ACCESS_ALL_REQUEST = "command=allrequest";
+    public static final String ACCESS_ALL_REQUESTBYDRIVER = "command=allrequestbydriver";
+    public static final String ACCESS_ALL_USER = "command=alluser&page=\\d";// TODO
+    public static final String ACCESS_ALL_USER_COMMENT = "command=allusercomment";
+    public static final String ACCESS_ALL_USER_REQUEST = "command=alluserrequest";
+    public static final String ACCESS_CREATE_CAR = "command=createcar";
+    public static final String ACCESS_CREATE_COMMENT = "command=createcomment";
+    public static final String ACCESS_CREATE_REQUEST = "command=createrequest";
+    public static final String ACCESS_EDIT_CAR = "command=editcar";
+    public static final String ACCESS_EDIT_REQUEST_BY_USER = "command=editrequestbyuser";
+    public static final String ACCESS_EDIT_STATUS_CAR = "command=editstatuscar";
+    public static final String ACCESS_EDIT_STATUS_REQUEST_BY_DRIVER = "command=editstatusrequestbydriver";
+    public static final String ACCESS_EDIT_USER_BY_ADMIN = "command=edituserbyadmin";
+    public static final String ACCESS_LANGUAGE = "command=language";
+    public static final String ACCESS_LOGIN = "command=login";
+    public static final String ACCESS_LOGOUT = "command=logout";
+    public static final String ACCESS_REGISTRATION = "command=registration";
+    public static final String ACCESS_SET_DRIVER_ON_CAR = "command=setdriveroncar";
+    public static final String ACCESS_SET_DRIVER_ON_REQUEST = "command=setdriveronrequest";
     private CommandParameter() {
     }
 }
