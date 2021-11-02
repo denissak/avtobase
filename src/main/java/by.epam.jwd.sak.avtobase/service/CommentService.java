@@ -9,7 +9,7 @@ public interface CommentService {
 
     List<CommentDto> findAllComment() throws ServiceException;
 
-    Long create(CommentDto commentDto) throws ServiceException;
+    boolean create(CommentDto commentDto) throws ServiceException;
 
     boolean delete(Long id) throws ServiceException;
 

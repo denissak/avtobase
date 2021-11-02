@@ -52,14 +52,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Long update(UserDto entity) throws ServiceException {
+    public boolean update(UserDto entity) throws ServiceException {
+        if (entity == null
+                || !(UserValidator.isCorrectLogin(entity.getLogin())
+                || UserValidator.isCorrectName(entity.getName())
+                || UserValidator.isCorrectSurname(entity.getSurname())
+                || UserValidator.isCorrectPhoneNumber(entity.getPhoneNumber()))){
+            return false;
+        }
         User userBean = convertToUser(entity);
         try {
             daoFactory.getUserDao().update(userBean);
         } catch (DAOException e) {
             throw new ServiceException(e.getMessage(), e);
         }
-        return userBean.getId();
+        return true;
     }
 
     @Override
@@ -94,14 +101,21 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Long create (UserDto userDto) throws ServiceException {
+    public boolean create (UserDto userDto) throws ServiceException {
+        if (userDto == null
+                || !(UserValidator.isCorrectLogin(userDto.getLogin())
+                || UserValidator.isCorrectName(userDto.getName())
+                || UserValidator.isCorrectSurname(userDto.getSurname())
+                || UserValidator.isCorrectPhoneNumber(userDto.getPhoneNumber()))){
+            return false;
+        }
         User userBean = convertToUser(userDto);
         try {
             daoFactory.getUserDao().save(userBean);
         } catch (DAOException e) {
             throw new ServiceException(e.getMessage(), e);
         }
-        return userBean.getId();
+        return true;
     }
 
     private UserDto convertToUserDto(User object) {

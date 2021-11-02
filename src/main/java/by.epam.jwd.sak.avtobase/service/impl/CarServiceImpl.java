@@ -34,13 +34,16 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Long update(CarDto carDto) throws ServiceException {
-        if (CarValidation.isCorrectModel(carDto.getModel())
+    public boolean update(CarDto carDto) throws ServiceException {
+        if (carDto == null
+                || !(CarValidation.isCorrectModel(carDto.getModel())
                 || CarValidation.isCorrectMark(carDto.getMark())
+                || CarValidation.isCorrectDate(String.valueOf(carDto.getReleaseDate()))
+                || CarValidation.isCorrectDate(String.valueOf(carDto.getInspectionPermission()))
                 || CarValidation.isCorrectCapacity(carDto.getLiftingCapacity())
                 || CarValidation.isCorrectCapacity(carDto.getCargoCapacity())
-                || CarValidation.isCorrectCapacity(carDto.getPassengerCapacity())) {
-            throw new ServiceException();
+                || CarValidation.isCorrectCapacity(carDto.getPassengerCapacity()))) {
+            return false;
         }
         Car car = convertToCar(carDto);
         try {
@@ -49,7 +52,7 @@ public class CarServiceImpl implements CarService {
             LOGGER.error(e);
             throw new ServiceException(e.getMessage(), e);
         }
-        return car.getId();
+        return true;
     }
 
     @Override
@@ -93,7 +96,17 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Long create(CarDto carDto) throws ServiceException {
+    public boolean create(CarDto carDto) throws ServiceException {
+        if (carDto == null
+                || !(CarValidation.isCorrectModel(carDto.getModel())
+                || CarValidation.isCorrectMark(carDto.getMark())
+                || CarValidation.isCorrectDate(String.valueOf(carDto.getReleaseDate()))
+                || CarValidation.isCorrectDate(String.valueOf(carDto.getInspectionPermission()))
+                || CarValidation.isCorrectCapacity(carDto.getLiftingCapacity())
+                || CarValidation.isCorrectCapacity(carDto.getCargoCapacity())
+                || CarValidation.isCorrectCapacity(carDto.getPassengerCapacity()))) {
+            return false;
+        }
         Car carBean = convertToCar(carDto);
         try {
             daoFactory.getCarDao().save(carBean);
@@ -101,7 +114,7 @@ public class CarServiceImpl implements CarService {
             LOGGER.error(e);
             throw new ServiceException(e.getMessage(), e);
         }
-        return carBean.getId();
+        return true;
     }
 
     @Override

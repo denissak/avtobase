@@ -93,11 +93,12 @@ public class UserDaoImpl implements UserDao {
         } finally {
             ConnectionManager.returnConnection(connection);
         }
-        return result == 1;
+        return result > 0;
     }
 
     @Override
-    public User update(User entity) throws DAOException {
+    public boolean update(User entity) throws DAOException {
+        int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getLogin());
@@ -106,7 +107,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setObject(4, entity.getSurname());
             preparedStatement.setObject(5, entity.getPhoneNumber());
             preparedStatement.setObject(6, entity.getId());
-            preparedStatement.executeUpdate();
+            result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
             throw new DAOException();
@@ -117,7 +118,7 @@ public class UserDaoImpl implements UserDao {
             try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PASSWORD_USER, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setObject(1, entity.getPassword());
                 preparedStatement.setObject(2, entity.getId());
-                preparedStatement.executeUpdate();
+                result = preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 LOGGER.error(e);
                 throw new DAOException(e.getMessage(), e);
@@ -125,7 +126,7 @@ public class UserDaoImpl implements UserDao {
                 ConnectionManager.returnConnection(connection);
             }
         }
-        return entity;
+        return result > 0;
     }
 
 
@@ -187,7 +188,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User save(User entity) throws DAOException {
+    public boolean save(User entity) throws DAOException {
+        int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SAVE_USER, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getLogin());
@@ -196,14 +198,14 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setObject(4, entity.getName());
             preparedStatement.setObject(5, entity.getSurname());
             preparedStatement.setObject(6, entity.getPhoneNumber());
-            preparedStatement.executeUpdate();
+            result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
             throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
-        return entity;
+        return result > 0;
     }
 
     private User buildEntity(ResultSet resultSet) throws SQLException {

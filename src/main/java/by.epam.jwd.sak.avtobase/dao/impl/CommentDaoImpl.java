@@ -79,20 +79,21 @@ public class CommentDaoImpl implements CommentDao {
     }
 
     @Override
-    public Comment save(Comment entity) throws DAOException {
+    public boolean save(Comment entity) throws DAOException {
+        int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SAVE_COMMENT, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getUser().getId());
             preparedStatement.setObject(2, entity.getCommentDate());
             preparedStatement.setObject(3, entity.getMark());
             preparedStatement.setObject(4, entity.getMessage());
-            preparedStatement.executeUpdate();
+            result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
-        return entity;
+        return result > 0;
     }
 
     private Comment buildEntity(ResultSet resultSet) throws SQLException {

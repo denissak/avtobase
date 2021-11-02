@@ -14,7 +14,7 @@
 
 <body>
 
-<table class="table">
+<table class="table table-striped">
     <thead>
     <tr>
         <th scope="col"><fmt:message key="text.who_created"/></th>
@@ -27,53 +27,206 @@
         <th scope="col"><fmt:message key="text.request_details"/></th>
     </tr>
     <c:forEach var="request" items="${allRequest}">
-        <tr>
-                <%--<th scope="row">$${request.getDateCreate()}</th>--%>
-            <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
-            <td>${request.getDateCreate()}</td>
-            <td>${request.getStartAddress()}</td>
-            <td>${request.getEndAddress()}</td>
-            <td>${request.getDateDeparture()}</td>
-            <td>${request.getStatusRequest()}</td>
-            <td>${request.getTypeTransport()}</td>
-            <td>${request.getDetailsRequest()}</td>
-            <td>
-                <%--<form action="Controller?command=test" method="GET">
-                    <button class="btn btn-outline-danger ms-3" data-bs-toggle="modal" name="data" data-bs-target=".requestId_${request.getId()}" value="${request.getDateDeparture()}"><fmt:message key="text.edit"/>
-                        <c:set var="requestId" value="${request.getId()}"/>
-                    </button>
-                </form>--%>
-                <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                        data-bs-target=".requestId_${request.getId()}">Обработать
-                    <c:set var="requestId" value="${request.getId()}"/>
-                </button>
-            </td>
-            <td>
-                <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
-                        data-bs-target=".requestIdEdit_${request.getId()}"><fmt:message key="text.edit"/>
-                    <c:set var="requestId" value="${request.getId()}"/>
-                </button>
-            </td>
-            <td>
-                <form action="Controller?command=editrequestbyuser" method="post">
-                    <input type="hidden" name="id" value="${request.getId()}">
-                    <input type="hidden" name="method" value="delete">
-                    <input class="btn btn-danger" type="submit" value="Удалить">
-                </form>
-            </td>
-        </tr>
+        <c:choose>
+            <c:when test="${request.getStatusRequest().equals('COMPLETE')}">
+                <tr class="table-success">
+                    <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
+                    <td>${request.getDateCreate()}</td>
+                    <td>${request.getStartAddress()}</td>
+                    <td>${request.getEndAddress()}</td>
+                    <td>${request.getDateDeparture()}</td>
+                    <td>${request.getStatusRequest()}</td>
+                    <td>${request.getTypeTransport()}</td>
+                    <td>${request.getDetailsRequest()}</td>
+                    <td>
+                        <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
+                                data-bs-target=".requestId_${request.getId()}">Обработать
+                            <c:set var="requestId" value="${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
+                                data-bs-target=".requestIdEdit_${request.getId()}"><fmt:message key="text.edit"/>
+                            <c:set var="requestId" value="${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <form action="Controller?command=editrequestbyuser" method="post">
+                            <input type="hidden" name="id" value="${request.getId()}">
+                            <input type="hidden" name="method" value="delete">
+                            <input class="btn btn-danger" type="submit" value="Удалить">
+                        </form>
+                    </td>
+                </tr>
+            </c:when>
+            <c:when test="${request.getStatusRequest().equals('CANCELED')}">
+                <tr class="table-danger">
+                    <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
+                    <td>${request.getDateCreate()}</td>
+                    <td>${request.getStartAddress()}</td>
+                    <td>${request.getEndAddress()}</td>
+                    <td>${request.getDateDeparture()}</td>
+                    <td>${request.getStatusRequest()}</td>
+                    <td>${request.getTypeTransport()}</td>
+                    <td>${request.getDetailsRequest()}</td>
+                    <td>
+                        <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
+                                data-bs-target=".requestId_${request.getId()}">Обработать
+                            <c:set var="requestId" value="${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
+                                data-bs-target=".requestIdEdit_${request.getId()}"><fmt:message key="text.edit"/>
+                            <c:set var="requestId" value="${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <form action="Controller?command=editrequestbyuser" method="post">
+                            <input type="hidden" name="id" value="${request.getId()}">
+                            <input type="hidden" name="method" value="delete">
+                            <input class="btn btn-danger" type="submit" value="Удалить">
+                        </form>
+                    </td>
+                </tr>
+            </c:when>
+            <c:when test="${request.getStatusRequest().equals('CREATED')}">
+                <tr class="table-warning">
+                    <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
+                    <td>${request.getDateCreate()}</td>
+                    <td>${request.getStartAddress()}</td>
+                    <td>${request.getEndAddress()}</td>
+                    <td>${request.getDateDeparture()}</td>
+                    <td>${request.getStatusRequest()}</td>
+                    <td>${request.getTypeTransport()}</td>
+                    <td>${request.getDetailsRequest()}</td>
+                    <td>
+                        <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
+                                data-bs-target=".requestId_${request.getId()}">Обработать
+                            <c:set var="requestId" value="${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
+                                data-bs-target=".requestIdEdit_${request.getId()}"><fmt:message key="text.edit"/>
+                            <c:set var="requestId" value="${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <form action="Controller?command=editrequestbyuser" method="post">
+                            <input type="hidden" name="id" value="${request.getId()}">
+                            <input type="hidden" name="method" value="delete">
+                            <input class="btn btn-danger" type="submit" value="Удалить">
+                        </form>
+                    </td>
+                </tr>
+            </c:when>
+            <c:when test="${request.getStatusRequest().equals('INWORK')}">
+                <tr class="table-info">
+                    <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
+                    <td>${request.getDateCreate()}</td>
+                    <td>${request.getStartAddress()}</td>
+                    <td>${request.getEndAddress()}</td>
+                    <td>${request.getDateDeparture()}</td>
+                    <td>${request.getStatusRequest()}</td>
+                    <td>${request.getTypeTransport()}</td>
+                    <td>${request.getDetailsRequest()}</td>
+                    <td>
+                        <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
+                                data-bs-target=".requestId_${request.getId()}">Обработать
+                            <c:set var="requestId" value="${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
+                                data-bs-target=".requestIdEdit_${request.getId()}"><fmt:message key="text.edit"/>
+                            <c:set var="requestId" value="${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <form action="Controller?command=editrequestbyuser" method="post">
+                            <input type="hidden" name="id" value="${request.getId()}">
+                            <input type="hidden" name="method" value="delete">
+                            <input class="btn btn-danger" type="submit" value="Удалить">
+                        </form>
+                    </td>
+                </tr>
+            </c:when>
+            <c:when test="${request.getStatusRequest().equals('PROCESSING')}">
+                <tr class="table-primary">
+                    <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
+                    <td>${request.getDateCreate()}</td>
+                    <td>${request.getStartAddress()}</td>
+                    <td>${request.getEndAddress()}</td>
+                    <td>${request.getDateDeparture()}</td>
+                    <td>${request.getStatusRequest()}</td>
+                    <td>${request.getTypeTransport()}</td>
+                    <td>${request.getDetailsRequest()}</td>
+                    <td>
+                        <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
+                                data-bs-target=".requestId_${request.getId()}">Обработать
+                            <c:set var="requestId" value="${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
+                                data-bs-target=".requestIdEdit_${request.getId()}"><fmt:message key="text.edit"/>
+                            <c:set var="requestId" value="${request.getId()}"/>
+                        </button>
+                    </td>
+                    <td>
+                        <form action="Controller?command=editrequestbyuser" method="post">
+                            <input type="hidden" name="id" value="${request.getId()}">
+                            <input type="hidden" name="method" value="delete">
+                            <input class="btn btn-danger" type="submit" value="Удалить">
+                        </form>
+                    </td>
+                </tr>
+            </c:when>
+        </c:choose>
+
+              <tr>
+                  <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
+                  <td>${request.getDateCreate()}</td>
+                  <td>${request.getStartAddress()}</td>
+                  <td>${request.getEndAddress()}</td>
+                  <td>${request.getDateDeparture()}</td>
+                  <td>${request.getStatusRequest()}</td>
+                  <td>${request.getTypeTransport()}</td>
+                  <td>${request.getDetailsRequest()}</td>
+                  <td>
+                      <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
+                              data-bs-target=".requestId_${request.getId()}">Обработать
+                          <c:set var="requestId" value="${request.getId()}"/>
+                      </button>
+                  </td>
+                  <td>
+                      <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
+                              data-bs-target=".requestIdEdit_${request.getId()}"><fmt:message key="text.edit"/>
+                          <c:set var="requestId" value="${request.getId()}"/>
+                      </button>
+                  </td>
+                  <td>
+                      <form action="Controller?command=editrequestbyuser" method="post">
+                          <input type="hidden" name="id" value="${request.getId()}">
+                          <input type="hidden" name="method" value="delete">
+                          <input class="btn btn-danger" type="submit" value="Удалить">
+                      </form>
+                  </td>
+              </tr>
         <div class="modal fade requestId_${request.getId()}" id="updateUserModal" tabindex="-1"
              aria-labelledby="updateUserModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateUserModalLabel"><fmt:message key="button.change_status_request"/></h5>
+                        <h5 class="modal-title" id="updateUserModalLabel"><fmt:message
+                                key="button.change_status_request"/></h5>
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                     <div class="modal-body">
-                    <jsp:include page="processRequest.jsp">
-                        <jsp:param name="requestId" value="${requestId}"/>
-                    </jsp:include>
+                        <jsp:include page="processRequest.jsp">
+                            <jsp:param name="requestId" value="${requestId}"/>
+                        </jsp:include>
                     </div>
                 </div>
             </div>
@@ -102,7 +255,9 @@
 <nav aria-label="Page navigation example">
     <ul class="pagination">
         <c:forEach begin="1" end="${numberOfPages}" var="val">
-            <li class="page-item ${val == param.page ? 'active' : ''}"><a class="page-link" href="Controller?command=allrequest&page=${val}">${val}</a></li>
+            <li class="page-item ${val == param.page ? 'active' : ''}"><a class="page-link"
+                                                                          href="Controller?command=allrequest&page=${val}">${val}</a>
+            </li>
         </c:forEach>
     </ul>
 </nav>

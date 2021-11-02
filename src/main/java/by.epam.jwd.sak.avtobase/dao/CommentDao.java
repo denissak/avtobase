@@ -9,7 +9,7 @@ public interface CommentDao {
 
     List<Comment> findAll() throws DAOException;
 
-    Comment save(Comment entity) throws DAOException;
+    boolean save(Comment entity) throws DAOException;
 
     List<Comment> findAllByUserId(Long userId) throws DAOException;
 

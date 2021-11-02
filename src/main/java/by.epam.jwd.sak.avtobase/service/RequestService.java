@@ -14,13 +14,13 @@ public interface RequestService {
 
     List<RequestDto> findAllRequest() throws ServiceException;
 
-    Long create(RequestDto requestDto) throws ServiceException;
+    boolean create(RequestDto requestDto) throws ServiceException;
 
-    Long addDriverOnRequest(Long carId, Long requestId) throws ServiceException;
+    boolean addDriverOnRequest(Long carId, Long requestId) throws ServiceException;
 
     Optional<RequestDto> findById(Long id) throws ServiceException;
 
-    Long update(RequestDto entity) throws ServiceException;
+    boolean update(RequestDto entity) throws ServiceException;
 
     boolean updateStatusById(Long id, String status) throws ServiceException;
 

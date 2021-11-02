@@ -24,7 +24,7 @@ public class RequestDaoImpl implements RequestDao {
     private static final Logger LOGGER = LogManager.getLogger();
 
     private static final String GET_ALL_REQUEST_BY_CAR_ID = "SELECT * FROM requests as r JOIN users as u on u.id = r.user_id WHERE car_id = ? ORDER BY r.date_departure <= CURRENT_DATE() AND r.status_request = 'COMPLETE'"; // TODO
-    private static final String GET_ALL_REQUEST_BY_USER_ID = "SELECT * FROM requests WHERE user_id = ? ORDER BY date_departure <= CURRENT_DATE() AND r.status_request = 'COMPLETE'";
+    private static final String GET_ALL_REQUEST_BY_USER_ID = "SELECT * FROM requests WHERE user_id = ? ORDER BY date_departure <= CURRENT_DATE() AND status_request = 'COMPLETE'";
     private static final String GET_ALL_REQUEST = "SELECT * FROM requests as r join users as u  on u.id = r.user_id ORDER BY r.date_departure AND r.date_departure <= CURRENT_DATE() AND r.status_request = 'COMPLETE'";
     private static final String SAVE_REQUEST = "INSERT INTO requests (user_id, date_create, start_address, end_address, date_departure, status_request, type_transport, details_request) VALUES (?,?,?,?,?,?,?,?)";
     private static final String GET_REQUEST_BY_ID = "SELECT * FROM requests WHERE id = ?";
@@ -34,8 +34,8 @@ public class RequestDaoImpl implements RequestDao {
     private static final String ADD_DRIVER_ON_REQUEST = "UPDATE requests SET car_id = ? WHERE id = ?";
 
     @Override
-    public Long addDriverOnRequest(Long carId, Long requestId) throws DAOException {
-        long result;
+    public boolean addDriverOnRequest(Long carId, Long requestId) throws DAOException {
+        int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(ADD_DRIVER_ON_REQUEST, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, carId);
@@ -47,7 +47,7 @@ public class RequestDaoImpl implements RequestDao {
         } finally {
             ConnectionManager.returnConnection(connection);
         }
-        return result;
+        return result > 0;
     }
 
     @Override
@@ -81,11 +81,12 @@ public class RequestDaoImpl implements RequestDao {
         } finally {
             ConnectionManager.returnConnection(connection);
         }
-        return result == 1;
+        return result > 0;
     }
 
     @Override
-    public Request update(Request entity) throws DAOException {
+    public boolean update(Request entity) throws DAOException {
+        int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_REQUEST, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getStartAddress());
@@ -95,14 +96,14 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(5, entity.getTypeTransport().name());
             preparedStatement.setObject(6, entity.getDetailsRequest());
             preparedStatement.setObject(7, entity.getId());
-            preparedStatement.executeUpdate();
+            result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
             throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
-        return entity;
+        return result > 0;
     }
 
     @Override
@@ -119,7 +120,7 @@ public class RequestDaoImpl implements RequestDao {
         } finally {
             ConnectionManager.returnConnection(connection);
         }
-        return result == 1;
+        return result > 0;
     }
 
     @Override
@@ -142,7 +143,8 @@ public class RequestDaoImpl implements RequestDao {
     }
 
     @Override
-    public Request save(Request entity) throws DAOException {
+    public boolean save(Request entity) throws DAOException {
+        int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SAVE_REQUEST, RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getUser().getId());
@@ -153,14 +155,14 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(6, StatusRequest.CREATED.name());
             preparedStatement.setObject(7, entity.getTypeTransport().name());
             preparedStatement.setObject(8, entity.getDetailsRequest());
-            preparedStatement.executeUpdate();
+            result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
             throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
-        return entity;
+        return result > 0;
     }
 
     @Override

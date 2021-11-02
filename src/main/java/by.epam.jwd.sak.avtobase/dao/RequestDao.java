@@ -16,11 +16,11 @@ public interface RequestDao {
 
     List<Request> findAll() throws DAOException;
 
-    Request save(Request entity) throws DAOException;
+    boolean save(Request entity) throws DAOException;
 
-    Long addDriverOnRequest(Long carId, Long requestId) throws DAOException;
+    boolean addDriverOnRequest(Long carId, Long requestId) throws DAOException;
 
-    Request update(Request entity) throws DAOException;
+    boolean update(Request entity) throws DAOException;
 
     boolean updateStatusById(Long id, String status) throws DAOException;
 

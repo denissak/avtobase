@@ -19,9 +19,9 @@ public interface UserDao {
 
     User findByLogin(String login) throws DAOException;
 
-    User save(User entity) throws DAOException;
+    boolean save(User entity) throws DAOException;
 
-    User update (User entity) throws DAOException;
+    boolean update (User entity) throws DAOException;
 
     boolean delete(Long id) throws DAOException;
 }

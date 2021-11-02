@@ -76,7 +76,7 @@ public class CarDaoImpl implements CarDao {
 
             ConnectionManager.returnConnection(connection);
         }
-        return result == 1;
+        return result > 0;
     }
 
     @Override
@@ -93,7 +93,7 @@ public class CarDaoImpl implements CarDao {
         } finally {
             ConnectionManager.returnConnection(connection);
         }
-        return result == 1;
+        return result > 0;
     }
 
     @Override
@@ -109,7 +109,7 @@ public class CarDaoImpl implements CarDao {
         } finally {
             ConnectionManager.returnConnection(connection);
         }
-        return result == 1;
+        return result > 0;
     }
 
     @Override
@@ -169,10 +169,10 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public Car save(Car entity) throws DAOException {
+    public boolean save(Car entity) throws DAOException {
+        int result;
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SAVE_CAR, RETURN_GENERATED_KEYS)) {
-//            preparedStatement.setObject(1, entity.getUser().getId());
             preparedStatement.setObject(1, entity.getMark());
             preparedStatement.setObject(2, entity.getModel());
             preparedStatement.setObject(3, entity.getReleaseDate());
@@ -183,14 +183,14 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(8, entity.getInspectionPermission());
             preparedStatement.setObject(9, entity.getStatusCar().name());
             preparedStatement.setObject(10, entity.getCarDescription());
-            preparedStatement.executeUpdate();
+            result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
             throw new DAOException(e.getMessage(), e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
-        return entity;
+        return result > 0;
     }
 
     @Override
@@ -207,7 +207,7 @@ public class CarDaoImpl implements CarDao {
         } finally {
             ConnectionManager.returnConnection(connection);
         }
-        return result == 1;
+        return result > 0;
     }
 
     private Car buildEntity(ResultSet resultSet) throws SQLException {

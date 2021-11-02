@@ -8,6 +8,7 @@ import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.CommentService;
 import by.epam.jwd.sak.avtobase.service.Mapper;
+import by.epam.jwd.sak.avtobase.service.validator.CommentValidation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -50,14 +51,17 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Long create(CommentDto commentDto) throws ServiceException {
+    public boolean create(CommentDto commentDto) throws ServiceException {
+        if (commentDto == null || !CommentValidation.isCorrectMark(commentDto.getMark())){
+            return false;
+        }
         Comment commentBean = convertToComment(commentDto);
         try {
             daoFactory.getCommentDao().save(commentBean);
         } catch (DAOException e) {
             throw new ServiceException(e.getMessage(), e);
         }
-        return commentBean.getId();
+        return true;
     }
 
     private CommentDto convertToCommentDto(Comment comment) {

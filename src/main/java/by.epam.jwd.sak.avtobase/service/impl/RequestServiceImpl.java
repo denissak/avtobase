@@ -9,6 +9,7 @@ import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.Mapper;
 import by.epam.jwd.sak.avtobase.service.RequestService;
+import by.epam.jwd.sak.avtobase.service.validator.RequestValidation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,7 +24,7 @@ public class RequestServiceImpl implements RequestService {
     private final DaoFactory daoFactory = DaoFactory.getInstance();
 
     @Override
-    public Long addDriverOnRequest(Long carId, Long requestId) throws ServiceException {
+    public boolean addDriverOnRequest(Long carId, Long requestId) throws ServiceException {
         try {
             return daoFactory.getRequestDao().addDriverOnRequest(carId, requestId);
         } catch (DAOException e) {
@@ -51,14 +52,20 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public Long update(RequestDto requestDto) throws ServiceException {
+    public boolean update(RequestDto requestDto) throws ServiceException {
+        if (requestDto == null
+                || !(RequestValidation.isCorrectAddress(requestDto.getStartAddress())
+                || RequestValidation.isCorrectDate(String.valueOf(requestDto.getDateDeparture()))
+                || RequestValidation.isCorrectAddress(requestDto.getEndAddress()))){
+            return false;
+        }
         Request requestBean = convertToRequest(requestDto);
         try {
             daoFactory.getRequestDao().update(requestBean);
         } catch (DAOException e) {
             throw new ServiceException(e.getMessage(), e);
         }
-        return requestBean.getId();
+        return true;
     }
 
     @Override
@@ -80,14 +87,20 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public Long create(RequestDto requestDto) throws ServiceException {
+    public boolean create(RequestDto requestDto) throws ServiceException {
+        if (requestDto == null
+                || !(RequestValidation.isCorrectAddress(requestDto.getStartAddress())
+                || RequestValidation.isCorrectDate(String.valueOf(requestDto.getDateDeparture()))
+                || RequestValidation.isCorrectAddress(requestDto.getEndAddress()))){
+            return false;
+        }
         Request requestBean = convertToRequest(requestDto);
         try {
             daoFactory.getRequestDao().save(requestBean);
         } catch (DAOException e) {
             throw new ServiceException(e.getMessage(), e);
         }
-        return requestBean.getId();
+        return true;
     }
 
     @Override

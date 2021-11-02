@@ -4,7 +4,7 @@ public enum StatusRequest {
 
     CREATED,
     PROCESSING,
-    BEINPROGRESS,
+    INWORK,
     CANCELED,
     COMPLETE
 }
