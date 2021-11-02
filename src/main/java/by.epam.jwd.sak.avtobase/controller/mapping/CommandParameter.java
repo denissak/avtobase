@@ -1,7 +1,5 @@
 package by.epam.jwd.sak.avtobase.controller.mapping;
 
-import java.net.FileNameMap;
-
 public final class CommandParameter {
 
     public static final String ID = "id";
@@ -97,6 +95,7 @@ public final class CommandParameter {
     public static final String ACCESS_REGISTRATION = "command=registration";
     public static final String ACCESS_SET_DRIVER_ON_CAR = "command=setdriveroncar";
     public static final String ACCESS_SET_DRIVER_ON_REQUEST = "command=setdriveronrequest";
+
     private CommandParameter() {
     }
 }
