@@ -25,7 +25,7 @@ public final class CommandParameter {
     public static final String LIFTING_CAPACITY = "liftingCapacity";
     public static final String CARGO_CAPACITY = "cargoCapacity";
     public static final String PASSENGER_CAPACITY = "passengerCapacity";
-    public static final String INSPECTION_PERMISSION = "inspectionPermission";
+    public static final String INSPECTION_PERMISSION = "inspectionPermission";//
     public static final String STATUS_CAR = "statusCar";
     public static final String STATUS_CARS = "statusCars";
     public static final String STATUS_REQUEST = "statusRequest";
