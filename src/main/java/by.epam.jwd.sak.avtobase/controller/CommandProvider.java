@@ -22,6 +22,7 @@ import by.epam.jwd.sak.avtobase.controller.impl.Logout;
 import by.epam.jwd.sak.avtobase.controller.impl.Registration;
 import by.epam.jwd.sak.avtobase.controller.impl.SetDriverOnCar;
 import by.epam.jwd.sak.avtobase.controller.impl.SetDriverOnRequest;
+import by.epam.jwd.sak.avtobase.controller.impl.WelcomePage;
 /*import by.epam.jwd.sak.avtobase.controller.impl.EditUser;*/
 
 import java.util.HashMap;
@@ -55,6 +56,7 @@ public class CommandProvider {
         commands.put(CommandName.EDITSTATUSREQUESTBYDRIVER, new EditStatusRequestByDriver());
         commands.put(CommandName.LANGUAGE, new Language());
         commands.put(CommandName.EDITSTATUSCAR, new EditStatusCar());
+        commands.put(CommandName.WELCOMEPAGE, new WelcomePage());
     }
 
     public Command takeCommand(String name) {

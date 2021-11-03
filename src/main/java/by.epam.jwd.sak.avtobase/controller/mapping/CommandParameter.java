@@ -60,6 +60,7 @@ public final class CommandParameter {
     public static final String COMMAND_ALL_REQUEST = "Controller?command=allrequest&page=1";
     public static final String COMMAND_ALL_REQUEST_BY_DRIVER  = "Controller?command=allrequestbydriver&page=1";
     public static final String COMMAND_LOGIN  = "Controller?command=login";
+    public static final String COMMAND_WELCOME_PAGE = "Controller?command=welcomepage";
 
 
 
@@ -71,6 +72,7 @@ public final class CommandParameter {
     public static final String PAGE_ALL_USER_REQUEST = "/WEB-INF/jsp/allUserRequest.jsp";
     public static final String PAGE_ALL_COMMENT_BY_USER = "/WEB-INF/jsp/allCommentByUser.jsp";
     public static final String PAGE_ALL_REQUEST_BY_DRIVER = "/WEB-INF/jsp/allRequestByDriver.jsp";
+    public static final String PAGE_WELCOME = "/WEB-INF/jsp/welcomePage.jsp";
 
 
     public static final String ACCESS_ALL_CAR = "command=allcar";
@@ -78,7 +80,7 @@ public final class CommandParameter {
     public static final String ACCESS_ALL_DRIVER = "command=alldriver";
     public static final String ACCESS_ALL_REQUEST = "command=allrequest";
     public static final String ACCESS_ALL_REQUESTBYDRIVER = "command=allrequestbydriver";
-    public static final String ACCESS_ALL_USER = "command=alluser";// TODO
+    public static final String ACCESS_ALL_USER = "command=alluser";
     public static final String ACCESS_ALL_USER_COMMENT = "command=allusercomment";
     public static final String ACCESS_ALL_USER_REQUEST = "command=alluserrequest";
     public static final String ACCESS_CREATE_CAR = "command=createcar";
@@ -95,6 +97,7 @@ public final class CommandParameter {
     public static final String ACCESS_REGISTRATION = "command=registration";
     public static final String ACCESS_SET_DRIVER_ON_CAR = "command=setdriveroncar";
     public static final String ACCESS_SET_DRIVER_ON_REQUEST = "command=setdriveronrequest";
+    public static final String ACCESS_WELCOME_PAGE = "command=welcomepage";
 
     private CommandParameter() {
     }
