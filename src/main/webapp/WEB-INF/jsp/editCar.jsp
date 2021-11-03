@@ -15,7 +15,6 @@
 <body>
 
 <form action="Controller?command=editcar" method="POST">
-    <p><c:out value="${param.carId}"/></p>
     <c:forEach var="car" items="${allCar}">
         <c:if test="${car.getId() == param.carId}">
             <div style="display: none" class="mb-3">

@@ -57,7 +57,7 @@ public class EditRequestByUser implements Command {
                 throw new ServletException(e.getMessage(), e);
             }
         }
-        if (userDto.getRole().equals("dispatcher")) {
+        if (userDto.getRole().equals(DISPATCHER)) {
             resp.sendRedirect(COMMAND_ALL_REQUEST);
         } else {
             resp.sendRedirect(COMMAND_ALL_USER_REQUEST);

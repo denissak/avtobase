@@ -25,7 +25,7 @@
         <th scope="col"><fmt:message key="text.status_car"/></th>
     </tr>
     <c:forEach var="car" items="${allCar}">
-        <tr>
+        <tr ${car.getStatusCar() == 'READY' ? 'class="table-success"' : 'class="table-danger"'}>
 
             <td>${car.getUserDto().getName()} ${car.getUserDto().getSurname()} ${car.getUserDto().getPhoneNumber()}</td>
             <td>${car.getMark()}</td>

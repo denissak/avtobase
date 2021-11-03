@@ -23,7 +23,12 @@
         <th scope="col"><fmt:message key="text.request_details"/></th>
     </tr>
     <c:forEach var="request" items="${allRequest}">
-        <tr>
+        <tr ${request.getStatusRequest() == 'COMPLETE' ? 'class="table-success"' : ''}
+            ${request.getStatusRequest() == 'CREATED' ? 'class="table-warning"' : ''}
+            ${request.getStatusRequest() == 'INWORK' ? 'class="table-info"' : ''}
+            ${request.getStatusRequest() == 'CANCELED' ? 'class="table-danger"' : ''}
+            ${request.getStatusRequest() == 'PROCESSING' ? 'class="table-primary"' : ''}
+        >
             <td>${request.getDateCreate()}</td>
             <td>${request.getStartAddress()}</td>
             <td>${request.getEndAddress()}</td>

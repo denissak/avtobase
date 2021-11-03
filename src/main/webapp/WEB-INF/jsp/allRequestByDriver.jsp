@@ -34,7 +34,12 @@
                    value="${param.requestId}"
             >
         </div>
-        <tr>
+        <tr ${request.getStatusRequest() == 'COMPLETE' ? 'class="table-success"' : ''}
+            ${request.getStatusRequest() == 'CREATED' ? 'class="table-warning"' : ''}
+            ${request.getStatusRequest() == 'INWORK' ? 'class="table-info"' : ''}
+            ${request.getStatusRequest() == 'CANCELED' ? 'class="table-danger"' : ''}
+            ${request.getStatusRequest() == 'PROCESSING' ? 'class="table-primary"' : ''}
+        >
 
             <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
             <td>${request.getStartAddress()}</td>
@@ -47,7 +52,7 @@
                 <form action="Controller?command=editstatusrequestbydriver" method="post">
                     <input style="display: none" readonly="readonly" name="requestId" value="${request.getId()}">
                     <input style="display: none" readonly="readonly" name="statusRequest" value="${request.getStatusRequest()}">
-                    <button type="submit" class="btn btn-primary" name="status" value="PROCESSING"><fmt:message key="button.confirm"/></button>
+                    <button type="submit" class="btn btn-primary" name="status" value="INWORK"><fmt:message key="button.confirm"/></button>
                     <button type="submit" class="btn btn-primary" name="status" value="CANCELED"><fmt:message key="button.canceled"/></button>
                     <button type="submit" class="btn btn-primary" name="status" value="COMPLETE"><fmt:message key="button.completed"/></button>
                 </form>
@@ -60,7 +65,7 @@
     <ul class="pagination">
         <c:forEach begin="1" end="${numberOfPages}" var="val">
             <li class="page-item ${val == param.page ? 'active' : ''}"><a class="page-link"
-                                                                          href="Controller?command=allurequestbydriver&page=${val}">${val}</a>
+                                                                          href="Controller?command=allrequestbydriver&page=${val}">${val}</a>
             </li>
         </c:forEach>
     </ul>

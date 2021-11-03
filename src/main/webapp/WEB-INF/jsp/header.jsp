@@ -38,10 +38,10 @@
                                     key="text.all_users"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=allcar" class="nav-link"><fmt:message key="text.all_cars"/></a>
+                            <a href="Controller?command=allcar&page=1" class="nav-link"><fmt:message key="text.all_cars"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=allrequest" class="nav-link"><fmt:message
+                            <a href="Controller?command=allrequest&page=1" class="nav-link"><fmt:message
                                     key="text.all_requests"/></a>
                         </li>
                     </ul>
@@ -58,14 +58,14 @@
                 <c:when test="${user.getRole().equals('dispatcher')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=allcar" class="nav-link"><fmt:message key="text.all_cars"/></a>
+                            <a href="Controller?command=allcar&page=1" class="nav-link"><fmt:message key="text.all_cars"/></a>
                         </li>
                         <li class="nav-item">
                             <a href="Controller?command=allrequest&page=1" class="nav-link"><fmt:message
                                     key="text.all_requests"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=alldriver" class="nav-link"><fmt:message
+                            <a href="Controller?command=alldriver&page=1" class="nav-link"><fmt:message
                                     key="text.all_driver"/></a>
                         </li>
                     </ul>
@@ -85,7 +85,7 @@
                 <c:when test="${user.getRole().equals('driver')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=allrequestbydriver" class="nav-link"><fmt:message
+                            <a href="Controller?command=allrequestbydriver&page=1" class="nav-link"><fmt:message
                                     key="text.my_requests"/></a>
                         </li>
                     </ul>
@@ -102,11 +102,11 @@
                 <c:when test="${user.getRole().equals('user')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=alluserrequest" class="nav-link"><fmt:message
+                            <a href="Controller?command=alluserrequest&page=1" class="nav-link"><fmt:message
                                     key="text.my_requests"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=allusercomment" class="nav-link"><fmt:message
+                            <a href="Controller?command=allusercomment&page=1" class="nav-link"><fmt:message
                                     key="text.my_comments"/></a>
                         </li>
                     </ul>

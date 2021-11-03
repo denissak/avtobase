@@ -25,9 +25,9 @@ public class CreateRequest implements Command {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        UserDto user = (UserDto) req.getSession().getAttribute(USER);
         if (req.getMethod().equals(POST)) {
-            UserDto user = (UserDto) req.getSession().getAttribute(USER);
+            //UserDto user = (UserDto) req.getSession().getAttribute(USER);
             RequestDto requestDto = RequestDto.builder()
                     .userDto(user)
                     .startAddress(req.getParameter(START_ADDRESS))
@@ -44,6 +44,10 @@ public class CreateRequest implements Command {
             }
         }
         req.setAttribute(TYPE_TRANSPORTS,TypeTransport.values());
-        resp.sendRedirect(COMMAND_ALL_USER_REQUEST);
+        if (user.getRole().equals(DISPATCHER)){
+            resp.sendRedirect(COMMAND_ALL_REQUEST);
+        }else {
+            resp.sendRedirect(COMMAND_ALL_USER_REQUEST);
+        }
     }
 }
