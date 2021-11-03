@@ -14,7 +14,6 @@ import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 public class AuthorizationFilter implements Filter {
 
 
-
     private static final Set<String> PUBLIC_PATH = Set.of("/", ACCESS_LANGUAGE, ACCESS_LOGIN, ACCESS_REGISTRATION, ACCESS_ALL_COMMENT);
     private static final Set<String> USER_PATH = Set.of(ACCESS_ALL_USER_REQUEST, ACCESS_CREATE_REQUEST, ACCESS_LOGOUT, ACCESS_EDIT_REQUEST_BY_USER, ACCESS_CREATE_COMMENT, ACCESS_LANGUAGE, ACCESS_ALL_USER_COMMENT);
     private static final Set<String> DRIVER_PATH = Set.of(ACCESS_ALL_REQUESTBYDRIVER, ACCESS_EDIT_STATUS_CAR, ACCESS_LOGOUT, ACCESS_LANGUAGE);
@@ -33,12 +32,8 @@ public class AuthorizationFilter implements Filter {
         if (queryString != null) {
             queryString = queryString.replaceAll("&page=\\d+", "");
         }
-//        ((HttpServletRequest) servletRequest).getQueryString().replaceAll("&page=\\d", "")
         UserDto user = (UserDto) ((HttpServletRequest) servletRequest).getSession().getAttribute(USER);
-//        if (isPublicPath(uri)) {
-//            filterChain.doFilter(servletRequest, servletResponse);
-//        } else if (queryString != null) {
-            if (isPublicPath(uri) || isPublicPath(queryString) /*queryString.equals(ACCESS_LOGIN) || queryString.equals(ACCESS_REGISTRATION)*/) {
+            if (isPublicPath(uri) || isPublicPath(queryString)) {
                 filterChain.doFilter(servletRequest, servletResponse);
             } else if (user != null) {
                 if (USER_PATH.contains(queryString) && user.getRole().equals(USER)) {
@@ -51,23 +46,10 @@ public class AuthorizationFilter implements Filter {
                     filterChain.doFilter(servletRequest, servletResponse);
                 }
             }
-//        }
     }
-
-//        if (user != null) {
-//            filterChain.doFilter(servletRequest, servletResponse);
-//        }
-//        if(isPublicPath(uri) || isUserLoggedIn(servletRequest)){
-//            filterChain.doFilter(servletRequest, servletResponse);
-//        }else {
-//            /*String prevPage = ((HttpServletRequest) servletRequest).getHeader("referer");*/
-//            //((HttpServletResponse)servletResponse).sendRedirect(/*prevPage != null ? prevPage : */LOGIN);
-//        }
-
 
     private boolean isUserLoggedIn(ServletRequest servletRequest) {
         UserDto user = (UserDto)((HttpServletRequest) servletRequest).getSession().getAttribute("user");
-        //user.getRole();
         return user != null;
     }
 
@@ -76,7 +58,6 @@ public class AuthorizationFilter implements Filter {
             return PUBLIC_PATH.contains(uri);
         }
         return false;
-        //return PUBLIC_PATH.stream().anyMatch(path -> uri.startsWith(path));
     }
 }
 

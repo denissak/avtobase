@@ -21,7 +21,7 @@ public class CommentDaoImpl implements CommentDao {
     private static final Logger LOGGER = LogManager.getLogger();
 
     private static final String GET_ALL_COMMENT = "SELECT * FROM comments as c JOIN users u on c.user_id = u.id ORDER BY c.comment_date";
-    private static final String GET_ALL_COMMENT_BY_USER_ID = "SELECT * FROM comments WHERE user_id = ? ORDER BY comment_date";
+    private static final String GET_ALL_COMMENT_BY_USER_ID = "SELECT * FROM comments as c JOIN users u on c.user_id = u.id WHERE user_id = ? ORDER BY comment_date";
     private static final String SAVE_COMMENT = "INSERT INTO comments (user_id, comment_date, mark, message) VALUES (?,?,?,?)";
     private static final String DELETE_COMMENT = "DELETE FROM comments WHERE id = ?";
 
@@ -98,8 +98,8 @@ public class CommentDaoImpl implements CommentDao {
 
     private Comment buildEntity(ResultSet resultSet) throws SQLException {
         Role role = new Role(
-                resultSet.getObject(ROLE_ID, Long.class),
-                resultSet.getObject(NAME, String.class)
+/*                resultSet.getObject(ROLE_ID, Long.class),
+                resultSet.getObject(NAME, String.class)*/
         );
 
         User user = new User(

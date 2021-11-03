@@ -27,10 +27,12 @@
         <th scope="col"><fmt:message key="text.request_details"/></th>
     </tr>
     <c:forEach var="request" items="${allRequest}">
-<%--        <c:choose>--%>
-            <%--<c:when test="${request.getStatusRequest() == 'COMPLETE')}">--%>
                 <tr ${request.getStatusRequest() == 'COMPLETE' ? 'class="table-success"' : ''}
-                    ${request.getStatusRequest() == 'CREATED' ? 'class="table-warning"' : ''}>
+                    ${request.getStatusRequest() == 'CREATED' ? 'class="table-warning"' : ''}
+                    ${request.getStatusRequest() == 'INWORK' ? 'class="table-info"' : ''}
+                    ${request.getStatusRequest() == 'CANCELED' ? 'class="table-danger"' : ''}
+                    ${request.getStatusRequest() == 'PROCESSING' ? 'class="table-primary"' : ''}
+                >
                     <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
                     <td>${request.getDateCreate()}</td>
                     <td>${request.getStartAddress()}</td>
@@ -41,7 +43,7 @@
                     <td>${request.getDetailsRequest()}</td>
                     <td>
                         <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                                data-bs-target=".requestId_${request.getId()}">Обработать
+                                data-bs-target=".requestId_${request.getId()}"><fmt:message key="button.process"/>
                             <c:set var="requestId" value="${request.getId()}"/>
                         </button>
                     </td>
@@ -59,162 +61,6 @@
                         </form>
                     </td>
                 </tr>
-<%--            </c:when>--%>
-            <%--<c:when test="${request.getStatusRequest().equals('CANCELED')}">
-                <tr class="table-danger">
-                    <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
-                    <td>${request.getDateCreate()}</td>
-                    <td>${request.getStartAddress()}</td>
-                    <td>${request.getEndAddress()}</td>
-                    <td>${request.getDateDeparture()}</td>
-                    <td>${request.getStatusRequest()}</td>
-                    <td>${request.getTypeTransport()}</td>
-                    <td>${request.getDetailsRequest()}</td>
-                    <td>
-                        <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                                data-bs-target=".requestId_${request.getId()}">Обработать
-                            <c:set var="requestId" value="${request.getId()}"/>
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
-                                data-bs-target=".requestIdEdit_${request.getId()}"><fmt:message key="text.edit"/>
-                            <c:set var="requestId" value="${request.getId()}"/>
-                        </button>
-                    </td>
-                    <td>
-                        <form action="Controller?command=editrequestbyuser" method="post">
-                            <input type="hidden" name="id" value="${request.getId()}">
-                            <input type="hidden" name="method" value="delete">
-                            <input class="btn btn-danger" type="submit" value="Удалить">
-                        </form>
-                    </td>
-                </tr>
-            </c:when>
-            <c:when test="${request.getStatusRequest().equals('CREATED')}">
-                <tr class="table-warning">
-                    <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
-                    <td>${request.getDateCreate()}</td>
-                    <td>${request.getStartAddress()}</td>
-                    <td>${request.getEndAddress()}</td>
-                    <td>${request.getDateDeparture()}</td>
-                    <td>${request.getStatusRequest()}</td>
-                    <td>${request.getTypeTransport()}</td>
-                    <td>${request.getDetailsRequest()}</td>
-                    <td>
-                        <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                                data-bs-target=".requestId_${request.getId()}">Обработать
-                            <c:set var="requestId" value="${request.getId()}"/>
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
-                                data-bs-target=".requestIdEdit_${request.getId()}"><fmt:message key="text.edit"/>
-                            <c:set var="requestId" value="${request.getId()}"/>
-                        </button>
-                    </td>
-                    <td>
-                        <form action="Controller?command=editrequestbyuser" method="post">
-                            <input type="hidden" name="id" value="${request.getId()}">
-                            <input type="hidden" name="method" value="delete">
-                            <input class="btn btn-danger" type="submit" value="Удалить">
-                        </form>
-                    </td>
-                </tr>
-            </c:when>
-            <c:when test="${request.getStatusRequest().equals('INWORK')}">
-                <tr class="table-info">
-                    <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
-                    <td>${request.getDateCreate()}</td>
-                    <td>${request.getStartAddress()}</td>
-                    <td>${request.getEndAddress()}</td>
-                    <td>${request.getDateDeparture()}</td>
-                    <td>${request.getStatusRequest()}</td>
-                    <td>${request.getTypeTransport()}</td>
-                    <td>${request.getDetailsRequest()}</td>
-                    <td>
-                        <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                                data-bs-target=".requestId_${request.getId()}">Обработать
-                            <c:set var="requestId" value="${request.getId()}"/>
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
-                                data-bs-target=".requestIdEdit_${request.getId()}"><fmt:message key="text.edit"/>
-                            <c:set var="requestId" value="${request.getId()}"/>
-                        </button>
-                    </td>
-                    <td>
-                        <form action="Controller?command=editrequestbyuser" method="post">
-                            <input type="hidden" name="id" value="${request.getId()}">
-                            <input type="hidden" name="method" value="delete">
-                            <input class="btn btn-danger" type="submit" value="Удалить">
-                        </form>
-                    </td>
-                </tr>
-            </c:when>
-            <c:when test="${request.getStatusRequest().equals('PROCESSING')}">
-                <tr class="table-primary">
-                    <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
-                    <td>${request.getDateCreate()}</td>
-                    <td>${request.getStartAddress()}</td>
-                    <td>${request.getEndAddress()}</td>
-                    <td>${request.getDateDeparture()}</td>
-                    <td>${request.getStatusRequest()}</td>
-                    <td>${request.getTypeTransport()}</td>
-                    <td>${request.getDetailsRequest()}</td>
-                    <td>
-                        <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                                data-bs-target=".requestId_${request.getId()}">Обработать
-                            <c:set var="requestId" value="${request.getId()}"/>
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
-                                data-bs-target=".requestIdEdit_${request.getId()}"><fmt:message key="text.edit"/>
-                            <c:set var="requestId" value="${request.getId()}"/>
-                        </button>
-                    </td>
-                    <td>
-                        <form action="Controller?command=editrequestbyuser" method="post">
-                            <input type="hidden" name="id" value="${request.getId()}">
-                            <input type="hidden" name="method" value="delete">
-                            <input class="btn btn-danger" type="submit" value="Удалить">
-                        </form>
-                    </td>
-                </tr>
-            </c:when>
-        </c:choose>--%>
-
-              <%--<tr>
-                  <td>${request.getUserDto().getName()} ${request.getUserDto().getSurname()} ${request.getUserDto().getPhoneNumber()}</td>
-                  <td>${request.getDateCreate()}</td>
-                  <td>${request.getStartAddress()}</td>
-                  <td>${request.getEndAddress()}</td>
-                  <td>${request.getDateDeparture()}</td>
-                  <td>${request.getStatusRequest()}</td>
-                  <td>${request.getTypeTransport()}</td>
-                  <td>${request.getDetailsRequest()}</td>
-                  <td>
-                      <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
-                              data-bs-target=".requestId_${request.getId()}">Обработать
-                          <c:set var="requestId" value="${request.getId()}"/>
-                      </button>
-                  </td>
-                  <td>
-                      <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
-                              data-bs-target=".requestIdEdit_${request.getId()}"><fmt:message key="text.edit"/>
-                          <c:set var="requestId" value="${request.getId()}"/>
-                      </button>
-                  </td>
-                  <td>
-                      <form action="Controller?command=editrequestbyuser" method="post">
-                          <input type="hidden" name="id" value="${request.getId()}">
-                          <input type="hidden" name="method" value="delete">
-                          <input class="btn btn-danger" type="submit" value="Удалить">
-                      </form>
-                  </td>
-              </tr>--%>
         <div class="modal fade requestId_${request.getId()}" id="updateUserModal" tabindex="-1"
              aria-labelledby="updateUserModalLabel" aria-hidden="true">
             <div class="modal-dialog">

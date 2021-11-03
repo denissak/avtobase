@@ -61,7 +61,7 @@
                             <a href="Controller?command=allcar" class="nav-link"><fmt:message key="text.all_cars"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=allrequest" class="nav-link"><fmt:message
+                            <a href="Controller?command=allrequest&page=1" class="nav-link"><fmt:message
                                     key="text.all_requests"/></a>
                         </li>
                         <li class="nav-item">
