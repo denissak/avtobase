@@ -14,4 +14,6 @@
 
 Администратор может производить манипуляции с пользователями
 
-![изображение_2021-11-04_080620](https://user-images.githubusercontent.com/56992508/140260984-4be87ede-f767-437f-8e7c-e9acb1e0282d.png)
+
+
+https://github.com/denissak/avtobase/blob/main/dataBase/Schema%20avtobase.PNG?raw=true
