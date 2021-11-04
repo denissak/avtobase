@@ -30,21 +30,7 @@ user_id INT NOT NULL,
 comment_date TIMESTAMP,
 mark INT NOT NULL,
 message VARCHAR (300),
-FOREIGN KEY (user_id) REFERENCES users (id)
-);
-
-
-CREATE TABLE requests (
-id INT AUTO_INCREMENT PRIMARY KEY,
-user_id INT NOT NULL,
-date_create TIMESTAMP (6) NOT NULL,
-start_address VARCHAR (100) NOT NULL,
-end_address VARCHAR (100) NOT NULL,
-date_departure TIMESTAMP (6) NOT NULL,
-status_request VARCHAR (15),
-type_transport VARCHAR (15) NOT NULL,
-details_request VARCHAR (300),
-FOREIGN KEY (user_id) REFERENCES users (id)
+FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
 
@@ -61,18 +47,23 @@ passenger_capacity INT,
 inspection_permission TIMESTAMP,
 status_car VARCHAR (15) NOT NULL,
 car_description VARCHAR (300),
-FOREIGN KEY (user_id) REFERENCES users (id)
+FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE SET NULL
 );
 
-CREATE TABLE drivers_requests(
-request_id INT NOT NULL,
-user_id  INT NOT NULL,
-FOREIGN KEY (request_id) REFERENCES requests (id),
-FOREIGN KEY (user_id) REFERENCES users (id)
+CREATE TABLE requests (
+id INT AUTO_INCREMENT PRIMARY KEY,
+user_id INT NOT NULL,
+car_id INT,
+date_create TIMESTAMP (6) NOT NULL,
+start_address VARCHAR (100) NOT NULL,
+end_address VARCHAR (100) NOT NULL,
+date_departure TIMESTAMP (6) NOT NULL,
+status_request VARCHAR (15),
+type_transport VARCHAR (15) NOT NULL,
+details_request VARCHAR (300),
+FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE, 
+FOREIGN KEY (car_id) REFERENCES cars (id) ON DELETE SET NULL
 );
-
-
-
 
 
 
@@ -109,25 +100,23 @@ VALUES ('1','2021-10-18 11:18:37','5','perfect'),
 
 
 INSERT INTO requests (user_id, date_create, start_address, end_address, date_departure, status_request, type_transport, details_request)
-VALUES ('1', '2021-10-18 11:18:37', 'Минск', 'Москва', '2021-10-30 11:18:37', 'PROCESSING', 'FREIGHT', 'хрупкий груз'),
-       ('5', '2021-03-15 11:18:37', 'Минск', 'Киев', '2021-10-21 11:18:37', 'PROCESSING', 'PASSENGER', '10 человек'),
-       ('9', '2021-10-18 11:18:37', 'Минск', 'Санкт-Петербург', '2021-11-13 11:18:37', 'PROCESSING', 'PASSENGER', '7 человек, к подъезду'),
-       ('13', '2021-10-18 11:18:37', 'Минск', 'Сочи', '2021-12-03 11:18:37', 'PROCESSING', 'FREIGHT', 'габаритный груз'),
-       ('1', '2021-10-18 11:18:37', 'Минск', 'Брест', '2021-10-25 11:18:37', 'PROCESSING', 'PASSENGER', '20 человек экскурсия'),
-       ('5', '2021-10-18 11:18:37', 'Минск', 'Рига', '2021-11-07 11:18:37', 'PROCESSING', 'FREIGHT', 'объёмный груз'),
-       ('9', '2021-10-18 11:18:37', 'Минск', 'Москва', '2021-12-18 11:18:37', 'PROCESSING', 'FREIGHT', 'груз'),
-       ('13', '2021-10-18 11:18:37', 'Минск', 'Варшава', '2021-12-28 11:18:37', 'PROCESSING', 'PASSENGER', '5 человек с ребенком');
+VALUES ('1', '2021-10-18 11:18:37', 'Минск', 'Москва', '2021-10-30 11:18:37', 'CREATED', 'FREIGHT', 'хрупкий груз'),
+       ('5', '2021-03-15 11:18:37', 'Минск', 'Киев', '2021-10-21 11:18:37', 'CREATED', 'PASSENGER', '10 человек'),
+       ('9', '2021-10-18 11:18:37', 'Минск', 'Санкт-Петербург', '2021-11-13 11:18:37', 'CREATED', 'PASSENGER', '7 человек, к подъезду'),
+       ('13', '2021-10-18 11:18:37', 'Минск', 'Сочи', '2021-12-03 11:18:37', 'CREATED', 'FREIGHT', 'габаритный груз'),
+       ('1', '2021-10-18 11:18:37', 'Минск', 'Брест', '2021-10-25 11:18:37', 'CANCELED', 'PASSENGER', '20 человек экскурсия'),
+       ('5', '2021-10-18 11:18:37', 'Минск', 'Рига', '2021-11-07 11:18:37', 'CANCELED', 'FREIGHT', 'объёмный груз'),
+       ('9', '2021-10-18 11:18:37', 'Минск', 'Москва', '2021-12-18 11:18:37', 'COMPLETED', 'FREIGHT', 'груз'),
+       ('13', '2021-10-18 11:18:37', 'Минск', 'Варшава', '2021-12-28 11:18:37', 'COMPLETED', 'PASSENGER', '5 человек с ребенком');
 
 INSERT INTO cars (user_id, mark, model, release_date, type, lifting_capacity, cargo_capacity, passenger_capacity, inspection_permission, status_car, car_description)
 VALUES ('3','SCANIA', 'ZX3', '2018-03-18 11:18:37', 'FREIGHT', '12', '45', '0', '2022-10-18 11:18:37', 'BROKEN', 'грузовой автомобиль, .......'),
        ('7','MERSCEDES', '12dd', '2020-10-18 11:18:37', 'PASSENGER', '0', '0', '20', '2023-08-18 11:18:37', 'READY', 'микроавтобус, .......'),
-       ('11','VOLVO', 'XC192', '2015-03-13 11:18:37', 'FREIGHT', '20', '53', '0', '2021-12-18 11:18:37', 'INWORK', 'грузовой автомобиль, .......'),
+       ('11','VOLVO', 'XC192', '2015-03-13 11:18:37', 'FREIGHT', '20', '53', '0', '2021-12-18 11:18:37', 'BROKEN', 'грузовой автомобиль, .......'),
        ('15','MAN', '1D', '2013-02-07 11:18:37', 'PASSENGER', '0', '0', '45', '2022-05-29 11:18:37', 'READY', 'автобус, .......');
 
 
-INSERT INTO drivers_requests (request_id, user_id) VALUES ('1','11'),
-                                                          ('2','7'),
-                                                          ('5','15');
+
 
 
 
