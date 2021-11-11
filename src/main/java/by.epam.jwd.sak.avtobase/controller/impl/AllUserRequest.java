@@ -30,7 +30,7 @@ public class AllUserRequest implements Command {
         try {
             List<RequestDto> requestDtoList = factoryService.getRequestService().findAllRequestByUser(userId);
             String page = req.getParameter(PAGE);
-            double numberOfPages = Math.ceil(requestDtoList.size()/5.0);
+            double numberOfPages = Math.ceil(requestDtoList.size() / 5.0);
             req.setAttribute(NUMBER_OF_PAGES, numberOfPages);
             req.setAttribute(ALL_REQUEST, Pagination.process(requestDtoList, page));
         } catch (ServiceException e) {
@@ -38,7 +38,7 @@ public class AllUserRequest implements Command {
             throw new ServletException(e.getMessage(), e);
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_USER_REQUEST);
-        requestDispatcher.forward(req,resp);
+        requestDispatcher.forward(req, resp);
 
     }
 }

@@ -38,7 +38,7 @@ public class EditRequestByUser implements Command {
             }
         } else if (req.getMethod().equals(POST)) {
             long id = 0;
-            if (req.getParameter(ID) != null){
+            if (req.getParameter(ID) != null) {
                 id = Integer.valueOf(req.getParameter(ID));
             }
             RequestDto requestDto = RequestDto.builder()

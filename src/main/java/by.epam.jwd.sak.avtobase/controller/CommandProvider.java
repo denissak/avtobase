@@ -23,7 +23,6 @@ import by.epam.jwd.sak.avtobase.controller.impl.Registration;
 import by.epam.jwd.sak.avtobase.controller.impl.SetDriverOnCar;
 import by.epam.jwd.sak.avtobase.controller.impl.SetDriverOnRequest;
 import by.epam.jwd.sak.avtobase.controller.impl.WelcomePage;
-/*import by.epam.jwd.sak.avtobase.controller.impl.EditUser;*/
 
 import java.util.HashMap;
 import java.util.Map;

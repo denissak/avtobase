@@ -7,15 +7,13 @@ import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import by.epam.jwd.sak.avtobase.bean.User;
 import by.epam.jwd.sak.avtobase.dao.CarDao;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
-import by.epam.jwd.sak.avtobase.util.ConnectionManager;
+import by.epam.jwd.sak.avtobase.dao.ConnectionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
@@ -213,19 +211,19 @@ public class CarDaoImpl implements CarDao {
     private Car buildEntity(ResultSet resultSet) throws SQLException {
 
         Role role = new Role(
-                    resultSet.getObject("role_id", Long.class),
-                    resultSet.getObject("r.name", String.class)
-            );
+                resultSet.getObject("role_id", Long.class),
+                resultSet.getObject("r.name", String.class)
+        );
 
         User user = new User(
-                    resultSet.getObject(USER_ID, Long.class),
-                    resultSet.getObject(LOGIN, String.class),
-                    resultSet.getObject(PASSWORD, String.class),
-                    resultSet.getObject("u.name", String.class),
-                    resultSet.getObject(SURNAME, String.class),
-                    resultSet.getObject(PHONE_NUMBER, String.class),
-                    role
-            );
+                resultSet.getObject(USER_ID, Long.class),
+                resultSet.getObject(LOGIN, String.class),
+                resultSet.getObject(PASSWORD, String.class),
+                resultSet.getObject("u.name", String.class),
+                resultSet.getObject(SURNAME, String.class),
+                resultSet.getObject(PHONE_NUMBER, String.class),
+                role
+        );
 
         return Car.builder()
 

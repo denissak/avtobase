@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
                 || !(UserValidator.isCorrectLogin(entity.getLogin())
                 || UserValidator.isCorrectName(entity.getName())
                 || UserValidator.isCorrectSurname(entity.getSurname())
-                || UserValidator.isCorrectPhoneNumber(entity.getPhoneNumber()))){
+                || UserValidator.isCorrectPhoneNumber(entity.getPhoneNumber()))) {
             return false;
         }
         User userBean = convertToUser(entity);
@@ -90,7 +90,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto findByLogin(String login) throws ServiceException {
-     try {
+        try {
             return convertToUserDto(daoFactory.getUserDao().findByLogin(login));
 
         } catch (DAOException e) {
@@ -99,14 +99,13 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
     @Override
-    public boolean create (UserDto userDto) throws ServiceException {
+    public boolean create(UserDto userDto) throws ServiceException {
         if (userDto == null
                 || !(UserValidator.isCorrectLogin(userDto.getLogin())
                 || UserValidator.isCorrectName(userDto.getName())
                 || UserValidator.isCorrectSurname(userDto.getSurname())
-                || UserValidator.isCorrectPhoneNumber(userDto.getPhoneNumber()))){
+                || UserValidator.isCorrectPhoneNumber(userDto.getPhoneNumber()))) {
             return false;
         }
         User userBean = convertToUser(userDto);
@@ -145,7 +144,4 @@ public class UserServiceImpl implements UserService {
                 .role(new Role((long) role, null))
                 .build();
     }
-
-
-
 }

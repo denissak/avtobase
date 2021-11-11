@@ -56,7 +56,7 @@ public class RequestServiceImpl implements RequestService {
         if (requestDto == null
                 || !(RequestValidation.isCorrectAddress(requestDto.getStartAddress())
                 || RequestValidation.isCorrectDate(String.valueOf(requestDto.getDateDeparture()))
-                || RequestValidation.isCorrectAddress(requestDto.getEndAddress()))){
+                || RequestValidation.isCorrectAddress(requestDto.getEndAddress()))) {
             return false;
         }
         Request requestBean = convertToRequest(requestDto);
@@ -91,7 +91,7 @@ public class RequestServiceImpl implements RequestService {
         if (requestDto == null
                 || !(RequestValidation.isCorrectAddress(requestDto.getStartAddress())
                 || RequestValidation.isCorrectDate(String.valueOf(requestDto.getDateDeparture()))
-                || RequestValidation.isCorrectAddress(requestDto.getEndAddress()))){
+                || RequestValidation.isCorrectAddress(requestDto.getEndAddress()))) {
             return false;
         }
         Request requestBean = convertToRequest(requestDto);
@@ -114,7 +114,7 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public List<RequestDto> findAllRequestByUser (Long userId) throws ServiceException {
+    public List<RequestDto> findAllRequestByUser(Long userId) throws ServiceException {
         try {
             return daoFactory.getRequestDao().findAllByUserId(userId).stream()
                     .map(this::convertToRequestDto).collect(Collectors.toList());

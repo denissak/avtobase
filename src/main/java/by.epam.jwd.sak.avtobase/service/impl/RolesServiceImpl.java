@@ -33,11 +33,4 @@ public class RolesServiceImpl implements RolesService {
                 .name(role.getName())
                 .build();
     }
-
-    private Role convertToRole(RoleDto roleDto) {
-        return Role.builder()
-                .id(roleDto.getId())
-                .name(roleDto.getName())
-                .build();
-    }
 }

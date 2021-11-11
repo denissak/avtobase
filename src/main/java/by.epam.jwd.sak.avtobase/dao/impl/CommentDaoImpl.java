@@ -5,7 +5,7 @@ import by.epam.jwd.sak.avtobase.bean.Role;
 import by.epam.jwd.sak.avtobase.bean.User;
 import by.epam.jwd.sak.avtobase.dao.CommentDao;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
-import by.epam.jwd.sak.avtobase.util.ConnectionManager;
+import by.epam.jwd.sak.avtobase.dao.ConnectionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -98,8 +98,6 @@ public class CommentDaoImpl implements CommentDao {
 
     private Comment buildEntity(ResultSet resultSet) throws SQLException {
         Role role = new Role(
-/*                resultSet.getObject(ROLE_ID, Long.class),
-                resultSet.getObject(NAME, String.class)*/
         );
 
         User user = new User(

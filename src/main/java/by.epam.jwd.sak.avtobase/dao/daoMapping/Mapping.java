@@ -22,7 +22,6 @@ public final class Mapping {
     public static final String CAR_DESCRIPTION = "car_description";
     public static final String COMMENT_DATE = "comment_date";
     public static final String MESSAGE = "message";
-    public static final String REQUEST_ID = "request_id";
     public static final String DATE_CREATE = "date_create";
     public static final String START_ADDRESS = "start_address";
     public static final String END_ADDRESS = "end_address";

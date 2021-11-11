@@ -24,7 +24,7 @@ public class EditStatusRequestByDriver implements Command {
         if (req.getMethod().equals(POST)) {
             Long requestId = Long.valueOf(req.getParameter(REQUEST_ID));
             String status = StatusRequest.valueOf(req.getParameter("status")).name();
-             try {
+            try {
                 factoryService.getRequestService().updateStatusById(requestId, status);
             } catch (ServiceException e) {
                 LOGGER.error(e);

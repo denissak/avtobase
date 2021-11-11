@@ -37,7 +37,6 @@ public class Controller extends HttpServlet {
             }
         } catch (RuntimeException e) {
             throw new ServletException(e.getMessage(), e);
-            //req.getRequestDispatcher("error404.html").forward(req,resp);
         }
     }
 }

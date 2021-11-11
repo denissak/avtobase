@@ -3,7 +3,6 @@ package by.epam.jwd.sak.avtobase.controller.impl;
 import by.epam.jwd.sak.avtobase.bean.StatusCar;
 import by.epam.jwd.sak.avtobase.bean.TypeTransport;
 import by.epam.jwd.sak.avtobase.dto.CarDto;
-import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
 import by.epam.jwd.sak.avtobase.controller.Command;
@@ -26,9 +25,7 @@ public class CreateCar implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getMethod().equals(POST)) {
-//            UserDto userDto = (UserDto) req.getSession().getAttribute(USER);
             CarDto carDto = CarDto.builder()
-//                    .userDto(userDto)
                     .mark(req.getParameter(MARK))
                     .model(req.getParameter(MODEL))
                     .releaseDate(LocalDateFormatter.format(req.getParameter(RELEASE_DATE)))
@@ -49,8 +46,8 @@ public class CreateCar implements Command {
             }
         }
         req.setAttribute(TYPE_TRANSPORTS, TypeTransport.values());
-        req.setAttribute(STATUS_CARS,StatusCar.values());
+        req.setAttribute(STATUS_CARS, StatusCar.values());
         resp.sendRedirect(COMMAND_ALL_CAR);
     }
-    }
+}
 

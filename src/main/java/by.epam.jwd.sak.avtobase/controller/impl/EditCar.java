@@ -36,9 +36,6 @@ public class EditCar implements Command {
             }
         } else if (req.getMethod().equals(POST)) {
             long id = Long.valueOf(req.getParameter("carId"));
-/*            if (req.getParameter(ID) != null) {
-                id = Long.valueOf(req.getParameter(ID));
-            }*/
             CarDto carDto = CarDto.builder()
                     .id(id)
                     .mark(req.getParameter(MARK))

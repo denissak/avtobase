@@ -27,7 +27,7 @@ public class AllDriver implements Command {
         try {
             List<UserDto> userDtoList = factoryService.getUserService().findAllDrivers();
             String page = req.getParameter(PAGE);
-            double numberOfPages = Math.ceil(userDtoList.size()/5.0);
+            double numberOfPages = Math.ceil(userDtoList.size() / 5.0);
             req.setAttribute(NUMBER_OF_PAGES, numberOfPages);
             req.setAttribute(ALL_DRIVER, Pagination.process(userDtoList, page));
         } catch (ServiceException e) {

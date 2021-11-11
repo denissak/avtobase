@@ -13,34 +13,33 @@ public class CarValidation {
             "[048]|0[0-9]|1[0-6])00)[-/]?02[-/]?29)$";
 
 
-    private CarValidation(){}
+    private CarValidation() {
+    }
 
-    public static boolean isCorrectMark (String mark){
+    public static boolean isCorrectMark(String mark) {
         Pattern pattern = Pattern.compile(MARK_REGEX);
         Matcher matcher = pattern.matcher(mark);
         return matcher.matches();
     }
 
-    public static boolean isCorrectModel (String model){
+    public static boolean isCorrectModel(String model) {
         Pattern pattern = Pattern.compile(MODEL_REGEX);
         Matcher matcher = pattern.matcher(model);
         return matcher.matches();
     }
 
-    public static boolean isCorrectCapacity (Integer capacity){
+    public static boolean isCorrectCapacity(Integer capacity) {
         String stringCapacity = String.valueOf(capacity);
         Pattern pattern = Pattern.compile(CAPACITY_REGEX);
         Matcher matcher = pattern.matcher(stringCapacity);
         return matcher.matches();
     }
 
-    public static boolean isCorrectDate (String date){
+    public static boolean isCorrectDate(String date) {
         Pattern pattern = Pattern.compile(DATE_REGEX);
         Matcher matcher = pattern.matcher(date);
         return matcher.matches();
     }
-
-
 
 
 }

@@ -12,9 +12,7 @@ import by.epam.jwd.sak.avtobase.service.validator.CarValidation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CarServiceImpl implements CarService {
@@ -161,7 +159,6 @@ public class CarServiceImpl implements CarService {
     private Car convertToCar(CarDto carDto) {
         return Car.builder()
                 .id(carDto.getId())
-//                .user(Mapper.convertToUser(carDto.getUserDto()))
                 .mark(carDto.getMark())
                 .model(carDto.getModel())
                 .releaseDate(carDto.getReleaseDate())

@@ -7,9 +7,10 @@ public class CommentValidation {
 
     private static final String MARK_REGEX = "^[1-5]{1}\\d*(\\d+)?$";
 
-    private CommentValidation (){}
+    private CommentValidation() {
+    }
 
-    public static boolean isCorrectMark (Integer mark){
+    public static boolean isCorrectMark(Integer mark) {
         String stringMark = String.valueOf(mark);
         Pattern pattern = Pattern.compile(MARK_REGEX);
         Matcher matcher = pattern.matcher(stringMark);

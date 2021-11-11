@@ -33,7 +33,7 @@ public class EditUserByAdmin implements Command {
             }
         } else if (req.getMethod().equals(POST)) {
             long id = 0;
-            if (req.getParameter(ID) != null){
+            if (req.getParameter(ID) != null) {
                 id = Integer.valueOf(req.getParameter(ID));
             }
             UserDto userDto = UserDto.builder()

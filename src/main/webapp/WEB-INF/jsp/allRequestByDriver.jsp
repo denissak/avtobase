@@ -51,10 +51,14 @@
             <td>
                 <form action="Controller?command=editstatusrequestbydriver" method="post">
                     <input style="display: none" readonly="readonly" name="requestId" value="${request.getId()}">
-                    <input style="display: none" readonly="readonly" name="statusRequest" value="${request.getStatusRequest()}">
-                    <button type="submit" class="btn btn-primary" name="status" value="INWORK"><fmt:message key="button.confirm"/></button>
-                    <button type="submit" class="btn btn-primary" name="status" value="CANCELED"><fmt:message key="button.canceled"/></button>
-                    <button type="submit" class="btn btn-primary" name="status" value="COMPLETE"><fmt:message key="button.completed"/></button>
+                    <input style="display: none" readonly="readonly" name="statusRequest"
+                           value="${request.getStatusRequest()}">
+                    <button type="submit" class="btn btn-primary" name="status" value="INWORK"><fmt:message
+                            key="button.confirm"/></button>
+                    <button type="submit" class="btn btn-primary" name="status" value="CANCELED"><fmt:message
+                            key="button.canceled"/></button>
+                    <button type="submit" class="btn btn-primary" name="status" value="COMPLETE"><fmt:message
+                            key="button.completed"/></button>
                 </form>
             </td>
         </tr>

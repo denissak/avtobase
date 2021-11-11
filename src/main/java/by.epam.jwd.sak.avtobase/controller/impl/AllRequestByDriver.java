@@ -30,10 +30,10 @@ public class AllRequestByDriver implements Command {
         Long driverId = user.getId();
 
         try {
-             CarDto carDto = factoryService.getCarService().findByUserId(driverId);
+            CarDto carDto = factoryService.getCarService().findByUserId(driverId);
             List<RequestDto> requestDtoList = factoryService.getRequestService().findAllByCarId(carDto.getId());
             String page = req.getParameter(PAGE);
-            double numberOfPages = Math.ceil(requestDtoList.size()/5.0);
+            double numberOfPages = Math.ceil(requestDtoList.size() / 5.0);
             req.setAttribute(NUMBER_OF_PAGES, numberOfPages);
             req.setAttribute(ALL_REQUEST_BY_DRIVER, Pagination.process(requestDtoList, page));
         } catch (ServiceException e) {

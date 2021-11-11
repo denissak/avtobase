@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
-
 public class Logout implements Command {
 
     @Override

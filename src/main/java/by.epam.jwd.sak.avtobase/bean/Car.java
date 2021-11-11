@@ -1,11 +1,9 @@
 package by.epam.jwd.sak.avtobase.bean;
 
 import lombok.Builder;
-import lombok.extern.log4j.Log4j2;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Builder
@@ -26,7 +24,6 @@ public class Car implements Serializable {
     private LocalDate inspectionPermission;
     private StatusCar statusCar;
     private String carDescription;
-    //private String imagePath;
 
 
     public Car() {

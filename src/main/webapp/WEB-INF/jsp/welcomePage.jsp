@@ -7,7 +7,6 @@
     <title>$Title$</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />--%>
     <jsp:include page="header.jsp">
         <jsp:param name="typeTransports" value="typeTransports"/>
         <jsp:param name="statusCars" value="statusCars"/>

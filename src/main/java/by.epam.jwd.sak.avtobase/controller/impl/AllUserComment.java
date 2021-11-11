@@ -30,7 +30,7 @@ public class AllUserComment implements Command {
         try {
             List<CommentDto> commentDtoList = factoryService.getCommentService().findAllCommentByUser(userId);
             String page = req.getParameter(PAGE);
-            double numberOfPages = Math.ceil(commentDtoList.size()/5.0);
+            double numberOfPages = Math.ceil(commentDtoList.size() / 5.0);
             req.setAttribute(NUMBER_OF_PAGES, numberOfPages);
             req.setAttribute(COMMENT_BY_ID, Pagination.process(commentDtoList, page));
         } catch (ServiceException e) {
@@ -38,6 +38,6 @@ public class AllUserComment implements Command {
             throw new ServletException(e.getMessage(), e);
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_COMMENT_BY_USER);
-        requestDispatcher.forward(req,resp);
+        requestDispatcher.forward(req, resp);
     }
 }

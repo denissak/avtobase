@@ -10,14 +10,16 @@ public class RequestValidation {
             "[-/]?31|02[-/]?(0[1-9]|1[0-9]|2[0-8]))|([0-9]{2}(([2468][048]|[02468][48])|[13579][26])|([13579][26]|[02468]" +
             "[048]|0[0-9]|1[0-6])00)[-/]?02[-/]?29)$";
 
-    private RequestValidation () {}
+    private RequestValidation() {
+    }
 
-    public static boolean isCorrectAddress (String address){
+    public static boolean isCorrectAddress(String address) {
         Pattern pattern = Pattern.compile(ADDRESS_REGEX);
         Matcher matcher = pattern.matcher(address);
         return matcher.matches();
     }
-    public static boolean isCorrectDate (String date){
+
+    public static boolean isCorrectDate(String date) {
         Pattern pattern = Pattern.compile(DATE_REGEX);
         Matcher matcher = pattern.matcher(date);
         return matcher.matches();

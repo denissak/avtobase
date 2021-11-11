@@ -28,22 +28,4 @@ public final class Mapper {
                 .phoneNumber(object.getPhoneNumber())
                 .build();
     }
-
-    public static RequestDto convertToRequestDto(Request request) {
-        UserDto userDto = new UserDto();
-        if (request.getUser() != null) {
-            userDto = Mapper.convertToUserDto(request.getUser());
-        }
-        return RequestDto.builder()
-                .id(request.getId())
-                .userDto(userDto)
-                .dateCreate(request.getDateCreate())
-                .startAddress(request.getStartAddress())
-                .endAddress(request.getEndAddress())
-                .dateDeparture(request.getDateDeparture())
-                .statusRequest(request.getStatusRequest())
-                .typeTransport(request.getTypeTransport())
-                .detailsRequest(request.getDetailsRequest())
-                .build();
-    }
 }

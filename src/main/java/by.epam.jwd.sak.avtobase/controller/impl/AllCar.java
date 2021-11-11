@@ -27,7 +27,7 @@ public class AllCar implements Command {
         try {
             List<CarDto> carDtoList = factoryService.getCarService().findAllCar();
             String page = req.getParameter(PAGE);
-            double numberOfPages = Math.ceil(carDtoList.size()/5.0);
+            double numberOfPages = Math.ceil(carDtoList.size() / 5.0);
             req.setAttribute(NUMBER_OF_PAGES, numberOfPages);
             req.setAttribute(ALL_CAR, Pagination.process(carDtoList, page));
             req.setAttribute(USER_DRIVERS, factoryService.getUserService().findAllDrivers());
@@ -36,6 +36,6 @@ public class AllCar implements Command {
             throw new ServletException(e.getMessage(), e);
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_CAR);
-        requestDispatcher.forward(req,resp);
+        requestDispatcher.forward(req, resp);
     }
 }

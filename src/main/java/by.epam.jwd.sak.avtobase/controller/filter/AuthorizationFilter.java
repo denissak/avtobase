@@ -48,11 +48,6 @@ public class AuthorizationFilter implements Filter {
             }
     }
 
-    private boolean isUserLoggedIn(ServletRequest servletRequest) {
-        UserDto user = (UserDto)((HttpServletRequest) servletRequest).getSession().getAttribute("user");
-        return user != null;
-    }
-
     private boolean isPublicPath(String uri) {
         if (uri != null) {
             return PUBLIC_PATH.contains(uri);

@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 public class RequestDto {
 
     Long id;
-    //String user;
     UserDto userDto;
     LocalDateTime dateCreate;
     String startAddress;

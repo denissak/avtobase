@@ -44,7 +44,6 @@ public final class CommandParameter {
     public static final String DRIVER = "driver";
     public static final String ROLES = "roles";
     public static final String COMMENT_BY_ID = "commentsById";
-    public static final String REQUEST_BY_ID = "requestsById";
     public static final String REQUEST_ID = "requestId";
     public static final String NUMBER_OF_PAGES = "numberOfPages";
     public static final String USER_DISPLAY = "usersDisplay";
@@ -52,17 +51,11 @@ public final class CommandParameter {
     public static final String STATUS = "status";
     public static final String PAGE = "page";
 
-
-
-    public static final String COMMAND_ALL_CAR= "Controller?command=allcar&page=1";
+    public static final String COMMAND_ALL_CAR = "Controller?command=allcar&page=1";
     public static final String COMMAND_ALL_USER_REQUEST = "Controller?command=alluserrequest&page=1";
     public static final String COMMAND_ALL_USER = "Controller?command=alluser&page=1";
     public static final String COMMAND_ALL_REQUEST = "Controller?command=allrequest&page=1";
-    public static final String COMMAND_ALL_REQUEST_BY_DRIVER  = "Controller?command=allrequestbydriver&page=1";
-    public static final String COMMAND_LOGIN  = "Controller?command=login";
-    public static final String COMMAND_WELCOME_PAGE = "Controller?command=welcomepage";
-
-
+    public static final String COMMAND_ALL_REQUEST_BY_DRIVER = "Controller?command=allrequestbydriver&page=1";
 
     public static final String PAGE_ALL_CAR = "/WEB-INF/jsp/allCar.jsp";
     public static final String PAGE_ALL_COMMENT = "/WEB-INF/jsp/allComment.jsp";
@@ -73,7 +66,6 @@ public final class CommandParameter {
     public static final String PAGE_ALL_COMMENT_BY_USER = "/WEB-INF/jsp/allCommentByUser.jsp";
     public static final String PAGE_ALL_REQUEST_BY_DRIVER = "/WEB-INF/jsp/allRequestByDriver.jsp";
     public static final String PAGE_WELCOME = "/WEB-INF/jsp/welcomePage.jsp";
-
 
     public static final String ACCESS_ALL_CAR = "command=allcar";
     public static final String ACCESS_ALL_COMMENT = "command=allcomment";

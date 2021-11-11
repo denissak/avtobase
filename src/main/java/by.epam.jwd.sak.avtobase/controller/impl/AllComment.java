@@ -30,6 +30,6 @@ public class AllComment implements Command {
         }
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_COMMENT);
-        requestDispatcher.forward(req,resp);
+        requestDispatcher.forward(req, resp);
     }
 }

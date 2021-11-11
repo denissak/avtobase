@@ -12,34 +12,30 @@
 
 </head>
 <body>
-
 <form action="Controller?command=editstatuscar" method="POST">
-<c:forEach var="car" items="${allCar}">
-    <c:if test="${user.getId() == car.getUserDto().getId()}">
-    <div style="display: none" class="mb-3">
-        <label for="exampleInputId" class="form-label"><fmt:message key="text.edit"/></label>
-        <input type="text"
-               readonly="readonly"
-               name="carId"
-               class="form-control"
-               id="exampleInputId"
-               value="${car.getId()}"
-        >
-    </div>
-<%--</c:if>
-</c:forEach>--%>
-
-    <div class="mb-3">
-        <label for="exampleInputStatusCar" class="form-label"><fmt:message key="text.status_car"/></label>
-        <select class="form-select" name="statusCar" aria-label="select example"
-                id="exampleInputStatusCar">
-            <c:forEach var="statusCar" items="${statusCars}">
-                <option value="${statusCar}" ${statusCar == car.getStatusCar() ? 'selected="selected"' : ''}>${statusCar}</option>
-            </c:forEach>
-        </select>
-    </div>
-        <button type="submit" class="btn btn-success"><fmt:message key="text.edit"/></button>
-    </c:if>
+    <c:forEach var="car" items="${allCar}">
+        <c:if test="${user.getId() == car.getUserDto().getId()}">
+            <div style="display: none" class="mb-3">
+                <label for="exampleInputId" class="form-label"><fmt:message key="text.edit"/></label>
+                <input type="text"
+                       readonly="readonly"
+                       name="carId"
+                       class="form-control"
+                       id="exampleInputId"
+                       value="${car.getId()}"
+                >
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputStatusCar" class="form-label"><fmt:message key="text.status_car"/></label>
+                <select class="form-select" name="statusCar" aria-label="select example"
+                        id="exampleInputStatusCar">
+                    <c:forEach var="statusCar" items="${statusCars}">
+                        <option value="${statusCar}" ${statusCar == car.getStatusCar() ? 'selected="selected"' : ''}>${statusCar}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success"><fmt:message key="text.edit"/></button>
+        </c:if>
     </c:forEach>
 </form>
 

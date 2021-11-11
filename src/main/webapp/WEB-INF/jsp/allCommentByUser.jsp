@@ -4,8 +4,9 @@
 <html>
 <head>
     <title><fmt:message key="text.my_comments"/></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <%@ include file="header.jsp"%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <%@ include file="header.jsp" %>
 </head>
 <body>
 <table class="table">
@@ -29,12 +30,14 @@
 <nav aria-label="Page navigation example">
     <ul class="pagination">
         <c:forEach begin="1" end="${numberOfPages}" var="val">
-            <li class="page-item ${val == param.page ? 'active' : ''}"><a class="page-link" href="Controller?command=allusercomment&page=${val}">${val}</a></li>
+            <li class="page-item ${val == param.page ? 'active' : ''}"><a class="page-link"
+                                                                          href="Controller?command=allusercomment&page=${val}">${val}</a>
+            </li>
         </c:forEach>
     </ul>
 </nav>
 <footer>
-    <%@ include file="footer.jsp"%>
+    <%@ include file="footer.jsp" %>
 </footer>
 </html>
 

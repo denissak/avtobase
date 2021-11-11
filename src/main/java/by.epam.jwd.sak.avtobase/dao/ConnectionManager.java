@@ -1,4 +1,6 @@
-package by.epam.jwd.sak.avtobase.util;
+package by.epam.jwd.sak.avtobase.dao;
+
+import by.epam.jwd.sak.avtobase.util.PropertiesUtil;
 
 import java.lang.reflect.Proxy;
 import java.sql.Connection;
@@ -17,7 +19,6 @@ public final class ConnectionManager {
     private static final Integer DEFAULT_POOL_SIZE = 10;
     private static List<Connection> sourceConnections;
     private static BlockingQueue<Connection> pool;
-
 
     static {
         loadDriver();
@@ -68,17 +69,6 @@ public final class ConnectionManager {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static void closePool() {
-        try {
-            for (Connection sourceConnection : sourceConnections) {
-                sourceConnection.close();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException();
-        }
-
     }
 
     public static void returnConnection(Connection connection) {

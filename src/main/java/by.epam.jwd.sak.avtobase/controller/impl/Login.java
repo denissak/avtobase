@@ -29,10 +29,10 @@ public class Login implements Command {
 
         try {
             UserDto userDto = factoryService.getUserService().findByLogin(req.getParameter(LOGIN));
-            if (PasswordEncoder.getInstance().isMatching(password, userDto.getPassword())){
+            if (PasswordEncoder.getInstance().isMatching(password, userDto.getPassword())) {
                 onLoginSuccess(userDto, req, resp);
-            }else {
-                onLoginFail(req,resp);
+            } else {
+                onLoginFail(req, resp);
             }
         } catch (ServiceException e) {
             LOGGER.error(e);
@@ -86,7 +86,7 @@ public class Login implements Command {
                     req.getSession().setAttribute(ROLES, factoryService.getRolesService().findAllRoles());
                     req.getSession().setAttribute(ALL_USER, factoryService.getUserService().findAllUser());
                     req.getSession().setAttribute(ALL_CAR, factoryService.getCarService().findAllCar());
-                    req.getSession().setAttribute(ALL_REQUEST,factoryService.getRequestService().findAllRequest());
+                    req.getSession().setAttribute(ALL_REQUEST, factoryService.getRequestService().findAllRequest());
 
                 } catch (ServiceException e) {
                     LOGGER.error(e);

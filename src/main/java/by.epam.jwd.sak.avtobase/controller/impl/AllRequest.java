@@ -1,7 +1,5 @@
 package by.epam.jwd.sak.avtobase.controller.impl;
 
-import by.epam.jwd.sak.avtobase.dao.CarDao;
-import by.epam.jwd.sak.avtobase.dto.CarDto;
 import by.epam.jwd.sak.avtobase.dto.RequestDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
@@ -29,7 +27,7 @@ public class AllRequest implements Command {
         try {
             List<RequestDto> requestDtoList = factoryService.getRequestService().findAllRequest();
             String page = req.getParameter(PAGE);
-            double numberOfPages = Math.ceil(requestDtoList.size()/5.0);
+            double numberOfPages = Math.ceil(requestDtoList.size() / 5.0);
             req.setAttribute(NUMBER_OF_PAGES, numberOfPages);
             req.setAttribute(ALL_REQUEST, Pagination.process(requestDtoList, page));
             req.setAttribute(USER_DRIVERS, factoryService.getCarService().findAllFreeDriver());
@@ -38,7 +36,7 @@ public class AllRequest implements Command {
             throw new ServletException(e.getMessage(), e);
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_REQUEST);
-        requestDispatcher.forward(req,resp);
+        requestDispatcher.forward(req, resp);
     }
-    }
+}
 

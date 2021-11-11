@@ -62,14 +62,15 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateCarDriverModalLabel"><fmt:message key="text.make_driver"/></h5>
+                        <h5 class="modal-title" id="updateCarDriverModalLabel"><fmt:message
+                                key="text.make_driver"/></h5>
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                     <div class="modal-body">
-                    <jsp:include page="processCar.jsp">
-                        <jsp:param name="carId" value="${carId}"/>
-                    </jsp:include>
-                </div>
+                        <jsp:include page="processCar.jsp">
+                            <jsp:param name="carId" value="${carId}"/>
+                        </jsp:include>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,10 +83,10 @@
                         <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
                     </div>
                     <div class="modal-body">
-                    <jsp:include page="editCar.jsp">
-                        <jsp:param name="carId" value="${carId}"/>
-                    </jsp:include>
-                </div>
+                        <jsp:include page="editCar.jsp">
+                            <jsp:param name="carId" value="${carId}"/>
+                        </jsp:include>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,7 +97,9 @@
 <nav aria-label="Page navigation example">
     <ul class="pagination">
         <c:forEach begin="1" end="${numberOfPages}" var="val">
-            <li class="page-item ${val == param.page ? 'active' : ''}"><a class="page-link" href="Controller?command=allcar&page=${val}">${val}</a></li>
+            <li class="page-item ${val == param.page ? 'active' : ''}"><a class="page-link"
+                                                                          href="Controller?command=allcar&page=${val}">${val}</a>
+            </li>
         </c:forEach>
     </ul>
 </nav>
