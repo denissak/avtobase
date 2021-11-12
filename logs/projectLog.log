@@ -1,2 +1,1 @@
-03.11.2021 21:50:44,425 ERROR UserDaoImpl:203 - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`avtobase`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`))
-03.11.2021 21:50:44,431 ERROR Registration:36 - by.epam.jwd.sak.avtobase.exception.ServiceException: Cannot add or update a child row: a foreign key constraint fails (`avtobase`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`))
+

@@ -1,6 +1,6 @@
 package by.epam.jwd.sak.avtobase.dao;
 
-import by.epam.jwd.sak.avtobase.bean.Request;
+import by.epam.jwd.sak.avtobase.entity.Request;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 
 import java.util.List;

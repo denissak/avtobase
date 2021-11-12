@@ -1,6 +1,6 @@
 package by.epam.jwd.sak.avtobase.controller.impl;
 
-import by.epam.jwd.sak.avtobase.bean.TypeTransport;
+import by.epam.jwd.sak.avtobase.entity.TypeTransport;
 import by.epam.jwd.sak.avtobase.dto.RequestDto;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;

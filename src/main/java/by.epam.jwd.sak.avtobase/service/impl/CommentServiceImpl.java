@@ -1,6 +1,6 @@
 package by.epam.jwd.sak.avtobase.service.impl;
 
-import by.epam.jwd.sak.avtobase.bean.Comment;
+import by.epam.jwd.sak.avtobase.entity.Comment;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
 import by.epam.jwd.sak.avtobase.dto.CommentDto;
 import by.epam.jwd.sak.avtobase.dto.UserDto;

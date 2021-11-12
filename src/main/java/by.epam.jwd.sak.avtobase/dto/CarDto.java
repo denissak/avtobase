@@ -1,7 +1,7 @@
 package by.epam.jwd.sak.avtobase.dto;
 
-import by.epam.jwd.sak.avtobase.bean.StatusCar;
-import by.epam.jwd.sak.avtobase.bean.TypeTransport;
+import by.epam.jwd.sak.avtobase.entity.StatusCar;
+import by.epam.jwd.sak.avtobase.entity.TypeTransport;
 import lombok.Builder;
 import lombok.Value;
 

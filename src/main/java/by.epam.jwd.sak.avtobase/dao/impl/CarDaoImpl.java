@@ -1,10 +1,10 @@
 package by.epam.jwd.sak.avtobase.dao.impl;
 
-import by.epam.jwd.sak.avtobase.bean.Car;
-import by.epam.jwd.sak.avtobase.bean.Role;
-import by.epam.jwd.sak.avtobase.bean.StatusCar;
-import by.epam.jwd.sak.avtobase.bean.TypeTransport;
-import by.epam.jwd.sak.avtobase.bean.User;
+import by.epam.jwd.sak.avtobase.entity.Car;
+import by.epam.jwd.sak.avtobase.entity.Role;
+import by.epam.jwd.sak.avtobase.entity.StatusCar;
+import by.epam.jwd.sak.avtobase.entity.TypeTransport;
+import by.epam.jwd.sak.avtobase.entity.User;
 import by.epam.jwd.sak.avtobase.dao.CarDao;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.dao.ConnectionManager;

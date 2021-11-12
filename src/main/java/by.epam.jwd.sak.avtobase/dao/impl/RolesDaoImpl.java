@@ -1,6 +1,6 @@
 package by.epam.jwd.sak.avtobase.dao.impl;
 
-import by.epam.jwd.sak.avtobase.bean.Role;
+import by.epam.jwd.sak.avtobase.entity.Role;
 import by.epam.jwd.sak.avtobase.dao.RolesDao;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.dao.ConnectionManager;

@@ -1,7 +1,7 @@
 package by.epam.jwd.sak.avtobase.controller.impl;
 
-import by.epam.jwd.sak.avtobase.bean.StatusCar;
-import by.epam.jwd.sak.avtobase.bean.TypeTransport;
+import by.epam.jwd.sak.avtobase.entity.StatusCar;
+import by.epam.jwd.sak.avtobase.entity.TypeTransport;
 import by.epam.jwd.sak.avtobase.dto.CarDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;

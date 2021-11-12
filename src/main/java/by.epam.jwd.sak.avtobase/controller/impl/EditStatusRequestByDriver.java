@@ -1,6 +1,6 @@
 package by.epam.jwd.sak.avtobase.controller.impl;
 
-import by.epam.jwd.sak.avtobase.bean.StatusRequest;
+import by.epam.jwd.sak.avtobase.entity.StatusRequest;
 import by.epam.jwd.sak.avtobase.controller.Command;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;

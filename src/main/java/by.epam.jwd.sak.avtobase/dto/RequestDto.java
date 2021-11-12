@@ -1,7 +1,7 @@
 package by.epam.jwd.sak.avtobase.dto;
 
-import by.epam.jwd.sak.avtobase.bean.StatusRequest;
-import by.epam.jwd.sak.avtobase.bean.TypeTransport;
+import by.epam.jwd.sak.avtobase.entity.StatusRequest;
+import by.epam.jwd.sak.avtobase.entity.TypeTransport;
 import lombok.*;
 
 import java.time.LocalDate;

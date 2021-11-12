@@ -1,8 +1,6 @@
 package by.epam.jwd.sak.avtobase.service;
 
-import by.epam.jwd.sak.avtobase.bean.Request;
-import by.epam.jwd.sak.avtobase.bean.User;
-import by.epam.jwd.sak.avtobase.dto.RequestDto;
+import by.epam.jwd.sak.avtobase.entity.User;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
 
 public final class Mapper {

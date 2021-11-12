@@ -1,8 +1,8 @@
 package by.epam.jwd.sak.avtobase.controller.impl;
 
-import by.epam.jwd.sak.avtobase.bean.StatusCar;
-import by.epam.jwd.sak.avtobase.bean.StatusRequest;
-import by.epam.jwd.sak.avtobase.bean.TypeTransport;
+import by.epam.jwd.sak.avtobase.entity.StatusCar;
+import by.epam.jwd.sak.avtobase.entity.StatusRequest;
+import by.epam.jwd.sak.avtobase.entity.TypeTransport;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
 import by.epam.jwd.sak.avtobase.service.FactoryService;
@@ -40,11 +40,11 @@ public class Login implements Command {
         }
     }
 
-    private void onLoginFail(HttpServletRequest req, HttpServletResponse resp) {
+    private void onLoginFail(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
         try {
             resp.sendRedirect("/");
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new ServletException(e.getMessage(),e);
         }
     }
 

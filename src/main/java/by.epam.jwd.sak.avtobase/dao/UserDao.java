@@ -1,6 +1,6 @@
 package by.epam.jwd.sak.avtobase.dao;
 
-import by.epam.jwd.sak.avtobase.bean.User;
+import by.epam.jwd.sak.avtobase.entity.User;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 
 import java.sql.Date;
