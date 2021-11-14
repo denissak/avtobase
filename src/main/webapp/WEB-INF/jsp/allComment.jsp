@@ -15,7 +15,8 @@
             <div class="col-sm-6">
                 <div class="testimonial testimonial-default">
                     <div class="testimonial-section">
-                            ${comment.getMessage()}
+                        <c:out value="${comment.getMessage()}" />
+<%--                            ${comment.getMessage()}--%>
                     </div>
                     <div class="testimonial-desc">
                         <img src="https://bootstraptema.ru/snippets/icons/2016/mia/1.png" alt=""/>

@@ -26,7 +26,10 @@
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label"><fmt:message
                 key="text.create_your_comment"/></label>
-        <textarea name="message" <%--name="<c:out value="${message}"/>"--%> <%--<c:out value="${message}" />--%> class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+<%--        <c:set var="message" value="\n" />--%>
+<%--        <c:out value="${message}" />--%>
+<%--        <textarea><%=encodeHTML(serverString);%></textarea>--%>
+        <textarea name="message" <c:set var="message" value="\n" /><%--<c:out value="" />--%><%--name="<c:out value="${message}"/>"--%> <%--<c:out value="${message}" />--%> class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
     <button type="submit" class="btn btn-success"><fmt:message key="button.create"/></button>
 </form>
