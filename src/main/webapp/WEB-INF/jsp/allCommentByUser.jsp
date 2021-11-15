@@ -20,7 +20,7 @@
         <tr>
             <td>${comment.getCommentDate()}</td>
             <td>${comment.getMark()}</td>
-            <td>${comment.getMessage()}</td>
+            <td><c:out value="${comment.getMessage()}" /></td>
         </tr>
     </c:forEach>
     </thead>

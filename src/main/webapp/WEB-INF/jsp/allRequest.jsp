@@ -40,7 +40,7 @@
                     <td>${request.getDateDeparture()}</td>
                     <td>${request.getStatusRequest()}</td>
                     <td>${request.getTypeTransport()}</td>
-                    <td>${request.getDetailsRequest()}</td>
+                    <td><c:out value="${request.getDetailsRequest()}" /></td>
                     <td>
                         <button class="btn btn-outline-success ms-3 " data-bs-toggle="modal"
                                 data-bs-target=".requestId_${request.getId()}"><fmt:message key="button.process"/>

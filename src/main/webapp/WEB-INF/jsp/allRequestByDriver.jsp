@@ -47,7 +47,7 @@
             <td>${request.getDateDeparture()}</td>
             <td>${request.getStatusRequest()}</td>
             <td>${request.getTypeTransport()}</td>
-            <td>${request.getDetailsRequest()}</td>
+            <td><c:out value="${request.getDetailsRequest()}" /></td>
             <td>
                 <form action="Controller?command=editstatusrequestbydriver" method="post">
                     <input style="display: none" readonly="readonly" name="requestId" value="${request.getId()}">
