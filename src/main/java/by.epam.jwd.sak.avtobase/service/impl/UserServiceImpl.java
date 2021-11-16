@@ -52,6 +52,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean restore(Long id) throws ServiceException {
+        try {
+            return daoFactory.getUserDao().restore(id);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
     public boolean update(UserDto entity) throws ServiceException {
         if (entity == null
                 || !(UserValidator.isCorrectLogin(entity.getLogin())
@@ -73,6 +82,15 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> findAllUser() throws ServiceException {
         try {
             return daoFactory.getUserDao().findAll().stream().map(this::convertToUserDto).collect(Collectors.toList());
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public List<UserDto> findAllDisabledUser() throws ServiceException {
+        try {
+            return daoFactory.getUserDao().findAllDisabledUser().stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
             throw new ServiceException(e.getMessage(), e);
         }

@@ -85,6 +85,7 @@ public class Login implements Command {
                 try {
                     req.getSession().setAttribute(ROLES, factoryService.getRolesService().findAllRoles());
                     req.getSession().setAttribute(ALL_USER, factoryService.getUserService().findAllUser());
+                    req.getSession().setAttribute(ALL_DISABLED_USER, factoryService.getUserService().findAllDisabledUser());
                     req.getSession().setAttribute(ALL_CAR, factoryService.getCarService().findAllCar());
                     req.getSession().setAttribute(ALL_REQUEST, factoryService.getRequestService().findAllRequest());
 

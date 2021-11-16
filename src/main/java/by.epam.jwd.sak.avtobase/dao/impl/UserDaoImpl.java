@@ -21,19 +21,24 @@ public class UserDaoImpl implements UserDao {
     private static final Logger LOGGER = LogManager.getLogger();
 
     private static final int USER_ROLE_ID = 4;
+    private static final int ENABLED = 1;
+    private static final int DISABLED = 0;
 
-    private static final String GET_ALL_USER = "SELECT * FROM users as u join roles as r  on r.id = u.role_id ORDER BY u.id ";
+    private static final String GET_ALL_USER = "SELECT * FROM users as u join roles as r  on r.id = u.role_id WHERE is_active = '1' ORDER BY u.id ";
+    private static final String GET_ALL_DISABLED_USER = "SELECT * FROM users as u join roles as r  on r.id = u.role_id WHERE is_active = '0' ORDER BY u.id ";
     private static final String GET_ALL_FREE_DRIVERS = "SELECT * FROM users as u JOIN cars as c on u.id = c.user_id WHERE c.status_car != 'BROKEN'\n" +
             "                                      AND c.id != (SELECT car_id FROM requests as r WHERE r.date_departure = ? \n" +
             "                                      AND r.car_id IN (SELECT c.id FROM users as u JOIN cars as c on u.id = c.user_id WHERE c.status_car != 'BROKEN'))";
     private static final String GET_ALL_DRIVERS = "SELECT * FROM users as u join roles as r  on r.id = u.role_id WHERE r.id = 3 ORDER BY u.surname";
-    private static final String SAVE_USER = "INSERT INTO users (login, password, role_id, name, surname, phone_number)" +
-            " VALUES " + "(?,?,?,?,?,?)";
+    private static final String SAVE_USER = "INSERT INTO users (login, password, role_id, name, surname, phone_number, is_active)" +
+            " VALUES " + "(?,?,?,?,?,?,?)";
     private static final String GET_BY_LOGIN = "SELECT * FROM users as u join roles as r on r.id = u.role_id WHERE login = ?";
     private static final String GET_USER_BY_ID = "SELECT * FROM users as u join roles as r on r.id = u.role_id WHERE u.id = ?";
     private static final String UPDATE_USER = "UPDATE users SET login = ?, role_id = ?, name = ?, surname = ?, phone_number = ? WHERE id = ?";
     private static final String UPDATE_PASSWORD_USER = "UPDATE users SET password = ? WHERE id = ?";
-    private static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
+    private static final String DELETE_USER = "UPDATE users SET is_active = ? WHERE id = ?";
+    private static final String RESTORE_USER = "UPDATE users SET is_active = ? WHERE id = ?";
+//    private static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
 
     @Override
     public List<User> findAllDrivers() throws DAOException {
@@ -78,7 +83,26 @@ public class UserDaoImpl implements UserDao {
 
         Connection connection = ConnectionManager.get();
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER, RETURN_GENERATED_KEYS)) {
-            preparedStatement.setObject(1, id);
+            preparedStatement.setObject(1, DISABLED);
+            preparedStatement.setObject(2, id);
+            result = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.error(e);
+            throw new DAOException();
+        } finally {
+            ConnectionManager.returnConnection(connection);
+        }
+        return result > 0;
+    }
+
+    @Override
+    public boolean restore(Long id) throws DAOException {
+        int result;
+
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(RESTORE_USER, RETURN_GENERATED_KEYS)) {
+            preparedStatement.setObject(1, ENABLED);
+            preparedStatement.setObject(2, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);
@@ -143,6 +167,25 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public List<User> findAllDisabledUser() throws DAOException {
+        List<User> users = new ArrayList<>();
+        Connection connection = ConnectionManager.get();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_DISABLED_USER)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                users.add(buildEntity(resultSet));
+            }
+
+        } catch (SQLException e) {
+            LOGGER.error(e);
+            throw new DAOException(e.getMessage(), e);
+        } finally {
+            ConnectionManager.returnConnection(connection);
+        }
+        return users;
+    }
+
+    @Override
     public List<User> findAllFreeDrivers(Date date) throws DAOException {
         List<User> users = new ArrayList<>();
         Connection connection = ConnectionManager.get();
@@ -191,6 +234,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setObject(4, entity.getName());
             preparedStatement.setObject(5, entity.getSurname());
             preparedStatement.setObject(6, entity.getPhoneNumber());
+            preparedStatement.setObject(7, ENABLED);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e);

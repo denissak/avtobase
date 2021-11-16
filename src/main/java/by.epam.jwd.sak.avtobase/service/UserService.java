@@ -15,6 +15,8 @@ public interface UserService {
 
     List<UserDto> findAllUser() throws ServiceException;
 
+    List<UserDto> findAllDisabledUser() throws ServiceException;
+
     List<UserDto> findAllFreeDrivers(Date date) throws ServiceException;
 
     List<UserDto> findAllDrivers() throws ServiceException;
@@ -24,5 +26,8 @@ public interface UserService {
     Optional<UserDto> findById(Long id) throws ServiceException;
 
     boolean delete(Long id) throws ServiceException;
+
+    boolean restore(Long id) throws ServiceException;
+
 
 }

@@ -30,6 +30,14 @@ public class EditUserByAdmin implements Command {
                     LOGGER.error(e);
                     throw new ServletException(e.getMessage(), e);
                 }
+            } else if (req.getParameter(METHOD).equals(RESTORE)){
+                long userId = Integer.parseInt(req.getParameter(ID));
+                try {
+                    factoryService.getUserService().restore(userId);
+                } catch (ServiceException e) {
+                    LOGGER.error(e);
+                    throw new ServletException(e.getMessage(), e);
+                }
             }
         } else if (req.getMethod().equals(POST)) {
             long id = 0;
@@ -54,6 +62,7 @@ public class EditUserByAdmin implements Command {
         }
         try {
             req.getSession().setAttribute(ALL_USER, factoryService.getUserService().findAllUser());
+            req.getSession().setAttribute(ALL_DISABLED_USER, factoryService.getUserService().findAllDisabledUser());
         } catch (ServiceException e) {
             LOGGER.error(e);
             throw new ServletException(e.getMessage(), e);

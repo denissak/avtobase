@@ -2,6 +2,7 @@ package by.epam.jwd.sak.avtobase.controller;
 
 import by.epam.jwd.sak.avtobase.controller.impl.AllCar;
 import by.epam.jwd.sak.avtobase.controller.impl.AllComment;
+import by.epam.jwd.sak.avtobase.controller.impl.AllDisabledUser;
 import by.epam.jwd.sak.avtobase.controller.impl.AllDriver;
 import by.epam.jwd.sak.avtobase.controller.impl.AllRequest;
 import by.epam.jwd.sak.avtobase.controller.impl.AllRequestByDriver;
@@ -40,6 +41,7 @@ public class CommandProvider {
         commands.put(CommandName.ALLUSERREQUEST, new AllUserRequest());
         commands.put(CommandName.CREATEREQUEST, new CreateRequest());
         commands.put(CommandName.ALLUSER, new AllUser());
+        commands.put(CommandName.ALLDISABLEDUSER, new AllDisabledUser());
         commands.put(CommandName.EDITREQUESTBYUSER, new EditRequestByUser());
         commands.put(CommandName.CREATECAR, new CreateCar());
         commands.put(CommandName.CREATECOMMENT, new CreateComment());

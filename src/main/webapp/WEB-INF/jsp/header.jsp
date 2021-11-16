@@ -38,6 +38,10 @@
                                     key="text.all_users"/></a>
                         </li>
                         <li class="nav-item">
+                            <a href="Controller?command=alldisableduser&page=1" class="nav-link"><fmt:message
+                                    key="text.disabled_users"/></a>
+                        </li>
+                        <li class="nav-item">
                             <a href="Controller?command=allcar&page=1" class="nav-link"><fmt:message key="text.all_cars"/></a>
                         </li>
                         <li class="nav-item">

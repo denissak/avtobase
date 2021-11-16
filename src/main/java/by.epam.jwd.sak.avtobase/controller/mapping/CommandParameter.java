@@ -1,5 +1,7 @@
 package by.epam.jwd.sak.avtobase.controller.mapping;
 
+import java.net.FileNameMap;
+
 public final class CommandParameter {
 
     public static final String ID = "id";
@@ -12,6 +14,7 @@ public final class CommandParameter {
     public static final String METHOD = "method";
     public static final String POST = "POST";
     public static final String DELETE = "delete";
+    public static final String RESTORE = "restore";
     public static final String MARK = "mark";
     public static final String MODEL = "model";
     public static final String MESSAGE = "message";
@@ -38,6 +41,7 @@ public final class CommandParameter {
     public static final String ALL_REQUEST = "allRequest";
     public static final String ALL_REQUEST_BY_DRIVER = "allRequestByDriver";
     public static final String ALL_USER = "allUser";
+    public static final String ALL_DISABLED_USER = "allDisabledUser";
     public static final String USER = "user";
     public static final String DISPATCHER = "dispatcher";
     public static final String ADMIN = "admin";
@@ -46,6 +50,7 @@ public final class CommandParameter {
     public static final String COMMENT_BY_ID = "commentsById";
     public static final String REQUEST_ID = "requestId";
     public static final String NUMBER_OF_PAGES = "numberOfPages";
+    public static final String DISABLED_USER_DISPLAY = "disabledUsersDisplay";
     public static final String USER_DISPLAY = "usersDisplay";
     public static final String CAR_ID = "carId";
     public static final String STATUS = "status";
@@ -54,6 +59,7 @@ public final class CommandParameter {
     public static final String COMMAND_ALL_CAR = "Controller?command=allcar&page=1";
     public static final String COMMAND_ALL_USER_REQUEST = "Controller?command=alluserrequest&page=1";
     public static final String COMMAND_ALL_USER = "Controller?command=alluser&page=1";
+    public static final String COMMAND_ALL_DISABLED_USER = "Controller?command=alldisableduser&page=1";
     public static final String COMMAND_ALL_REQUEST = "Controller?command=allrequest&page=1";
     public static final String COMMAND_ALL_REQUEST_BY_DRIVER = "Controller?command=allrequestbydriver&page=1";
 
@@ -62,6 +68,7 @@ public final class CommandParameter {
     public static final String PAGE_ALL_DRIVER = "/WEB-INF/jsp/allDriver.jsp";
     public static final String PAGE_ALL_REQUEST = "/WEB-INF/jsp/allRequest.jsp";
     public static final String PAGE_ALL_USER = "/WEB-INF/jsp/allUser.jsp";
+    public static final String PAGE_ALL_DISABLED_USER = "/WEB-INF/jsp/allDisabledUser.jsp";
     public static final String PAGE_ALL_USER_REQUEST = "/WEB-INF/jsp/allUserRequest.jsp";
     public static final String PAGE_ALL_COMMENT_BY_USER = "/WEB-INF/jsp/allCommentByUser.jsp";
     public static final String PAGE_ALL_REQUEST_BY_DRIVER = "/WEB-INF/jsp/allRequestByDriver.jsp";
@@ -73,6 +80,7 @@ public final class CommandParameter {
     public static final String ACCESS_ALL_REQUEST = "command=allrequest";
     public static final String ACCESS_ALL_REQUESTBYDRIVER = "command=allrequestbydriver";
     public static final String ACCESS_ALL_USER = "command=alluser";
+    public static final String ACCESS_ALL_DISABLED_USER = "command=alldisableduser";
     public static final String ACCESS_ALL_USER_COMMENT = "command=allusercomment";
     public static final String ACCESS_ALL_USER_REQUEST = "command=alluserrequest";
     public static final String ACCESS_CREATE_CAR = "command=createcar";

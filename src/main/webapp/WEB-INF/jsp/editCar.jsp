@@ -85,7 +85,7 @@
                        name="cargoCapacity"
                        class="form-control"
                        id="exampleCargoCapacity"
-                       pattern=^[0-9]\d*(\d+)?$"
+                       pattern="^[0-9]\d*(\d+)?$"
                        title="<fmt:message key="error.only_positive_numbers"/>"
                        value="${car.getCargoCapacity()}">
             </div>

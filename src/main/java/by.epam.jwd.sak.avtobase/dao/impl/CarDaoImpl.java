@@ -28,7 +28,7 @@ public class CarDaoImpl implements CarDao {
     private static final String GET_ALL_CAR = "SELECT * FROM cars as c  left join users as u on u.id = c.user_id left JOIN roles r on u.role_id = r.id ORDER BY c.user_id ";
     private static final String DELETE_CAR = "DELETE FROM cars WHERE id = ?";
     private static final String ADD_DRIVER = "UPDATE cars SET user_id = ? WHERE id = ?";
-    private static final String UPDATE_CAR = "UPDATE cars SET mark = ?, model = ?, release_date = ?, release_date = ?, type = ?, lifting_capacity = ?, cargo_capacity = ?, passenger_capacity = ?, inspection_permission = ?, status_car = ?, car_description = ? WHERE id = ?";
+    private static final String UPDATE_CAR = "UPDATE cars SET mark = ?, model = ?, release_date = ?, type = ?, lifting_capacity = ?, cargo_capacity = ?, passenger_capacity = ?, inspection_permission = ?, status_car = ?, car_description = ? WHERE id = ?";
     private static final String UPDATE_STATUS = "UPDATE cars SET status_car = ? WHERE id = ?";
     private static final String GET_ALL_FREE_DRIVERS = "SELECT * FROM cars as c JOIN users as u on u.id = c.user_id JOIN roles as r on r.id = u.role_id WHERE c.status_car != 'BROKEN' ORDER BY c.release_date";
 
@@ -58,12 +58,12 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(1, entity.getMark());
             preparedStatement.setObject(2, entity.getModel());
             preparedStatement.setObject(3, entity.getReleaseDate());
-            preparedStatement.setObject(4, entity.getTypeTransport());
+            preparedStatement.setObject(4, entity.getTypeTransport().name());
             preparedStatement.setObject(5, entity.getLiftingCapacity());
             preparedStatement.setObject(6, entity.getCargoCapacity());
             preparedStatement.setObject(7, entity.getPassengerCapacity());
             preparedStatement.setObject(8, entity.getInspectionPermission());
-            preparedStatement.setObject(9, entity.getStatusCar());
+            preparedStatement.setObject(9, entity.getStatusCar().name());
             preparedStatement.setObject(10, entity.getCarDescription());
             preparedStatement.setObject(11, entity.getId());
             result = preparedStatement.executeUpdate();

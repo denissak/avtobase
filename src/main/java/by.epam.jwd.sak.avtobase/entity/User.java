@@ -18,6 +18,7 @@ public class User implements Serializable {
     private String surname;
     private String phoneNumber;
     private Role role;
+/*    private int isActive;*/
 
     public User() {
     }
@@ -31,6 +32,25 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
         this.role = role;
     }
+
+/*    public User(Long id, String login, String password, String name, String surname, String phoneNumber, Role role, int isActive) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.role = role;
+        this.isActive = isActive;
+    }*/
+
+/*    public int getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(int active) {
+        isActive = active;
+    }*/
 
     public Long getId() {
         return id;
@@ -120,6 +140,8 @@ public class User implements Serializable {
         sb.append(phoneNumber);
         sb.append(", role = ");
         sb.append(role);
+/*        sb.append(", isActive = ");
+        sb.append(isActive);*/
         return sb.toString();
     }
 }

@@ -11,6 +11,8 @@ public interface UserDao {
 
     List<User> findAll() throws DAOException;
 
+    List<User> findAllDisabledUser () throws DAOException;
+
     List<User> findAllFreeDrivers(Date date) throws DAOException;
 
     List<User> findAllDrivers() throws DAOException;
@@ -24,4 +26,6 @@ public interface UserDao {
     boolean update (User entity) throws DAOException;
 
     boolean delete(Long id) throws DAOException;
+
+    boolean restore(Long id) throws DAOException;
 }
