@@ -73,6 +73,7 @@ public final class CommandParameter {
     public static final String PAGE_ALL_COMMENT_BY_USER = "/WEB-INF/jsp/allCommentByUser.jsp";
     public static final String PAGE_ALL_REQUEST_BY_DRIVER = "/WEB-INF/jsp/allRequestByDriver.jsp";
     public static final String PAGE_WELCOME = "/WEB-INF/jsp/welcomePage.jsp";
+    public static final String PAGE_ERROR = "/WEB-INF/jsp/errorPage.jsp";
 
     public static final String ACCESS_ALL_CAR = "command=allcar";
     public static final String ACCESS_ALL_COMMENT = "command=allcomment";
@@ -98,6 +99,7 @@ public final class CommandParameter {
     public static final String ACCESS_SET_DRIVER_ON_CAR = "command=setdriveroncar";
     public static final String ACCESS_SET_DRIVER_ON_REQUEST = "command=setdriveronrequest";
     public static final String ACCESS_WELCOME_PAGE = "command=welcomepage";
+    public static final String ACCESS_ERROR_PAGE = "command=errorpage";
 
     private CommandParameter() {
     }

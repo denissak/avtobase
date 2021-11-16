@@ -1,3 +1,2 @@
-16.11.2021 13:36:52,716 ERROR CarDaoImpl:71 - java.sql.SQLException: Incorrect string value: '\xAC\xED\x00\x05~r...' for column 'type' at row 1
-16.11.2021 13:36:52,723 ERROR CarServiceImpl:50 - by.epam.jwd.sak.avtobase.exception.DAOException: Incorrect string value: '\xAC\xED\x00\x05~r...' for column 'type' at row 1
-16.11.2021 13:36:52,724 ERROR EditCar:55 - by.epam.jwd.sak.avtobase.exception.ServiceException: Incorrect string value: '\xAC\xED\x00\x05~r...' for column 'type' at row 1
+16.11.2021 14:46:00,020 ERROR UserDaoImpl:240 - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'admin' for key 'users.login'
+16.11.2021 14:46:00,027 ERROR Registration:35 - by.epam.jwd.sak.avtobase.exception.ServiceException: Duplicate entry 'admin' for key 'users.login'
