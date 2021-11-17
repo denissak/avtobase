@@ -39,7 +39,7 @@ public class Controller extends HttpServlet {
                 command = provider.takeCommand(name);
                 command.execute(req, resp);
             } else {
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ERROR); //TODO
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ERROR); //TODO FILTER
                 requestDispatcher.forward(req, resp);
             }
         } catch (RuntimeException e) {

@@ -29,10 +29,14 @@ public class Login implements Command {
 
         try {
             UserDto userDto = factoryService.getUserService().findByLogin(req.getParameter(LOGIN));
-            if (PasswordEncoder.getInstance().isMatching(password, userDto.getPassword())) {
-                onLoginSuccess(userDto, req, resp);
+            if (userDto != null) {
+                 if (PasswordEncoder.getInstance().isMatching(password, userDto.getPassword())) {
+                    onLoginSuccess(userDto, req, resp);
+                } else {
+                    onLoginFail(req, resp);
+                }
             } else {
-                onLoginFail(req, resp);
+                resp.sendRedirect("Controller?command=welcomepage"); //TODO
             }
         } catch (ServiceException e) {
             LOGGER.error(e);

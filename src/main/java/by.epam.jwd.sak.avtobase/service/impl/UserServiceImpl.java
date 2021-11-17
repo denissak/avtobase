@@ -136,15 +136,19 @@ public class UserServiceImpl implements UserService {
     }
 
     private UserDto convertToUserDto(User object) {
-        return UserDto.builder()
-                .id(object.getId())
-                .password(object.getPassword())
-                .login(object.getLogin())
-                .role(object.getRole().getName())
-                .name(object.getName())
-                .surname(object.getSurname())
-                .phoneNumber(object.getPhoneNumber())
-                .build();
+        if (object == null){
+            return null;
+        }else {
+            return UserDto.builder()
+                    .id(object.getId())
+                    .password(object.getPassword())
+                    .login(object.getLogin())
+                    .role(object.getRole().getName())
+                    .name(object.getName())
+                    .surname(object.getSurname())
+                    .phoneNumber(object.getPhoneNumber())
+                    .build();
+        }
     }
 
     private User convertToUser(UserDto object) {
