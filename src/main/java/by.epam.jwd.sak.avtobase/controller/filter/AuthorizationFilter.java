@@ -45,7 +45,9 @@ public class AuthorizationFilter implements Filter {
                 } else if ((USER_PATH.contains(queryString) || ADMIN_PATH.contains(queryString)) && user.getRole().equals(ADMIN)) {
                     filterChain.doFilter(servletRequest, servletResponse);
                 }else {
-                    filterChain.doFilter(servletRequest, servletResponse);
+/*                    RequestDispatcher requestDispatcher = servletRequest.getRequestDispatcher(PAGE_ERROR); TODO
+                    requestDispatcher.forward(servletRequest, servletResponse);*/
+                    filterChain.doFilter(servletRequest,servletResponse);
                 }
             }
     }
