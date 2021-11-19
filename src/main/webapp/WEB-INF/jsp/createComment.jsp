@@ -11,6 +11,10 @@
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
+
+<fmt:setLocale value="${cookie['lang'].value}"/>
+<fmt:setBundle basename="loc"/>
+
 <form action="Controller?command=createcomment" method="POST">
 
     <div class="mb-3">

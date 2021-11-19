@@ -12,6 +12,10 @@
 
 </head>
 <body>
+
+<fmt:setLocale value="${cookie['lang'].value}"/>
+<fmt:setBundle basename="loc"/>
+
 <form action="Controller?command=editstatuscar" method="POST">
     <c:forEach var="car" items="${allCar}">
         <c:if test="${user.getId() == car.getUserDto().getId()}">

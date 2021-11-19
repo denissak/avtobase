@@ -10,6 +10,9 @@
 </head>
 
 <body>
+
+<fmt:setLocale value="${cookie['lang'].value}"/>
+<fmt:setBundle basename="loc"/>
 <table class="table">
     <thead>
     <tr>

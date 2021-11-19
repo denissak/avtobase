@@ -2,6 +2,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<fmt:setLocale value="${cookie['lang'].value}"/>
+<fmt:setBundle basename="loc"/>
+
 <style>
     <%@include file="/WEB-INF/css/comments.css" %>
 </style>

@@ -13,6 +13,9 @@
 </head>
 <body>
 
+<fmt:setLocale value="${cookie['lang'].value}"/>
+<fmt:setBundle basename="loc"/>
+
 <form action="Controller?command=edituserbyadmin" method="POST">
 
     <c:forEach var="user" items="${allUser}">

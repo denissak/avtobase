@@ -12,6 +12,9 @@
 </head>
 <body>
 
+<fmt:setLocale value="${cookie['lang'].value}"/>
+<fmt:setBundle basename="loc"/>
+
 <form action="Controller?command=registration" method="POST">
     <div class="mb-3">
         <label for="exampleInputLogin" class="form-label"><fmt:message key="text.login"/></label>

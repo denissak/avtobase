@@ -1,2 +1,1 @@
-16.11.2021 14:46:00,020 ERROR UserDaoImpl:240 - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'admin' for key 'users.login'
-16.11.2021 14:46:00,027 ERROR Registration:35 - by.epam.jwd.sak.avtobase.exception.ServiceException: Duplicate entry 'admin' for key 'users.login'
+
