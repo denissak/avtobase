@@ -62,6 +62,7 @@ public final class CommandParameter {
     public static final String COMMAND_ALL_DISABLED_USER = "Controller?command=alldisableduser&page=1";
     public static final String COMMAND_ALL_REQUEST = "Controller?command=allrequest&page=1";
     public static final String COMMAND_ALL_REQUEST_BY_DRIVER = "Controller?command=allrequestbydriver&page=1";
+    public static final String COMMAND_ERROR = "Controller?command=errorpage";
 
     public static final String PAGE_ALL_CAR = "/WEB-INF/jsp/allCar.jsp";
     public static final String PAGE_ALL_COMMENT = "/WEB-INF/jsp/allComment.jsp";

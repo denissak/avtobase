@@ -24,6 +24,7 @@ public enum CommandName {
     SETDRIVERONCAR,
     LANGUAGE,
     WELCOMEPAGE,
-    ALLDISABLEDUSER
+    ALLDISABLEDUSER,
+    ERRORPAGE
 
 }

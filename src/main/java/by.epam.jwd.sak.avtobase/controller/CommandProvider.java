@@ -1,29 +1,6 @@
 package by.epam.jwd.sak.avtobase.controller;
 
-import by.epam.jwd.sak.avtobase.controller.impl.AllCar;
-import by.epam.jwd.sak.avtobase.controller.impl.AllComment;
-import by.epam.jwd.sak.avtobase.controller.impl.AllDisabledUser;
-import by.epam.jwd.sak.avtobase.controller.impl.AllDriver;
-import by.epam.jwd.sak.avtobase.controller.impl.AllRequest;
-import by.epam.jwd.sak.avtobase.controller.impl.AllRequestByDriver;
-import by.epam.jwd.sak.avtobase.controller.impl.AllUser;
-import by.epam.jwd.sak.avtobase.controller.impl.AllUserComment;
-import by.epam.jwd.sak.avtobase.controller.impl.AllUserRequest;
-import by.epam.jwd.sak.avtobase.controller.impl.CreateCar;
-import by.epam.jwd.sak.avtobase.controller.impl.CreateComment;
-import by.epam.jwd.sak.avtobase.controller.impl.CreateRequest;
-import by.epam.jwd.sak.avtobase.controller.impl.EditCar;
-import by.epam.jwd.sak.avtobase.controller.impl.EditRequestByUser;
-import by.epam.jwd.sak.avtobase.controller.impl.EditStatusCar;
-import by.epam.jwd.sak.avtobase.controller.impl.EditStatusRequestByDriver;
-import by.epam.jwd.sak.avtobase.controller.impl.EditUserByAdmin;
-import by.epam.jwd.sak.avtobase.controller.impl.Language;
-import by.epam.jwd.sak.avtobase.controller.impl.Login;
-import by.epam.jwd.sak.avtobase.controller.impl.Logout;
-import by.epam.jwd.sak.avtobase.controller.impl.Registration;
-import by.epam.jwd.sak.avtobase.controller.impl.SetDriverOnCar;
-import by.epam.jwd.sak.avtobase.controller.impl.SetDriverOnRequest;
-import by.epam.jwd.sak.avtobase.controller.impl.WelcomePage;
+import by.epam.jwd.sak.avtobase.controller.impl.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,6 +35,7 @@ public class CommandProvider {
         commands.put(CommandName.LANGUAGE, new Language());
         commands.put(CommandName.EDITSTATUSCAR, new EditStatusCar());
         commands.put(CommandName.WELCOMEPAGE, new WelcomePage());
+        commands.put(CommandName.ERRORPAGE, new ErrorPage());
     }
 
     public Command takeCommand(String name) {

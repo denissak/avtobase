@@ -5,6 +5,7 @@ import by.epam.jwd.sak.avtobase.dto.UserDto;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
@@ -35,7 +36,7 @@ public class AuthorizationFilter implements Filter {
         UserDto user = (UserDto) ((HttpServletRequest) servletRequest).getSession().getAttribute(USER);
             if (isPublicPath(uri) || isPublicPath(queryString)) {
                 filterChain.doFilter(servletRequest, servletResponse);
-            } else if (user != null) {
+            } else if (user != null && queryString != null) {
                 if (USER_PATH.contains(queryString) && user.getRole().equals(USER)) {
                     filterChain.doFilter(servletRequest, servletResponse);
                 } else if (DRIVER_PATH.contains(queryString) && user.getRole().equals(DRIVER)) {
@@ -45,10 +46,12 @@ public class AuthorizationFilter implements Filter {
                 } else if ((USER_PATH.contains(queryString) || ADMIN_PATH.contains(queryString)) && user.getRole().equals(ADMIN)) {
                     filterChain.doFilter(servletRequest, servletResponse);
                 }else {
-/*                    RequestDispatcher requestDispatcher = servletRequest.getRequestDispatcher(PAGE_ERROR); TODO
-                    requestDispatcher.forward(servletRequest, servletResponse);*/
-                    filterChain.doFilter(servletRequest,servletResponse);
+                    HttpServletResponse response = (HttpServletResponse) servletResponse;
+                    response.sendRedirect(COMMAND_ERROR);
                 }
+            } else {
+                HttpServletResponse response = (HttpServletResponse) servletResponse;
+                response.sendRedirect(COMMAND_ERROR);
             }
     }
 
