@@ -34,8 +34,8 @@ public class AllUserComment implements Command {
             req.setAttribute(NUMBER_OF_PAGES, numberOfPages);
             req.setAttribute(COMMENT_BY_ID, Pagination.process(commentDtoList, page));
         } catch (ServiceException e) {
-            LOGGER.error(e);
-            throw new ServletException(e.getMessage(), e);
+            LOGGER.error("All users comment controller error", e);
+            throw new ServletException("All users comment controller error", e);
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_COMMENT_BY_USER);
         requestDispatcher.forward(req, resp);

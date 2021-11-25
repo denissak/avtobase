@@ -32,8 +32,8 @@ public class RolesDaoImpl implements RolesDao {
                 roles.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Find all roles error DAO", e);
+            throw new DAOException("Find all roles error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

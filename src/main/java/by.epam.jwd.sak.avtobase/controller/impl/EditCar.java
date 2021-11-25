@@ -30,8 +30,8 @@ public class EditCar implements Command {
                 try {
                     factoryService.getCarService().delete(carId);
                 } catch (ServiceException e) {
-                    LOGGER.error(e);
-                    throw new ServletException(e.getMessage(), e);
+                    LOGGER.error("Delete car controller error", e);
+                    throw new ServletException("Delete car controller error", e);
                 }
             }
         } else if (req.getMethod().equals(POST)) {
@@ -52,8 +52,8 @@ public class EditCar implements Command {
             try {
                 factoryService.getCarService().update(carDto);
             } catch (ServiceException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Edit car controller error", e);
+                throw new ServletException("Edit car controller error", e);
             }
         }
         resp.sendRedirect(COMMAND_ALL_CAR);

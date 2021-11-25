@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService {
         try {
             return daoFactory.getUserDao().findAllDrivers().stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            LOGGER.error(e);
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find all drivers error service", e);
+            throw new ServiceException("Find all drivers error service", e);
         }
     }
 
@@ -38,7 +38,8 @@ public class UserServiceImpl implements UserService {
         try {
             return daoFactory.getUserDao().findById(id).map(this::convertToUserDto);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find user by id error service", e);
+            throw new ServiceException("Find user by id error service", e);
         }
     }
 
@@ -47,7 +48,8 @@ public class UserServiceImpl implements UserService {
         try {
             return daoFactory.getUserDao().delete(id);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Delete user error service", e);
+            throw new ServiceException("Delete user error service", e);
         }
     }
 
@@ -56,7 +58,8 @@ public class UserServiceImpl implements UserService {
         try {
             return daoFactory.getUserDao().restore(id);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Restore user error service", e);
+            throw new ServiceException("Restore user error service", e);
         }
     }
 
@@ -73,7 +76,8 @@ public class UserServiceImpl implements UserService {
         try {
             daoFactory.getUserDao().update(userBean);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Update user error service", e);
+            throw new ServiceException("Update user error service", e);
         }
         return true;
     }
@@ -83,7 +87,8 @@ public class UserServiceImpl implements UserService {
         try {
             return daoFactory.getUserDao().findAll().stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find all users error service", e);
+            throw new ServiceException("Find all users error service", e);
         }
     }
 
@@ -92,7 +97,8 @@ public class UserServiceImpl implements UserService {
         try {
             return daoFactory.getUserDao().findAllDisabledUser().stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find all disabled users error service", e);
+            throw new ServiceException("Find all disabled users error service", e);
         }
     }
 
@@ -101,7 +107,8 @@ public class UserServiceImpl implements UserService {
         try {
             return daoFactory.getUserDao().findAllFreeDrivers(date).stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find all free drivers error service", e);
+            throw new ServiceException("Find all free drivers error service", e);
         }
     }
 
@@ -112,7 +119,8 @@ public class UserServiceImpl implements UserService {
             return convertToUserDto(daoFactory.getUserDao().findByLogin(login));
 
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find user by login error service", e);
+            throw new ServiceException("Find user by login error service", e);
         }
     }
 
@@ -130,7 +138,8 @@ public class UserServiceImpl implements UserService {
         try {
             daoFactory.getUserDao().save(userBean);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Create user error service", e);
+            throw new ServiceException("Create user error service", e);
         }
         return true;
     }

@@ -27,16 +27,16 @@ public class EditUserByAdmin implements Command {
                 try {
                     factoryService.getUserService().delete(userId);
                 } catch (ServiceException e) {
-                    LOGGER.error(e);
-                    throw new ServletException(e.getMessage(), e);
+                    LOGGER.error("Delete user by admin controller error", e);
+                    throw new ServletException("Delete user by admin controller error", e);
                 }
             } else if (req.getParameter(METHOD).equals(RESTORE)){
                 long userId = Integer.parseInt(req.getParameter(ID));
                 try {
                     factoryService.getUserService().restore(userId);
                 } catch (ServiceException e) {
-                    LOGGER.error(e);
-                    throw new ServletException(e.getMessage(), e);
+                    LOGGER.error("Restore user by admin controller error", e);
+                    throw new ServletException("Restore user by admin controller error", e);
                 }
             }
         } else if (req.getMethod().equals(POST)) {
@@ -56,16 +56,16 @@ public class EditUserByAdmin implements Command {
             try {
                 factoryService.getUserService().update(userDto);
             } catch (ServiceException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Edit user by admin controller error", e);
+                throw new ServletException("Edit user by admin controller error", e);
             }
         }
         try {
             req.getSession().setAttribute(ALL_USER, factoryService.getUserService().findAllUser());
             req.getSession().setAttribute(ALL_DISABLED_USER, factoryService.getUserService().findAllDisabledUser());
         } catch (ServiceException e) {
-            LOGGER.error(e);
-            throw new ServletException(e.getMessage(), e);
+            LOGGER.error("Edit user by admin controller error", e);
+            throw new ServletException("Edit user by admin controller error", e);
         }
         resp.sendRedirect(COMMAND_ALL_USER);
     }

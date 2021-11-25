@@ -36,11 +36,11 @@ public class Login implements Command {
                     onLoginFail(req, resp);
                 }
             } else {
-                resp.sendRedirect("Controller?command=welcomepage"); //TODO
+                resp.sendRedirect("Controller?command=welcomepage");
             }
         } catch (ServiceException e) {
-            LOGGER.error(e);
-            throw new ServletException(e.getMessage(), e);
+            LOGGER.error("Find user by login controller error", e);
+            throw new ServletException("Find user by login controller error", e);
         }
     }
 
@@ -48,7 +48,8 @@ public class Login implements Command {
         try {
             resp.sendRedirect("/");
         } catch (IOException e) {
-            throw new ServletException(e.getMessage(),e);
+            LOGGER.error("Login fail controller error", e);
+            throw new ServletException("Login fail controller error", e);
         }
     }
 
@@ -62,16 +63,16 @@ public class Login implements Command {
             try {
                 resp.sendRedirect(COMMAND_ALL_USER_REQUEST);
             } catch (IOException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Login user success error controller", e);
+                throw new ServletException("Login user success error controller", e);
             }
         } else if (userDto.getRole().equals(DISPATCHER)) {
             try {
                 req.getSession().setAttribute(STATUS_REQUESTS, StatusRequest.values());
                 resp.sendRedirect(COMMAND_ALL_REQUEST);
             } catch (IOException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Login dispatcher success error controller", e);
+                throw new ServletException("Login dispatcher success error controller", e);
             }
 
         } else if (userDto.getRole().equals(DRIVER)) {
@@ -80,8 +81,8 @@ public class Login implements Command {
                 req.getSession().setAttribute(ALL_CAR, factoryService.getCarService().findAllCar());
                 resp.sendRedirect(COMMAND_ALL_REQUEST_BY_DRIVER);
             } catch (IOException | ServiceException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Login driver success error controller", e);
+                throw new ServletException("Login driver success error controller", e);
             }
 
         } else if (userDto.getRole().equals(ADMIN)) {
@@ -94,13 +95,13 @@ public class Login implements Command {
                     req.getSession().setAttribute(ALL_REQUEST, factoryService.getRequestService().findAllRequest());
 
                 } catch (ServiceException e) {
-                    LOGGER.error(e);
-                    throw new ServletException(e.getMessage(), e);
+                    LOGGER.error("Login admin success error controller", e);
+                    throw new ServletException("Login admin success error controller", e);
                 }
                 resp.sendRedirect(COMMAND_ALL_USER);
             } catch (IOException e) {
-                LOGGER.error(e);
-                e.printStackTrace();
+                LOGGER.error("Login success controller error", e);
+                throw new ServletException("Login success controller error");
             }
         }
 

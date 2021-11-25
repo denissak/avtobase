@@ -32,8 +32,8 @@ public class CreateComment implements Command {
             try {
                 factoryService.getCommentService().create(commentDto);
             } catch (ServiceException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Create comment controller error", e);
+                throw new ServletException("Create comment controller error", e);
             }
         }
         resp.sendRedirect(COMMAND_ALL_USER_REQUEST);

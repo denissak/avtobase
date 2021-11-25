@@ -32,8 +32,8 @@ public class EditRequestByUser implements Command {
                 try {
                     factoryService.getRequestService().delete(requestId);
                 } catch (ServiceException e) {
-                    LOGGER.error(e);
-                    throw new ServletException(e.getMessage(), e);
+                    LOGGER.error("Delete request by user controller error", e);
+                    throw new ServletException("Delete request by user controller error", e);
                 }
             }
         } else if (req.getMethod().equals(POST)) {
@@ -53,8 +53,8 @@ public class EditRequestByUser implements Command {
             try {
                 factoryService.getRequestService().update(requestDto);
             } catch (ServiceException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Edit request by user controller error", e);
+                throw new ServletException("Edit request by user controller error", e);
             }
         }
         if (userDto.getRole().equals(DISPATCHER)) {

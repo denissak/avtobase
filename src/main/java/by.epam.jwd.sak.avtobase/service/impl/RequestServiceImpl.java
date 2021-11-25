@@ -28,8 +28,8 @@ public class RequestServiceImpl implements RequestService {
         try {
             return daoFactory.getRequestDao().addDriverOnRequest(carId, requestId);
         } catch (DAOException e) {
-            LOGGER.error(e);
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Add driver on request error service", e);
+            throw new ServiceException("Add driver on request error service", e);
         }
     }
 
@@ -38,7 +38,8 @@ public class RequestServiceImpl implements RequestService {
         try {
             return daoFactory.getRequestDao().findAll().stream().map(this::convertToRequestDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find all requests error service", e);
+            throw new ServiceException("Find all requests error service", e);
         }
     }
 
@@ -47,7 +48,8 @@ public class RequestServiceImpl implements RequestService {
         try {
             return daoFactory.getRequestDao().delete(id);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Delete request error service", e);
+            throw new ServiceException("Delete request error service", e);
         }
     }
 
@@ -63,7 +65,8 @@ public class RequestServiceImpl implements RequestService {
         try {
             daoFactory.getRequestDao().update(requestBean);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Update request error service", e);
+            throw new ServiceException("Update request error service", e);
         }
         return true;
     }
@@ -73,7 +76,8 @@ public class RequestServiceImpl implements RequestService {
         try {
             return daoFactory.getRequestDao().updateStatusById(id, status);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Update status request by id error service", e);
+            throw new ServiceException("Update status request by id error service", e);
         }
     }
 
@@ -82,7 +86,8 @@ public class RequestServiceImpl implements RequestService {
         try {
             return daoFactory.getRequestDao().findById(id).map(this::convertToRequestDto);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find request by id error service", e);
+            throw new ServiceException("Find request by id error service", e);
         }
     }
 
@@ -98,7 +103,8 @@ public class RequestServiceImpl implements RequestService {
         try {
             daoFactory.getRequestDao().save(requestBean);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Create request error service",e );
+            throw new ServiceException("Create request error service", e);
         }
         return true;
     }
@@ -109,7 +115,8 @@ public class RequestServiceImpl implements RequestService {
             return daoFactory.getRequestDao().findAllByCarId(carId).stream()
                     .map(this::convertToRequestDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find all requests by car id error service", e);
+            throw new ServiceException("Find all requests by car id error service", e);
         }
     }
 
@@ -119,7 +126,8 @@ public class RequestServiceImpl implements RequestService {
             return daoFactory.getRequestDao().findAllByUserId(userId).stream()
                     .map(this::convertToRequestDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find all request by user id error service", e);
+            throw new ServiceException("Find all request by user id error service", e);
         }
     }
 

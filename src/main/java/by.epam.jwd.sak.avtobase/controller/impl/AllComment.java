@@ -25,8 +25,8 @@ public class AllComment implements Command {
         try {
             req.setAttribute(ALL_COMMENT, factoryService.getCommentService().findAllComment());
         } catch (ServiceException e) {
-            LOGGER.error(e);
-            throw new ServletException(e.getMessage(), e);
+            LOGGER.error("All comment controller error", e);
+            throw new ServletException("All comment controller error", e);
         }
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_COMMENT);

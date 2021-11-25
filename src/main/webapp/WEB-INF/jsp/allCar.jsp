@@ -55,7 +55,7 @@
                 <form action="Controller?command=editcar" method="post">
                     <input type="hidden" name="id" value="${car.getId()}">
                     <input type="hidden" name="method" value="delete">
-                    <input class="btn btn-danger" type="submit" value="Удалить">
+                    <input class="btn btn-danger" type="submit" value="<fmt:message key="button.delete"/>">
                 </form>
             </td>
         </tr>

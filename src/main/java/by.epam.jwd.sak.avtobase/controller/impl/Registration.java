@@ -32,8 +32,8 @@ public class Registration implements Command {
             try {
                 factoryService.getUserService().create(userDto);
             } catch (ServiceException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Registration error", e);
+                throw new ServletException("Registration error", e);
             }
         }
         resp.sendRedirect("/");

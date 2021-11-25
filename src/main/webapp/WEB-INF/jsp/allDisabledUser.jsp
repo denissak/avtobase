@@ -30,12 +30,6 @@
             <td>${user.getName()}</td>
             <td>${user.getSurname()}</td>
             <td>${user.getPhoneNumber()}</td>
-<%--            <td>
-                <button class="btn btn-outline-warning ms-3 " data-bs-toggle="modal"
-                        data-bs-target=".${user.getLogin()}"><fmt:message key="text.edit"/>
-                    <c:set var="userId" value="${user.getId()}"/>
-                </button>
-            </td>--%>
             <td>
                 <form action="Controller?command=edituserbyadmin" method="post">
                     <input type="hidden" name="id" value="${user.getId()}">
@@ -45,24 +39,6 @@
             </td>
 
         </tr>
-<%--        <div class="modal fade ${user.getLogin()}" id="updateUserModal" tabindex="-1"
-             aria-labelledby="updateUserModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="updateUserModalLabel"><fmt:message key="text.edit"/></h5>
-                        <button class="btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
-                    </div>
-
-                    <div class="modal-body">
-
-                        <jsp:include page="editUserByAdmin.jsp">
-                            <jsp:param name="userId" value="${userId}"/>
-                        </jsp:include>
-                    </div>
-                </div>
-            </div>
-        </div>--%>
     </c:forEach>
     </thead>
 </table>

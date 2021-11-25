@@ -34,8 +34,8 @@ public class AllUserRequest implements Command {
             req.setAttribute(NUMBER_OF_PAGES, numberOfPages);
             req.setAttribute(ALL_REQUEST, Pagination.process(requestDtoList, page));
         } catch (ServiceException e) {
-            LOGGER.error(e);
-            throw new ServletException(e.getMessage(), e);
+            LOGGER.error("All users request controller error", e);
+            throw new ServletException("All users request controller error", e);
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_USER_REQUEST);
         requestDispatcher.forward(req, resp);

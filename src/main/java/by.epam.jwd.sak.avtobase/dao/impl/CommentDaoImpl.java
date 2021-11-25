@@ -33,8 +33,8 @@ public class CommentDaoImpl implements CommentDao {
             preparedStatement.setObject(1, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Delete comment error DAO", e);
+            throw new DAOException("Delete comment error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -52,8 +52,8 @@ public class CommentDaoImpl implements CommentDao {
                 comments.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Find all comments by user id error DAO", e);
+            throw new DAOException("Find all comments by user id error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -70,8 +70,8 @@ public class CommentDaoImpl implements CommentDao {
                 comments.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Find all comments error DAO", e);
+            throw new DAOException("Find all comments error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -89,7 +89,8 @@ public class CommentDaoImpl implements CommentDao {
             preparedStatement.setObject(4, entity.getMessage());
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Save comment error DAO", e);
+            throw new DAOException("Save comment error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

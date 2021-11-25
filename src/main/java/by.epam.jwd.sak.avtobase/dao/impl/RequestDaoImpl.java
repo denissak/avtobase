@@ -42,8 +42,8 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(2, requestId);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Add driver on request error DAO", e);
+            throw new DAOException("Add driver on request error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -60,8 +60,8 @@ public class RequestDaoImpl implements RequestDao {
                 requests.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("All requests output error DAO", e);
+            throw new DAOException("All requests output error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -76,8 +76,8 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(1, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Delete request error DAO", e);
+            throw new DAOException("Delete request error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -98,8 +98,8 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(7, entity.getId());
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Update request error DAO", e);
+            throw new DAOException("Update request error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -115,8 +115,8 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(2, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Update status request error DAO", e);
+            throw new DAOException("Update status request error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -135,8 +135,8 @@ public class RequestDaoImpl implements RequestDao {
             }
             return Optional.ofNullable(request);
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Find request by user id error DAO", e);
+            throw new DAOException("Find request by user id error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -157,8 +157,8 @@ public class RequestDaoImpl implements RequestDao {
             preparedStatement.setObject(8, entity.getDetailsRequest());
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Save request error DAO", e);
+            throw new DAOException("Save request error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -176,8 +176,8 @@ public class RequestDaoImpl implements RequestDao {
                 requests.add(buildEntityById(resultSet));
             }
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Find all requests by user id error DAO", e);
+            throw new DAOException("Find all requests by user id error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -195,8 +195,8 @@ public class RequestDaoImpl implements RequestDao {
                 requests.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Find all requests by car id error DAO", e);
+            throw new DAOException("Find all requests by car id error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

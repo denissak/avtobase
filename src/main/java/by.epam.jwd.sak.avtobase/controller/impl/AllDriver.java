@@ -31,8 +31,8 @@ public class AllDriver implements Command {
             req.setAttribute(NUMBER_OF_PAGES, numberOfPages);
             req.setAttribute(ALL_DRIVER, Pagination.process(userDtoList, page));
         } catch (ServiceException e) {
-            LOGGER.error(e);
-            throw new ServletException(e.getMessage(), e);
+            LOGGER.error("All driver controller error", e);
+            throw new ServletException("All driver controller error", e);
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_DRIVER);
         requestDispatcher.forward(req, resp);

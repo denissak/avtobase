@@ -28,8 +28,8 @@ public class EditStatusCar implements Command {
                 factoryService.getCarService().updateStatusById(carId, status);
                 req.getSession().setAttribute(ALL_CAR, factoryService.getCarService().findAllCar());
             } catch (ServiceException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Edit status car controller error", e);
+                throw new ServletException("Edit status car controller error", e);
             }
             resp.sendRedirect(COMMAND_ALL_REQUEST_BY_DRIVER);
         }

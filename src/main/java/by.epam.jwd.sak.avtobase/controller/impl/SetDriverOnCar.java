@@ -26,8 +26,8 @@ public class SetDriverOnCar implements Command {
             try {
                 factoryService.getCarService().addDriver(driverId, carId);
             } catch (ServiceException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Set driver on car controller error", e);
+                throw new ServletException("Set driver on car controller", e);
             }
             resp.sendRedirect(COMMAND_ALL_CAR);
         }

@@ -24,8 +24,8 @@ public class WelcomePage implements Command {
         try {
             req.setAttribute(ALL_COMMENT, factoryService.getCommentService().findAllComment());
         } catch (ServiceException e) {
-            LOGGER.error(e);
-            throw new ServletException(e.getMessage(), e);
+            LOGGER.error("Welcome page controller error", e);
+            throw new ServletException("Welcome page controller error", e);
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_WELCOME);
         requestDispatcher.forward(req, resp);

@@ -22,8 +22,8 @@ public class RolesServiceImpl implements RolesService {
         try {
             return daoFactory.getRolesDao().findAll().stream().map(this::convertToRoleDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            LOGGER.error(e);
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find all roles error service", e);
+            throw new ServiceException("Find all roles error service", e);
         }
     }
 

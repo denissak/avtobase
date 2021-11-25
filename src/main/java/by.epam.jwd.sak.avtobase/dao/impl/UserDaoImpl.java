@@ -38,7 +38,6 @@ public class UserDaoImpl implements UserDao {
     private static final String UPDATE_PASSWORD_USER = "UPDATE users SET password = ? WHERE id = ?";
     private static final String DELETE_USER = "UPDATE users SET is_active = ? WHERE id = ?";
     private static final String RESTORE_USER = "UPDATE users SET is_active = ? WHERE id = ?";
-//    private static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
 
     @Override
     public List<User> findAllDrivers() throws DAOException {
@@ -50,8 +49,8 @@ public class UserDaoImpl implements UserDao {
                 users.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException();
+            LOGGER.error("Find all drivers error DAO", e);
+            throw new DAOException("Find all drivers error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -70,8 +69,8 @@ public class UserDaoImpl implements UserDao {
             }
             return Optional.ofNullable(user);
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException();
+            LOGGER.error("Find user by id error DAO", e);
+            throw new DAOException("Find user by id error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -87,8 +86,8 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setObject(2, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException();
+            LOGGER.error("Delete user error DAO", e);
+            throw new DAOException("Delete user error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -105,8 +104,8 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setObject(2, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException();
+            LOGGER.error("Restore user error DAO", e);
+            throw new DAOException("Restore user error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -126,8 +125,8 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setObject(6, entity.getId());
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException();
+            LOGGER.error("Update user error DAO", e);
+            throw new DAOException("Update user error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -137,8 +136,8 @@ public class UserDaoImpl implements UserDao {
                 preparedStatement.setObject(2, entity.getId());
                 result = preparedStatement.executeUpdate();
             } catch (SQLException e) {
-                LOGGER.error(e);
-                throw new DAOException(e.getMessage(), e);
+                LOGGER.error("Update user password error DAO", e);
+                throw new DAOException("Update user password error DAO", e);
             } finally {
                 ConnectionManager.returnConnection(connection);
             }
@@ -158,8 +157,8 @@ public class UserDaoImpl implements UserDao {
             }
 
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Find all users error DAO", e);
+            throw new DAOException("Find all users error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -177,8 +176,8 @@ public class UserDaoImpl implements UserDao {
             }
 
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Find all disabled users error DAO", e);
+            throw new DAOException("Find all disabled users error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -196,8 +195,8 @@ public class UserDaoImpl implements UserDao {
                 users.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Find all free drivers error DAO", e);
+            throw new DAOException("Find all free drivers error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -216,8 +215,8 @@ public class UserDaoImpl implements UserDao {
             }
             return user;
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Find user by login error DAO", e);
+            throw new DAOException("Find user by login error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -237,8 +236,8 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setObject(7, ENABLED);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Save user error DAO", e);
+            throw new DAOException("Save user error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

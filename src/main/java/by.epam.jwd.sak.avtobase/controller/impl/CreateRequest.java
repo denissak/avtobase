@@ -38,8 +38,8 @@ public class CreateRequest implements Command {
             try {
                 factoryService.getRequestService().create(requestDto);
             } catch (ServiceException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Create request controller error", e);
+                throw new ServletException("Create request controller error", e);
             }
         }
         req.setAttribute(TYPE_TRANSPORTS, TypeTransport.values());

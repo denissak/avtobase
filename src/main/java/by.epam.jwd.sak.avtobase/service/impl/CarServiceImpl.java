@@ -26,8 +26,8 @@ public class CarServiceImpl implements CarService {
         try {
             return daoFactory.getCarDao().findAllFreeDriver().stream().map(this::convertToCarDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            LOGGER.error(e);
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find all free drivers error service", e);
+            throw new ServiceException("Find all free drivers error service", e);
         }
     }
 
@@ -47,8 +47,8 @@ public class CarServiceImpl implements CarService {
         try {
             daoFactory.getCarDao().update(car);
         } catch (DAOException e) {
-            LOGGER.error(e);
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Update car error service", e);
+            throw new ServiceException("Update car error service", e);
         }
         return true;
     }
@@ -58,8 +58,8 @@ public class CarServiceImpl implements CarService {
         try {
             return daoFactory.getCarDao().addDriver(driverId, carId);
         } catch (DAOException e) {
-            LOGGER.error(e);
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Add driver on car error service", e);
+            throw new ServiceException("Add driver on car error service", e);
         }
     }
 
@@ -68,8 +68,8 @@ public class CarServiceImpl implements CarService {
         try {
             return daoFactory.getCarDao().delete(id);
         } catch (DAOException e) {
-            LOGGER.error(e);
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Delete car error service", e);
+            throw new ServiceException("Delete car error service", e);
         }
     }
 
@@ -78,7 +78,8 @@ public class CarServiceImpl implements CarService {
         try {
             return daoFactory.getCarDao().updateStatusById(id, status);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Update status car error service", e);
+            throw new ServiceException("Update status car error service", e);
         }
     }
 
@@ -88,8 +89,8 @@ public class CarServiceImpl implements CarService {
         try {
             return daoFactory.getCarDao().findAll().stream().map(this::convertToCarDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            LOGGER.error(e);
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find all cars error service", e);
+            throw new ServiceException("Find all cars error service", e);
         }
     }
 
@@ -109,8 +110,8 @@ public class CarServiceImpl implements CarService {
         try {
             daoFactory.getCarDao().save(carBean);
         } catch (DAOException e) {
-            LOGGER.error(e);
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Create car error service", e);
+            throw new ServiceException("Create car error service", e);
         }
         return true;
     }
@@ -120,8 +121,8 @@ public class CarServiceImpl implements CarService {
         try {
             return convertToCarDto(daoFactory.getCarDao().findByUserId(id));
         } catch (DAOException e) {
-            LOGGER.error(e);
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find car by user id error service", e);
+            throw new ServiceException("Find car by user id error service", e);
         }
     }
 
@@ -130,8 +131,8 @@ public class CarServiceImpl implements CarService {
         try {
             return convertToCarDto(daoFactory.getCarDao().findById(id));
         } catch (DAOException e) {
-            LOGGER.error(e);
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find car by id error service", e);
+            throw new ServiceException("Find car by id error service", e);
         }
     }
 

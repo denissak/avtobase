@@ -27,8 +27,8 @@ public class EditStatusRequestByDriver implements Command {
             try {
                 factoryService.getRequestService().updateStatusById(requestId, status);
             } catch (ServiceException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Edit status request by driver controller error", e);
+                throw new ServletException("Edit status request by driver controller error", e);
             }
             resp.sendRedirect(COMMAND_ALL_REQUEST_BY_DRIVER);
         }

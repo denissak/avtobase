@@ -27,8 +27,8 @@ public class CommentServiceImpl implements CommentService {
             return daoFactory.getCommentDao().findAllByUserId(userId).stream()
                     .map(this::convertToCommentDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            LOGGER.error(e);
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find all comments by user error service", e);
+            throw new ServiceException("Find all comments by user error service", e);
         }
     }
 
@@ -37,7 +37,8 @@ public class CommentServiceImpl implements CommentService {
         try {
             return daoFactory.getCommentDao().delete(id);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Delete comment error service", e);
+            throw new ServiceException("Delete comment error service", e);
         }
     }
 
@@ -46,7 +47,8 @@ public class CommentServiceImpl implements CommentService {
         try {
             return daoFactory.getCommentDao().findAll().stream().map(this::convertToCommentDto).collect(Collectors.toList());
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Find all comments error service", e);
+            throw new ServiceException("Find all comments error service", e);
         }
     }
 
@@ -59,7 +61,8 @@ public class CommentServiceImpl implements CommentService {
         try {
             daoFactory.getCommentDao().save(commentBean);
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage(), e);
+            LOGGER.error("Create comment error service", e);
+            throw new ServiceException("Create comment error service", e);
         }
         return true;
     }

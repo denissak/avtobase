@@ -1,5 +1,8 @@
 package by.epam.jwd.sak.avtobase.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +16,7 @@ import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 @WebServlet("/")
 public class Controller extends HttpServlet {
 
+    private static final Logger LOGGER = LogManager.getLogger();
     private final CommandProvider provider = new CommandProvider();
 
     public Controller() {
@@ -39,7 +43,8 @@ public class Controller extends HttpServlet {
                 command.execute(req, resp);
             }
         } catch (RuntimeException e) {
-            throw new ServletException(e.getMessage(), e);
+            LOGGER.error("Main controller error", e);
+            throw new ServletException("Main controller error", e);
         }
     }
 }

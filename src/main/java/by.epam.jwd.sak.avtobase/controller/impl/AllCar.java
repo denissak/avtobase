@@ -32,8 +32,8 @@ public class AllCar implements Command {
             req.setAttribute(ALL_CAR, Pagination.process(carDtoList, page));
             req.setAttribute(USER_DRIVERS, factoryService.getUserService().findAllDrivers());
         } catch (ServiceException e) {
-            LOGGER.error(e);
-            throw new ServletException(e.getMessage(), e);
+            LOGGER.error("All car controller error", e);
+            throw new ServletException("All car controller error", e);
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(PAGE_ALL_CAR);
         requestDispatcher.forward(req, resp);

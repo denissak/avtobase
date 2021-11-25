@@ -42,8 +42,8 @@ public class CarDaoImpl implements CarDao {
                 cars.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Free drivers output error DAO", e);
+            throw new DAOException("Free drivers output error DAO" , e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -68,8 +68,8 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(11, entity.getId());
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Update car error DAO", e);
+            throw new DAOException("Update car error DAO", e);
         } finally {
 
             ConnectionManager.returnConnection(connection);
@@ -86,8 +86,8 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(2, carId);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Add driver on car error DAO", e);
+            throw new DAOException("Add driver on car error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -102,8 +102,8 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(1, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Delete car error DAO", e);
+            throw new DAOException("Delete car error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -122,8 +122,8 @@ public class CarDaoImpl implements CarDao {
             }
             return car;
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Find car by id error DAO", e);
+            throw new DAOException("Find car by id error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -141,8 +141,8 @@ public class CarDaoImpl implements CarDao {
             }
             return car;
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Find car by user id error DAO",e);
+            throw new DAOException("Find car by user id error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -158,8 +158,8 @@ public class CarDaoImpl implements CarDao {
                 cars.add(buildEntity(resultSet));
             }
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("All cars output error DAO", e);
+            throw new DAOException("All cars output error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -183,8 +183,8 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(10, entity.getCarDescription());
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Save car error DAO", e);
+            throw new DAOException("Save car error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }
@@ -200,8 +200,8 @@ public class CarDaoImpl implements CarDao {
             preparedStatement.setObject(2, id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error(e);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("Update status car error DAO", e);
+            throw new DAOException("Update status car error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

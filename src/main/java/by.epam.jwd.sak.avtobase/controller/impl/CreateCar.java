@@ -41,8 +41,8 @@ public class CreateCar implements Command {
             try {
                 factoryService.getCarService().create(carDto);
             } catch (ServiceException e) {
-                LOGGER.error(e);
-                throw new ServletException(e.getMessage(), e);
+                LOGGER.error("Create car controller error", e);
+                throw new ServletException("Create car controller error", e);
             }
         }
         req.setAttribute(TYPE_TRANSPORTS, TypeTransport.values());
