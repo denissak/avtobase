@@ -42,7 +42,8 @@
                                     key="text.disabled_users"/></a>
                         </li>
                         <li class="nav-item">
-                            <a href="Controller?command=allcar&page=1" class="nav-link"><fmt:message key="text.all_cars"/></a>
+                            <a href="Controller?command=allcar&page=1" class="nav-link"><fmt:message
+                                    key="text.all_cars"/></a>
                         </li>
                         <li class="nav-item">
                             <a href="Controller?command=allrequest&page=1" class="nav-link"><fmt:message
@@ -58,11 +59,11 @@
                         </form>
                     </div>
                 </c:when>
-
                 <c:when test="${user.getRole().equals('dispatcher')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a href="Controller?command=allcar&page=1" class="nav-link"><fmt:message key="text.all_cars"/></a>
+                            <a href="Controller?command=allcar&page=1" class="nav-link"><fmt:message
+                                    key="text.all_cars"/></a>
                         </li>
                         <li class="nav-item">
                             <a href="Controller?command=allrequest&page=1" class="nav-link"><fmt:message
@@ -85,7 +86,6 @@
                         </form>
                     </div>
                 </c:when>
-
                 <c:when test="${user.getRole().equals('driver')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
@@ -102,7 +102,6 @@
                         </form>
                     </div>
                 </c:when>
-
                 <c:when test="${user.getRole().equals('user')}">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
@@ -126,7 +125,6 @@
                         </form>
                     </div>
                 </c:when>
-
             </c:choose>
         </div>
     </div>
@@ -137,7 +135,6 @@
         </form>
     </div>
 </nav>
-
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -151,7 +148,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="createRequestModal" tabindex="-1" aria-labelledby="createRequestModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -168,7 +164,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="changeStatusCar" tabindex="-1" aria-labelledby="changeStatusCarLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -184,7 +179,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="createCarModal" tabindex="-1" aria-labelledby="createCarModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -202,7 +196,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -218,8 +211,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="modal fade" id="createCommentModal" tabindex="-1" aria-labelledby="createCommentModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -235,8 +226,6 @@
         </div>
     </div>
 </div>
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>

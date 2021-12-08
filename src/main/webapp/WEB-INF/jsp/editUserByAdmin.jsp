@@ -4,6 +4,7 @@
 
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="loc"/>
+
 <html>
 <head>
     <title><fmt:message key="text.edit"/></title>

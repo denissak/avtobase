@@ -10,7 +10,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-
 </head>
 <body>
 
@@ -30,7 +29,6 @@
                        value="${param.carId}"
                 >
             </div>
-
             <div class="mb-3">
                 <label for="exampleMark" class="form-label"><fmt:message key="text.model"/></label>
                 <input type="text"
