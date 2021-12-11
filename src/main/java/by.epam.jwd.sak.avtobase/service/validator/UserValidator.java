@@ -1,5 +1,7 @@
 package by.epam.jwd.sak.avtobase.service.validator;
 
+import by.epam.jwd.sak.avtobase.dto.UserDto;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,29 +15,36 @@ public class UserValidator {
     private UserValidator() {
     }
 
-    public static boolean isCorrectLogin(String login) {
+    public static boolean isUserValid (UserDto userDto) {
+        if (!(isCorrectLogin(userDto.getLogin()) || isCorrectName(userDto.getName())
+                || isCorrectSurname(userDto.getSurname()) || isCorrectPhoneNumber(userDto.getPhoneNumber()))) {
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isCorrectLogin(String login) {
         Pattern pattern = Pattern.compile(LOGIN_REGEX);
         Matcher matcher = pattern.matcher(login);
         return matcher.matches();
     }
 
-    public static boolean isCorrectName(String name) {
+    private static boolean isCorrectName(String name) {
         Pattern pattern = Pattern.compile(NAME_REGEX);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
 
-    public static boolean isCorrectSurname(String surname) {
+    private static boolean isCorrectSurname(String surname) {
         Pattern pattern = Pattern.compile(SURNAME_REGEX);
         Matcher matcher = pattern.matcher(surname);
         return matcher.matches();
     }
 
-    public static boolean isCorrectPhoneNumber(String phoneNumber) {
+    private static boolean isCorrectPhoneNumber(String phoneNumber) {
         Pattern pattern = Pattern.compile(PHONE_NUMBER_REGEX);
         Matcher matcher = pattern.matcher(phoneNumber);
         return matcher.matches();
     }
-
 
 }

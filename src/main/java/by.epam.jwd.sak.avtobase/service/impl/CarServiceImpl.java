@@ -33,14 +33,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public boolean update(CarDto carDto) throws ServiceException {
-        if (carDto == null
-                || !(CarValidation.isCorrectModel(carDto.getModel())
-                || CarValidation.isCorrectMark(carDto.getMark())
-                || CarValidation.isCorrectDate(String.valueOf(carDto.getReleaseDate()))
-                || CarValidation.isCorrectDate(String.valueOf(carDto.getInspectionPermission()))
-                || CarValidation.isCorrectCapacity(carDto.getLiftingCapacity())
-                || CarValidation.isCorrectCapacity(carDto.getCargoCapacity())
-                || CarValidation.isCorrectCapacity(carDto.getPassengerCapacity()))) {
+        if (carDto == null || CarValidation.isCarValid(carDto)) {
             return false;
         }
         Car car = convertToCar(carDto);
@@ -96,14 +89,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public boolean create(CarDto carDto) throws ServiceException {
-        if (carDto == null
-                || !(CarValidation.isCorrectModel(carDto.getModel())
-                || CarValidation.isCorrectMark(carDto.getMark())
-                || CarValidation.isCorrectDate(String.valueOf(carDto.getReleaseDate()))
-                || CarValidation.isCorrectDate(String.valueOf(carDto.getInspectionPermission()))
-                || CarValidation.isCorrectCapacity(carDto.getLiftingCapacity())
-                || CarValidation.isCorrectCapacity(carDto.getCargoCapacity())
-                || CarValidation.isCorrectCapacity(carDto.getPassengerCapacity()))) {
+        if (carDto == null || CarValidation.isCarValid(carDto)) {
             return false;
         }
         Car carBean = convertToCar(carDto);

@@ -1,5 +1,7 @@
 package by.epam.jwd.sak.avtobase.service.validator;
 
+import by.epam.jwd.sak.avtobase.dto.CarDto;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,26 +18,39 @@ public class CarValidation {
     private CarValidation() {
     }
 
-    public static boolean isCorrectMark(String mark) {
+    public static boolean isCarValid (CarDto carDto) {
+        if (!(isCorrectModel(carDto.getModel())
+                || isCorrectMark(carDto.getMark())
+                || isCorrectDate(String.valueOf(carDto.getReleaseDate()))
+                || isCorrectDate(String.valueOf(carDto.getInspectionPermission()))
+                || isCorrectCapacity(carDto.getLiftingCapacity())
+                || isCorrectCapacity(carDto.getCargoCapacity())
+                || isCorrectCapacity(carDto.getPassengerCapacity()))) {
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isCorrectMark(String mark) {
         Pattern pattern = Pattern.compile(MARK_REGEX);
         Matcher matcher = pattern.matcher(mark);
         return matcher.matches();
     }
 
-    public static boolean isCorrectModel(String model) {
+    private static boolean isCorrectModel(String model) {
         Pattern pattern = Pattern.compile(MODEL_REGEX);
         Matcher matcher = pattern.matcher(model);
         return matcher.matches();
     }
 
-    public static boolean isCorrectCapacity(Integer capacity) {
+    private static boolean isCorrectCapacity(Integer capacity) {
         String stringCapacity = String.valueOf(capacity);
         Pattern pattern = Pattern.compile(CAPACITY_REGEX);
         Matcher matcher = pattern.matcher(stringCapacity);
         return matcher.matches();
     }
 
-    public static boolean isCorrectDate(String date) {
+    private static boolean isCorrectDate(String date) {
         Pattern pattern = Pattern.compile(DATE_REGEX);
         Matcher matcher = pattern.matcher(date);
         return matcher.matches();

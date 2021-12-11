@@ -55,10 +55,7 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public boolean update(RequestDto requestDto) throws ServiceException {
-        if (requestDto == null
-                || !(RequestValidation.isCorrectAddress(requestDto.getStartAddress())
-                || RequestValidation.isCorrectDate(String.valueOf(requestDto.getDateDeparture()))
-                || RequestValidation.isCorrectAddress(requestDto.getEndAddress()))) {
+        if (requestDto == null || RequestValidation.isRequestValid(requestDto)) {
             return false;
         }
         Request requestBean = convertToRequest(requestDto);
@@ -93,10 +90,7 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public boolean create(RequestDto requestDto) throws ServiceException {
-        if (requestDto == null
-                || !(RequestValidation.isCorrectAddress(requestDto.getStartAddress())
-                || RequestValidation.isCorrectDate(String.valueOf(requestDto.getDateDeparture()))
-                || RequestValidation.isCorrectAddress(requestDto.getEndAddress()))) {
+        if (requestDto == null || RequestValidation.isRequestValid(requestDto)) {
             return false;
         }
         Request requestBean = convertToRequest(requestDto);

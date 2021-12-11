@@ -1,5 +1,6 @@
 package by.epam.jwd.sak.avtobase.service.impl;
 
+import by.epam.jwd.sak.avtobase.dao.UserDao;
 import by.epam.jwd.sak.avtobase.entity.Role;
 import by.epam.jwd.sak.avtobase.entity.User;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
@@ -20,13 +21,13 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private final DaoFactory daoFactory = DaoFactory.getInstance();
+    private final UserDao userDao = DaoFactory.getInstance().getUserDao();
 
 
     @Override
     public List<UserDto> findAllDrivers() throws ServiceException {
         try {
-            return daoFactory.getUserDao().findAllDrivers().stream().map(this::convertToUserDto).collect(Collectors.toList());
+            return userDao.findAllDrivers().stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error("Find all drivers error service", e);
             throw new ServiceException("Find all drivers error service", e);
@@ -36,7 +37,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<UserDto> findById(Long id) throws ServiceException {
         try {
-            return daoFactory.getUserDao().findById(id).map(this::convertToUserDto);
+            return userDao.findById(id).map(this::convertToUserDto);
         } catch (DAOException e) {
             LOGGER.error("Find user by id error service", e);
             throw new ServiceException("Find user by id error service", e);
@@ -46,7 +47,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean delete(Long id) throws ServiceException {
         try {
-            return daoFactory.getUserDao().delete(id);
+            return userDao.delete(id);
         } catch (DAOException e) {
             LOGGER.error("Delete user error service", e);
             throw new ServiceException("Delete user error service", e);
@@ -56,7 +57,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean restore(Long id) throws ServiceException {
         try {
-            return daoFactory.getUserDao().restore(id);
+            return userDao.restore(id);
         } catch (DAOException e) {
             LOGGER.error("Restore user error service", e);
             throw new ServiceException("Restore user error service", e);
@@ -64,17 +65,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean update(UserDto entity) throws ServiceException {
-        if (entity == null
-                || !(UserValidator.isCorrectLogin(entity.getLogin())
-                || UserValidator.isCorrectName(entity.getName())
-                || UserValidator.isCorrectSurname(entity.getSurname())
-                || UserValidator.isCorrectPhoneNumber(entity.getPhoneNumber()))) {
+    public boolean update(UserDto userDto) throws ServiceException {
+        if (userDto == null || UserValidator.isUserValid(userDto)) {
             return false;
         }
-        User userBean = convertToUser(entity);
+        User userBean = convertToUser(userDto);
         try {
-            daoFactory.getUserDao().update(userBean);
+            userDao.update(userBean);
         } catch (DAOException e) {
             LOGGER.error("Update user error service", e);
             throw new ServiceException("Update user error service", e);
@@ -85,7 +82,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> findAllUser() throws ServiceException {
         try {
-            return daoFactory.getUserDao().findAll().stream().map(this::convertToUserDto).collect(Collectors.toList());
+            return userDao.findAll().stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error("Find all users error service", e);
             throw new ServiceException("Find all users error service", e);
@@ -95,7 +92,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> findAllDisabledUser() throws ServiceException {
         try {
-            return daoFactory.getUserDao().findAllDisabledUser().stream().map(this::convertToUserDto).collect(Collectors.toList());
+            return userDao.findAllDisabledUser().stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error("Find all disabled users error service", e);
             throw new ServiceException("Find all disabled users error service", e);
@@ -105,7 +102,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> findAllFreeDrivers(Date date) throws ServiceException {
         try {
-            return daoFactory.getUserDao().findAllFreeDrivers(date).stream().map(this::convertToUserDto).collect(Collectors.toList());
+            return userDao.findAllFreeDrivers(date).stream().map(this::convertToUserDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error("Find all free drivers error service", e);
             throw new ServiceException("Find all free drivers error service", e);
@@ -116,7 +113,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto findByLogin(String login) throws ServiceException {
         try {
-            return convertToUserDto(daoFactory.getUserDao().findByLogin(login));
+            return convertToUserDto(userDao.findByLogin(login));
 
         } catch (DAOException e) {
             LOGGER.error("Find user by login error service", e);
@@ -127,16 +124,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean create(UserDto userDto) throws ServiceException {
-        if (userDto == null
-                || !(UserValidator.isCorrectLogin(userDto.getLogin())
-                || UserValidator.isCorrectName(userDto.getName())
-                || UserValidator.isCorrectSurname(userDto.getSurname())
-                || UserValidator.isCorrectPhoneNumber(userDto.getPhoneNumber()))) {
+        if (userDto == null || UserValidator.isUserValid(userDto)) {
             return false;
         }
         User userBean = convertToUser(userDto);
         try {
-            daoFactory.getUserDao().save(userBean);
+            userDao.save(userBean);
         } catch (DAOException e) {
             LOGGER.error("Create user error service", e);
             throw new ServiceException("Create user error service", e);

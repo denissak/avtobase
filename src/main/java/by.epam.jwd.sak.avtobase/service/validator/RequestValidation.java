@@ -1,5 +1,7 @@
 package by.epam.jwd.sak.avtobase.service.validator;
 
+import by.epam.jwd.sak.avtobase.dto.RequestDto;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,13 +15,22 @@ public class RequestValidation {
     private RequestValidation() {
     }
 
-    public static boolean isCorrectAddress(String address) {
+    public static boolean isRequestValid (RequestDto requestDto) {
+        if (!(isCorrectAddress(requestDto.getStartAddress())
+                || isCorrectDate(String.valueOf(requestDto.getDateDeparture()))
+                || isCorrectAddress(requestDto.getEndAddress()))) {
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isCorrectAddress(String address) {
         Pattern pattern = Pattern.compile(ADDRESS_REGEX);
         Matcher matcher = pattern.matcher(address);
         return matcher.matches();
     }
 
-    public static boolean isCorrectDate(String date) {
+    private static boolean isCorrectDate(String date) {
         Pattern pattern = Pattern.compile(DATE_REGEX);
         Matcher matcher = pattern.matcher(date);
         return matcher.matches();
