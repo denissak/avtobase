@@ -17,6 +17,12 @@ import java.io.IOException;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
+/**
+ *
+ * {@code Command} realization for creating car.
+ *
+ */
+
 public class CreateCar implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger();

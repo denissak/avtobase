@@ -11,6 +11,13 @@ import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
+/**
+ * Singleton-based class which provides support for connection pool
+ * initializing, destroying and methods for working with connections in
+ * connection pool.
+ *
+ */
+
 public final class ConnectionManager {
     private static final String USERNAME_KEY = "db.username";
     private static final String PASSWORD_KEY = "db.password";

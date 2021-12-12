@@ -16,11 +16,21 @@ import java.util.List;
 
 import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
+/**
+ * Provides methods for working with Roles table and entities {@link Role},
+ */
+
 public class RolesDaoImpl implements RolesDao {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
     private static final String GET_ALL_ROLE = "SELECT * FROM roles";
+
+    /**
+     * Search all roles.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public List<Role> findAll() throws DAOException {
@@ -39,6 +49,12 @@ public class RolesDaoImpl implements RolesDao {
         }
         return roles;
     }
+
+    /**
+     * Build entity.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     private Role buildEntity(ResultSet resultSet) throws SQLException {
         return Role.builder()

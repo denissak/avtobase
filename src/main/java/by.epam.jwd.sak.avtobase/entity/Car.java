@@ -52,8 +52,6 @@ public class Car implements Serializable {
         this.id = id;
     }
 
-
-
     public String getMark() {
         return mark;
     }
@@ -93,7 +91,6 @@ public class Car implements Serializable {
     public void setInspectionPermission(LocalDate inspectionPermission) {
         this.inspectionPermission = inspectionPermission;
     }
-
     public TypeTransport getTypeTransport() {
         return typeTransport;
     }
@@ -125,8 +122,6 @@ public class Car implements Serializable {
     public void setPassengerCapacity(Integer passengerCapacity) {
         this.passengerCapacity = passengerCapacity;
     }
-
-
 
     public StatusCar getStatusCar() {
         return statusCar;

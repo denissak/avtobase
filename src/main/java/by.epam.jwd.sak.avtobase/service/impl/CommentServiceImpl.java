@@ -17,10 +17,22 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * Provides access to {@link CommentDao} and support for working with entities
+ * {@link Comment}.
+ */
+
 public class CommentServiceImpl implements CommentService {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private final CommentDao commentDao = DaoFactory.getInstance().getCommentDao();
+
+    /**
+     * Search all comments by user.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public List<CommentDto> findAllCommentByUser(Long userId) throws ServiceException {
@@ -33,6 +45,12 @@ public class CommentServiceImpl implements CommentService {
         }
     }
 
+    /**
+     * Delete comment.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean delete(Long id) throws ServiceException {
         try {
@@ -43,6 +61,12 @@ public class CommentServiceImpl implements CommentService {
         }
     }
 
+    /**
+     * Search all comments.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public List<CommentDto> findAllComment() throws ServiceException {
         try {
@@ -52,6 +76,12 @@ public class CommentServiceImpl implements CommentService {
             throw new ServiceException("Find all comments error service", e);
         }
     }
+
+    /**
+     * Create comment.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean create(CommentDto commentDto) throws ServiceException {

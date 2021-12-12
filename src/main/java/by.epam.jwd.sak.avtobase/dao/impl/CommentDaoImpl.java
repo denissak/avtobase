@@ -16,6 +16,10 @@ import java.util.List;
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
+/**
+ * Provides methods for working with Comments table and entities {@link Comment},
+ */
+
 public class CommentDaoImpl implements CommentDao {
 
     private static final Logger LOGGER = LogManager.getLogger();
@@ -24,6 +28,12 @@ public class CommentDaoImpl implements CommentDao {
     private static final String GET_ALL_COMMENT_BY_USER_ID = "SELECT * FROM comments as c JOIN users u on c.user_id = u.id WHERE user_id = ? ORDER BY comment_date";
     private static final String SAVE_COMMENT = "INSERT INTO comments (user_id, comment_date, mark, message) VALUES (?,?,?,?)";
     private static final String DELETE_COMMENT = "DELETE FROM comments WHERE id = ?";
+
+    /**
+     * Delete comment.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean delete(Long id) throws DAOException {
@@ -40,6 +50,12 @@ public class CommentDaoImpl implements CommentDao {
         }
         return result == 1;
     }
+
+    /**
+     * Search all comments by user id.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public List<Comment> findAllByUserId(Long userId) throws DAOException {
@@ -60,6 +76,12 @@ public class CommentDaoImpl implements CommentDao {
         return comments;
     }
 
+    /**
+     * Search all comments.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public List<Comment> findAll() throws DAOException {
         List<Comment> comments = new ArrayList<>();
@@ -77,6 +99,12 @@ public class CommentDaoImpl implements CommentDao {
         }
         return comments;
     }
+
+    /**
+     * Save comment.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean save(Comment entity) throws DAOException {
@@ -96,6 +124,12 @@ public class CommentDaoImpl implements CommentDao {
         }
         return result > 0;
     }
+
+    /**
+     * Build entities.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     private Comment buildEntity(ResultSet resultSet) throws SQLException {
         Role role = new Role(

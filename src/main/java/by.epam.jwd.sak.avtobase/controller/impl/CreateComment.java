@@ -15,6 +15,12 @@ import java.io.IOException;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
+/**
+ *
+ * {@code Command} realization for creating comment.
+ *
+ */
+
 public class CreateComment implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger();

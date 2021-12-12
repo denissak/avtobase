@@ -13,10 +13,21 @@ import org.apache.logging.log4j.Logger;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Provides access to {@link RolesDao} and support for working with entities
+ * {@link Role}.
+ */
+
 public class RolesServiceImpl implements RolesService {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private final RolesDao rolesDao = DaoFactory.getInstance().getRolesDao();
+
+    /**
+     * Search all roles.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public List<RoleDto> findAllRoles() throws ServiceException {

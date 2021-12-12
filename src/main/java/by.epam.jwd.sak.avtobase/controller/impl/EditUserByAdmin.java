@@ -14,6 +14,12 @@ import java.io.IOException;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
+/**
+ *
+ * {@code Command} realization for performing edit of user by admin.
+ *
+ */
+
 public class EditUserByAdmin implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger();

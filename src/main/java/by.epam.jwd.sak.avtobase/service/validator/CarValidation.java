@@ -5,6 +5,11 @@ import by.epam.jwd.sak.avtobase.dto.CarDto;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Provides support for Car validation.
+ *
+ */
+
 public class CarValidation {
 
     private static final String MARK_REGEX = "[А-Яа-яA-Za-z]{2,15}";

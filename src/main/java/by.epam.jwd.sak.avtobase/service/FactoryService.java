@@ -6,6 +6,11 @@ import by.epam.jwd.sak.avtobase.service.impl.RequestServiceImpl;
 import by.epam.jwd.sak.avtobase.service.impl.RolesServiceImpl;
 import by.epam.jwd.sak.avtobase.service.impl.UserServiceImpl;
 
+/**
+ * Singleton-based class which provides specific realization of Service-layer
+ * interfaces.
+ */
+
 public class FactoryService {
 
     private static FactoryService instance = null;

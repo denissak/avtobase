@@ -17,11 +17,23 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+
+/**
+ * Provides access to {@link UserDao} and support for working with entities
+ * {@link User}.
+ */
+
+
 public class UserServiceImpl implements UserService {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private final UserDao userDao = DaoFactory.getInstance().getUserDao();
 
+    /**
+     * Search all drivers.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public List<UserDto> findAllDrivers() throws ServiceException {
@@ -33,6 +45,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Search user by id.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public Optional<UserDto> findById(Long id) throws ServiceException {
         try {
@@ -42,6 +60,12 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("Find user by id error service", e);
         }
     }
+
+    /**
+     * Disabled user.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean delete(Long id) throws ServiceException {
@@ -53,6 +77,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Restore user if they were deleted.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean restore(Long id) throws ServiceException {
         try {
@@ -62,6 +92,12 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("Restore user error service", e);
         }
     }
+
+    /**
+     * Update user's fields.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean update(UserDto userDto) throws ServiceException {
@@ -78,6 +114,12 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    /**
+     * Search all users.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public List<UserDto> findAllUser() throws ServiceException {
         try {
@@ -87,6 +129,12 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("Find all users error service", e);
         }
     }
+
+    /**
+     * Search all disabled users.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public List<UserDto> findAllDisabledUser() throws ServiceException {
@@ -98,6 +146,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Search for a user by login.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public UserDto findByLogin(String login) throws ServiceException {
         try {
@@ -108,6 +162,12 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("Find user by login error service", e);
         }
     }
+
+    /**
+     * Creates user with passed parameters.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean create(UserDto userDto) throws ServiceException {

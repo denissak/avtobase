@@ -17,6 +17,12 @@ import java.util.List;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
+/**
+ *
+ * {@code Command} realization for watching all drivers.
+ *
+ */
+
 public class AllDriver implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger();

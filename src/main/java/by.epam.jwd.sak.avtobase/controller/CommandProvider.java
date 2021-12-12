@@ -5,6 +5,14 @@ import by.epam.jwd.sak.avtobase.controller.impl.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Singleton-based class which provides specific realization of {@link Command}
+ * by command name.
+ *
+ * @see CommandName
+ * @see Command
+ */
+
 public class CommandProvider {
 
     private Map<CommandName, Command> commands = new HashMap<>();

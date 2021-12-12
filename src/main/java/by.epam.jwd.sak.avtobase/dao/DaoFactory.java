@@ -6,6 +6,11 @@ import by.epam.jwd.sak.avtobase.dao.impl.RequestDaoImpl;
 import by.epam.jwd.sak.avtobase.dao.impl.RolesDaoImpl;
 import by.epam.jwd.sak.avtobase.dao.impl.UserDaoImpl;
 
+/**
+ * Singleton-based class which provides specific realization of DAO-layer
+ * interfaces.
+ */
+
 public class DaoFactory {
 
         private static DaoFactory instance = null;

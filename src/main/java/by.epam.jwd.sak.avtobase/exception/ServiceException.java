@@ -1,5 +1,10 @@
 package by.epam.jwd.sak.avtobase.exception;
 
+/**
+ * Realization of Exception-class for exceptions in Service-layer.
+ *
+ */
+
 public class ServiceException extends Exception{
 
     public ServiceException() {

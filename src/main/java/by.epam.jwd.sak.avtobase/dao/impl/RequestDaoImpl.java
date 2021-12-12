@@ -19,6 +19,10 @@ import java.util.Optional;
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
+/**
+ * Provides methods for working with Requests table and entities {@link Request},
+ */
+
 public class RequestDaoImpl implements RequestDao {
 
     private static final Logger LOGGER = LogManager.getLogger();
@@ -32,6 +36,12 @@ public class RequestDaoImpl implements RequestDao {
     private static final String UPDATE_STATUS = "UPDATE requests SET status_request = ? WHERE id = ?";
     private static final String DELETE_REQUEST = "DELETE FROM requests WHERE id = ?";
     private static final String ADD_DRIVER_ON_REQUEST = "UPDATE requests SET car_id = ? WHERE id = ?";
+
+    /**
+     * Add driver on request.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean addDriverOnRequest(Long carId, Long requestId) throws DAOException {
@@ -49,6 +59,12 @@ public class RequestDaoImpl implements RequestDao {
         }
         return result > 0;
     }
+
+    /**
+     * Search all requests.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public List<Request> findAll() throws DAOException {
@@ -68,6 +84,12 @@ public class RequestDaoImpl implements RequestDao {
         return requests;
     }
 
+    /**
+     * Delete request.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean delete(Long id) throws DAOException {
         int result;
@@ -83,6 +105,12 @@ public class RequestDaoImpl implements RequestDao {
         }
         return result > 0;
     }
+
+    /**
+     * Update request's fields.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean update(Request entity) throws DAOException {
@@ -106,6 +134,12 @@ public class RequestDaoImpl implements RequestDao {
         return result > 0;
     }
 
+    /**
+     * Update status request by id.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean updateStatusById(Long id, String status) throws DAOException {
         int result;
@@ -122,6 +156,12 @@ public class RequestDaoImpl implements RequestDao {
         }
         return result > 0;
     }
+
+    /**
+     * Find request by id.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public Optional<Request> findById(Long id) throws DAOException {
@@ -141,6 +181,12 @@ public class RequestDaoImpl implements RequestDao {
             ConnectionManager.returnConnection(connection);
         }
     }
+
+    /**
+     * Save request.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean save(Request entity) throws DAOException {
@@ -165,6 +211,12 @@ public class RequestDaoImpl implements RequestDao {
         return result > 0;
     }
 
+    /**
+     * Search all requests by user id.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public List<Request> findAllByUserId(Long userId) throws DAOException {
         List<Request> requests = new ArrayList<>();
@@ -184,6 +236,12 @@ public class RequestDaoImpl implements RequestDao {
         return requests;
     }
 
+    /**
+     * Search all requests by car id.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public List<Request> findAllByCarId(Long carId) throws DAOException {
         List<Request> requests = new ArrayList<>();
@@ -202,6 +260,12 @@ public class RequestDaoImpl implements RequestDao {
         }
         return requests;
     }
+
+    /**
+     * Build entities.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     private Request buildEntityById(ResultSet resultSet) throws SQLException {
 

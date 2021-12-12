@@ -13,6 +13,11 @@ import java.io.IOException;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
+/**
+ * Represents Front controller.
+ *
+ */
+
 @WebServlet("/")
 public class Controller extends HttpServlet {
 

@@ -3,6 +3,11 @@ package by.epam.jwd.sak.avtobase.service.validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Provides support for Comment validation.
+ *
+ */
+
 public class CommentValidation {
 
     private static final String MARK_REGEX = "^[1-5]{1}\\d*(\\d+)?$";

@@ -18,6 +18,12 @@ import java.util.List;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
+/**
+ *
+ * {@code Command} realization for watching all requests by user.
+ *
+ */
+
 public class AllUserRequest implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger();

@@ -4,6 +4,11 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
+/**
+ * Provides support in encoding of request and response.
+ *
+ */
+
 @WebFilter("/*")
 public class EncodingFilter implements Filter {
 

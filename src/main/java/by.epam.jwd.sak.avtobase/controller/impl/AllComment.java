@@ -14,6 +14,12 @@ import java.io.IOException;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
+/**
+ *
+ * {@code Command} realization for watching all comments.
+ *
+ */
+
 public class AllComment implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger();

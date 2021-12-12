@@ -5,6 +5,11 @@ import by.epam.jwd.sak.avtobase.dto.UserDto;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Provides support for User validation.
+ *
+ */
+
 public class UserValidator {
 
     private static final String LOGIN_REGEX = "[A-Za-z0-9]{5,15}";

@@ -18,6 +18,10 @@ import java.util.List;
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
+/**
+ * Provides methods for working with Cars table and entities {@link Car},
+ */
+
 public class CarDaoImpl implements CarDao {
 
     private static final Logger LOGGER = LogManager.getLogger();
@@ -31,6 +35,12 @@ public class CarDaoImpl implements CarDao {
     private static final String UPDATE_CAR = "UPDATE cars SET mark = ?, model = ?, release_date = ?, type = ?, lifting_capacity = ?, cargo_capacity = ?, passenger_capacity = ?, inspection_permission = ?, status_car = ?, car_description = ? WHERE id = ?";
     private static final String UPDATE_STATUS = "UPDATE cars SET status_car = ? WHERE id = ?";
     private static final String GET_ALL_FREE_DRIVERS = "SELECT * FROM cars as c JOIN users as u on u.id = c.user_id JOIN roles as r on r.id = u.role_id WHERE c.status_car != 'BROKEN' ORDER BY c.release_date";
+
+    /**
+     * Search all free drivers.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public List<Car> findAllFreeDriver() throws DAOException {
@@ -49,6 +59,12 @@ public class CarDaoImpl implements CarDao {
         }
         return cars;
     }
+
+    /**
+     * Update car's fields.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean update(Car entity) throws DAOException {
@@ -77,6 +93,12 @@ public class CarDaoImpl implements CarDao {
         return result > 0;
     }
 
+    /**
+     * Add driver on car.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean addDriver(Long driverId, Long carId) throws DAOException {
         int result;
@@ -94,6 +116,12 @@ public class CarDaoImpl implements CarDao {
         return result > 0;
     }
 
+    /**
+     * Delete car.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean delete(Long id) throws DAOException {
         int result;
@@ -109,6 +137,12 @@ public class CarDaoImpl implements CarDao {
         }
         return result > 0;
     }
+
+    /**
+     * Search car by id.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public Car findById(Long id) throws DAOException {
@@ -129,6 +163,12 @@ public class CarDaoImpl implements CarDao {
         }
     }
 
+    /**
+     * Search car by user id.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public Car findByUserId(Long id) throws DAOException {
         Connection connection = ConnectionManager.get();
@@ -148,6 +188,12 @@ public class CarDaoImpl implements CarDao {
         }
     }
 
+    /**
+     * Search all cars.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public List<Car> findAll() throws DAOException {
         List<Car> cars = new ArrayList<>();
@@ -165,6 +211,12 @@ public class CarDaoImpl implements CarDao {
         }
         return cars;
     }
+
+    /**
+     * Save car.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean save(Car entity) throws DAOException {
@@ -191,6 +243,12 @@ public class CarDaoImpl implements CarDao {
         return result > 0;
     }
 
+    /**
+     * Update status car.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean updateStatusById(Long id, String status) throws DAOException {
         int result;
@@ -207,6 +265,12 @@ public class CarDaoImpl implements CarDao {
         }
         return result > 0;
     }
+
+    /**
+     * Build all entities.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     private Car buildEntity(ResultSet resultSet) throws SQLException {
 

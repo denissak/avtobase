@@ -19,10 +19,23 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+
+/**
+ * Provides access to {@link RequestDao} and support for working with entities
+ * {@link Request}.
+ */
+
 public class RequestServiceImpl implements RequestService {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private final RequestDao requestDao = DaoFactory.getInstance().getRequestDao();
+
+
+    /**
+     * Add driver in request.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean addDriverOnRequest(Long carId, Long requestId) throws ServiceException {
@@ -34,6 +47,12 @@ public class RequestServiceImpl implements RequestService {
         }
     }
 
+    /**
+     * Search all requests.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public List<RequestDto> findAllRequest() throws ServiceException {
         try {
@@ -44,6 +63,12 @@ public class RequestServiceImpl implements RequestService {
         }
     }
 
+    /**
+     * Delete request.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean delete(Long id) throws ServiceException {
         try {
@@ -53,6 +78,12 @@ public class RequestServiceImpl implements RequestService {
             throw new ServiceException("Delete request error service", e);
         }
     }
+
+    /**
+     * Update request.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean update(RequestDto requestDto) throws ServiceException {
@@ -69,6 +100,12 @@ public class RequestServiceImpl implements RequestService {
         return true;
     }
 
+    /**
+     * Update status request by request id.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean updateStatusById(Long id, String status) throws ServiceException {
         try {
@@ -79,6 +116,12 @@ public class RequestServiceImpl implements RequestService {
         }
     }
 
+    /**
+     * Find request by id.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public Optional<RequestDto> findById(Long id) throws ServiceException {
         try {
@@ -88,6 +131,12 @@ public class RequestServiceImpl implements RequestService {
             throw new ServiceException("Find request by id error service", e);
         }
     }
+
+    /**
+     * Create request.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean create(RequestDto requestDto) throws ServiceException {
@@ -104,6 +153,12 @@ public class RequestServiceImpl implements RequestService {
         return true;
     }
 
+    /**
+     * Search all requests by car id.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public List<RequestDto> findAllByCarId(Long carId) throws ServiceException {
         try {
@@ -114,6 +169,12 @@ public class RequestServiceImpl implements RequestService {
             throw new ServiceException("Find all requests by car id error service", e);
         }
     }
+
+    /**
+     * Search all requests by user id.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public List<RequestDto> findAllRequestByUser(Long userId) throws ServiceException {

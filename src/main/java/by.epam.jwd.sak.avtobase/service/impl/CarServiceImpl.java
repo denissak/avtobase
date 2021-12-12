@@ -16,11 +16,22 @@ import org.apache.logging.log4j.Logger;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * Provides access to {@link CarDao} and support for working with entities
+ * {@link Car}.
+ */
+
 public class CarServiceImpl implements CarService {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private final CarDao carDao = DaoFactory.getInstance().getCarDao();
 
+    /**
+     * Search all free drivers.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public List<CarDto> findAllFreeDriver() throws ServiceException {
@@ -31,6 +42,12 @@ public class CarServiceImpl implements CarService {
             throw new ServiceException("Find all free drivers error service", e);
         }
     }
+
+    /**
+     * Update car's fields.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean update(CarDto carDto) throws ServiceException {
@@ -47,6 +64,12 @@ public class CarServiceImpl implements CarService {
         return true;
     }
 
+    /**
+     * Add driver on car.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean addDriver(Long driverId, Long carId) throws ServiceException {
         try {
@@ -56,6 +79,12 @@ public class CarServiceImpl implements CarService {
             throw new ServiceException("Add driver on car error service", e);
         }
     }
+
+    /**
+     * Delete car.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean delete(Long id) throws ServiceException {
@@ -67,6 +96,12 @@ public class CarServiceImpl implements CarService {
         }
     }
 
+    /**
+     * Update status car by car id.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean updateStatusById(Long id, String status) throws ServiceException {
         try {
@@ -76,6 +111,12 @@ public class CarServiceImpl implements CarService {
             throw new ServiceException("Update status car error service", e);
         }
     }
+
+    /**
+     * Search all cars.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public List<CarDto> findAllCar() throws ServiceException {
@@ -87,6 +128,12 @@ public class CarServiceImpl implements CarService {
             throw new ServiceException("Find all cars error service", e);
         }
     }
+
+    /**
+     * Create car.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean create(CarDto carDto) throws ServiceException {
@@ -103,6 +150,12 @@ public class CarServiceImpl implements CarService {
         return true;
     }
 
+    /**
+     * Find car by user id.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public CarDto findByUserId(Long id) throws ServiceException {
         try {
@@ -112,6 +165,12 @@ public class CarServiceImpl implements CarService {
             throw new ServiceException("Find car by user id error service", e);
         }
     }
+
+    /**
+     * Find car by car id.
+     *
+     * @throws ServiceException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public CarDto findById(Long id) throws ServiceException {

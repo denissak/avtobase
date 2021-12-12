@@ -18,6 +18,12 @@ import java.io.IOException;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
+/**
+ *
+ * {@code Command} realization for performing edit of request by user.
+ *
+ */
+
 public class EditRequestByUser implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger();

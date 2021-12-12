@@ -5,6 +5,11 @@ import by.epam.jwd.sak.avtobase.dto.RequestDto;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Provides support for Request validation.
+ *
+ */
+
 public class RequestValidation {
 
     private static final String ADDRESS_REGEX = "[А-Яа-яA-Za-z0-9]{5,50}";

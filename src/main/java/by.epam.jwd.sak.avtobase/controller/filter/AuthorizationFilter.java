@@ -11,6 +11,11 @@ import java.util.Set;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
+/**
+ * Provides support in check of authorization.
+ *
+ */
+
 @WebFilter("/*")
 public class AuthorizationFilter implements Filter {
 

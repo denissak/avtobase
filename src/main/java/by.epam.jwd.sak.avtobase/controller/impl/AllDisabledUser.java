@@ -13,6 +13,12 @@ import java.util.List;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
+/**
+ *
+ * {@code Command} realization for watching all inactive users.
+ *
+ */
+
 public class AllDisabledUser implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

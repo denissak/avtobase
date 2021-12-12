@@ -17,6 +17,12 @@ import java.time.LocalDate;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
+/**
+ *
+ * {@code Command} realization for performing edit of car.
+ *
+ */
+
 public class EditCar implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger();

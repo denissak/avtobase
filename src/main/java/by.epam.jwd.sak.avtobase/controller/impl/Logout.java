@@ -1,6 +1,12 @@
 package by.epam.jwd.sak.avtobase.controller.impl;
 
 
+/**
+ *
+ * {@code Command} realization for logout user.
+ *
+ */
+
 import by.epam.jwd.sak.avtobase.controller.Command;
 
 import javax.servlet.ServletException;

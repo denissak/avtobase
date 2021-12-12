@@ -1,5 +1,10 @@
 package by.epam.jwd.sak.avtobase.exception;
 
+/**
+ * Realization of Exception-class for exceptions in DAO-layer.
+ *
+ */
+
 public class DAOException extends Exception {
     public DAOException() {
         super();

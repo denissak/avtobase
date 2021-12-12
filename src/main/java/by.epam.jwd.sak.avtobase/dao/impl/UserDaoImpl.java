@@ -16,6 +16,10 @@ import java.util.Optional;
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import static by.epam.jwd.sak.avtobase.dao.daoMapping.Mapping.*;
 
+/**
+ * Provides methods for working with Users table and entities {@link User},
+ */
+
 public class UserDaoImpl implements UserDao {
 
     private static final Logger LOGGER = LogManager.getLogger();
@@ -36,6 +40,12 @@ public class UserDaoImpl implements UserDao {
     private static final String DELETE_USER = "UPDATE users SET is_active = ? WHERE id = ?";
     private static final String RESTORE_USER = "UPDATE users SET is_active = ? WHERE id = ?";
 
+    /**
+     * Search all driver.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public List<User> findAllDrivers() throws DAOException {
         List<User> users = new ArrayList<>();
@@ -53,6 +63,12 @@ public class UserDaoImpl implements UserDao {
         }
         return users;
     }
+
+    /**
+     * Find user by id.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public Optional<User> findById(Long id) throws DAOException {
@@ -73,6 +89,12 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
+    /**
+     * Make user how is inactive.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean delete(Long id) throws DAOException {
         int result;
@@ -91,6 +113,12 @@ public class UserDaoImpl implements UserDao {
         return result > 0;
     }
 
+    /**
+     * Make user how is active.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public boolean restore(Long id) throws DAOException {
         int result;
@@ -108,6 +136,12 @@ public class UserDaoImpl implements UserDao {
         }
         return result > 0;
     }
+
+    /**
+     * Update user's fields.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean update(User entity) throws DAOException {
@@ -142,6 +176,11 @@ public class UserDaoImpl implements UserDao {
         return result > 0;
     }
 
+    /**
+     * Search all users.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public List<User> findAll() throws DAOException {
@@ -162,6 +201,12 @@ public class UserDaoImpl implements UserDao {
         return users;
     }
 
+    /**
+     * Search all inactive users.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public List<User> findAllDisabledUser() throws DAOException {
         List<User> users = new ArrayList<>();
@@ -181,6 +226,12 @@ public class UserDaoImpl implements UserDao {
         return users;
     }
 
+    /**
+     * Find user by login.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
+
     @Override
     public User findByLogin(String login) throws DAOException {
         Connection connection = ConnectionManager.get();
@@ -199,6 +250,12 @@ public class UserDaoImpl implements UserDao {
             ConnectionManager.returnConnection(connection);
         }
     }
+
+    /**
+     * Save user.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     @Override
     public boolean save(User entity) throws DAOException {
@@ -221,6 +278,12 @@ public class UserDaoImpl implements UserDao {
         }
         return result > 0;
     }
+
+    /**
+     * Build entities.
+     *
+     * @throws DAOException If problem occurs during interaction with DAO-layer.
+     */
 
     private User buildEntity(ResultSet resultSet) throws SQLException {
         return User.builder()

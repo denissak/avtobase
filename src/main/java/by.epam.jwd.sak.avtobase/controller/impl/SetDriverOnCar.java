@@ -13,6 +13,12 @@ import java.io.IOException;
 
 import static by.epam.jwd.sak.avtobase.controller.mapping.CommandParameter.*;
 
+/**
+ *
+ * Implementation of {@code Command} to install the driver on the car
+ *
+ */
+
 public class SetDriverOnCar implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger();
