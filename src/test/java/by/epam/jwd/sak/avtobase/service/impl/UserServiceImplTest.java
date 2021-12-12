@@ -121,12 +121,4 @@ class UserServiceImplTest {
         userService.findByLogin(userDto.getLogin());
     }
 
-/*    @Test
-    void testFindById() throws ServiceException, DAOException {
-
-        Mockito.doReturn(user).when(userDao).findById(Mockito.any());
-        assertTrue();
-
-    }*/
-
 }

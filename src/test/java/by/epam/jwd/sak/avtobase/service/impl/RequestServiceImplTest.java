@@ -1,14 +1,11 @@
 package by.epam.jwd.sak.avtobase.service.impl;
 
-import by.epam.jwd.sak.avtobase.dao.CarDao;
 import by.epam.jwd.sak.avtobase.dao.RequestDao;
-import by.epam.jwd.sak.avtobase.dto.CarDto;
 import by.epam.jwd.sak.avtobase.dto.RequestDto;
 import by.epam.jwd.sak.avtobase.dto.UserDto;
 import by.epam.jwd.sak.avtobase.entity.*;
 import by.epam.jwd.sak.avtobase.exception.DAOException;
 import by.epam.jwd.sak.avtobase.exception.ServiceException;
-import by.epam.jwd.sak.avtobase.service.CarService;
 import by.epam.jwd.sak.avtobase.service.RequestService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
