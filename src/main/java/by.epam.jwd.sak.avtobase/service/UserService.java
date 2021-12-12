@@ -17,8 +17,6 @@ public interface UserService {
 
     List<UserDto> findAllDisabledUser() throws ServiceException;
 
-    List<UserDto> findAllFreeDrivers(Date date) throws ServiceException;
-
     List<UserDto> findAllDrivers() throws ServiceException;
 
     boolean update(UserDto entity) throws ServiceException;

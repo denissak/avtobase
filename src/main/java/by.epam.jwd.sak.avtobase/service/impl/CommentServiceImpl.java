@@ -1,5 +1,6 @@
 package by.epam.jwd.sak.avtobase.service.impl;
 
+import by.epam.jwd.sak.avtobase.dao.CommentDao;
 import by.epam.jwd.sak.avtobase.entity.Comment;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
 import by.epam.jwd.sak.avtobase.dto.CommentDto;
@@ -19,12 +20,12 @@ import java.util.stream.Collectors;
 public class CommentServiceImpl implements CommentService {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private final DaoFactory daoFactory = DaoFactory.getInstance();
+    private final CommentDao commentDao = DaoFactory.getInstance().getCommentDao();
 
     @Override
     public List<CommentDto> findAllCommentByUser(Long userId) throws ServiceException {
         try {
-            return daoFactory.getCommentDao().findAllByUserId(userId).stream()
+            return commentDao.findAllByUserId(userId).stream()
                     .map(this::convertToCommentDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error("Find all comments by user error service", e);
@@ -35,7 +36,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public boolean delete(Long id) throws ServiceException {
         try {
-            return daoFactory.getCommentDao().delete(id);
+            return commentDao.delete(id);
         } catch (DAOException e) {
             LOGGER.error("Delete comment error service", e);
             throw new ServiceException("Delete comment error service", e);
@@ -45,7 +46,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public List<CommentDto> findAllComment() throws ServiceException {
         try {
-            return daoFactory.getCommentDao().findAll().stream().map(this::convertToCommentDto).collect(Collectors.toList());
+            return commentDao.findAll().stream().map(this::convertToCommentDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error("Find all comments error service", e);
             throw new ServiceException("Find all comments error service", e);
@@ -59,7 +60,7 @@ public class CommentServiceImpl implements CommentService {
         }
         Comment commentBean = convertToComment(commentDto);
         try {
-            daoFactory.getCommentDao().save(commentBean);
+            commentDao.save(commentBean);
         } catch (DAOException e) {
             LOGGER.error("Create comment error service", e);
             throw new ServiceException("Create comment error service", e);

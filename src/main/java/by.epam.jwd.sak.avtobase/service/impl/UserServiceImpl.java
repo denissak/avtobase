@@ -13,7 +13,6 @@ import by.epam.jwd.sak.avtobase.service.validator.UserValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -66,7 +65,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean update(UserDto userDto) throws ServiceException {
-        if (userDto == null || UserValidator.isUserValid(userDto)) {
+        if (userDto == null || !(UserValidator.isUserValid(userDto))) {
             return false;
         }
         User userBean = convertToUser(userDto);
@@ -100,17 +99,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> findAllFreeDrivers(Date date) throws ServiceException {
-        try {
-            return userDao.findAllFreeDrivers(date).stream().map(this::convertToUserDto).collect(Collectors.toList());
-        } catch (DAOException e) {
-            LOGGER.error("Find all free drivers error service", e);
-            throw new ServiceException("Find all free drivers error service", e);
-        }
-    }
-
-
-    @Override
     public UserDto findByLogin(String login) throws ServiceException {
         try {
             return convertToUserDto(userDao.findByLogin(login));
@@ -121,10 +109,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
     @Override
     public boolean create(UserDto userDto) throws ServiceException {
-        if (userDto == null || UserValidator.isUserValid(userDto)) {
+        if (userDto == null || !(UserValidator.isUserValid(userDto))) {
             return false;
         }
         User userBean = convertToUser(userDto);

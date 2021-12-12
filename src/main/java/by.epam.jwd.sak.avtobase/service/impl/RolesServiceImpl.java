@@ -1,5 +1,6 @@
 package by.epam.jwd.sak.avtobase.service.impl;
 
+import by.epam.jwd.sak.avtobase.dao.RolesDao;
 import by.epam.jwd.sak.avtobase.entity.Role;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
 import by.epam.jwd.sak.avtobase.dto.RoleDto;
@@ -15,12 +16,12 @@ import java.util.stream.Collectors;
 public class RolesServiceImpl implements RolesService {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private final DaoFactory daoFactory = DaoFactory.getInstance();
+    private final RolesDao rolesDao = DaoFactory.getInstance().getRolesDao();
 
     @Override
     public List<RoleDto> findAllRoles() throws ServiceException {
         try {
-            return daoFactory.getRolesDao().findAll().stream().map(this::convertToRoleDto).collect(Collectors.toList());
+            return rolesDao.findAll().stream().map(this::convertToRoleDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error("Find all roles error service", e);
             throw new ServiceException("Find all roles error service", e);

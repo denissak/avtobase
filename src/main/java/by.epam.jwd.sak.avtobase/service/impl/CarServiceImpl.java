@@ -1,5 +1,6 @@
 package by.epam.jwd.sak.avtobase.service.impl;
 
+import by.epam.jwd.sak.avtobase.dao.CarDao;
 import by.epam.jwd.sak.avtobase.entity.Car;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
 import by.epam.jwd.sak.avtobase.dto.CarDto;
@@ -18,13 +19,13 @@ import java.util.stream.Collectors;
 public class CarServiceImpl implements CarService {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private final DaoFactory daoFactory = DaoFactory.getInstance();
+    private final CarDao carDao = DaoFactory.getInstance().getCarDao();
 
 
     @Override
     public List<CarDto> findAllFreeDriver() throws ServiceException {
         try {
-            return daoFactory.getCarDao().findAllFreeDriver().stream().map(this::convertToCarDto).collect(Collectors.toList());
+            return carDao.findAllFreeDriver().stream().map(this::convertToCarDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error("Find all free drivers error service", e);
             throw new ServiceException("Find all free drivers error service", e);
@@ -33,12 +34,12 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public boolean update(CarDto carDto) throws ServiceException {
-        if (carDto == null || CarValidation.isCarValid(carDto)) {
+        if (carDto == null || !(CarValidation.isCarValid(carDto))) {
             return false;
         }
         Car car = convertToCar(carDto);
         try {
-            daoFactory.getCarDao().update(car);
+            carDao.update(car);
         } catch (DAOException e) {
             LOGGER.error("Update car error service", e);
             throw new ServiceException("Update car error service", e);
@@ -49,7 +50,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public boolean addDriver(Long driverId, Long carId) throws ServiceException {
         try {
-            return daoFactory.getCarDao().addDriver(driverId, carId);
+            return carDao.addDriver(driverId, carId);
         } catch (DAOException e) {
             LOGGER.error("Add driver on car error service", e);
             throw new ServiceException("Add driver on car error service", e);
@@ -59,7 +60,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public boolean delete(Long id) throws ServiceException {
         try {
-            return daoFactory.getCarDao().delete(id);
+            return carDao.delete(id);
         } catch (DAOException e) {
             LOGGER.error("Delete car error service", e);
             throw new ServiceException("Delete car error service", e);
@@ -69,7 +70,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public boolean updateStatusById(Long id, String status) throws ServiceException {
         try {
-            return daoFactory.getCarDao().updateStatusById(id, status);
+            return carDao.updateStatusById(id, status);
         } catch (DAOException e) {
             LOGGER.error("Update status car error service", e);
             throw new ServiceException("Update status car error service", e);
@@ -80,7 +81,7 @@ public class CarServiceImpl implements CarService {
     public List<CarDto> findAllCar() throws ServiceException {
 
         try {
-            return daoFactory.getCarDao().findAll().stream().map(this::convertToCarDto).collect(Collectors.toList());
+            return carDao.findAll().stream().map(this::convertToCarDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error("Find all cars error service", e);
             throw new ServiceException("Find all cars error service", e);
@@ -89,12 +90,12 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public boolean create(CarDto carDto) throws ServiceException {
-        if (carDto == null || CarValidation.isCarValid(carDto)) {
+        if (carDto == null || !(CarValidation.isCarValid(carDto))) {
             return false;
         }
         Car carBean = convertToCar(carDto);
         try {
-            daoFactory.getCarDao().save(carBean);
+            carDao.save(carBean);
         } catch (DAOException e) {
             LOGGER.error("Create car error service", e);
             throw new ServiceException("Create car error service", e);
@@ -105,7 +106,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public CarDto findByUserId(Long id) throws ServiceException {
         try {
-            return convertToCarDto(daoFactory.getCarDao().findByUserId(id));
+            return convertToCarDto(carDao.findByUserId(id));
         } catch (DAOException e) {
             LOGGER.error("Find car by user id error service", e);
             throw new ServiceException("Find car by user id error service", e);
@@ -115,7 +116,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public CarDto findById(Long id) throws ServiceException {
         try {
-            return convertToCarDto(daoFactory.getCarDao().findById(id));
+            return convertToCarDto(carDao.findById(id));
         } catch (DAOException e) {
             LOGGER.error("Find car by id error service", e);
             throw new ServiceException("Find car by id error service", e);

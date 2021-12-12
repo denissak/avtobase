@@ -15,18 +15,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 
-public class UserServiceImplTest {
+class UserServiceImplTest {
 
     private UserDao userDao;
     private UserService userService = new UserServiceImpl();
-
     private UserDto userDto;
     private List<User> userList = new ArrayList<>();
+    private User user;
 
     @BeforeEach
-    void setUp() {
+    void prepare() {
         userDao = Mockito.mock(UserDao.class);
         WhiteboxImpl.setInternalState(userService, "userDao", userDao);
         userDto = UserDto.builder()
@@ -44,7 +45,7 @@ public class UserServiceImplTest {
                 .surname("Sak")
                 .password("Zz123")
                 .phoneNumber("+375294561221")
-                .role(new Role(1L, "admin"))
+                .role(new Role(1L, "driver"))
                 .build());
         userList.add(User.builder()
                 .id(2L)
@@ -53,36 +54,79 @@ public class UserServiceImplTest {
                 .surname("Ivanov")
                 .password("Zz123")
                 .phoneNumber("+375294561221")
-                .role(new Role(1L, "admin"))
+                .role(new Role(3L, "driver"))
                 .build());
-
+        user = User.builder()
+                .id(2L)
+                .login("admin1234")
+                .name("Ivan")
+                .surname("Ivanov")
+                .password("Zz123")
+                .phoneNumber("+375294561221")
+                .role(new Role(3L, "driver")).build();
     }
 
     @Test
-    void testDeleteAccount() throws ServiceException, DAOException {
+    void testDeleteUser() throws ServiceException, DAOException {
         Mockito.doReturn(true).when(userDao).delete(Mockito.any());
         var deleteResult = userService.delete(userDto.getId());
         assertThat(deleteResult).isTrue();
     }
 
     @Test
-    void testCreateAccount() throws ServiceException, DAOException {
+    void testCreateUser() throws ServiceException, DAOException {
         Mockito.doReturn(true).when(userDao).save(Mockito.any());
         var saveResult = userService.create(userDto);
         assertThat(saveResult).isTrue();
     }
 
     @Test
-    void testRestoreAccount () throws ServiceException, DAOException {
+    void testRestoreUser () throws ServiceException, DAOException {
         Mockito.doReturn(true).when(userDao).restore(Mockito.any());
         var restoreResult = userService.restore(userDto.getId());
         assertThat(restoreResult).isTrue();
     }
 
     @Test
-    void testAll () throws ServiceException, DAOException {
+    void testUpdateUser () throws ServiceException, DAOException {
+        Mockito.doReturn(true).when(userDao).update(Mockito.any());
+        var updateResult = userService.update(userDto);
+        assertThat(updateResult).isTrue();
+    }
+
+    @Test
+    void testShowAllUsers () throws ServiceException, DAOException {
         Mockito.doReturn(userList).when(userDao).findAll();
         var restoreResult = userService.findAllUser();
-        Assertions.assertEquals(2, restoreResult.size());
+        assertEquals(2, restoreResult.size());
     }
+
+    @Test
+    void testShowAllDrivers () throws ServiceException, DAOException {
+        Mockito.doReturn(userList).when(userDao).findAllDrivers();
+        var restoreResult = userService.findAllDrivers();
+        assertEquals(2, restoreResult.size());
+    }
+
+    @Test
+    void testShowAllDisabledUsers () throws ServiceException, DAOException {
+        Mockito.doReturn(userList).when(userDao).findAllDisabledUser();
+        var restoreResult = userService.findAllDisabledUser();
+        assertEquals(2, restoreResult.size());
+    }
+
+    @Test
+    void testFindByLogin () throws ServiceException, DAOException {
+        Mockito.doReturn(user).when(userDao).findByLogin(Mockito.any());
+        userService.findByLogin(userDto.getLogin());
+    }
+
+/*    @Test
+    void testFindById() throws ServiceException, DAOException {
+
+        Mockito.doReturn(user).when(userDao).findById(Mockito.any());
+        assertTrue();
+
+    }*/
+
 }

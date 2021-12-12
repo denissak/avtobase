@@ -13,8 +13,6 @@ public interface UserDao {
 
     List<User> findAllDisabledUser () throws DAOException;
 
-    List<User> findAllFreeDrivers(Date date) throws DAOException;
-
     List<User> findAllDrivers() throws DAOException;
 
     Optional<User> findById(Long id) throws DAOException;

@@ -26,9 +26,6 @@ public class UserDaoImpl implements UserDao {
 
     private static final String GET_ALL_USER = "SELECT * FROM users as u join roles as r  on r.id = u.role_id WHERE is_active = '1' ORDER BY u.id ";
     private static final String GET_ALL_DISABLED_USER = "SELECT * FROM users as u join roles as r  on r.id = u.role_id WHERE is_active = '0' ORDER BY u.id ";
-    private static final String GET_ALL_FREE_DRIVERS = "SELECT * FROM users as u JOIN cars as c on u.id = c.user_id WHERE c.status_car != 'BROKEN'\n" +
-            "                                      AND c.id != (SELECT car_id FROM requests as r WHERE r.date_departure = ? \n" +
-            "                                      AND r.car_id IN (SELECT c.id FROM users as u JOIN cars as c on u.id = c.user_id WHERE c.status_car != 'BROKEN'))";
     private static final String GET_ALL_DRIVERS = "SELECT * FROM users as u join roles as r  on r.id = u.role_id WHERE r.id = 3 ORDER BY u.surname";
     private static final String SAVE_USER = "INSERT INTO users (login, password, role_id, name, surname, phone_number, is_active)" +
             " VALUES " + "(?,?,?,?,?,?,?)";
@@ -178,25 +175,6 @@ public class UserDaoImpl implements UserDao {
         } catch (SQLException e) {
             LOGGER.error("Find all disabled users error DAO", e);
             throw new DAOException("Find all disabled users error DAO", e);
-        } finally {
-            ConnectionManager.returnConnection(connection);
-        }
-        return users;
-    }
-
-    @Override
-    public List<User> findAllFreeDrivers(Date date) throws DAOException {
-        List<User> users = new ArrayList<>();
-        Connection connection = ConnectionManager.get();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_FREE_DRIVERS)) {
-            preparedStatement.setObject(1, date);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                users.add(buildEntity(resultSet));
-            }
-        } catch (SQLException e) {
-            LOGGER.error("Find all free drivers error DAO", e);
-            throw new DAOException("Find all free drivers error DAO", e);
         } finally {
             ConnectionManager.returnConnection(connection);
         }

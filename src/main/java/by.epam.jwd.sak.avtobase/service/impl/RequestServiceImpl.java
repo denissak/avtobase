@@ -1,5 +1,6 @@
 package by.epam.jwd.sak.avtobase.service.impl;
 
+import by.epam.jwd.sak.avtobase.dao.RequestDao;
 import by.epam.jwd.sak.avtobase.entity.Request;
 import by.epam.jwd.sak.avtobase.entity.User;
 import by.epam.jwd.sak.avtobase.dao.DaoFactory;
@@ -21,12 +22,12 @@ import java.util.stream.Collectors;
 public class RequestServiceImpl implements RequestService {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private final DaoFactory daoFactory = DaoFactory.getInstance();
+    private final RequestDao requestDao = DaoFactory.getInstance().getRequestDao();
 
     @Override
     public boolean addDriverOnRequest(Long carId, Long requestId) throws ServiceException {
         try {
-            return daoFactory.getRequestDao().addDriverOnRequest(carId, requestId);
+            return requestDao.addDriverOnRequest(carId, requestId);
         } catch (DAOException e) {
             LOGGER.error("Add driver on request error service", e);
             throw new ServiceException("Add driver on request error service", e);
@@ -36,7 +37,7 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public List<RequestDto> findAllRequest() throws ServiceException {
         try {
-            return daoFactory.getRequestDao().findAll().stream().map(this::convertToRequestDto).collect(Collectors.toList());
+            return requestDao.findAll().stream().map(this::convertToRequestDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error("Find all requests error service", e);
             throw new ServiceException("Find all requests error service", e);
@@ -46,7 +47,7 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public boolean delete(Long id) throws ServiceException {
         try {
-            return daoFactory.getRequestDao().delete(id);
+            return requestDao.delete(id);
         } catch (DAOException e) {
             LOGGER.error("Delete request error service", e);
             throw new ServiceException("Delete request error service", e);
@@ -55,12 +56,12 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public boolean update(RequestDto requestDto) throws ServiceException {
-        if (requestDto == null || RequestValidation.isRequestValid(requestDto)) {
+        if (requestDto == null || !(RequestValidation.isRequestValid(requestDto))) {
             return false;
         }
         Request requestBean = convertToRequest(requestDto);
         try {
-            daoFactory.getRequestDao().update(requestBean);
+            requestDao.update(requestBean);
         } catch (DAOException e) {
             LOGGER.error("Update request error service", e);
             throw new ServiceException("Update request error service", e);
@@ -71,7 +72,7 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public boolean updateStatusById(Long id, String status) throws ServiceException {
         try {
-            return daoFactory.getRequestDao().updateStatusById(id, status);
+            return requestDao.updateStatusById(id, status);
         } catch (DAOException e) {
             LOGGER.error("Update status request by id error service", e);
             throw new ServiceException("Update status request by id error service", e);
@@ -81,7 +82,7 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public Optional<RequestDto> findById(Long id) throws ServiceException {
         try {
-            return daoFactory.getRequestDao().findById(id).map(this::convertToRequestDto);
+            return requestDao.findById(id).map(this::convertToRequestDto);
         } catch (DAOException e) {
             LOGGER.error("Find request by id error service", e);
             throw new ServiceException("Find request by id error service", e);
@@ -90,12 +91,12 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public boolean create(RequestDto requestDto) throws ServiceException {
-        if (requestDto == null || RequestValidation.isRequestValid(requestDto)) {
+        if (requestDto == null || !(RequestValidation.isRequestValid(requestDto))) {
             return false;
         }
         Request requestBean = convertToRequest(requestDto);
         try {
-            daoFactory.getRequestDao().save(requestBean);
+            requestDao.save(requestBean);
         } catch (DAOException e) {
             LOGGER.error("Create request error service",e );
             throw new ServiceException("Create request error service", e);
@@ -106,7 +107,7 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public List<RequestDto> findAllByCarId(Long carId) throws ServiceException {
         try {
-            return daoFactory.getRequestDao().findAllByCarId(carId).stream()
+            return requestDao.findAllByCarId(carId).stream()
                     .map(this::convertToRequestDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error("Find all requests by car id error service", e);
@@ -117,7 +118,7 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public List<RequestDto> findAllRequestByUser(Long userId) throws ServiceException {
         try {
-            return daoFactory.getRequestDao().findAllByUserId(userId).stream()
+            return requestDao.findAllByUserId(userId).stream()
                     .map(this::convertToRequestDto).collect(Collectors.toList());
         } catch (DAOException e) {
             LOGGER.error("Find all request by user id error service", e);
