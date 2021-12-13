@@ -14,4 +14,5 @@
 
 Администратор может производить изменение и удаление пользователей
 
-dataBase/Avtobase.PNG
+
+![Avtobase](https://user-images.githubusercontent.com/56992508/145761655-23fa77c8-2c74-4cc1-9b39-b86409adc82f.PNG)
