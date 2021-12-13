@@ -14,4 +14,4 @@
 
 Администратор может производить изменение и удаление пользователей
 
-![изображение_2021-11-04_080620](https://user-images.githubusercontent.com/56992508/140260984-4be87ede-f767-437f-8e7c-e9acb1e0282d.png)
+dataBase/Avtobase.PNG
